@@ -1,0 +1,1092 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EMT-1 救護技術員標準操作口令手冊｜官方教材詞彙對照表</title>
+  <style>
+    :root {
+      --bg: #0b1120;
+      --card-bg: #1e293b;
+      --card-border: #334155;
+      --text-main: #f8fafc;
+      --text-sub: #94a3b8;
+      
+      /* 三大流程官方識別色 */
+      --med-color: #06b6d4;      /* 非創傷：湖水青 */
+      --med-bg: rgba(6, 182, 212, 0.08);
+      --med-border: rgba(6, 182, 212, 0.35);
+
+      --trauma-color: #f43f5e;   /* 創傷：警報紅 */
+      --trauma-bg: rgba(244, 63, 94, 0.08);
+      --trauma-border: rgba(244, 63, 94, 0.35);
+
+      --ohca-color: #fbbf24;     /* 歐卡：琥珀金 */
+      --ohca-bg: rgba(251, 191, 36, 0.08);
+      --ohca-border: rgba(251, 191, 36, 0.35);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
+      background-color: var(--bg);
+      color: var(--text-main);
+      line-height: 1.6;
+      padding-bottom: 90px;
+    }
+
+    /* 頂部導航 */
+    header {
+      background: rgba(15, 23, 42, 0.94);
+      backdrop-filter: blur(16px);
+      border-bottom: 1px solid var(--card-border);
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      padding: 14px 20px;
+    }
+
+    .header-inner {
+      max-width: 1400px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .logo-area h1 {
+      font-size: 1.35rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .tag-standard {
+      background: linear-gradient(135deg, #0284c7, #0d9488);
+      color: #fff;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 3px 8px;
+      border-radius: 6px;
+      letter-spacing: 0.5px;
+    }
+
+    .nav-tools {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      flex-wrap: wrap;
+    }
+
+    .view-btn {
+      background: #334155;
+      color: #cbd5e1;
+      border: 1px solid #475569;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.2s;
+    }
+
+    .view-btn:hover {
+      background: #475569;
+      color: #fff;
+    }
+
+    .view-btn.active {
+      background: #2563eb;
+      border-color: #60a5fa;
+      color: #fff;
+      box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
+    }
+
+    .btn-diff {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid rgba(239, 68, 68, 0.4);
+      color: #fca5a5;
+      padding: 8px 14px;
+      border-radius: 8px;
+      font-size: 0.88rem;
+      font-weight: 700;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+
+    .btn-diff.active {
+      background: #ef4444;
+      color: #fff;
+      box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
+    }
+
+    .btn-print {
+      background: #1e293b;
+      color: #94a3b8;
+      border: 1px solid #475569;
+      padding: 8px 12px;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      cursor: pointer;
+    }
+
+    /* 主容器 */
+    .container {
+      max-width: 1400px;
+      margin: 20px auto 0;
+      padding: 0 18px;
+    }
+
+    /* 頂部規範說明 Banner */
+    .banner-tip {
+      background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
+      border: 1px solid #475569;
+      border-radius: 14px;
+      padding: 16px 22px;
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+
+    .banner-tip-text h2 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: #fff;
+      margin-bottom: 4px;
+    }
+
+    .banner-tip-text p {
+      color: #94a3b8;
+      font-size: 0.9rem;
+    }
+
+    .rule-pill {
+      background: #0f172a;
+      border: 1px solid #334155;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.82rem;
+      color: #cbd5e1;
+    }
+
+    .rule-pill b {
+      color: #38bdf8;
+    }
+
+    /* 檢視區塊隱藏與顯示 */
+    .view-panel {
+      display: none;
+    }
+
+    .view-panel.active {
+      display: block;
+    }
+
+    /* ==================================================== */
+    /* 核心視圖：標準口令對照卡 */
+    /* ==================================================== */
+    .script-row-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 14px;
+      margin-bottom: 22px;
+      overflow: hidden;
+      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+    }
+
+    .script-row-header {
+      background: #172033;
+      padding: 12px 20px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      border-bottom: 1px solid var(--card-border);
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+
+    .script-step-label {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .step-pill {
+      background: #2563eb;
+      color: #fff;
+      font-size: 0.8rem;
+      font-weight: 900;
+      padding: 2px 8px;
+      border-radius: 20px;
+    }
+
+    .step-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    .step-diff-badge {
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+
+    .step-diff-badge.diff {
+      background: rgba(239, 68, 68, 0.2);
+      border: 1px solid #ef4444;
+      color: #fca5a5;
+    }
+
+    .step-diff-badge.same {
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid #10b981;
+      color: #a7f3d0;
+    }
+
+    /* 三欄對稱 Grid */
+    .script-columns-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      divide-x: 1px solid var(--card-border);
+    }
+
+    .script-col {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      position: relative;
+    }
+
+    .script-col.med {
+      background: var(--med-bg);
+      border-right: 1px solid var(--card-border);
+    }
+
+    .script-col.trauma {
+      background: var(--trauma-bg);
+      border-right: 1px solid var(--card-border);
+    }
+
+    .script-col.ohca {
+      background: var(--ohca-bg);
+    }
+
+    .col-header-tag {
+      font-size: 0.85rem;
+      font-weight: 800;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+
+    .med .col-header-tag { color: var(--med-color); }
+    .trauma .col-header-tag { color: var(--trauma-color); }
+    .ohca .col-header-tag { color: var(--ohca-color); }
+
+    /* 標準口令專屬區塊 */
+    .cmd-block {
+      background: #0f172a;
+      border: 1px solid #334155;
+      border-radius: 10px;
+      padding: 14px;
+      margin-bottom: 10px;
+      position: relative;
+    }
+
+    .cmd-role-tag {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 900;
+      padding: 2px 6px;
+      border-radius: 4px;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .role-main { background: #0284c7; color: #fff; }     /* 主手口令 */
+    .role-partner { background: #d97706; color: #fff; }  /* 主副手交接 */
+    .role-action { background: #475569; color: #e2e8f0; }/* 動作備註 */
+
+    .cmd-content {
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: #fff;
+      line-height: 1.5;
+    }
+
+    .cmd-content b {
+      color: #fde047;
+      text-decoration: underline;
+    }
+
+    .trauma .cmd-content b {
+      color: #fca5a5;
+    }
+
+    .ohca .cmd-content b {
+      color: #fde047;
+    }
+
+    .cmd-footer {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-top: 10px;
+      padding-top: 8px;
+      border-top: 1px solid rgba(255, 255, 255, 0.06);
+    }
+
+    .cmd-rule-note {
+      font-size: 0.8rem;
+      color: #94a3b8;
+    }
+
+    .btn-voice {
+      background: rgba(255, 255, 255, 0.08);
+      border: 1px solid rgba(255, 255, 255, 0.15);
+      color: #cbd5e1;
+      padding: 4px 10px;
+      border-radius: 6px;
+      font-size: 0.78rem;
+      font-weight: 700;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.2s;
+    }
+
+    .btn-voice:hover {
+      background: #2563eb;
+      color: #fff;
+      border-color: #60a5fa;
+    }
+
+    /* 模式 2：課本應變狀況口令 (Branch Mode) */
+    .branch-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+    }
+
+    .branch-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 16px;
+    }
+
+    .branch-condition {
+      background: #0f172a;
+      border-left: 4px solid #f43f5e;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.95rem;
+      font-weight: 800;
+      color: #fda4af;
+      margin-bottom: 12px;
+    }
+
+    .branch-command {
+      background: rgba(16, 185, 129, 0.1);
+      border: 1px dashed #10b981;
+      padding: 10px 14px;
+      border-radius: 6px;
+      font-size: 0.92rem;
+      color: #a7f3d0;
+      line-height: 1.5;
+    }
+
+    .branch-command b {
+      color: #fff;
+      font-size: 1rem;
+    }
+
+    /* 差異高亮開啟時的樣式 */
+    body.diff-mode-active .script-row-card.is-same {
+      opacity: 0.25;
+      filter: grayscale(0.85);
+      transition: all 0.3s;
+    }
+
+    body.diff-mode-active .script-row-card.is-diff {
+      border: 2px solid #ef4444;
+      box-shadow: 0 0 25px rgba(239, 68, 68, 0.3);
+    }
+
+    /* 響應式 */
+    @media (max-width: 950px) {
+      .script-columns-grid { grid-template-columns: 1fr; }
+      .script-col { border-right: none !important; border-bottom: 1px solid var(--card-border); }
+    }
+
+    /* 列印樣式 */
+    @media print {
+      header, .nav-tools, .btn-voice { display: none !important; }
+      body { background: #fff !important; color: #000 !important; }
+      .script-row-card { break-inside: avoid; border: 1px solid #aaa !important; }
+      .cmd-block { background: #f8fafc !important; color: #000 !important; border: 1px solid #ccc !important; }
+      .cmd-content { color: #000 !important; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 頂部吸頂導航 -->
+  <header>
+    <div class="header-inner">
+      <div class="logo-area">
+        <h1>
+          <span>🚑 EMT-1 救護技術員標準操作口令大表</span>
+          <span class="tag-standard">課本標準詞彙版</span>
+        </h1>
+      </div>
+      <div class="nav-tools">
+        <button id="btnMain" class="view-btn active" onclick="switchTab('main')">
+          <span>📜</span> 全程標準操作口令
+        </button>
+        <button id="btnBranch" class="view-btn" onclick="switchTab('branch')">
+          <span>🔀</span> 課本情境應變口令
+        </button>
+        <button id="btnDiff" class="btn-diff" onclick="toggleDiffHighlight()">
+          <span>🔥</span> 只看差異高亮：關閉
+        </button>
+        <button class="btn-print" onclick="window.print()">
+          <span>🖨️</span> 列印成講義紙
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- 頂部規範說明 Banner -->
+    <div class="banner-tip">
+      <div class="banner-tip-text">
+        <h2>教材標準規範：純操作口令與副手協作</h2>
+        <p>本表採用中華民國消防署及 EMT-1 官方教材之專業標準詞彙，去除「報告教官／考官」贅字，直接呈現救護員現場實際發布之口令。</p>
+      </div>
+      <div class="rule-pill">
+        標準詞彙：<b>頸椎減移</b>・<b>下顎推擠法</b>・<b>CRT</b>・<b>PSM</b>・<b>病人要史已前到</b>
+      </div>
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 視圖 1：全程標準操作口令 (Main Mode) -->
+    <!-- ============================================================ -->
+    <div id="viewMain" class="view-panel active">
+
+      <!-- 階段 1: 現場評估與起手式 -->
+      <div class="script-row-card is-diff">
+        <div class="script-row-header">
+          <div class="script-step-label">
+            <span class="step-pill">01</span>
+            <span class="step-name">現場評估與起手式</span>
+          </div>
+          <span class="step-diff-badge diff">🔥 創傷實施手持頸椎減移・歐卡攜帶AED</span>
+        </div>
+        <div class="script-columns-grid">
+          <!-- 非創傷 -->
+          <div class="script-col med">
+            <div class="col-header-tag">🌿 非創傷（內科）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">主手操作口令</span>
+              <div class="cmd-content">
+                「<b>現場環境安全，佩戴個人防護裝備，請求 119 支援，準備急救包。</b>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">四件套常規接近患者</span>
+                <button class="btn-voice" onclick="speak('現場環境安全，佩戴個人防護裝備，請求119支援，準備急救包')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+          <!-- 創傷 -->
+          <div class="script-col trauma">
+            <div class="col-header-tag">🩸 創傷（外傷）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">主手操作口令</span>
+              <div class="cmd-content">
+                「現場環境安全，佩戴個人防護裝備，請求 119 支援，準備急救包。<b>主手接觸傷患，立即實施手持頸椎減移。</b>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">雙手固定頭頸，嚴禁離手</span>
+                <button class="btn-voice" onclick="speak('現場環境安全，佩戴個人防護裝備，請求119支援，準備急救包，主手立即實施手持頸椎減移')">🔊 聽發音</button>
+              </div>
+            </div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-partner">主副手交接口令</span>
+              <div class="cmd-content">
+                主手：「<b>副手，請準備接手頭頸部固定。</b>」<br>
+                副手：「<b>我已接穩。</b>」<br>
+                主手：「<b>好，我放手。</b>」
+              </div>
+            </div>
+          </div>
+          <!-- 歐卡 -->
+          <div class="script-col ohca">
+            <div class="col-header-tag">⚡ 歐卡 OHCA（心跳停止）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">主手操作口令</span>
+              <div class="cmd-content">
+                「<b>現場環境安全，佩戴個人防護裝備，請求 119 支援，準備急救包，副手攜帶 AED 與甦醒球。</b>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">第一時間指派 AED 與 BVM</span>
+                <button class="btn-voice" onclick="speak('現場環境安全，佩戴個人防護裝備，請求119支援，準備急救包，副手攜帶AED與甦醒球')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 階段 2: 致命大出血 X -->
+      <div class="script-row-card is-diff">
+        <div class="script-row-header">
+          <div class="script-step-label">
+            <span class="step-pill">02</span>
+            <span class="step-name">致命大出血評估 (X)</span>
+          </div>
+          <span class="step-diff-badge diff">🔥 創傷專屬處置步驟</span>
+        </div>
+        <div class="script-columns-grid">
+          <!-- 非創傷 -->
+          <div class="script-col med">
+            <div class="col-header-tag">🌿 非創傷（內科）</div>
+            <div style="color:#64748b; font-size:0.88rem; padding:12px;">
+              （無此外傷機制，直接進行意識評估）
+            </div>
+          </div>
+          <!-- 創傷 -->
+          <div class="script-col trauma">
+            <div class="col-header-tag">🩸 創傷（外傷）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">主手操作口令</span>
+              <div class="cmd-content">
+                「<b>快速掃描全身致命大出血。</b>」
+              </div>
+            </div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-partner">大出血處置口令</span>
+              <div class="cmd-content">
+                「<b>患者肢體大量噴血，直接加壓無效，立即於傷口近心端 5 至 7 公分處施加止血帶，旋緊至出血停止，標記止血帶時間。</b>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">止血帶避開關節處，不任意鬆開</span>
+                <button class="btn-voice" onclick="speak('患者肢體大量噴血，直接加壓無效，立即於傷口近心端施加止血帶，旋緊至出血停止，標記止血帶時間')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+          <!-- 歐卡 -->
+          <div class="script-col ohca">
+            <div class="col-header-tag">⚡ 歐卡 OHCA（心跳停止）</div>
+            <div style="color:#64748b; font-size:0.88rem; padding:12px;">
+              （無此外傷機制，直接進行意識評估）
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 階段 3: 意識狀態評估 (AVPU) -->
+      <div class="script-row-card is-same">
+        <div class="script-row-header">
+          <div class="script-step-label">
+            <span class="step-pill">03</span>
+            <span class="step-name">意識狀態評估 (AVPU)</span>
+          </div>
+          <span class="step-diff-badge same">🟢 三者大致通用（創傷不可晃動頸椎）</span>
+        </div>
+        <div class="script-columns-grid">
+          <!-- 非創傷 -->
+          <div class="script-col med">
+            <div class="col-header-tag">🌿 非創傷（內科）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">口令與刺激</span>
+              <div class="cmd-content">
+                「<b>先生先生，聽得到嗎？</b>（雙手拍擊雙肩，施予斜方肌疼痛刺激）<b>患者意識清醒／對痛有反應／無反應。</b>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">清(A) 聲(V) 痛(P) 否(U)</span>
+                <button class="btn-voice" onclick="speak('先生先生，聽得到嗎？患者意識清醒，對痛有反應，無反應')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+          <!-- 創傷 -->
+          <div class="script-col trauma">
+            <div class="col-header-tag">🩸 創傷（外傷）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">維持頸椎減移下口令</span>
+              <div class="cmd-content">
+                「<b>維持頸椎固定。先生先生，請保持不動，聽得到嗎？</b>（拍擊雙肩，施予痛刺激）<b>患者意識對聲音／痛有反應。</b>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">嚴禁劇烈搖晃傷患身體</span>
+                <button class="btn-voice" onclick="speak('維持頸椎固定。先生先生，請保持不動，聽得到嗎？患者意識對痛有反應')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+          <!-- 歐卡 -->
+          <div class="script-col ohca">
+            <div class="col-header-tag">⚡ 歐卡 OHCA（心跳停止）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">無反應確認口令</span>
+              <div class="cmd-content">
+                「<b>先生先生，聽得到嗎？</b>（拍擊雙肩，施予斜方肌刺激）<b>確認患者完全無反應 (Unresponsive)。</b>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">確認為 U，立即進入呼吸脈搏評估</span>
+                <button class="btn-voice" onclick="speak('先生先生，聽得到嗎？確認患者完全無反應')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 階段 4: 暢通呼吸道 (A) -->
+      <div class="script-row-card is-diff">
+        <div class="script-row-header">
+          <div class="script-step-label">
+            <span class="step-pill">04</span>
+            <span class="step-name">暢通呼吸道 (A)</span>
+          </div>
+          <span class="step-diff-badge diff">🛑 關鍵手法差異：創傷嚴禁後仰</span>
+        </div>
+        <div class="script-columns-grid">
+          <!-- 非創傷 -->
+          <div class="script-col med">
+            <div class="col-header-tag">🌿 非創傷（內科）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">壓額抬頦法口令</span>
+              <div class="cmd-content">
+                「<b>採壓額抬頦法，暢通呼吸道。檢查口咽部有無可見異物、嘔吐物及異常呼吸雜音，呼吸道暢通。</b>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">正常頭部後仰拉直氣道</span>
+                <button class="btn-voice" onclick="speak('採壓額抬頦法，暢通呼吸道。檢查口咽部有無可見異物，呼吸道暢通')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+          <!-- 創傷 -->
+          <div class="script-col trauma">
+            <div class="col-header-tag">🩸 創傷（外傷）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">下顎推擠法口令</span>
+              <div class="cmd-content">
+                「<b>雙手採下顎推擠法，嚴禁頭部後仰，暢通呼吸道。檢查口腔有無血塊、碎牙及異物，呼吸道暢通。</b>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">雙手食中指托下顎角向前向上推</span>
+                <button class="btn-voice" onclick="speak('雙手採下顎推擠法，嚴禁頭部後仰，暢通呼吸道。檢查口腔有無異物，呼吸道暢通')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+          <!-- 歐卡 -->
+          <div class="script-col ohca">
+            <div class="col-header-tag">⚡ 歐卡 OHCA（心跳停止）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">壓額抬頦法口令</span>
+              <div class="cmd-content">
+                「<b>採壓額抬頦法，暢通呼吸道，檢查口中無可見異物。</b>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">迅速暢通，不延誤循環評估</span>
+                <button class="btn-voice" onclick="speak('採壓額抬頦法，暢通呼吸道，檢查口中無可見異物')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 階段 5: 評估呼吸 (B) 與 循環脈搏 (C) -->
+      <div class="script-row-card is-diff">
+        <div class="script-row-header">
+          <div class="script-step-label">
+            <span class="step-pill">05</span>
+            <span class="step-name">評估呼吸 (B) ＋ 循環脈搏 (C)</span>
+          </div>
+          <span class="step-diff-badge diff">⚡ 歐卡雙工合一 ≤10 秒・創傷壓骨盆</span>
+        </div>
+        <div class="script-columns-grid">
+          <!-- 非創傷 -->
+          <div class="script-col med">
+            <div class="col-header-tag">🌿 非創傷（內科）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">B 呼吸與血氧</span>
+              <div class="cmd-content">
+                「<b>眼睛平視胸部，評估呼吸起伏深淺快慢，副手夾上血氧濃度計。</b>」
+              </div>
+            </div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">C 循環評估</span>
+              <div class="cmd-content">
+                「<b>觸診雙側橈動脈，脈搏規律有力，微血管充填時間 (CRT) 小於 2 秒，手背觸摸膚溫溫暖乾爽。</b>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">先 B 後 C，循序評估</span>
+                <button class="btn-voice" onclick="speak('眼睛平視胸部，評估呼吸起伏深淺快慢，副手夾上血氧濃度計。觸診橈動脈，微血管充填時間小於2秒，膚溫溫暖乾爽')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+          <!-- 創傷 -->
+          <div class="script-col trauma">
+            <div class="col-header-tag">🩸 創傷（外傷）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">B 呼吸與血氧</span>
+              <div class="cmd-content">
+                「<b>平視胸部評估呼吸作功，副手夾上血氧濃度計。觸診橈動脈，微血管充填時間 (CRT) 小於 2 秒。</b>」
+              </div>
+            </div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">C 骨盆穩定度檢查</span>
+              <div class="cmd-content">
+                「<b>雙手向內向下輕壓骨盆一次，骨盆穩定無骨擦音。</b>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">骨盆僅施壓一次，排除隱形大出血</span>
+                <button class="btn-voice" onclick="speak('平視胸部評估呼吸作功，副手夾血氧。觸診橈動脈，微血管充填時間小於2秒。雙手向內向下輕壓骨盆一次，骨盆穩定無骨擦音')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+          <!-- 歐卡 -->
+          <div class="script-col ohca">
+            <div class="col-header-tag">⚡ 歐卡 OHCA（心跳停止）</div>
+            <div class="cmd-block" style="border: 2px solid #fbbf24;">
+              <span class="cmd-role-tag role-main">同步評估與宣判口令</span>
+              <div class="cmd-content">
+                「<b>平視胸部起伏，同時觸診頸動脈：1、2、3、4、5、6、7。無正常呼吸、無頸動脈脈搏，判定為 OHCA，立即開始胸外按壓！</b>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">限時 5 至 10 秒內完成，瀕死喘息視同無呼吸</span>
+                <button class="btn-voice" onclick="speak('平視胸部起伏，同時觸診頸動脈：一、二、三、四、五、六、七。無正常呼吸、無頸動脈脈搏，判定為歐卡，立即開始胸外按壓！')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 階段 6: 核心處置與急救操作 -->
+      <div class="script-row-card is-diff">
+        <div class="script-row-header">
+          <div class="script-step-label">
+            <span class="step-pill">06</span>
+            <span class="step-name">核心處置與急救操作</span>
+          </div>
+          <span class="step-diff-badge diff">🔥 歐卡高品質CPR與AED・創傷PSM與固定保暖</span>
+        </div>
+        <div class="script-columns-grid">
+          <!-- 非創傷 -->
+          <div class="script-col med">
+            <div class="col-header-tag">🌿 非創傷（內科）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">給氧標準口令</span>
+              <div class="cmd-content">
+                「<b>患者呼吸急促窘迫，給予非再呼吸型面罩 (NRM)，氧氣流量設定 15 L/min，確認儲氣袋完全充飽後為患者佩戴。</b>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">若呼吸過慢小於 8 次：改甦醒球 BVM 每 6 秒一口</span>
+                <button class="btn-voice" onclick="speak('給予非再呼吸型面罩NRM，氧氣流量設定15升，確認儲氣袋完全充飽後為患者佩戴')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+          <!-- 創傷 -->
+          <div class="script-col trauma">
+            <div class="col-header-tag">🩸 創傷（外傷）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">骨折固定 PSM 口令</span>
+              <div class="cmd-content">
+                「<b>固定前評估患肢遠端脈搏、感覺、運動 (PSM)。副手準備夾板與護墊，跨上下關節固定。固定完成，重新評估遠端 PSM。</b>」
+              </div>
+            </div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">暴露與保暖口令</span>
+              <div class="cmd-content">
+                「<b>暴露檢查胸腹部外傷。檢查完畢，立即覆蓋毛毯保暖，防止低體溫。</b>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">防範創傷致命三聯徵（低體溫、酸中毒、凝血異常）</span>
+                <button class="btn-voice" onclick="speak('固定前評估患肢遠端脈搏感覺運動PSM，夾板跨關節固定，固定後重新評估遠端PSM。暴露檢查傷口，覆蓋毛毯保暖防低體溫')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+          <!-- 歐卡 -->
+          <div class="script-col ohca">
+            <div class="col-header-tag">⚡ 歐卡 OHCA（心跳停止）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">胸外按壓與通氣口令</span>
+              <div class="cmd-content">
+                「<b>定位胸骨下半段，開始胸外按壓，頻率 100 至 120 次/分，深度 5 至 6 公分，完全回彈，避免中斷。30 次按壓配合 2 次甦醒球通氣。</b>」
+              </div>
+            </div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">AED 操作六字訣口令</span>
+              <div class="cmd-content">
+                「<b>AED 開機。黏貼電擊貼片於右鎖骨下及左乳頭外下。連接導線。</b>」<br>
+                「<b>大家離開，勿碰觸患者，分析心律。</b>」<br>
+                「<b>建議電擊。大家離開，確認無人接觸，執行電擊。電擊完畢，立即恢復胸外按壓！</b>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">若第一次不建議電擊：口令「不摸脈搏，立即恢復按壓」</span>
+                <button class="btn-voice" onclick="speak('大家離開，勿碰觸患者，分析心律。建議電擊，大家離開，執行電擊。電擊完畢，立即恢復胸外按壓！')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 階段 7: 危急個案判定與後送口令 -->
+      <div class="script-row-card is-same">
+        <div class="script-row-header">
+          <div class="script-step-label">
+            <span class="step-pill">07</span>
+            <span class="step-name">危急個案判定與後送口令</span>
+          </div>
+          <span class="step-diff-badge same">🟢 宣告危急原因，啟動搬運與二度評估</span>
+        </div>
+        <div class="script-columns-grid">
+          <!-- 非創傷 -->
+          <div class="script-col med">
+            <div class="col-header-tag">🌿 非創傷（內科）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">危急後送口令</span>
+              <div class="cmd-content">
+                「<b>患者嚴重呼吸窘迫、血氧過低，判定為危急個案，準備快速後送。副手測量八大生命徵象、監測血糖、詢問 SAMPLE 病史。</b>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">後送準備與二度評估並行</span>
+                <button class="btn-voice" onclick="speak('判定為危急個案，準備快速後送。副手測量八大生命徵象、監測血糖、詢問SAMPLE病史')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+          <!-- 創傷 -->
+          <div class="script-col trauma">
+            <div class="col-header-tag">🩸 創傷（外傷）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">創傷危急後送口令</span>
+              <div class="cmd-content">
+                「<b>高能量撞擊合併大量出血，判定為創傷危急個案，準備快速後送。副手測量頸圍佩戴頸圈、上長背板固定軀幹，測量生命徵象。</b>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">脊椎限制器材就位</span>
+                <button class="btn-voice" onclick="speak('判定為創傷危急個案，準備快速後送。副手測量頸圍佩戴頸圈、上長背板固定軀幹，測量生命徵象')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+          <!-- 歐卡 -->
+          <div class="script-col ohca">
+            <div class="col-header-tag">⚡ 歐卡 OHCA（心跳停止）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">極度危急後送口令</span>
+              <div class="cmd-content">
+                「<b>判定為 OHCA 極度危急個案，急救處置不中斷，每 2 分鐘換手，準備快速後送至適當急救責任醫院。</b>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">高品質按壓貫穿全程</span>
+                <button class="btn-voice" onclick="speak('判定為歐卡極度危急個案，急救處置不中斷，每2分鐘換手，準備快速後送至適當急救責任醫院')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 階段 8: 無線電回報與交接口訣 -->
+      <div class="script-row-card is-same">
+        <div class="script-row-header">
+          <div class="script-step-label">
+            <span class="step-pill">08</span>
+            <span class="step-name">無線電交接回報（口訣：病人要史已前到）</span>
+          </div>
+          <span class="step-diff-badge same">🟢 官方標準通報六字口訣</span>
+        </div>
+        <div class="script-columns-grid">
+          <!-- 非創傷 -->
+          <div class="script-col med">
+            <div class="col-header-tag">🌿 非創傷通報示範</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">無線電通報口令</span>
+              <div class="cmd-content">
+                「<b>救護車無線電通報，病人要史已前到：</b><br>
+                • <b>病</b>（患者）：65 歲男性<br>
+                • <b>人/要</b>（主訴）：胸口劇烈壓迫痛延伸至左臂<br>
+                • <b>史</b>（病史）：有心絞痛與高血壓病史<br>
+                • <b>已</b>（處置）：已給予非再呼吸型面罩氧氣 15 L/min<br>
+                • <b>前</b>（目前徵象）：血壓 90/60 mmHg、血氧 92%<br>
+                • <b>到</b>（預估到院）：預估 5 分鐘後抵達急診室。」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">結構化口頭交接</span>
+                <button class="btn-voice" onclick="speak('救護車無線電通報，病人要史已前到：65歲男性，主訴胸痛，有心絞痛病史，已給予面罩氧氣，血壓90比60，預估5分鐘後抵達急診室')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+          <!-- 創傷 -->
+          <div class="script-col trauma">
+            <div class="col-header-tag">🩸 創傷通報示範</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">無線電通報口令</span>
+              <div class="cmd-content">
+                「<b>救護車無線電通報，病人要史已前到：</b><br>
+                • <b>病</b>（患者）：28 歲男性機車騎士<br>
+                • <b>人/要</b>（主訴）：車禍撞擊致右大腿大量出血<br>
+                • <b>史</b>（病史）：無特殊已知病史<br>
+                • <b>已</b>（處置）：已上手持減移、止血帶、頸圈長背板固定<br>
+                • <b>前</b>（目前徵象）：止血帶已控制出血，橈動脈快弱<br>
+                • <b>到</b>（預估到院）：預估 3 分鐘後抵達急診室。」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">註明機轉與止血帶時間</span>
+                <button class="btn-voice" onclick="speak('救護車無線電通報，28歲男性機車車禍，右大腿大出血，已上止血帶與頸圈長背板，預估3分鐘後抵達急診室')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+          <!-- 歐卡 -->
+          <div class="script-col ohca">
+            <div class="col-header-tag">⚡ 歐卡通報示範</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">無線電通報口令</span>
+              <div class="cmd-content">
+                「<b>救護車無線電通報：</b><br>
+                • <b>病</b>（患者）：50 歲男性目擊突然倒下<br>
+                • <b>人/要</b>（主訴）：OHCA 院外心跳停止個案<br>
+                • <b>已</b>（處置）：現場 CPR 執行 6 分鐘，AED 電擊 2 次，目前持續按壓通氣<br>
+                • <b>到</b>（預估到院）：預估 4 分鐘後抵達急救責任醫院。」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">使急診室提早準備插管急救設備</span>
+                <button class="btn-voice" onclick="speak('救護車無線電通報，50歲男性歐卡個案，CPR執行6分鐘，AED電擊2次，目前持續按壓通氣，預估4分鐘後抵達急診室')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ============================================================ -->
+    <!-- 視圖 2：課本情境應變口令 (Branch Mode) -->
+    <!-- ============================================================ -->
+    <div id="viewBranch" class="view-panel">
+      <div style="font-size:1.25rem; font-weight:800; margin-bottom:12px; display:flex; align-items:center; gap:8px;">
+        <span>🔀</span> 課本情境變化之標準處置口令
+      </div>
+      <p style="color:#94a3b8; font-size:0.9rem; margin-bottom:20px;">
+        當現場評估發現特定生理徵候時，依教材標準指引立即發布對應操作口令：
+      </p>
+
+      <div class="branch-grid">
+        <div class="branch-card">
+          <div class="branch-condition">呼吸道評估：口咽部有積血或液體咕嚕聲</div>
+          <div class="branch-command">
+            👉 標準操作口令：<br>
+            <b>「副手，準備抽吸導管，每次抽吸時間不超過 15 秒。」</b>
+          </div>
+        </div>
+
+        <div class="branch-card">
+          <div class="branch-condition">呼吸道評估：呼吸有鼾音，患者昏迷無嘔吐反射</div>
+          <div class="branch-command">
+            👉 標準操作口令：<br>
+            <b>「測量嘴角至耳垂距離，置入口咽呼吸道 (OPA)。」</b>
+          </div>
+        </div>
+
+        <div class="branch-card">
+          <div class="branch-condition">呼吸道評估：呼吸有鼾音，患者半清醒有嘔吐反射</div>
+          <div class="branch-command">
+            👉 標準操作口令：<br>
+            <b>「排除顱底骨折禁忌，測量鼻尖至耳垂距離，潤滑後置入鼻咽呼吸道 (NPA)。」</b>
+          </div>
+        </div>
+
+        <div class="branch-card">
+          <div class="branch-condition">胸部創傷：胸壁開放性傷口，伴隨吸吮聲</div>
+          <div class="branch-command">
+            👉 標準操作口令：<br>
+            <b>「使用排氣胸封覆蓋傷口，持續評估有無張力性氣胸惡化徵候。」</b>
+          </div>
+        </div>
+
+        <div class="branch-card">
+          <div class="branch-condition">AED 心律分析：第一次語音提示「不建議電擊」</div>
+          <div class="branch-command">
+            👉 標準操作口令：<br>
+            <b>「不觸摸頸動脈，立即恢復胸外按壓。」</b>
+          </div>
+        </div>
+
+        <div class="branch-card">
+          <div class="branch-condition">AED 心律分析：第二次之後提示「不建議電擊」</div>
+          <div class="branch-command">
+            👉 標準操作口令：<br>
+            <b>「觸診頸動脈確認脈搏。無脈搏繼續胸外按壓；有脈搏評估自主呼吸。」</b>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </main>
+
+  <script>
+    // 頁籤切換
+    function switchTab(tab) {
+      document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
+      document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
+
+      if (tab === 'main') {
+        document.getElementById('btnMain').classList.add('active');
+        document.getElementById('viewMain').classList.add('active');
+      } else {
+        document.getElementById('btnBranch').classList.add('active');
+        document.getElementById('viewBranch').classList.add('active');
+      }
+    }
+
+    // 差異高亮切換
+    let isDiffOn = false;
+    function toggleDiffHighlight() {
+      isDiffOn = !isDiffOn;
+      const body = document.body;
+      const btn = document.getElementById('btnDiff');
+
+      if (isDiffOn) {
+        body.classList.add('diff-mode-active');
+        btn.classList.add('active');
+        btn.innerHTML = '<span>🔥</span> 只看差異高亮：已開啟';
+      } else {
+        body.classList.remove('diff-mode-active');
+        btn.classList.remove('active');
+        btn.innerHTML = '<span>🔥</span> 只看差異高亮：關閉';
+      }
+    }
+
+    // 瀏覽器標準口令發音 (Web Speech API)
+    function speak(sentence) {
+      if (!('speechSynthesis' in window)) {
+        alert('您的瀏覽器不支援發音功能');
+        return;
+      }
+      window.speechSynthesis.cancel();
+      const utter = new SpeechSynthesisUtterance(sentence);
+      utter.lang = 'zh-TW';
+      utter.rate = 1.05;
+      utter.pitch = 1.0;
+      window.speechSynthesis.speak(utter);
+    }
+  </script>
+</body>
+</html>

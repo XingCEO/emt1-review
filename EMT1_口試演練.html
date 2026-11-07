@@ -1,0 +1,727 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>EMT-1 口試演練</title>
+<style>
+  :root {
+    --bg: #0b1020;
+    --card: rgba(18, 28, 48, .92);
+    --line: rgba(148, 176, 214, .22);
+    --text: #f6f8fc;
+    --muted: #c9d4e6;
+    --faint: #93a3bb;
+    --med: #3ec6d6;
+    --trauma: #ff5d73;
+    --ohca: #f5c451;
+    --ok: #8ee0b8;
+    --bad: #ffb4b4;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; min-height: 100%; }
+  body {
+    background:
+      radial-gradient(900px 420px at 8% -10%, rgba(62,198,214,.16), transparent 55%),
+      radial-gradient(760px 380px at 100% 0%, rgba(245,196,81,.12), transparent 48%),
+      radial-gradient(520px 320px at 70% 110%, rgba(255,93,115,.08), transparent 50%),
+      var(--bg);
+    color: var(--text);
+    font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", "Segoe UI", sans-serif;
+    line-height: 1.65;
+  }
+  body::before { content: ""; display: block; height: 3px; background: linear-gradient(90deg, var(--med), var(--ohca) 58%, var(--trauma)); }
+  a { color: #b7e4ff; }
+  button, header a {
+    font: inherit; cursor: pointer; color: var(--text); text-decoration: none;
+    background: rgba(255,255,255,.04); border: 1px solid var(--line); border-radius: 999px;
+    padding: 8px 14px; transition: background .16s ease, border-color .16s ease, transform .16s ease;
+  }
+  button:hover, header a:hover { background: rgba(255,255,255,.08); border-color: rgba(183,228,255,.45); }
+  button.primary { background: var(--med); border-color: var(--med); color: #062027; font-weight: 800; }
+  button.primary:hover { background: #67d6e2; }
+  button.next { background: var(--ohca); border-color: var(--ohca); color: #2b2208; font-weight: 800; }
+  button.next:hover { background: #ffd36e; }
+  button:disabled { opacity: .45; cursor: not-allowed; }
+  :focus-visible { outline: 2px solid #9ad7ff; outline-offset: 3px; }
+  header { max-width: 980px; margin: 0 auto; padding: 22px 22px 0; display: flex; justify-content: space-between; gap: 16px; align-items: flex-end; flex-wrap: wrap; }
+  header > div:first-child { min-width: 0; flex: 1 1 280px; }
+  h1 { font-size: 1.7rem; line-height: 1.2; margin: 0; letter-spacing: .02em; }
+  header p { margin: 6px 0 0; color: var(--faint); font-size: .92rem; }
+  p, li, .exam, .starts span { word-break: keep-all; }
+  .row > button, .row > a { flex: 0 0 auto; }
+  main { max-width: 980px; margin: 0 auto; padding: 18px 22px 64px; }
+  .home-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 16px; align-items: start; }
+  .home-grid > *, .starts > *, .card, header > div { min-width: 0; }
+  .card {
+    background: var(--card); border: 1px solid var(--line); border-radius: 22px;
+    padding: 22px; max-width: 100%;
+    box-shadow: 0 24px 60px rgba(0,0,0,.28);
+  }
+  .starts { display: grid; gap: 10px; margin-top: 14px; }
+  .starts button {
+    text-align: left; border-radius: 16px; padding: 14px 16px;
+    border-left: 3px solid var(--line);
+  }
+  .starts button[data-go="tonight"], .starts button[data-go="ohca"] { border-left-color: var(--ohca); }
+  .starts button[data-go="scenes"] { border-left-color: var(--trauma); }
+  .starts button[data-go="oxygen"] { border-left-color: var(--med); }
+  .starts button[data-go="weak"] { border-left-color: var(--ok); }
+  .starts b { display: block; font-size: 1.06rem; }
+  .starts span { color: var(--muted); font-size: .9rem; }
+  .miss-list { margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
+  .run-head { display: flex; justify-content: space-between; gap: 12px; align-items: center; }
+  .run-head strong { font-size: 1.02rem; }
+  .step {
+    font-variant-numeric: tabular-nums; color: var(--muted); font-size: .85rem;
+    border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; background: rgba(0,0,0,.18);
+  }
+  .bar { height: 4px; background: rgba(255,255,255,.06); border-radius: 99px; overflow: hidden; margin: 12px 0 0; }
+  .bar > i { display: block; height: 100%; background: linear-gradient(90deg, var(--med), var(--ohca)); width: 0; }
+  .prompt { margin-top: 16px; padding: 18px 18px 16px; border-radius: 16px; background: rgba(6, 12, 24, .45); border: 1px solid rgba(245,196,81,.28); }
+  .exam { font-size: 1.62rem; font-weight: 800; line-height: 1.45; margin: 4px 0 0; }
+  .who { color: var(--ohca); font-size: .75rem; font-weight: 800; letter-spacing: .14em; margin: 0; }
+  label { display: block; margin: 16px 0 8px; color: var(--faint); font-size: .92rem; }
+  textarea {
+    width: 100%; min-height: 76px; resize: vertical; border-radius: 16px;
+    border: 1px solid var(--line); background: rgba(6,12,24,.55); color: var(--text);
+    font: inherit; font-size: 1.2rem; line-height: 1.5; padding: 14px 16px;
+  }
+  textarea:focus { outline: none; border-color: var(--med); box-shadow: 0 0 0 4px rgba(62,198,214,.16); }
+  textarea::placeholder { color: #7f8da3; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
+  .feedback { margin-top: 14px; border-radius: 16px; padding: 14px 16px; }
+  .feedback.good { background: rgba(142,224,184,.12); color: var(--ok); border: 1px solid rgba(142,224,184,.28); }
+  .feedback.bad { background: rgba(255,93,115,.1); color: var(--bad); border: 1px solid rgba(255,93,115,.28); }
+  .model { margin-top: 8px; padding: 8px 12px; border-left: 3px solid var(--ohca); color: var(--text); }
+  .log { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .log div { font-size: .88rem; color: var(--muted); background: rgba(255,255,255,.04); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; }
+  .log b { color: var(--text); font-weight: 800; }
+  .mark-ok { color: var(--ok); }
+  .mark-mid { color: var(--ohca); }
+  .mark-bad { color: var(--trauma); }
+  .met { font-variant-numeric: tabular-nums; color: var(--ohca); align-self: center; }
+  @media (max-width: 800px) {
+    html, body { overflow-x: hidden; }
+    header { display: block; padding-top: 16px; }
+    header .row { margin-top: 10px; }
+    .home-grid { grid-template-columns: 1fr; }
+    .exam { font-size: 1.32rem; }
+    main { padding-left: 14px; padding-right: 14px; }
+    .card { padding: 16px; border-radius: 18px; }
+  }
+</style>
+</head>
+<body>
+<header>
+  <div>
+    <h1>口試演練</h1>
+    <p>沒有選項。考官一次只問一件事，意思到了就過。</p>
+  </div>
+  <div class="row" style="margin:0">
+    <a href="EMT1_完整通關手冊.html">回手冊</a>
+    <button type="button" id="metro">110 節拍器</button>
+    <span class="met" id="metro-label" hidden>響著</span>
+  </div>
+</header>
+<main id="app"></main>
+<script>
+const STORE = "emt-oral-v1";
+
+const N = (label, any, extra) => ({ label, any, ...(extra || {}) });
+
+function q(id, examiner, label, words, hint, model, ban) {
+  const turn = { id, examiner, need: [N(label, words)], hint, model };
+  if (ban) turn.forbid = [N(ban[0], ban[1])];
+  return turn;
+}
+
+const OHCA = {
+  id: "ohca",
+  title: "OHCA 整條",
+  blurb: "考官一句一句問。你答那一件就好。",
+  turns: [
+    q("ohca-safe", "大廳有人昏倒。你進場，第一句。", "現場安不安全", ["不安全", "安全", "沒危險", "沒有危險", "有危險"], "先看現場。", "現場安全。"),
+    q("ohca-ppe", "好，現場安全。你自己呢？", "個人防護", ["手套", "口罩", "防護"], "手上，還有口鼻。", "我戴手套和口罩。"),
+    q("ohca-count", "你看到幾位？", "人數", ["一位", "一人", "一個", "1位"], "這題只有他一個。", "一位。"),
+    q("ohca-119", "119 誰打？", "誰打 119", ["119", "副手", "旁邊", "別人", "請人", "叫人", "路人"], "請旁邊的人打。", "請副手打。"),
+    q("ohca-call", "人在你面前。意識先怎麼確認？", "先叫", ["先生", "小姐", "叫", "喊", "喂"], "先用喊的。", "先生、先生。"),
+    q("ohca-tap", "叫了，沒回應。手接著做什麼？", "拍肩", ["拍", "搖"], "拍肩膀。", "拍肩。"),
+    q("ohca-pain", "拍了還是沒反應。再給一個比較痛的。", "疼痛刺激", ["斜方", "捏", "掐", "痛"], "捏斜方肌。", "捏斜方肌。"),
+    q("ohca-air", "捏了也沒反應。沒有外傷。呼吸道怎麼打開？", "壓額抬頦", ["壓額", "抬頦", "抬下巴", "後仰", "仰頭"], "沒有外傷，頭可以後仰。", "壓額抬頦。", ["沒有外傷不用下顎上舉", ["下顎", "推擠"]]),
+    q("ohca-bvm", "打開了，沒有正常呼吸。你請副手準備什麼？", "甦醒球", ["甦醒球", "bvm", "袋瓣", "壓球", "球"], "球先拿出來。", "準備甦醒球。"),
+    q("ohca-pulse", "呼吸看完了。循環摸哪裡？", "頸動脈", ["頸動", "脖子"], "成人摸頸動脈。", "摸頸動脈。"),
+    q("ohca-aed", "沒有脈搏。副手去拿什麼？", "AED", ["aed", "去顫", "電擊器"], "沒有脈搏就要機器。", "拿 AED。"),
+    q("ohca-cpr", "機器還在路上。你的手現在做什麼？", "先按壓", ["按壓", "心肺", "cpr", "壓胸"], "不要等機器。", "我先按壓。"),
+    q("ohca-power", "你改當副手。AED 到了，第一個動作？", "先開機", ["開機", "電源", "開機鍵", "啟動"], "先讓機器醒。", "先開機。"),
+    q("ohca-pad", "開機了。接著？", "貼片", ["貼", "電極"], "電極片貼上。", "貼片。"),
+    q("ohca-clear", "機器要分析。這時候人要怎樣？", "人離開或不要碰", ["離開", "退開", "退後", "後退", "走開", "讓開", "站開", "拿開", "清場", "不要碰", "別碰", "勿碰", "不可碰", "不能碰", "不要觸", "別觸", "勿觸", "不可觸", "不能觸", "不要接", "別接", "勿接", "不要摸", "別摸", "勿摸", "不要去碰", "不要去觸", "別去碰", "別去觸"], "人離開，或不要觸碰，講到就過。", "大家都離開。"),
+    q("ohca-rate", "你回到主手。按壓速度報多少？", "100 到 120", ["110", "100", "120", "一百一十", "一百二十", "一百"], "鎖在 110 就好。", "每分鐘 110。", ["90 以下或 130 以上不算這個範圍", ["130", "140", "150", "90", "80", "70", "一百三", "一百四", "一百五", "一百六", "一百七", "一百八", "一百九", "九十"]]),
+    q("ohca-recoil", "每一下壓完，胸口要怎樣？", "讓胸口回來", ["回彈", "彈回", "回來", "起來", "放回來", "放鬆", "鬆開", "鬆手"], "手的重量要離開。", "讓它完全回來。"),
+    q("ohca-ratio", "吹氣怎麼配？", "30:2", ["30", "三十", "兩口", "2口", "兩氣", "兩次", "2次"], "30:2，或 30 下吹兩口，講到就過。", "30:2。"),
+    q("ohca-shock-clear", "AED 說建議電擊。按下去之前先講什麼？", "人離開或不要碰", ["離開", "退開", "退後", "後退", "走開", "讓開", "站開", "拿開", "清場", "不要碰", "別碰", "勿碰", "不可碰", "不能碰", "不要觸", "別觸", "勿觸", "不可觸", "不能觸", "不要接", "別接", "勿接", "不要摸", "別摸", "勿摸", "不要去碰", "不要去觸", "別去碰", "別去觸"], "人離開，或不要觸碰，講到就過。", "人都離開。"),
+    q("ohca-shock", "人都離開了。你按哪一個？", "電擊", ["電擊", "放電"], "按電擊。", "電擊。"),
+    q("ohca-resume", "電完了。你的手？", "馬上再壓", ["再壓", "繼續", "按壓", "壓胸"], "手馬上回去，先不要摸脈。", "立刻再壓。"),
+    q("ohca-first-no", "換一次。這是第一次分析，不建議電擊。要不要先摸脈？", "先不要摸", ["不摸", "不要摸", "別摸", "不用摸", "不檢查", "不用檢查", "不要檢查", "別檢查"], "第一次不建議電擊，先不要摸。", "不摸。", ["這時候還不能去摸脈", ["摸頸", "摸脈", "檢查脈"]]),
+    q("ohca-first-cpr", "好，不摸。那手做什麼？", "繼續按壓", ["繼續", "再壓", "按壓", "壓胸"], "馬上回到按壓。", "繼續按壓。"),
+    {
+      id: "ohca-second",
+      variants: [
+        q("ohca-second-none", "兩分鐘後又分析一次，還是不建議電擊。你摸了，沒有脈搏。下一句。", "回到按壓", ["再壓", "繼續", "按壓", "心肺", "cpr"], "沒有脈搏就再壓。", "繼續壓。"),
+        q("ohca-second-breath", "第二次分析，不建議電擊。有脈搏，沒有呼吸。你改做什麼？", "改吹氣", ["吹", "人工", "甦醒球", "bvm", "球"], "有脈就不要再空壓。", "改吹氣。"),
+        q("ohca-second-both", "第二次分析，不建議電擊。有脈搏，也有呼吸。你改做什麼？", "離開按壓", ["初步", "評估", "abc", "停止", "不要壓"], "回到初步評估。", "停止按壓，做初步評估。")
+      ]
+    },
+    q("ohca-vent", "如果是成人，有脈搏、沒有呼吸，多久吹一口？", "大約 6 秒", ["6秒", "六秒", "每6"], "成人約 6 秒一口。小孩才是 2 到 3 秒。", "大概每 6 秒一口。")
+  ]
+};
+
+const OXYGEN = {
+  id: "oxygen",
+  title: "給氧，考官報數字",
+  blurb: "裝置、流量、袋子，分開問。",
+  turns: [
+    q("ox-nasal", "人清醒，嘴巴閉著用鼻子呼吸。呼吸 24，血氧 93。給什麼？", "鼻導管", ["鼻導管", "鼻管", "鼻氧", "鼻套"], "閉嘴、還清醒、血氧在 90 到 94。", "鼻導管。"),
+    q("ox-nasal-flow", "鼻導管開多少？", "1 到 6 升", ["1", "2", "3", "4", "5", "6", "一到六", "一升", "二升", "三升", "四升", "五升", "六升", "兩升", "二", "三", "四", "五", "六", "兩"], "1 到 6 升都算。", "1 到 6 升。"),
+    q("ox-mask", "他改成張口呼吸。血氧 91，呼吸 26。給什麼？", "一般面罩", ["一般", "簡單", "普通", "面罩"], "張口用一般面罩。", "一般面罩。", ["這題不是非再呼吸面罩", ["非再呼吸", "nrm"]]),
+    q("ox-mask-flow", "一般面罩開多少？", "大於 6 升", ["6", "8", "10", "六", "八", "十"], "要大於 6，不然二氧化碳積在面罩裡。", "6 到 10 升。"),
+    q("ox-fire", "火場被救出來，臉上有煤灰，聲音沙。給什麼？", "非再呼吸面罩", ["非再呼吸", "nrm", "儲氣", "高濃度", "最高"], "火場、嗆傷，走最高濃度。", "非再呼吸面罩。"),
+    q("ox-fire-flow", "非再呼吸面罩開多少？", "10 到 15 升", ["10", "15", "十", "十五"], "10 到 15 升。", "10 到 15 升。"),
+    q("ox-fire-bag", "袋子呢？", "先充飽", ["充", "打飽", "灌飽", "裝滿"], "先把袋子充飽再給。", "先充飽。"),
+    q("ox-low", "沒有火場。血氧 88，呼吸每分鐘 34。給什麼？", "非再呼吸面罩", ["非再呼吸", "nrm", "儲氣", "高濃度", "最高"], "血氧低於 90，或呼吸大於 30。", "非再呼吸面罩。"),
+    q("ox-bvm", "有脈搏。呼吸只剩每分鐘 6 次。還開鼻導管嗎？", "改甦醒球", ["甦醒球", "bvm", "袋瓣", "壓球", "球", "吹", "人工"], "小於 10 次，改吹氣。", "換甦醒球。", ["這時候不是再調鼻導管", ["鼻導管"]])
+  ]
+};
+
+const THRESHOLD = {
+  id: "threshold",
+  title: "這條算不算危急",
+  blurb: "講危急，或還沒到。原因他下一問再要。",
+  turns: [
+    q("th-gcs13", "GCS 13 分。意識這條過了危急沒有？", "已經危急", ["危急", "過了"], "小於 14 才算，13 已經低於。", "危急。"),
+    q("th-gcs14", "GCS 14 分。意識這條算危急嗎？", "還沒到", ["還沒", "不算", "不是", "未達", "沒有"], "14 正好在線上，還沒小於 14。", "還沒到。", ["14 分不要直接講成危急", ["危急"]]),
+    q("th-rr30", "呼吸每分鐘 30。這條呢？", "危急", ["危急", "過了"], "30 以上就算。", "危急。"),
+    q("th-sbp92", "收縮壓 92。血壓這條算危急嗎？", "還沒到", ["還沒", "不算", "不是", "未達", "沒有"], "要小於 90，或大於 220。", "還沒到。", ["92 還沒小於 90", ["危急"]]),
+    q("th-spo89", "血氧 89。這條呢？", "危急", ["危急", "過了"], "低於 90 就算。", "危急。"),
+    q("th-crt", "指甲回血 3 秒。危急表卡在幾秒？", "大於 2 秒", ["2", "兩"], "大於 2 秒就是。大於 4 秒才想到嚴重休克。", "大於 2 秒。")
+  ]
+};
+
+function scene(id, title, blurb, turns) { return { id, title, blurb, kind: "scene", turns }; }
+
+const SCENES = [
+  scene("helmet", "安全帽", "機車，人還戴著帽子。", [
+    q("helmet-line", "路口機車倒著，騎士還戴安全帽，叫他沒反應。走哪一條？", "創傷", ["創傷", "外傷"], "有外力就是創傷。", "創傷。"),
+    q("helmet-hold", "帽子還在。你的手先做什麼？", "先固定頭", ["頸", "不要動", "別動", "固定"], "頭先有人扶住。", "先固定頭。"),
+    q("helmet-off", "副手說頭接穩了。接著才能做什麼？", "脫安全帽", ["脫", "拿掉", "移除"], "頭固定好才脫帽。", "脫安全帽。"),
+    q("helmet-jaw", "帽子脫了。捏他沒反應，呼吸有鼾音。頭怎麼開？", "下顎上舉", ["下顎", "推擠", "托顎", "抬顎"], "創傷不要壓額。", "下顎上舉。", ["創傷不要壓額抬頦", ["壓額", "抬頦"]]),
+    q("helmet-air", "完全沒有疼痛反應，又有鼾音。用哪一種呼吸道？", "口咽", ["口咽", "opa"], "沒有反應用口咽。", "口咽。")
+  ]),
+  scene("bleed", "大出血", "一靠近就看到噴血。", [
+    q("bleed-1", "工人從架子掉下來，小腿正噴血。你先做哪一件？", "先止血", ["止血", "加壓", "壓住", "止血帶"], "看到噴血，先壓住。", "先加壓。"),
+    q("bleed-2", "血止住了。回到流程的哪一格？", "回到意識", ["意識", "叫", "先生"], "接回叫人。", "叫他。")
+  ]),
+  scene("fracture", "骨折和骨盆", "大腿變形，而且骨盆會痛。", [
+    q("fx-1", "人清醒，說骨盆很痛。你的手怎麼做？", "壓骨盆", ["骨盆", "向內", "往內", "內壓", "往下"], "向內並向下，壓一次就好。講到骨盆或那個方向都過。", "向內向下壓。"),
+    q("fx-bleed", "左大腿變形，像股骨。危急嗎？", "危急", ["危急", "一千", "1000", "大量"], "股骨一處大約 1000 毫升。", "危急。"),
+    q("fx-pulse", "固定前後要摸什麼？", "遠端脈搏", ["遠端", "末梢", "腳背", "足背"], "夾板前後都摸遠端。", "摸遠端脈搏。")
+  ]),
+  scene("burn", "火場燒燙傷", "人走出來，臉上有黑。", [
+    q("burn-line", "公寓火警，人自己走出來，聲音沙啞。走哪一條？", "創傷", ["創傷", "外傷"], "火場算創傷。", "創傷。"),
+    q("burn-ox", "氧氣給什麼？", "非再呼吸面罩", ["非再呼吸", "nrm", "儲氣", "高濃度", "最高"], "嗆傷直接最高濃度。", "非再呼吸面罩。"),
+    q("burn-wound", "手臂水泡超過體表四分之一。傷口怎麼處理？", "沖完蓋上", ["食鹽", "紗布", "沖"], "用食鹽水沖，蓋紗布。", "沖一沖，蓋紗布。"),
+    q("burn-crit", "這樣算危急嗎？", "危急", ["危急"], "超過 25%，或臉和呼吸道，都是危急。", "危急。")
+  ]),
+  scene("chestwound", "氣胸和穿刺", "胸口有洞，肚子上還有一把刀。", [
+    q("wound-1", "胸口有開放傷口，吸氣會有聲音。你怎麼貼？", "貼三留一", ["三邊", "貼三", "留一", "三面"], "三邊貼住，或留一邊讓氣出去，講到就過。", "貼三留一。", ["不要四邊都封死", ["四邊"]]),
+    q("wound-2", "肚子還插著一把刀。你動它嗎？", "固定不拔", ["不拔", "不要拔", "固定"], "穿刺傷固定，不拔。", "不拔。")
+  ]),
+  scene("allergy", "過敏", "吃飯後半臉腫。", [
+    q("allergy-line", "吃完蝦，嘴唇腫，沒有跌倒。走哪一條？", "非創傷", ["非創", "內科", "生病"], "沒有外力。", "非創傷。"),
+    q("allergy-air", "吸氣有聲音。你先聽什麼？", "呼吸道", ["呼吸道", "喘鳴", "雜音", "呼吸聲"], "先聽呼吸道。", "聽呼吸道。"),
+    q("allergy-ox", "聲音愈來愈緊。氧氣給什麼？", "高濃度氧", ["非再呼吸", "高濃度", "nrm", "儲氣", "最高"], "給高濃度。教材沒有叫你打針。", "高濃度氧。"),
+    q("allergy-crit", "這算危急嗎？", "危急", ["危急", "快送"], "呼吸道在變窄就是危急。", "危急。")
+  ]),
+  scene("asthma", "氣喘", "他自己有噴劑，但呼吸已經很慢。", [
+    q("asthma-ox", "氣喘，還能自己講話，嘴巴張著，血氧 92。給什麼氧？", "一般面罩", ["一般", "簡單"], "還有呼吸、張口，用一般面罩。", "一般面罩。"),
+    q("asthma-inhaler", "他口袋有噴劑。誰來噴？", "他自己噴", ["自己", "病人", "患者"], "讓他自己用。", "他自己噴。"),
+    q("asthma-slow", "現在呼吸掉到每分鐘 7 次，脈搏還在。還開面罩嗎？", "改甦醒球", ["甦醒球", "bvm", "袋瓣", "吹", "人工"], "小於 10 次，改吹氣。", "換甦醒球。")
+  ]),
+  scene("shock", "休克", "先蒼白，後來血壓掉了。", [
+    q("shock-stage", "車禍，皮膚蒼白濕冷，脈搏 128，血壓 116。這是代償還是失代償？", "還在代償", ["代償", "血壓還", "還沒掉", "還沒下降"], "116 血壓還沒掉。", "還在代償。", ["血壓還沒掉不是失代償", ["失代償", "非代償"]]),
+    q("shock-do", "你先做哪一件？", "止血給氧或保暖", ["給氧", "氧氣", "止血", "保暖", "毯子"], "止血、給氧、保暖，做一件就對。", "先給氧。"),
+    q("shock-late", "五分鐘後血壓 76。現在呢？", "失代償", ["失代償", "非代償", "掉", "危急"], "血壓掉了就是失代償，也是危急。", "失代償。")
+  ]),
+  scene("stroke", "中風", "講話變慢，一邊手舉不起來。", [
+    q("stroke-line", "在家裡，沒有跌倒。嘴角歪，一隻手舉不高。走哪一條？", "非創傷", ["非創", "內科"], "沒有外力。", "非創傷。"),
+    q("stroke-scale", "你做哪一套檢查？", "GFAST", ["gfast", "臉", "手臂", "舉手", "說話", "語言", "眼睛", "眼球"], "臉、手、說話，或直接講 GFAST。", "做 GFAST。"),
+    q("stroke-time", "時間你問哪一句？", "最後一次正常", ["最後", "什麼時候", "幾點", "正常"], "問最後一次正常是什麼時候。", "最後一次正常是什麼時候？"),
+    q("stroke-go", "家人說一小時前還好好的。送到哪一種醫院？", "三小時內的中風醫院", ["3", "三小時", "三個小時", "血栓", "中風"], "三小時內送能處理中風的醫院。", "送中風醫院。"),
+    q("stroke-sugar", "意識不太清。還要加測什麼？", "血糖", ["血糖", "糖"], "意識變了要測糖。", "測血糖。")
+  ]),
+  scene("chest", "胸痛", "他口袋裡有舌下含錠，血壓很低。", [
+    q("pain-line", "壓迫性胸痛，沒有外傷。走哪一條？", "非創傷", ["非創", "內科"], "沒有外力。", "非創傷。"),
+    q("pain-no", "收縮壓 84。他有舌下含錠。能不能含？", "不能含", ["不能", "不要含", "不可", "先別", "不行"], "低於 90 不能含。", "不能含。"),
+    q("pain-who", "如果量到 128，也沒有禁忌。誰來含？", "他自己含", ["自己", "舌下"], "讓他自己含。", "他自己含。"),
+    q("pain-gap", "隔多久可以再含一次？", "每 5 分鐘", ["5", "五分"], "大約每 5 分鐘。", "每 5 分鐘。")
+  ]),
+  scene("sugar", "低血糖", "人是昏的。", [
+    q("sugar-out", "叫不醒，沒有外傷，血糖 46。糖怎麼給？", "不要灌，抹上去", ["不喝", "不能喝", "不要喝", "不要灌", "抹", "牙齦", "舌下", "粉"], "不清醒就抹在牙齦或舌下。", "抹在牙齦。"),
+    q("sugar-awake", "若他是清醒的，手在抖，血糖 52。怎麼給？", "喝糖水", ["喝", "糖水", "口服"], "清醒就給他喝。", "喝糖水。")
+  ]),
+  scene("drown", "溺水", "池邊，先別假定是創傷。", [
+    q("drown-1", "泳池邊拖上來，沒有碰撞。沒有正常呼吸，也沒有脈搏。走哪一條？", "OHCA", ["ohca", "心肺", "cpr", "按壓", "歐卡"], "沒呼吸沒脈搏就做心肺復甦。", "走 OHCA。", ["沒有外力不要先走創傷", ["創傷"]]),
+    q("drown-crit", "另一個：有呼吸，只是咳嗽。還算危急嗎？", "仍然危急", ["危急"], "溺水有呼吸也是危急。", "危急。"),
+    q("drown-line", "這個咳嗽的，走創傷還是非創傷？", "非創傷", ["非創", "內科", "不是創傷"], "沒有碰撞。", "非創傷。")
+  ]),
+  scene("seizure", "抽搐", "正在抽，然後停了。", [
+    q("seizure-do", "人正在全身抽。你先做什麼？", "保護", ["保護", "移開", "墊", "旁邊"], "先把周圍危險的東西移開。", "移開周圍的東西。"),
+    q("seizure-dont", "嘴裡要不要塞東西？", "不要塞", ["不要塞", "不塞", "不要撬", "不硬", "不塞嘴"], "不要塞嘴，也不要硬壓四肢。", "不要塞。"),
+    q("seizure-back", "抽完了，人還是昏的。你回到哪一段？", "重評意識呼吸", ["重評", "意識", "呼吸", "abc"], "回到意識和呼吸。", "重評意識和呼吸。"),
+    q("seizure-sugar", "還要加測一個數字。", "血糖", ["血糖", "糖"], "抽完想到血糖。", "測血糖。")
+  ]),
+  scene("airway", "呼吸道岔路", "同一個昏迷的人，考官換聲音。", [
+    q("air-gurgle", "壓額抬頦之後，嘴巴裡有咕嚕水聲。下一句做什麼？", "抽吸", ["抽吸", "抽"], "有水聲就抽。", "抽吸。"),
+    q("air-time", "最久抽幾秒？", "15 秒", ["15", "十五"], "不要超過 15 秒。", "15 秒。"),
+    q("air-snore", "水聲沒了，剩下鼾音。捏他會皺眉。用哪一種呼吸道？", "鼻咽", ["鼻咽", "npa"], "還有反應用鼻咽。", "鼻咽。", ["還有反應不用口咽", ["口咽", "opa"]]),
+    q("air-skull", "你正要放鼻咽，看到熊貓眼，耳朵有清水。還放嗎？", "不要放", ["不放", "不能放", "禁止", "不要放", "不能用"], "疑似顱底骨折，鼻咽不要放。", "不要放。")
+  ])
+];
+
+const RUNS = [OHCA, OXYGEN, THRESHOLD, ...SCENES];
+
+const NEG_PREFIXES = ["不可以", "不能用", "還沒到", "還沒有", "不能", "不要", "不是", "尚未", "不用", "不必", "不算", "不可", "不該", "沒有", "禁止", "而非", "並非", "還沒", "別", "勿", "不", "非"];
+const CN_NUM = "零一二三四五六七八九十百千兩";
+function cnNum(ch) { return !!ch && CN_NUM.includes(ch); }
+
+function norm(s) {
+  return String(s || "")
+    .toLowerCase()
+    .replace(/[０-９]/g, (ch) => String.fromCharCode(ch.charCodeAt(0) - 0xfee0))
+    .replace(/一一九/g, "119")
+    .replace(/([0-9零一二三四五六七八九十百千兩])\s*[:：/／|｜\-－–—]\s*([0-9零一二三四五六七八九十百千兩])/g, "$1比$2")
+    .replace(/\s+/g, "")
+    .replace(/[，。、；：！？,.!?:;'"「」『』（）()\-—／/|｜]/g, "");
+}
+
+function negatedBefore(text, index) {
+  let at = index;
+  while (at > 0 && "再用給去把".includes(text[at - 1])) at -= 1;
+  return NEG_PREFIXES.some((prefix) => at >= prefix.length && text.slice(at - prefix.length, at) === prefix);
+}
+
+function hit(text, term) {
+  const needle = norm(term);
+  if (!needle) return false;
+  const startsDigit = /[0-9]/.test(needle[0]);
+  const endsDigit = /[0-9]/.test(needle[needle.length - 1]);
+  let from = 0;
+  while (from < text.length) {
+    const at = text.indexOf(needle, from);
+    if (at < 0) return false;
+    const before = at > 0 ? text[at - 1] : "";
+    const after = text[at + needle.length] || "";
+    if ((startsDigit && /[0-9]/.test(before)) || (endsDigit && /[0-9]/.test(after))) {
+      from = at + 1;
+      continue;
+    }
+    if ((cnNum(needle[0]) && cnNum(before)) || (cnNum(needle[needle.length - 1]) && cnNum(after))) {
+      from = at + 1;
+      continue;
+    }
+    if (needle === "代償" && (before === "失" || before === "非")) {
+      from = at + needle.length;
+      continue;
+    }
+    if (negatedBefore(text, at)) {
+      from = at + needle.length;
+      continue;
+    }
+    return true;
+  }
+  return false;
+}
+
+function groupHit(text, group) {
+  return group.any.some((term) => hit(text, term));
+}
+
+function grade(answer, turn) {
+  const text = norm(answer);
+  if (!text) return { empty: true, pass: false, missing: turn.need || [], forbidden: [] };
+  const forbidden = (turn.forbid || []).filter((group) => groupHit(text, group));
+  const missing = (turn.need || []).filter((group) => !groupHit(text, group));
+  return { empty: false, pass: forbidden.length === 0 && missing.length === 0, missing, forbidden };
+}
+
+function resolveTurn(turn) {
+  if (!turn.variants) return turn;
+  const pick = turn.variants[Math.floor(Math.random() * turn.variants.length)];
+  return { ...turn, ...pick, variants: undefined };
+}
+
+function loadStore() {
+  try { return JSON.parse(localStorage.getItem(STORE)) || { miss: {} }; }
+  catch { return { miss: {} }; }
+}
+function saveStore(data) { localStorage.setItem(STORE, JSON.stringify(data)); }
+
+const state = {
+  turns: [],
+  title: "",
+  index: 0,
+  attempt: 1,
+  results: [],
+  screen: "home",
+  feedback: null,
+  chainLeft: []
+};
+
+const app = document.querySelector("#app");
+let recognition = null;
+let metroTimer = null;
+let audioCtx = null;
+
+function speak(text) {
+  try {
+    if (!window.speechSynthesis) return;
+    window.speechSynthesis.cancel();
+    const utter = new SpeechSynthesisUtterance(text);
+    utter.lang = "zh-TW";
+    utter.rate = 1;
+    window.speechSynthesis.speak(utter);
+  } catch (err) {
+    return;
+  }
+}
+
+function current() { return state.turns[state.index]; }
+
+function markOf(result) { return result; }
+
+function startTurns(turns, title, chainLeft) {
+  state.turns = turns.map(resolveTurn);
+  state.title = title;
+  state.index = 0;
+  state.attempt = 1;
+  state.results = [];
+  state.feedback = null;
+  state.chainLeft = chainLeft || [];
+  state.screen = "ask";
+  render();
+  const turn = current();
+  if (turn) speak(turn.examiner);
+}
+
+function startRun(run, chainLeft) {
+  startTurns(run.turns, run.title, chainLeft);
+}
+
+function startTonight() {
+  const pool = [...SCENES];
+  const picked = [];
+  for (let i = 0; i < 4 && pool.length; i += 1) {
+    const at = Math.floor(Math.random() * pool.length);
+    picked.push(pool.splice(at, 1)[0]);
+  }
+  startRun(OHCA, picked);
+}
+
+function startWeak() {
+  const data = loadStore();
+  const ids = Object.keys(data.miss).filter((id) => data.miss[id] > 0);
+  const turns = [];
+  RUNS.forEach((run) => {
+    run.turns.forEach((turn) => {
+      if (turn.variants) {
+        turn.variants.forEach((variant) => {
+          if (ids.includes(variant.id)) turns.push({ ...turn, ...variant, variants: undefined });
+        });
+      } else if (ids.includes(turn.id)) turns.push(turn);
+    });
+  });
+  if (!turns.length) {
+    state.screen = "home";
+    state.notice = "還沒有卡住的。先做一套，講錯的會留在這裡。";
+    render();
+    return;
+  }
+  startTurns(turns, "上次卡住的", []);
+}
+
+function record(turn, mark) {
+  state.results.push({ id: turn.id, mark, label: turn.model });
+  const data = loadStore();
+  if (mark === "standard") data.miss[turn.id] = 0;
+  else data.miss[turn.id] = (data.miss[turn.id] || 0) + 1;
+  saveStore(data);
+}
+
+function submit() {
+  const turn = current();
+  const input = document.querySelector("#answer");
+  const answer = input ? input.value : "";
+  const result = grade(answer, turn);
+  if (result.empty) {
+    state.feedback = { kind: "bad", text: "先講一句再送出。空白不算一次失敗。" };
+    render();
+    return;
+  }
+  if (result.pass && state.attempt === 1 && !state.feedback?.hinted) {
+    record(turn, "standard");
+    state.feedback = { kind: "good", text: "標準。第一遍就講到了。", done: true };
+    render();
+    return;
+  }
+  if (result.pass) {
+    record(turn, "prompt");
+    state.feedback = { kind: "good", text: "這遍對了。因為看過缺漏，這句算不標準，和考場被提示一樣。", done: true };
+    render();
+    return;
+  }
+  const lack = result.missing.map((item) => item.label).concat(result.forbidden.map((item) => item.label));
+  if (state.attempt === 1) {
+    state.attempt = 2;
+    state.feedback = { kind: "bad", text: "這句還沒對上。換個說法再講一次，意思到了就過。這一遍過了也只算不標準。", lack };
+    render();
+    return;
+  }
+  record(turn, "wrong");
+  state.feedback = { kind: "bad", text: "看一種講法就好，不用照抄。下一問繼續。", model: turn.model, done: true };
+  render();
+}
+
+function showHint() {
+  const turn = current();
+  state.feedback = { kind: "bad", text: turn.hint, hinted: true, lack: state.feedback?.lack };
+  render();
+}
+
+function showModel() {
+  const turn = current();
+  if (!state.results.some((item) => item.id === turn.id)) record(turn, "wrong");
+  state.feedback = { kind: "bad", text: "看過一種講法。這問算沒有自己答出。", model: turn.model, done: true };
+  render();
+}
+
+function next() {
+  if (state.index < state.turns.length - 1) {
+    state.index += 1;
+    state.attempt = 1;
+    state.feedback = null;
+    state.screen = "ask";
+    render();
+    speak(current().examiner);
+    return;
+  }
+  if (state.chainLeft.length) {
+    const run = state.chainLeft.shift();
+    const kept = state.results.slice();
+    startRun(run, state.chainLeft);
+    state.results = kept;
+    render();
+    return;
+  }
+  state.screen = "done";
+  state.feedback = null;
+  render();
+}
+
+function listen() {
+  const Rec = window.SpeechRecognition || window.webkitSpeechRecognition;
+  const box = document.querySelector("#answer");
+  if (!Rec) {
+    state.feedback = { kind: "bad", text: "這個瀏覽器沒有語音輸入。直接打字就好。用 http://127.0.0.1 開頁，麥克風比較願意工作。" };
+    render();
+    return;
+  }
+  if (!recognition) {
+    recognition = new Rec();
+    recognition.lang = "zh-TW";
+    recognition.interimResults = false;
+  }
+  recognition.onresult = (event) => {
+    const said = event.results[0][0].transcript;
+    const target = document.querySelector("#answer");
+    if (target) target.value = (target.value ? target.value + " " : "") + said;
+  };
+  recognition.onerror = () => {
+    state.feedback = { kind: "bad", text: "麥克風沒有收下這句。可以改打字。本機網址比直接點檔案容易拿到麥克風。" };
+    render();
+  };
+  try { recognition.start(); }
+  catch (err) {
+    state.feedback = { kind: "bad", text: "麥克風沒有啟動。直接打字即可。" };
+    render();
+    return;
+  }
+  if (box) box.focus();
+}
+
+function findTurn(id) {
+  for (const run of RUNS) {
+    for (const turn of run.turns) {
+      if (turn.variants) {
+        const variant = turn.variants.find((item) => item.id === id);
+        if (variant) return variant;
+      } else if (turn.id === id) return turn;
+    }
+  }
+  return null;
+}
+
+function shortLabel(id) {
+  const turn = findTurn(id);
+  const text = turn ? (turn.model || turn.examiner || id) : id;
+  return text.length > 24 ? text.slice(0, 24) + "…" : text;
+}
+
+function renderHome() {
+  const data = loadStore();
+  const stuck = Object.entries(data.miss).filter(([id, count]) => count > 0 && findTurn(id));
+  app.innerHTML = `
+    <div class="home-grid">
+      <section class="card">
+        <p class="who">怎麼練</p>
+        <p>考官一次只問一件事。</p>
+        <p>你答那一件就好。意思到了就過，不用背完整段。</p>
+        <p>打字或麥克風都可以，Ctrl+Enter 送出。麥克風請用本機網址開。</p>
+        <div class="starts">
+          <button type="button" data-go="tonight"><b>今晚一套</b><span>先走完 OHCA，再混抽 4 題情境。</span></button>
+          <button type="button" data-go="ohca"><b>只練 OHCA</b><span>進場、叫拍捏、呼吸、脈搏、AED、按壓、兩次分析。</span></button>
+          <button type="button" data-go="scenes"><b>混抽情境</b><span>一題一個岔路。考官中途改口。</span></button>
+          <button type="button" data-go="oxygen"><b>給氧和危急數字</b><span>他報血氧、呼吸、GCS，你講裝置或危不危急。</span></button>
+          <button type="button" data-go="weak"><b>先練上次卡住的</b><span>${stuck.length ? stuck.length + " 問還沒穩定。" : "做完一套才會有清單。"}</span></button>
+        </div>
+      </section>
+      <aside class="card">
+        <p class="who">計分跟考場一樣</p>
+        <p>第一遍意思到了 = 標準。</p>
+        <p>看過缺什麼才講對 = 不標準。</p>
+        <p>第二遍還不對，或直接看答案 = 這問沒過。</p>
+        <p>節拍器只鎖 110。深度和回彈這頁量不到，要自己壓。</p>
+        ${state.notice ? `<p>${state.notice}</p>` : ""}
+        ${stuck.length ? `<ul class="miss-list">${stuck.slice(0, 6).map(([id, count]) => `<li>卡了 ${count} 次：${shortLabel(id)}</li>`).join("")}</ul>` : ""}
+      </aside>
+    </div>`;
+  app.querySelectorAll("[data-go]").forEach((button) => {
+    button.addEventListener("click", () => {
+      state.notice = "";
+      const go = button.dataset.go;
+      if (go === "tonight") startTonight();
+      if (go === "ohca") startRun(OHCA, []);
+      if (go === "scenes") {
+        const pool = [...SCENES];
+        const run = pool[Math.floor(Math.random() * pool.length)];
+        startRun(run, []);
+      }
+      if (go === "oxygen") startRun(OXYGEN, [THRESHOLD]);
+      if (go === "weak") startWeak();
+    });
+  });
+}
+
+function renderAsk() {
+  const turn = current();
+  const step = state.index + 1;
+  const total = state.turns.length;
+  const feedback = state.feedback;
+  app.innerHTML = `
+    <section class="card">
+      <div class="run-head">
+        <strong>${state.title}</strong>
+        <span class="step">${step} / ${total}</span>
+      </div>
+      <div class="bar" aria-hidden="true"><i style="width:${Math.round((step - 1) / total * 100)}%"></i></div>
+      <div class="prompt">
+        <p class="who">考官</p>
+        <p class="exam" id="examiner">${turn.examiner}</p>
+      </div>
+      <label for="answer">你講</label>
+      <textarea id="answer" placeholder="一句就好。意思到了就過。Ctrl+Enter 送出。"></textarea>
+      <div class="row">
+        <button type="button" class="primary" id="send">送出</button>
+        <button type="button" id="mic">麥克風</button>
+        <button type="button" id="again">再聽一次</button>
+        <button type="button" id="hint">給我一個提示</button>
+        <button type="button" id="reveal">看一種講法</button>
+        <button type="button" id="quit">回首頁</button>
+        ${feedback && feedback.done ? `<button type="button" class="next" id="next">下一問</button>` : ""}
+      </div>
+      ${feedback ? `<div class="feedback ${feedback.kind}" role="status">${feedback.text}${feedback.model ? `<div class="model">${feedback.model}</div>` : ""}</div>` : `<div id="live" role="status"></div>`}
+    </section>
+    <div class="log">${state.results.map((item) => `<div><b class="${item.mark === "standard" ? "mark-ok" : item.mark === "prompt" ? "mark-mid" : "mark-bad"}">${item.mark === "standard" ? "標準" : item.mark === "prompt" ? "不標準" : "沒過"}</b> ${item.label}</div>`).join("")}</div>`;
+  const box = document.querySelector("#answer");
+  box.focus();
+  box.addEventListener("keydown", (event) => {
+    if (event.key === "Enter" && (event.ctrlKey || event.metaKey)) submit();
+  });
+  document.querySelector("#send").addEventListener("click", submit);
+  document.querySelector("#mic").addEventListener("click", listen);
+  document.querySelector("#again").addEventListener("click", () => speak(turn.examiner));
+  document.querySelector("#hint").addEventListener("click", showHint);
+  document.querySelector("#reveal").addEventListener("click", showModel);
+  document.querySelector("#quit").addEventListener("click", () => { state.screen = "home"; state.notice = ""; render(); });
+  const nextButton = document.querySelector("#next");
+  if (nextButton) nextButton.addEventListener("click", next);
+}
+
+function renderDone() {
+  const standard = state.results.filter((item) => item.mark === "standard").length;
+  const prompt = state.results.filter((item) => item.mark === "prompt").length;
+  const wrong = state.results.filter((item) => item.mark === "wrong").length;
+  app.innerHTML = `
+    <section class="card">
+      <p class="who">這一套結束</p>
+      <p class="exam">${standard} 問標準，${prompt} 問不標準，${wrong} 問沒過。</p>
+      <p>標準才算這問已經會。不標準和沒過的，會出現在「上次卡住的」。</p>
+      <div class="log">${state.results.map((item) => `<div><b class="${item.mark === "standard" ? "mark-ok" : item.mark === "prompt" ? "mark-mid" : "mark-bad"}">${item.mark === "standard" ? "標準" : item.mark === "prompt" ? "不標準" : "沒過"}</b> ${item.label}</div>`).join("")}</div>
+      <div class="row">
+        <button type="button" class="primary" id="home">再來一套</button>
+        <button type="button" id="weak">只練剛卡住的</button>
+      </div>
+    </section>`;
+  document.querySelector("#home").addEventListener("click", () => { state.screen = "home"; render(); });
+  document.querySelector("#weak").addEventListener("click", startWeak);
+}
+
+function render() {
+  if (state.screen === "home") renderHome();
+  else if (state.screen === "done") renderDone();
+  else renderAsk();
+}
+
+document.querySelector("#metro").addEventListener("click", async () => {
+  const label = document.querySelector("#metro-label");
+  if (metroTimer) {
+    clearInterval(metroTimer);
+    metroTimer = null;
+    label.hidden = true;
+    return;
+  }
+  audioCtx = audioCtx || new AudioContext();
+  if (audioCtx.state === "suspended") await audioCtx.resume();
+  const click = () => {
+    const osc = audioCtx.createOscillator();
+    const gain = audioCtx.createGain();
+    osc.frequency.value = 880;
+    gain.gain.value = 0.05;
+    osc.connect(gain);
+    gain.connect(audioCtx.destination);
+    osc.start();
+    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
+    osc.stop(audioCtx.currentTime + 0.06);
+  };
+  click();
+  metroTimer = setInterval(click, 60000 / 110);
+  label.hidden = false;
+});
+
+window.OralDrill = { grade, norm, OHCA, OXYGEN, THRESHOLD, SCENES, startTonight, startRun, state };
+const openRun = new URLSearchParams(location.search).get("run");
+if (openRun === "ohca") startRun(OHCA, []);
+else if (openRun === "oxygen") startRun(OXYGEN, [THRESHOLD]);
+else render();
+</script>
+</body>
+</html>

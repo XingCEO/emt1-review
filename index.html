@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="theme-color" content="#0b1020">
+<title>EMT-1 複習</title>
+<style>
+  :root { --bg:#0b1020; --card:#121c30; --line:rgba(148,176,214,.22); --text:#f6f8fc; --muted:#c9d4e6; --faint:#93a3bb; --med:#3ec6d6; --trauma:#ff5d73; --ohca:#f5c451; }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0; min-height: 100%; color: var(--text);
+    font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", sans-serif;
+    background:
+      radial-gradient(700px 320px at 0% 0%, rgba(62,198,214,.16), transparent 55%),
+      radial-gradient(520px 280px at 100% 0%, rgba(245,196,81,.12), transparent 50%),
+      var(--bg);
+    line-height: 1.6;
+  }
+  body::before { content: ""; display: block; height: 3px; background: linear-gradient(90deg, var(--med), var(--ohca), var(--trauma)); }
+  main { max-width: 560px; margin: 0 auto; padding: 28px 18px 48px; }
+  h1 { font-size: 1.8rem; margin: 0; }
+  p { color: var(--faint); margin: 8px 0 0; }
+  nav { display: grid; gap: 12px; margin-top: 22px; }
+  a.go {
+    display: block; text-decoration: none; color: var(--text);
+    background: var(--card); border: 1px solid var(--line); border-left: 4px solid var(--ohca);
+    border-radius: 18px; padding: 16px 16px; box-shadow: 0 16px 40px rgba(0,0,0,.22);
+  }
+  a.go b { display: block; font-size: 1.15rem; }
+  a.go span { color: var(--muted); font-size: .92rem; }
+  a.med { border-left-color: var(--med); }
+  a.trauma { border-left-color: var(--trauma); }
+  a.ok { border-left-color: #8ee0b8; }
+</style>
+</head>
+<body>
+<main>
+  <h1>EMT-1 複習</h1>
+  <p>手機直接點。口試用打字就好，麥克風沒反應不必管。</p>
+  <nav>
+    <a class="go" href="EMT1_口試演練.html"><b>口試演練</b><span>一次只問一件。意思到了就過。</span></a>
+    <a class="go med" href="EMT1_完整通關手冊.html"><b>通關手冊</b><span>口令、危急數字、情境。</span></a>
+    <a class="go trauma" href="EMT1_三大流程差異比較.html"><b>三欄對照</b><span>非創傷、創傷、OHCA。</span></a>
+    <a class="go ok" href="sites/emt-simulator/dist/index.html"><b>救護演練室</b><span>主副手把流程點一遍。</span></a>
+  </nav>
+</main>
+</body>
+</html>

@@ -1,0 +1,942 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="description" content="EMT-1 完整通關手冊：三條流程口令、OHCA 評分表、情境岔路、危急表、技術步驟與筆試數字。">
+<title>EMT-1 完整通關手冊</title>
+<style>
+  :root {
+    --bg: #0c1220;
+    --bg-2: #10192b;
+    --card: #162033;
+    --card-2: #1b2740;
+    --line: #2c3b56;
+    --text: #f4f7fb;
+    --muted: #c5d0e0;
+    --faint: #93a0b5;
+    --med: #3ec6d6;
+    --med-dim: rgba(62, 198, 214, 0.12);
+    --trauma: #ff5d73;
+    --trauma-dim: rgba(255, 93, 115, 0.12);
+    --ohca: #f5c451;
+    --ohca-dim: rgba(245, 196, 81, 0.12);
+    --skill: #3dd6a4;
+    --skill-dim: rgba(61, 214, 164, 0.12);
+    --num: #a9b8ff;
+    --num-dim: rgba(169, 184, 255, 0.12);
+    --scene: #f0a06a;
+    --danger: #ffb4b4;
+    --ok: #b6f3d4;
+    --shadow: 0 16px 40px rgba(0, 0, 0, 0.28);
+    --header: 118px;
+  }
+  * { box-sizing: border-box; }
+  html { scroll-padding-top: calc(var(--header-offset, 148px) + 12px); scroll-behavior: smooth; }
+  body {
+    margin: 0;
+    background:
+      radial-gradient(900px 420px at 8% -10%, rgba(62, 198, 214, 0.16), transparent 55%),
+      radial-gradient(800px 380px at 100% 0%, rgba(255, 93, 115, 0.12), transparent 50%),
+      var(--bg);
+    color: var(--text);
+    font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", "Segoe UI", sans-serif;
+    line-height: 1.65;
+    font-size: 16.5px;
+  }
+  body::before {
+    content: "";
+    display: block;
+    height: 4px;
+    background: linear-gradient(90deg, var(--med), var(--trauma) 52%, var(--ohca));
+    position: sticky;
+    top: 0;
+    z-index: 50;
+  }
+  a { color: #9ad7ff; }
+  a:hover { color: white; }
+  :focus-visible { outline: 2px solid #9ad7ff; outline-offset: 3px; }
+  [hidden] { display: none !important; }
+  header.top {
+    position: sticky;
+    top: 4px;
+    z-index: 40;
+    background: rgba(12, 18, 32, 0.92);
+    backdrop-filter: blur(16px);
+    border-bottom: 1px solid var(--line);
+  }
+  .top-inner { max-width: 1240px; margin: 0 auto; padding: 12px 20px 10px; }
+  .brand { display: flex; justify-content: space-between; gap: 16px; align-items: flex-end; flex-wrap: wrap; }
+  .brand h1 { margin: 0; font-size: 1.45rem; letter-spacing: 0.01em; line-height: 1.2; }
+  .brand p { margin: 4px 0 0; color: var(--faint); font-size: 0.86rem; }
+  .links { display: flex; gap: 8px; flex-wrap: wrap; }
+  .links a, button, .chip {
+    font: inherit;
+    cursor: pointer;
+    border-radius: 999px;
+    border: 1px solid var(--line);
+    background: var(--card);
+    color: var(--text);
+    padding: 7px 12px;
+    text-decoration: none;
+    font-size: 0.86rem;
+    white-space: nowrap;
+  }
+  button:hover, .chip:hover, .links a:hover { border-color: #6e84a8; }
+  .tools { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 10px; align-items: center; }
+  #q {
+    flex: 1 1 220px;
+    min-width: 180px;
+    background: #0d1526;
+    color: var(--text);
+    border: 1px solid var(--line);
+    border-radius: 10px;
+    padding: 9px 12px;
+    font: inherit;
+  }
+  .chip[aria-pressed="true"] { background: #243656; border-color: #8eb4e0; }
+  .check { display: inline-flex; align-items: center; gap: 6px; color: var(--muted); font-size: 0.86rem; cursor: pointer; }
+  .check input { accent-color: var(--med); width: 16px; height: 16px; }
+  .shell { max-width: 1240px; margin: 0 auto; padding: 22px 20px 80px; display: grid; grid-template-columns: 196px minmax(0, 1fr); gap: 22px; }
+  nav.toc { position: sticky; top: var(--header-offset, 148px); align-self: start; display: flex; flex-direction: column; gap: 4px; max-height: calc(100vh - var(--header-offset, 148px) - 16px); overflow: auto; }
+  nav.toc a { color: var(--muted); text-decoration: none; font-size: 0.86rem; padding: 6px 8px; border-radius: 8px; border-left: 2px solid transparent; }
+  nav.toc a:hover { background: rgba(255,255,255,0.04); color: white; }
+  main { min-width: 0; }
+  section { margin: 0 0 28px; }
+  h2 { margin: 0 0 12px; font-size: 1.45rem; letter-spacing: 0.01em; }
+  h3 { margin: 0 0 8px; font-size: 1.08rem; }
+  .lead { color: var(--muted); margin: 0 0 14px; }
+  .grid { display: grid; gap: 12px; }
+  .grid.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid.three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+  .card, .callout, .unit.pad {
+    background: linear-gradient(180deg, rgba(255,255,255,0.025), transparent 42%), var(--card);
+    border: 1px solid var(--line);
+    border-radius: 16px;
+    padding: 16px 16px 14px;
+    box-shadow: var(--shadow);
+  }
+  .card { border-top: 3px solid var(--accent, var(--line)); }
+  .card[data-tags~="med"] { --accent: var(--med); }
+  .card[data-tags~="trauma"] { --accent: var(--trauma); }
+  .card[data-tags~="ohca"] { --accent: var(--ohca); }
+  .card[data-tags~="skill"] { --accent: var(--skill); }
+  .card[data-tags~="number"] { --accent: var(--num); }
+  .card[data-tags~="scene"] { --accent: var(--scene); }
+  .card.flash { animation: flash 1.1s ease; }
+  @keyframes flash { 50% { border-color: white; } }
+  .kicker { display: flex; gap: 6px; flex-wrap: wrap; margin-bottom: 8px; }
+  .badge { font-size: 0.75rem; font-weight: 700; letter-spacing: 0.04em; padding: 2px 8px; border-radius: 999px; }
+  .b-med { color: #d8fbff; background: var(--med-dim); }
+  .b-trauma { color: #ffd7de; background: var(--trauma-dim); }
+  .b-ohca { color: #fff1c9; background: var(--ohca-dim); }
+  .b-skill { color: #d9fff1; background: var(--skill-dim); }
+  .b-num { color: #e4e8ff; background: var(--num-dim); }
+  .b-scene { color: #ffe6d4; background: rgba(240, 160, 106, 0.14); }
+  .say {
+    display: block;
+    margin-top: 6px;
+    padding: 8px 12px;
+    background: #0e1728;
+    border-left: 3px solid var(--accent, #8eb4e0);
+    border-radius: 0 10px 10px 0;
+    font-size: 1.04rem;
+    line-height: 1.55;
+  }
+  body.mask .say { filter: blur(7px); cursor: pointer; user-select: none; }
+  body.mask .say.shown { filter: none; cursor: text; user-select: text; }
+  body.hide-notes .note { display: none; }
+  .note { color: var(--muted); margin: 6px 0 0; }
+  .who { display: inline-block; min-width: 2.6rem; font-size: 0.78rem; font-weight: 800; color: var(--accent, var(--med)); margin-right: 6px; }
+  ol.script { list-style: none; margin: 0; padding: 0; counter-reset: step; }
+  ol.script > li { counter-increment: step; display: grid; grid-template-columns: 28px minmax(0, 1fr); gap: 8px; padding: 11px 0; border-bottom: 1px solid rgba(255,255,255,0.06); }
+  ol.script > li::before { content: counter(step); color: var(--faint); font-variant-numeric: tabular-nums; padding-top: 2px; }
+  .back, .trap { margin-top: 10px; padding: 8px 10px; border-radius: 10px; font-size: 0.94rem; }
+  .back { background: rgba(61, 214, 164, 0.08); color: var(--ok); }
+  .trap { background: rgba(255, 93, 115, 0.1); color: var(--danger); }
+  table { width: 100%; border-collapse: collapse; font-size: 0.95rem; }
+  .score-list { list-style: none; margin: 8px 0 0; padding: 0; }
+  .score-list li { display: flex; justify-content: space-between; gap: 8px 12px; padding: 9px 0; border-top: 1px solid var(--line); min-width: 0; }
+  .score-list b { font-weight: 700; }
+  .score-list span { color: var(--ok); text-align: right; }
+  .table-wrap { overflow-x: auto; border: 1px solid var(--line); border-radius: 14px; background: var(--card); }
+  th, td { text-align: left; padding: 9px 11px; border-bottom: 1px solid var(--line); vertical-align: top; }
+  th { background: #121b2e; color: #d5e4f7; font-weight: 700; white-space: nowrap; }
+  tr:last-child td { border-bottom: 0; }
+  td.med { color: #c8f6fb; }
+  td.trauma { color: #ffd0d8; }
+  td.ohca { color: #ffe7ad; }
+  .pills { display: flex; flex-wrap: wrap; gap: 8px; }
+  .pill { background: var(--card-2); border: 1px solid var(--line); border-radius: 12px; padding: 8px 10px; font-size: 0.92rem; }
+  .wall { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 8px; }
+  .wall b { display: block; color: white; }
+  .wall span { color: var(--muted); font-size: 0.92rem; }
+  #status { min-height: 1.4em; color: var(--ohca); margin: 8px 0 0; }
+  #empty { padding: 28px; text-align: center; color: var(--muted); }
+  .src { color: var(--faint); font-size: 0.82rem; margin-top: 8px; }
+  footer { max-width: 1240px; margin: 0 auto; padding: 0 20px 48px; color: var(--faint); font-size: 0.86rem; }
+  @media (max-width: 700px) {
+    .score-list li { flex-direction: column; align-items: flex-start; }
+    .score-list span { text-align: left; }
+  }
+  @media (max-width: 900px) {
+    .brand p { display: none; }
+    .top-inner { padding: 8px 14px 8px; }
+    #q { flex: 1 1 100%; }
+    .shell { grid-template-columns: 1fr; padding-top: 12px; }
+    nav.toc { position: sticky; top: var(--header-offset, 168px); flex-direction: row; max-height: none; overflow-x: auto; background: rgba(12,18,32,0.94); z-index: 30; padding: 6px 0; }
+    nav.toc a { white-space: nowrap; border-left: 0; border-bottom: 2px solid transparent; }
+    .grid.two, .grid.three, .wall { grid-template-columns: 1fr; }
+    :root { --header: 168px; }
+  }
+  @media print {
+    body { background: white; color: black; }
+    body::before, header.top, nav.toc, .tools, footer, .links { display: none !important; }
+    body.mask .say { filter: none; }
+    .card, .table-wrap, th { background: white; color: black; box-shadow: none; }
+    .say, .note, td, th { color: black; }
+    a { color: black; }
+    .unit { break-inside: avoid; }
+  }
+</style>
+</head>
+<body class="view-full">
+<a class="links" href="#map" style="position:absolute;left:-999px">跳到目錄</a>
+<header class="top">
+  <div class="top-inner">
+    <div class="brand">
+      <div>
+        <h1>EMT-1 完整通關手冊</h1>
+        <p>三條脊椎、評分表口令、情境岔路、危急數字、技術步驟、筆試櫃。點句子可在遮罩下對答案。</p>
+      </div>
+      <div class="links">
+        <a href="EMT1_口試演練.html">口試演練</a>
+        <a href="EMT1_三大流程差異比較.html">三欄口令對照</a>
+        <a href="sites/emt-simulator/dist/index.html">救護演練室</a>
+      </div>
+    </div>
+    <div class="tools">
+      <input id="q" type="search" placeholder="搜尋：止血帶、GCS、鼻導管、安全帽" aria-label="搜尋手冊">
+      <button type="button" class="chip" data-chip="all" aria-pressed="true">全部</button>
+      <button type="button" class="chip" data-chip="med" aria-pressed="false">非創傷</button>
+      <button type="button" class="chip" data-chip="trauma" aria-pressed="false">創傷</button>
+      <button type="button" class="chip" data-chip="ohca" aria-pressed="false">OHCA</button>
+      <button type="button" class="chip" data-chip="scene" aria-pressed="false">情境</button>
+      <button type="button" class="chip" data-chip="skill" aria-pressed="false">技術</button>
+      <button type="button" class="chip" data-chip="number" aria-pressed="false">筆試數字</button>
+      <label class="check"><input id="show-notes" type="checkbox" checked>顯示說明</label>
+      <label class="check"><input id="mask" type="checkbox">遮住口令</label>
+      <button type="button" id="drill">抽一題情境</button>
+      <button type="button" id="reveal">這一題對答案</button>
+    </div>
+    <p id="status" role="status"></p>
+  </div>
+</header>
+<div class="shell">
+<nav class="toc" aria-label="頁面目錄">
+  <a href="#map">怎麼用</a>
+  <a href="#wall">口訣牆</a>
+  <a href="#spine">三條脊椎</a>
+  <a href="#med">非創傷口令</a>
+  <a href="#trauma">創傷口令</a>
+  <a href="#ohca">OHCA 口令</a>
+  <a href="#method">情境怎麼接</a>
+  <a href="#scenes">情境卡</a>
+  <a href="#critical">危急表</a>
+  <a href="#skills">技術步驟</a>
+  <a href="#secondary">二度與交接</a>
+  <a href="#illness">急症</a>
+  <a href="#numbers">筆試櫃</a>
+  <a href="#plan">每天怎麼練</a>
+</nav>
+<main id="map">
+<section>
+  <h2>這頁怎麼用</h2>
+  <div class="grid two">
+    <article class="card unit" data-tags="guide number">
+      <h3>及格線</h3>
+      <p class="note">技術測驗三塊加總要 76 分，而且 OHCA、情境各自至少 19 分。</p>
+      <ul class="score-list">
+        <li><b>平時測驗，第 2–6 天</b><span>5 次各 10 分，共 50</span></li>
+        <li><b>OHCA 流程，滿分 25</b><span>至少 19 分</span></li>
+        <li><b>情境測驗，滿分 25</b><span>至少 19 分</span></li>
+      </ul>
+      <p class="trap">被提示後才答對，算不標準。提示 3 次仍然錯，或沒有做，算錯誤。沉默等提示，會先掉分。</p>
+    </article>
+    <article class="card unit" data-tags="guide ohca">
+      <h3>OHCA 分數怎麼被一次打穿</h3>
+      <p class="note">第 1 到第 4 格，以及後面的單項技術，大致是不標準扣 1、錯誤扣 2。第 5 到第 9 格綁在一起，欄位有不扣分、扣 6 分、扣 10 分。表上寫明：這五格裡有 2 項以上不標準，就按錯誤扣 10 分。</p>
+      <ul class="note">
+        <li>按壓頻率：100–120 標準。90–99 或 121–130 不標準。其他是錯誤。</li>
+        <li>深度百分比：90–100% 標準。75–89% 不標準。低於 75% 錯誤。</li>
+        <li>回彈百分比：同樣 90–100% 才標準。</li>
+      </ul>
+      <p class="trap">頻率 119 仍在標準裡。深度約 78% 已經是不標準。深度和回彈同時不到，就湊成兩項，核心技能直接少 10 分。口令要自己往下接，身體要把胸口壓夠深、並且完全放回來。</p>
+    </article>
+  </div>
+  <p class="src">整理自這批教材照片：模組 1.2、2.1、3.3、4.3、6.1，非創傷／創傷／OHCA 流程頁，危急表，考核投影片，OHCA 評分表，以及筆記本上的情境清單。正式操作以課堂評分表為準。照片沒有寫到的技術，這頁不另編步驟。</p>
+</section>
+
+<section id="wall">
+  <h2>口訣牆</h2>
+  <p class="lead">這些句子要能不看頁面直接講完。其餘內容是查表。</p>
+  <div class="wall">
+    <article class="pill unit" data-tags="skill ohca"><b>開氧氣</b><span>開、看、接、開、測、戴。低於 500 psi 就換。</span></article>
+    <article class="pill unit" data-tags="skill"><b>給氧前</b><span>先確定呼吸道是通的。有雜音或鼾音，先處理阻塞。</span></article>
+    <article class="pill unit" data-tags="ohca skill"><b>AED</b><span>開、貼、需要才插、電、壓。電之前先清場。</span></article>
+    <article class="pill unit" data-tags="ohca"><b>不建議電擊</b><span>第一次不摸脈，立刻再壓。第二次以後才摸頸動脈。</span></article>
+    <article class="pill unit" data-tags="ohca"><b>有脈搏的人工呼吸</b><span>成人每 6 秒一口。OHCA 則是 30 下對 2 口。</span></article>
+    <article class="pill unit" data-tags="scene med trauma"><b>重評</b><span>危急每 5 分鐘。非危急每 15 分鐘。病況一變就整套重來。</span></article>
+    <article class="pill unit" data-tags="skill number"><b>交接</b><span>病人、要、史、已、前、到。危急只報不正常的項目。</span></article>
+    <article class="pill unit" data-tags="skill"><b>病史</b><span>主訴、之前、吃、過、藥、敏、感。</span></article>
+    <article class="pill unit" data-tags="skill scene"><b>這次怎麼痛</b><span>OPQRST：開始、加重緩解、性質、位置、幾分、多久。</span></article>
+    <article class="pill unit" data-tags="scene med"><b>中風</b><span>GFAST。時間從最後一次正常算起，黃金 3 小時。</span></article>
+    <article class="pill unit" data-tags="number"><b>鼻導管算法</b><span>空氣約 20%，每多 1 升大約多 4%。只拿來記鼻導管 24–44%。</span></article>
+    <article class="pill unit" data-tags="trauma skill"><b>頭交接</b><span>副手請準備接手。我已接穩。好，我放手。</span></article>
+  </div>
+</section>
+
+<section id="spine">
+  <h2>三條脊椎</h2>
+  <p class="lead">第一句話先選路。選錯路，後面的技術做得再漂亮也會連著錯。</p>
+  <div class="table-wrap unit" data-tags="med trauma ohca scene">
+    <table>
+      <thead>
+        <tr><th>順序</th><th>非創傷</th><th>創傷</th><th>OHCA</th></tr>
+      </thead>
+      <tbody>
+        <tr><td>什麼時候走</td><td class="med">生病、喘、痛、暈、過敏、胸悶、中風</td><td class="trauma">車禍、跌倒、出血、骨頭、燒燙、安全帽、穿刺</td><td class="ohca">叫不醒，而且沒有正常呼吸、沒有脈搏</td></tr>
+        <tr><td>現場</td><td colspan="3">環境安全。手套、口罩，必要時護目鏡和隔離衣。防護未完成先保持距離。看人數和嚴重度。請副手打 119。</td></tr>
+        <tr><td>接近</td><td class="med">主手打開急救包。副手打開三合一氧氣組。</td><td class="trauma">有機轉就先固定頭。主手等副手喊好了才放下裝備。安全帽先脫。</td><td class="ohca">副手同時拿 AED 和甦醒球。</td></tr>
+        <tr><td>大出血 X</td><td class="med">沒有這格</td><td class="trauma">快速掃描。噴血先加壓，立刻上止血帶。和頸椎問題同時存在時，止血優先。</td><td class="ohca">沒有這格</td></tr>
+        <tr><td>意識</td><td colspan="2">先生、先生。無反應就再叫並拍肩。仍無反應就捏斜方肌。</td><td class="ohca">同樣三步。三步都沒有反應，就準備進急救。</td></tr>
+        <tr><td>A</td><td class="med">壓額抬頦</td><td class="trauma">下顎上舉。頭不要後仰。</td><td class="ohca">壓額抬頦</td></tr>
+        <tr><td>B</td><td colspan="2">看胸口不超過 10 秒，夾血氧，依張口和嚴重度給氧。</td><td class="ohca">沒有正常呼吸，請副手準備甦醒球。</td></tr>
+        <tr><td>C</td><td class="med">兩側橈動脈、指甲回血、膚色和手溫。</td><td class="trauma">同樣三項，再加骨盆向內向下壓一次。</td><td class="ohca">摸頸動脈最多 10 秒。沒有脈搏就開始壓胸。C、D、E 不做。</td></tr>
+        <tr><td>D、E</td><td class="med">初步不做。留到二度。</td><td class="trauma">D 看意識、瞳孔、四肢。E 找致命傷口、氣管、頸靜脈、頸椎壓痛。</td><td class="ohca">不做</td></tr>
+        <tr><td>結尾</td><td colspan="2">喊危急或非危急。量血壓、血氧、體溫。問病史。危急 5 分鐘、非危急 15 分鐘重評。</td><td class="ohca">高品質 CPR 加 AED，直到有脈搏或持續交接後送。</td></tr>
+      </tbody>
+    </table>
+  </div>
+</section>
+
+<section id="med">
+  <h2>非創傷口令</h2>
+  <p class="lead">照流程頁的格子講。藍色句子是要說出口的。</p>
+  <article class="card unit" data-tags="med skill">
+    <ol class="script">
+      <li><span><span class="who">主手</span>環境與防護<span class="say">現場環境安全。我戴上手套和口罩。</span><span class="note">必要時加護目鏡、隔離衣。防護還沒完成，先和病人保持距離。</span></span></li>
+      <li><span><span class="who">主手</span>人數<span class="say">傷患一位。請副手打 119。</span><span class="note">看見幾位就報幾位，並說出看起來嚴不嚴重。</span></span></li>
+      <li><span><span class="who">主手</span>裝備<span class="say">我放下裝備，打開急救包。</span><span class="note">副手放下裝備，打開三合一。</span></span></li>
+      <li><span><span class="who">主手</span>叫<span class="say">先生、先生。</span><span class="note">邊開急救包邊叫。有反應就進入 A，並改用對話評估。</span></span></li>
+      <li><span><span class="who">主手</span>拍<span class="say">先生、先生。</span><span class="note">同時拍雙肩。這是第二個沒有反應。</span></span></li>
+      <li><span><span class="who">主手</span>痛<span class="say">疼痛刺激。</span><span class="note">捏斜方肌。仍沒有反應，才做下一步。</span></span></li>
+      <li><span><span class="who">主手</span>A<span class="say">壓額抬頦。我看呼吸道通不通，有沒有異物、雜音、鼾音。</span><span class="note">意識不清或無法正常對話，就要做徒手暢通。岔路見下方技術節。</span></span></li>
+      <li><span><span class="who">主手</span>B<span class="say">評估呼吸深淺快慢，不超過 10 秒。副手夾血氧。</span><span class="note">副手在沒有頸椎限制、而且呼吸不正常或血氧低於 94% 時協助給氧。</span></span></li>
+      <li><span><span class="who">主手</span>給氧<span class="say">嘴巴閉著、呼吸淺快：鼻導管 1 到 6 升。張口呼吸：一般面罩 6 到 10 升。火場、吸入性嗆傷、一氧化碳：非再呼吸面罩 10 到 15 升，先把儲氣袋充飽。</span></span></li>
+      <li><span><span class="who">主手</span>C<span class="say">摸兩側橈動脈，看有沒有對稱、摸不摸得到。輕壓指甲 3 到 5 秒，看回血。看臉和末梢的顏色，用手背貼手背感覺冷不冷。</span></span></li>
+      <li><span><span class="who">主手</span>輔助<span class="say">請出血壓計、血氧機、體溫計。血氧若仍然低於 94%，更換給氧裝置。</span><span class="note">副手有空就開始問病史。</span></span></li>
+      <li><span><span class="who">主手</span>判定<span class="say">對照危急表。符合就說：危急個案，每 5 分鐘做一次二度評估。不符合就說：非危急，每 15 分鐘再評。</span></span></li>
+    </ol>
+  </article>
+</section>
+
+<section id="trauma">
+  <h2>創傷口令</h2>
+  <p class="lead">和內科同一條脊椎，多出來的是頭、血、骨盆、神經和暴露。頭一旦交出去，要聽到接穩才能放手。</p>
+  <article class="card unit" data-tags="trauma skill">
+    <ol class="script">
+      <li><span><span class="who">主手</span>現場<span class="say">現場環境安全。我戴上手套和口罩。傷患一位。請副手打 119。</span></span></li>
+      <li><span><span class="who">主手</span>機轉<span class="say">有受傷機轉。先生您好，我們懷疑您頸椎受傷，請您不要亂動。</span><span class="note">沒有頸椎機轉就不要講這句。主手站在腳側吸引注意。副手上前做頭部固定。</span></span></li>
+      <li><span><span class="who">雙方</span>交頭<span class="say">副手，請準備接手頭頸。我已接穩。好，我放手。</span><span class="note">教材寫主手要等副手喊好了，才放下裝備開始初步評估。</span></span></li>
+      <li><span><span class="who">主手</span>安全帽<span class="say">頭已經固定。先脫安全帽，脫完才繼續評估。</span><span class="note">詳細順序在技術節。沒有安全帽就跳過。</span></span></li>
+      <li><span><span class="who">主手</span>X<span class="say">快速掃描全身有沒有大量出血。</span><span class="note">一接近就看到噴血，止血移到意識評估前面。大出血又合併頸椎問題時，止血優先。副手若不用壓頭，可以協助止血。</span></span></li>
+      <li><span><span class="who">主手</span>出血<span class="say">這裡大量出血。我直接加壓。止不住就立刻上止血帶。</span></span></li>
+      <li><span><span class="who">主手</span>意識<span class="say">維持頭的位置。先生、先生。沒有反應就拍肩再叫。仍然沒有反應就捏斜方肌。</span><span class="note">不要搖晃身體。</span></span></li>
+      <li><span><span class="who">主手</span>A<span class="say">下顎上舉，頭不後仰。我檢查有沒有異物、雜音、鼾音。</span><span class="note">教材用詞是下顎上舉法。口令手冊也稱下顎推擠，動作都是托起下顎，禁止壓額抬頦。</span></span></li>
+      <li><span><span class="who">主手</span>B 與給氧<span class="say">看呼吸不超過 10 秒，夾血氧。給氧規則和內科相同。</span><span class="note">創傷需要氧氣、或意識不清，裝置頁寫可以用一般面罩。</span></span></li>
+      <li><span><span class="who">主手</span>C<span class="say">兩側橈動脈、指甲回血、膚色和手溫。雙手放在骨盆，向內並向下壓一次。</span></span></li>
+      <li><span><span class="who">主手</span>D<span class="say">先生你可以看著我，跟我說你叫什麼名字，手或腳可以動一下嗎？</span><span class="note">任何一項沒有反應，改做疼痛刺激。接著測瞳孔和四肢，句子在技術節。</span></span></li>
+      <li><span><span class="who">主手</span>E<span class="say">我檢查全身有沒有致命傷口。衣服有血或明顯變形，我會告訴你要剪開。接著看氣管、頸靜脈和頸椎壓痛。</span></span></li>
+      <li><span><span class="who">主手</span>傷口<span class="say">胸口開放傷口貼三留一。骨折做骨折固定。穿刺傷固定異物，不拔。燒燙傷用生理食鹽水沖，蓋上紗布。其他外傷清洗、包紮。</span></span></li>
+      <li><span><span class="who">主手</span>結尾<span class="say">危急個案，每 5 分鐘重評。</span><span class="note">或非危急，每 15 分鐘。副手問病史。血氧仍低於 94% 就換裝置。</span></span></li>
+    </ol>
+  </article>
+</section>
+
+<section id="ohca">
+  <h2>OHCA 口令</h2>
+  <p class="lead">格子對齊評分表。第 12 格只選一種結果講出來。</p>
+  <article class="card unit" data-tags="ohca skill">
+    <ol class="script">
+      <li><span><span class="who">主手</span>第 1 格<span class="say">現場環境安全。我做好防護。傷患一位，倒在大廳，意識不清。請副手打 119。</span></span></li>
+      <li><span><span class="who">主手</span>第 2 格<span class="say">先生、先生。沒有反應。先生、先生。沒有反應。疼痛測試。沒有反應。</span><span class="note">第二句同時拍肩。第三句捏斜方肌。三個「沒有反應」要分開講。</span></span></li>
+      <li><span><span class="who">主手</span>第 3 格<span class="say">壓額抬頦。沒有正常呼吸。副手準備甦醒球。</span></span></li>
+      <li><span><span class="who">主手</span>第 4 格<span class="say">頸動脈沒有脈搏。副手準備 AED。我開始心肺復甦。</span><span class="note">摸脈搏最多 10 秒。沒有呼吸又沒有脈搏，不要去做 C、D、E。</span></span></li>
+      <li><span><span class="who">副手</span>第 5 格<span class="say">打開 AED。貼上貼片。這個機型需要的話我插上導線。分析時不要碰到病人。</span><span class="note">順序是開、貼、需要才插。評分表把「貼完才開機」和「電擊沒有清場」列為錯誤例子。</span></span></li>
+      <li><span><span class="who">主手</span>第 6 到 9 格<span class="say">掌根放在胸部中央、胸骨下半。手肘打直，肩膀在手正上方。我用每分鐘 110 下的速度按壓，每次都讓胸口完全回來。</span><span class="note">這幾頁教材沒有印按壓解剖圖，位置依評分表要看的成人位置來講。機器上的深度和回彈都要到 90% 以上。成人深度大約 5 到 6 公分。兩項不到就觸發扣 10 分那一欄。</span></span></li>
+      <li><span><span class="who">雙方</span>第 10 格<span class="say">30 下之後，甦醒球給兩口氣，我看胸口有沒有起伏。</span></span></li>
+      <li><span><span class="who">副手</span>第 11 格<span class="say">量耳垂到嘴角。打開嘴巴。凹面朝上放入，轉 180 度，放到嘴唇。</span><span class="note">只有完全沒有疼痛反應才放口咽呼吸道。</span></span></li>
+      <li><span><span class="who">副手</span>電擊<span class="say">建議電擊。大家都離開。沒有人碰到病人。電擊。立刻繼續按壓。</span></span></li>
+      <li><span><span class="who">副手</span>第 12 格，第一次不建議<span class="say">第一次不建議電擊。我不摸脈搏，立刻繼續按壓。</span></span></li>
+      <li><span><span class="who">副手</span>第 12 格，第二次以後<span class="say">第二次分析不建議電擊。我摸頸動脈。</span><span class="note">四種結果只講考官給的那一種：沒有脈搏就立刻再壓；有脈搏沒有呼吸就人工呼吸；有脈搏也有呼吸就改做初步評估。建議電擊則清場、電擊、立刻再壓。</span></span></li>
+      <li><span><span class="who">副手</span>病史<span class="say">請問剛剛發生什麼事？</span><span class="note">路人報案不用把病史問完，這一分也可以拿到。不要為了問病史停掉按壓。</span></span></li>
+    </ol>
+    <div class="table-wrap" style="margin-top:12px;box-shadow:none">
+      <table>
+        <tr><th>第二次以後，機器說</th><th>接著做</th></tr>
+        <tr><td>建議電擊</td><td>清場、電擊、立刻 CPR</td></tr>
+        <tr><td>不建議電擊，沒有脈搏</td><td>立刻 CPR</td></tr>
+        <tr><td>不建議電擊，有脈搏，沒有呼吸</td><td>人工呼吸。成人每 6 秒一口</td></tr>
+        <tr><td>不建議電擊，有脈搏，有呼吸</td><td>離開心肺復甦，改做初步評估</td></tr>
+      </table>
+    </div>
+    <p class="note">生命之鏈要早啟動、早做高品質 CPR、早去顫，後面才是高級救命、心跳停止後照護和復原。教材圖寫每延後大約 1 分鐘，成功率下降約 10%。壓胸是為了在沒有心輸出時，盡量把血打出去。</p>
+  </article>
+</section>
+
+<section id="method">
+  <h2>情境題怎麼接</h2>
+  <div class="grid two">
+    <article class="card unit" data-tags="scene med trauma ohca">
+      <h3>固定四句</h3>
+      <ol class="script">
+        <li><span><span class="say">這是創傷。或這是非創傷。或這是 OHCA。</span></span></li>
+        <li><span><span class="say">我先做現場安全，並處理頭、血、或叫人。</span></span></li>
+        <li><span><span class="say">我聽到的是這個狀況，所以我做這一個動作。</span></span></li>
+        <li><span><span class="say">做完回到下一格。危急每 5 分鐘，或非危急每 15 分鐘。</span></span></li>
+      </ol>
+      <p class="note">考官插話時，只做對應的那一個動作，然後接回下一格。不要把整套流程從環境安全再講一遍。</p>
+    </article>
+    <article class="card unit" data-tags="scene skill">
+      <h3>三個最常被插話的岔路</h3>
+      <p><span class="who">呼吸道</span><span class="say">水聲或咕嚕聲：先給氧，再抽吸，不超過 15 秒。鼾音而且還有反應：鼻咽呼吸道。鼾音而且對痛完全沒反應：口咽呼吸道。熊貓眼、耳後瘀青、耳漏、鼻漏：鼻咽呼吸道不要放。</span></p>
+      <p><span class="who">氧氣</span><span class="say">還沒有停的呼吸才用鼻導管、面罩或非再呼吸面罩。呼吸每分鐘小於 10、或沒有呼吸：換甦醒球，不是把氧氣流開更大就好。</span></p>
+      <p><span class="who">AED</span><span class="say">第一次說不建議電擊，手不要去摸脖子。第二次以後才摸。</span></p>
+    </article>
+  </div>
+</section>
+
+<section id="scenes">
+  <h2>情境卡</h2>
+  <p class="lead">每一張都是一條脊椎加上一個插入動作。用上面的「抽一題」遮住口令練。</p>
+  <div class="grid two">
+    <article class="card scene unit" data-tags="scene trauma skill" data-search="安全帽 頸圈 機車 騎士">
+      <div class="kicker"><span class="badge b-trauma">創傷</span><span class="badge b-scene">情境</span></div>
+      <h3>安全帽</h3>
+      <p class="say">這是創傷。我先確認環境安全，站到腳側。先生您好，我們懷疑您頸椎受傷，請您不要亂動。副手固定頭部。頭接穩之後才脫安全帽。脫完我才開始初步評估。</p>
+      <p class="note">脫帽前先吸引注意。主手在腳，副手做頭部減移。主手等固定完成再動作。上頸圈之前先做三項：氣管有沒有偏、頸靜脈有沒有鼓、壓下去會不會痠痛麻。再量下巴切線到肩線，選頸圈大小。</p>
+      <p class="back">做完回到：意識評估。</p>
+      <p class="trap">還沒有人固定頭就去解帽扣，或帽子還在就開始看瞳孔。</p>
+    </article>
+    <article class="card scene unit" data-tags="scene trauma" data-search="大出血 止血帶 噴血">
+      <div class="kicker"><span class="badge b-trauma">創傷</span></div>
+      <h3>大出血</h3>
+      <p class="say">這是創傷。我看到大量出血，先直接加壓。止不住就立刻上止血帶。止血完成後，我回到意識評估。</p>
+      <p class="note">流程上 X 在叫人之後、意識之前。若一靠近就看到噴血，止血移到最前面。合併頸椎疑慮時，止血仍優先。副手不用壓頭時可以幫忙壓。</p>
+      <p class="back">做完回到：意識，接著 A。</p>
+      <p class="trap">先做完一整套 ABC 才回頭處理噴血。</p>
+    </article>
+    <article class="card scene unit" data-tags="scene trauma" data-search="斷肢 截肢">
+      <div class="kicker"><span class="badge b-trauma">創傷</span></div>
+      <h3>斷肢</h3>
+      <p class="say">這是創傷。我先看斷端有沒有大量出血。有就加壓，必要時上止血帶。殘端依開放傷口清洗、包紮。手腕或腳踝以上的截肢，我判危急，快送。</p>
+      <p class="note">危急表寫的是手腕或腳踝以上之截肢。這批照片沒有另印斷肢保存的步驟，不要在考場自己加一套冰敷或清洗斷肢的新流程。</p>
+      <p class="back">做完回到：E 之後的危急判定。</p>
+      <p class="trap">把斷肢當一個全新流程，從環境安全重頭講，卻忘了止血。</p>
+    </article>
+    <article class="card scene unit" data-tags="scene trauma number" data-search="骨折 骨盆 股骨 PSM 夾板">
+      <div class="kicker"><span class="badge b-trauma">創傷</span><span class="badge b-num">數字</span></div>
+      <h3>骨折</h3>
+      <p class="say">這是創傷。骨盆我用雙手向內向下壓一次。四肢骨折我做骨折固定。固定前後都摸遠端脈搏。股骨或骨盆這種出血量，我直接當可能大量失血，判危急。</p>
+      <p class="note">閉鎖性骨折一處的估計出血：橈骨或尺骨 150–250，肱骨 250，脛骨或腓骨 500，股骨 1,000，骨盆 1,500–3,000 毫升。兩處以上大腿或上臂長骨骨折、骨盆腔骨折、肢體脈搏摸不到，都在危急表。考官若要聽 PSM，就是固定前記近端、傷處、遠端的脈搏、感覺、運動。流程頁的動詞是骨折固定。</p>
+      <p class="back">做完回到：C 或 E，然後喊危急。</p>
+      <p class="trap">只說上夾板，沒有摸遠端脈搏，也沒有把股骨和骨盆算進失血。</p>
+    </article>
+    <article class="card scene unit" data-tags="scene trauma" data-search="燒燙傷 燒傷 火場 嗆傷">
+      <div class="kicker"><span class="badge b-trauma">創傷</span></div>
+      <h3>燒燙傷</h3>
+      <p class="say">這是創傷。燒燙傷用生理食鹽水沖，蓋上紗布。臉、會陰、呼吸道的二度或三度，或體表超過 25% 的二度三度，我判危急。火場、嗆傷、一氧化碳，給非再呼吸面罩，10 到 15 升，先充飽儲氣袋。</p>
+      <p class="note">另外直接危急的還有重大電擊或雷擊、化學性或吸入性灼燙傷、氣管支氣管損傷。電擊要先確認人已經離開電源，再靠近。</p>
+      <p class="back">做完回到：B 的給氧，以及危急判定。</p>
+      <p class="trap">火場病人只用鼻導管，或把化學灼傷和一般擦傷用同一句帶過。</p>
+    </article>
+    <article class="card scene unit" data-tags="scene trauma" data-search="氣胸 穿刺 刀子 開放性">
+      <div class="kicker"><span class="badge b-trauma">創傷</span></div>
+      <h3>氣胸與穿刺傷</h3>
+      <p class="say">這是創傷。胸口有開放性傷口，我貼三留一，留一邊讓氣出得去。刀子還插著，我固定異物，不拔。我再看氣管有沒有偏移。</p>
+      <p class="note">流程頁的處置就是這兩句。照片沒有寫胸腔穿刺減壓，不要在考場加。氣管支氣管損傷在危急表上。</p>
+      <p class="back">做完回到：E，然後快送。</p>
+      <p class="trap">把刀子拔出來，或把胸貼四邊全部封死。</p>
+    </article>
+    <article class="card scene unit" data-tags="scene med" data-search="過敏  anaphylaxis 呼吸道">
+      <div class="kicker"><span class="badge b-med">非創傷</span></div>
+      <h3>過敏</h3>
+      <p class="say">這是非創傷。我先聽呼吸道有沒有聲音。有雜音就先處理呼吸道，再依呼吸給氧。我問對什麼過敏。呼吸或呼吸道明顯受影響，我判危急，快送。</p>
+      <p class="note">這批照片沒有過敏打針的步驟。不要自己加注射。病史裡的「敏」一定要問到。</p>
+      <p class="back">做完回到：A 和 B，然後危急判定。</p>
+      <p class="trap">一直問吃了什麼，卻沒有聽呼吸聲音。</p>
+    </article>
+    <article class="card scene unit" data-tags="scene med skill" data-search="氣喘 喘 呼吸困難 擴張劑">
+      <div class="kicker"><span class="badge b-med">非創傷</span></div>
+      <h3>氣喘</h3>
+      <p class="say">這是非創傷。還有自己的呼吸，我依張口和血氧給氧。身上的氣管擴張劑，依醫囑讓他自己用。給氧後仍然沒有改善，這是呼吸困難，我判需要快送。</p>
+      <p class="note">喘是呼吸變快、變費力。給氧後仍不改善才稱為呼吸困難。氣喘和換氣過度要看血氧來分。換氣過度以穩定生命徵象、適度給氧、快送為主。核心任務是維持呼吸道、適度給氧、快送。</p>
+      <p class="back">做完回到：B，然後重評血氧。</p>
+      <p class="trap">呼吸已經慢到每分鐘 10 次以下，還在調鼻導管。</p>
+    </article>
+    <article class="card scene unit" data-tags="scene med trauma" data-search="休克 蒼白 血壓 代償">
+      <div class="kicker"><span class="badge b-scene">兩條都可能</span></div>
+      <h3>休克</h3>
+      <p class="say">有外傷出血就走創傷，沒有外傷就走非創傷。我看到蒼白、濕冷。血壓還在，是代償；血壓開始明顯下降，就是非代償。我控制出血、給氧、保暖、快送。</p>
+      <p class="note">休克是組織灌流不足。低血容的第一個外表是皮膚蒼白濕冷。代償時心跳和呼吸變快、血管收縮、指甲回血延長，人可能只是焦慮。非代償的分界是血壓往下掉，呼吸可以變淺或變慢，皮膚可以出現大理石紋或發紺，意識變混亂、嗜睡甚至昏迷。</p>
+      <p class="back">做完回到：C 之後喊危急。</p>
+      <p class="trap">只說快送，沒有講止血、氧氣和保暖。或血壓還沒掉就說已經失代償。</p>
+    </article>
+    <article class="card scene unit" data-tags="scene med skill" data-search="中風 GFAST 臉歪 黃金三小時">
+      <div class="kicker"><span class="badge b-med">非創傷</span></div>
+      <h3>中風</h3>
+      <p class="say">這是非創傷，而且是特殊狀況，我判危急。我做 GFAST，並問最後一次正常是什麼時候。未滿 3 小時，送到能做血栓溶解或取栓的醫院。意識有改變，我同時處理呼吸道並測血糖。</p>
+      <p class="note">G 眼球跟著水平移動的筆走。F 看臉對稱。A 雙手向前平舉、掌心向上。S 說一句話看清不清楚。T 記下最後正常時間。一項異常，書上寫中風可能性約 72%；三項約 85%。到院前無法區分出血性或缺血性。症狀還可包括單側無力、感覺異常、頭暈嘔吐、瞳孔不等大。</p>
+      <p class="back">做完回到：D 和二度，然後快送。</p>
+      <p class="trap">只說臉歪就是中風，沒有問最後正常時間，也沒有測血糖。</p>
+    </article>
+    <article class="card scene unit" data-tags="scene med skill" data-search="胸痛 NTG 含錠 十二導程">
+      <div class="kicker"><span class="badge b-med">非創傷</span></div>
+      <h3>胸痛</h3>
+      <p class="say">這是非創傷，疑似缺血性胸痛，我判危急。我問 OPQRST，維持生命徵象。有舌下含錠時，先排除四個不能吃的情況，再讓他自己每 5 分鐘含一次。送到有心血管專科的醫院。</p>
+      <p class="note">不能自行含的四種：收縮壓低於 90、近期用過壯陽藥、脈搏速率仍要依仿單或醫囑、對這類藥過敏。筆記本補充檢查：在效期內，確認是錠劑，一次一錠放舌下。書上正文寫每 5 分鐘一次。十二導程若是致死心律，改走 OHCA。不是致死心律就穩定徵象後送。電不電由 AED 判斷。有脈搏的心室頻脈不要當成 OHCA。</p>
+      <p class="back">做完回到：二度評估和交接。</p>
+      <p class="trap">血壓沒量就請病人含錠，或看到一種波形就自己喊電擊。</p>
+    </article>
+    <article class="card scene unit" data-tags="scene med skill number" data-search="低血糖 血糖 糖水 牙齦">
+      <div class="kicker"><span class="badge b-med">非創傷</span><span class="badge b-num">數字</span></div>
+      <h3>低血糖</h3>
+      <p class="say">這是非創傷。意識不清我先做 ABC，然後測血糖。低於 60 或機器顯示 high，我判危急。人清醒，給糖水喝。人不清醒，把糖粉抹在牙齦和舌下，並留意會不會嗆到。</p>
+      <p class="note">人體血糖約 60–120。以救護角度看，正常空腹約 70–100。大腦靠氧和葡萄糖。高血糖要想到脫水。意識不清都要測血糖。</p>
+      <p class="back">做完回到：輔助檢查，然後重評意識。</p>
+      <p class="trap">不清醒的人灌糖水。或只抹糖，沒有先確認呼吸道。</p>
+    </article>
+    <article class="card scene unit" data-tags="scene ohca med" data-search="溺水 特殊狀況">
+      <div class="kicker"><span class="badge b-ohca">可能轉 OHCA</span></div>
+      <h3>溺水</h3>
+      <p class="say">溺水在特殊狀況表上，我判危急。有呼吸有脈搏，走非創傷，重點是呼吸道和氧氣。沒有正常呼吸也沒有脈搏，改走 OHCA。只有跳水、撞擊這類外力，才加上頸椎。</p>
+      <p class="note">筆記本上把溺水從創傷劃掉是對的。它不是一看到水就走創傷。</p>
+      <p class="back">做完回到：有脈搏就留在 B；沒有脈搏就進 CPR。</p>
+      <p class="trap">每個溺水都先按頭，卻沒有看呼吸和脈搏。</p>
+    </article>
+    <article class="card scene unit" data-tags="scene med" data-search="抽搐 癲癇">
+      <div class="kicker"><span class="badge b-med">特殊狀況</span></div>
+      <h3>抽搐</h3>
+      <p class="say">持續抽搐或剛結束，我判危急。抽搐當下我保護環境，不把東西塞進嘴裡，也不硬壓四肢。結束後立刻重評意識、呼吸和血糖。</p>
+      <p class="note">照片只把它列在特殊狀況，沒有單獨技術頁。能做的是判危急、保護、抽完重評 ABC，並想到 AEIOU-TIPS 裡的血糖和缺氧。</p>
+      <p class="back">做完回到：意識和 A。</p>
+      <p class="trap">抽完只問病史，沒有重新看呼吸。</p>
+    </article>
+    <article class="card scene unit" data-tags="scene med" data-search="中毒 毒蛇 急產 小兒">
+      <div class="kicker"><span class="badge b-scene">特殊狀況</span></div>
+      <h3>中毒、毒蛇、急產、小兒</h3>
+      <p class="say">這四種在特殊狀況表上，我直接判危急，走對的脊椎，維持呼吸道和呼吸，然後快送。</p>
+      <p class="note">中毒先確認現場自己安全，問吃了什麼、什麼時候吃，不要催吐。毒蛇咬傷這批照片沒有技術頁，不要加切開、吸吮或冰敷，傷肢少動、快送。急產照片沒有接生步驟，做的是隱私、保暖和快送。小兒只要被評估為危急者，整個人就是危急。甦醒球的兒童和嬰兒是每 2 到 3 秒一口，新生兒約每 1 秒一口。成人危急表的數字不要直接套到小孩身上。</p>
+      <p class="back">做完回到：危急判定和交接。</p>
+      <p class="trap">用成人數字評論小兒，或對毒蛇傷口做照片裡沒有的處置。</p>
+    </article>
+  </div>
+</section>
+
+<section id="critical">
+  <h2>危急表</h2>
+  <p class="lead">喊出危急之前，要能指出是哪一張表的哪一條。四張表是生命徵象、創傷程度、創傷機轉、特殊狀況。</p>
+  <article class="unit card" data-tags="number scene med trauma">
+    <h3>同一個項目，三道門檻</h3>
+    <div class="table-wrap" style="box-shadow:none">
+      <table>
+        <tr><th>項目</th><th>正常或定義</th><th>要處理</th><th>直接危急</th></tr>
+        <tr><td>意識</td><td>清醒是 A。GCS 滿分 15</td><td>只對聲音是 V，只對疼痛是 P</td><td>GCS 小於 14，也就是 13 分以下。完全沒反應再看呼吸和脈搏，決定會不會進 OHCA</td></tr>
+        <tr><td>呼吸</td><td>成人每分鐘約 12–20。數 10 秒乘以 6</td><td>20–30 且用鼻子，可考慮鼻導管。張口且大於 20，一般面罩。小於 10，甦醒球</td><td>每分鐘 30 以上，或小於 10</td></tr>
+        <tr><td>脈搏</td><td>成人約 60–100。同時看規律、強弱、對稱</td><td>摸到頸動脈，收縮壓至少約 60。股動脈 70。橈動脈 80。足背動脈 90</td><td>每分鐘大於 150，或小於 50</td></tr>
+        <tr><td>血壓</td><td>教材寫成人收縮壓正常值 120</td><td>以上四個動脈點是下限估計，不是把血壓計省略掉</td><td>收縮壓大於 220，或小於 90。小於 90 也不能自行含舌下含錠</td></tr>
+        <tr><td>血氧</td><td>94–100%</td><td>90–94 且清醒、用鼻子，可用鼻導管。量完仍低於 94，更換裝置</td><td>低於 90。同時也是非再呼吸面罩的條件之一</td></tr>
+        <tr><td>指甲回血</td><td>小於 2 秒。輕壓甲床約 3–5 秒再放</td><td>大於 4 秒，想到嚴重休克</td><td>大於 2 秒</td></tr>
+        <tr><td>體溫</td><td>耳溫約 36–37 度。肛溫、舌下、耳溫算核心</td><td>核心低於 35 是低體溫。核心高於 38 是高體溫</td><td>大於 41，或小於 32。這和 35、38 的定義不同</td></tr>
+        <tr><td>血糖</td><td>人體約 60–120。救護空腹約 70–100</td><td>意識不清一律測</td><td>低於 60，或顯示 high</td></tr>
+      </table>
+    </div>
+    <p class="trap">指甲回血有 2 秒和 4 秒。體溫有 35、38，也有 32、41。血氧有 94 和 90。筆試和情境都愛混在同一題。</p>
+  </article>
+  <div class="grid two" style="margin-top:12px">
+    <article class="card unit" data-tags="number trauma scene">
+      <h3>創傷程度，看到就危急</h3>
+      <div class="pills">
+        <span class="pill">體表大於 25% 的二度或三度燒灼傷</span>
+        <span class="pill">顏面或會陰的二度或三度燒灼傷</span>
+        <span class="pill">重大電擊或雷擊</span>
+        <span class="pill">化學性或吸入性灼燙傷</span>
+        <span class="pill">氣管、支氣管損傷</span>
+        <span class="pill">大量皮下氣腫</span>
+        <span class="pill">頭、頸、軀幹，以及肘、膝以上肢體的穿刺傷</span>
+        <span class="pill">內臟外露</span>
+        <span class="pill">手腕或腳踝以上截肢</span>
+        <span class="pill">兩處以上大腿或上臂長骨骨折</span>
+        <span class="pill">骨盆腔骨折</span>
+        <span class="pill">頭骨開放或凹陷骨折</span>
+        <span class="pill">肢體脈搏摸不到</span>
+        <span class="pill">癱瘓</span>
+        <span class="pill">壓碎傷或嚴重撕裂傷</span>
+      </div>
+    </article>
+    <article class="card unit" data-tags="number trauma scene">
+      <h3>高能量機轉，人也是危急</h3>
+      <div class="pills">
+        <span class="pill">成人墜落大於 6 公尺，或大於兩層樓</span>
+        <span class="pill">小兒墜落大於 3 公尺，或大於身高的 2 倍</span>
+        <span class="pill">脫困時間大於 20 分鐘</span>
+        <span class="pill">軀幹被車輛輾過。只有遠端肢體不算這條</span>
+        <span class="pill">從車輛中被拋出</span>
+        <span class="pill">同車有死亡者，或其他高能量撞擊</span>
+      </div>
+      <h3 style="margin-top:14px">特殊狀況</h3>
+      <div class="pills">
+        <span class="pill">血糖低於 60 或顯示 high</span>
+        <span class="pill">疑似急性腦中風</span>
+        <span class="pill">疑似缺血性胸痛</span>
+        <span class="pill">中毒可能危及生命</span>
+        <span class="pill">持續抽搐或剛結束</span>
+        <span class="pill">急產</span>
+        <span class="pill">毒蛇咬傷</span>
+        <span class="pill">溺水</span>
+        <span class="pill">小兒評估為危急者</span>
+      </div>
+    </article>
+  </div>
+</section>
+
+<section id="skills">
+  <h2>技術步驟</h2>
+  <div class="grid two">
+    <article class="card unit" data-tags="skill med trauma" data-search="鼻咽 NPA 口咽 OPA">
+      <div class="kicker"><span class="badge b-skill">技術</span></div>
+      <h3>鼻咽與口咽呼吸道</h3>
+      <p class="note">兩者都是把舌根撐開。意識不清先假設舌根掉下去。給任何氧氣之前，先確認呼吸道。</p>
+      <p class="say">鼻咽：徒手打開呼吸道。凹面朝臉頰，量耳垂到鼻尖。選尺寸，潤滑，推鼻頭選較大的鼻孔，凹面朝下垂直放入。</p>
+      <p class="say">口咽：徒手打開呼吸道。凹面朝臉頰，量耳垂到嘴角。選尺寸。食指拇指交叉打開嘴。凹面朝上放入，頂到硬顎，轉 180 度，下放到嘴唇。</p>
+      <p class="trap">鼻咽禁止用在疑似顱底骨折：熊貓眼、耳後瘀青、耳漏、鼻漏。口咽只給對疼痛完全沒有反應的人，因為容易嘔吐。</p>
+    </article>
+    <article class="card unit" data-tags="skill" data-search="抽吸 15秒">
+      <div class="kicker"><span class="badge b-skill">技術</span></div>
+      <h3>抽吸</h3>
+      <p class="note">口裡有血、嘔吐物或分泌物，呼吸會有雜音。目的是避免吸入造成嗆傷或感染。</p>
+      <ol class="script">
+        <li><span><span class="say">抽吸前先給氧氣面罩。</span></span></li>
+        <li><span><span class="say">抽吸瓶接上高壓氧氣導管。</span></span></li>
+        <li><span><span class="say">量嘴角到耳垂，當作導管長度。</span></span></li>
+        <li><span><span class="say">單人操作時，把長度定位在瓶子底部。兩個人做就不用這一步。</span></span></li>
+        <li><span><span class="say">交叉法打開嘴，邊退邊吸，不超過 15 秒。排氣孔不要朝向人體。</span></span></li>
+        <li><span><span class="say">沖洗管子，再聽一次還有沒有雜音。做完清潔管子和瓶子。</span></span></li>
+      </ol>
+    </article>
+    <article class="card unit" data-tags="skill number med trauma ohca" data-search="氧氣 鼻導管 面罩 NRM BVM 非再呼吸">
+      <div class="kicker"><span class="badge b-skill">技術</span><span class="badge b-num">數字</span></div>
+      <h3>氧氣裝置</h3>
+      <div class="table-wrap" style="box-shadow:none">
+        <table>
+          <tr><th>裝置</th><th>流速</th><th>濃度</th><th>什麼時候用</th></tr>
+          <tr><td>鼻導管</td><td>1–6</td><td>24–44%</td><td>清醒、用鼻子。血氧 90–94%，或呼吸 20–30</td></tr>
+          <tr><td>一般面罩</td><td>6–10</td><td>44–60%</td><td>張口且血氧低於 94%，張口且呼吸大於 20，創傷需要氧，意識不清。正常要大於 6 升，否則二氧化碳積在面罩裡</td></tr>
+          <tr><td>非再呼吸面罩</td><td>10–15</td><td>表上 80–100%，內文寫接近 100%</td><td>血氧低於 90%，呼吸大於 30，一般面罩無效，發紺，火場，疑似一氧化碳，吸入性傷害。先充飽儲氣袋</td></tr>
+          <tr><td>甦醒球</td><td>10–15，口令常說 15</td><td>表上 90–100%，內文寫 15 升接近 100%</td><td>呼吸小於 10，沒有呼吸或 OHCA，非再呼吸面罩無效時可考慮</td></tr>
+        </table>
+      </div>
+      <p class="note">流程圖用嘴巴開不開來選鼻導管或一般面罩，並把火場、嗆傷、一氧化碳直接送到非再呼吸面罩。裝置頁再用血氧和呼吸次數覆核。確定是換氣過度時，一般面罩可以降到 1–2 升，這是裝置頁的例外。</p>
+      <p class="say">有脈搏但需要人工呼吸：成人每 6 秒一口，兒童和嬰兒每 2 到 3 秒，新生兒約每 1 秒。OHCA 用 30 比 2。</p>
+      <p class="note">小型 D 鋼瓶大約 2,000–2,200 psi。低於 500 立刻換。空氣本身約 20% 氧。每多給 1 升，大約增加 4 個百分點，這個算法只對鼻導管的 24–44% 好記。</p>
+    </article>
+    <article class="card unit" data-tags="skill" data-search="三合一 開看接開測戴">
+      <div class="kicker"><span class="badge b-skill">技術</span></div>
+      <h3>三合一攜帶式氧氣組</h3>
+      <p class="note">用途是給氧、強迫給氧、抽吸。零件有鋼瓶、總開關、流速調節閥、高壓軟管、抽吸瓶。常用裝置是鼻導管、一般面罩、非再呼吸面罩；人工呼吸改用甦醒球。</p>
+      <p class="say">開總開關。看壓力至少大於 500。接上導管。打開流速。測試有沒有氣流出來。再戴到病人身上。</p>
+    </article>
+    <article class="card unit" data-tags="skill ohca" data-search="AED 開貼電 去顫">
+      <div class="kicker"><span class="badge b-ohca">OHCA</span></div>
+      <h3>AED</h3>
+      <p class="say">開機。貼片。需要的機型才插線。分析時停止按壓，人離開。建議電擊就清場，確認沒人碰到，按下電擊，立刻再壓。</p>
+      <p class="note">第一次不建議電擊，不摸脈搏，直接壓到下一次語音。第二次以後每一次不建議電擊，都摸頸動脈。沒有脈搏立刻再壓。有脈搏就看有沒有正常呼吸。</p>
+    </article>
+    <article class="card unit" data-tags="skill number med" data-search="血糖機 採血">
+      <div class="kicker"><span class="badge b-skill">技術</span></div>
+      <h3>血糖機</h3>
+      <ol class="script">
+        <li><span><span class="say">依廠牌把試紙裝上。</span></span></li>
+        <li><span><span class="say">手指從近心端往指尖按摩，讓指尖充血。</span></span></li>
+        <li><span><span class="say">指尖用酒精消毒，等酒精乾。</span></span></li>
+        <li><span><span class="say">採血針採血，試紙吸血。</span></span></li>
+        <li><span><span class="say">用酒精棉片壓住採血處 5 分鐘。</span></span></li>
+        <li><span><span class="say">讀數並記錄。回收針和感染性垃圾。</span></span></li>
+      </ol>
+    </article>
+    <article class="card unit" data-tags="skill trauma" data-search="頸椎減移 固定">
+      <div class="kicker"><span class="badge b-trauma">創傷</span></div>
+      <h3>頸椎減移</h3>
+      <p class="note">脊髓在脊椎的孔洞裡，由頭往下延伸。受損高度以下的運動和感覺都可能受影響，愈高愈嚴重。操作先固定自己，再固定支點，再固定傷患。</p>
+      <p class="note">教材照片裡的手法名稱：頭部、肩部、頭肩部、胸骨枕骨、胸骨前額、雙膝、胸骨脊椎。考場先做頭部固定，需要換手法時用交頭三句。</p>
+    </article>
+    <article class="card unit" data-tags="skill trauma scene" data-search="頸圈 氣管 頸靜脈">
+      <div class="kicker"><span class="badge b-trauma">創傷</span></div>
+      <h3>頸圈前三項</h3>
+      <p class="say">有可疑機轉而且有頸椎受傷徵象，才上頸圈。我先問氣管有沒有偏：左手比三，從脖子上方滑到下方。再看頸靜脈有沒有怒張：雙手掌放在脖子兩側。再問壓下去會不會痠、痛、麻。最後量下巴切線到肩線，選大小，頭仍然固定時戴上。</p>
+    </article>
+    <article class="card unit" data-tags="skill number trauma med" data-search="瞳孔 筆燈 GCS">
+      <div class="kicker"><span class="badge b-skill">技術</span></div>
+      <h3>瞳孔與 GCS 句子</h3>
+      <p class="say">上方的手撐開眼皮，下方的手拿筆燈。先比兩側大小，再從側邊慢慢移到正前方看對光。測完我說：兩側瞳孔對光反射是否正常。</p>
+      <p class="note">正常大約 2–5 毫米，要對稱、要有對光。放大片會影響。筆燈不要一開始就直射。</p>
+      <p class="say">手：你有感覺我在摸你的手嗎？你的手可以動一下嗎？沒有反應，改捏虎口。腳：你有感覺我在摸你的腳嗎？你的腳可以動一下嗎？沒有反應，改刺激腳後跟。一開始就無意識，直接做虎口和腳後跟的疼痛刺激。</p>
+    </article>
+  </div>
+</section>
+
+<section id="secondary">
+  <h2>二度評估與交接</h2>
+  <article class="card unit" data-tags="skill med trauma scene">
+    <h3>兩次評估各找什麼</h3>
+    <p class="say">初步評估找會要命的問題。二度評估找其他不明顯的問題。病況改變，整套重做。</p>
+    <p class="note">八個生命徵象都要說出做法：意識用 GCS 那句；呼吸數 10 秒；脈搏看血氧機上的數字；血壓用血壓計；瞳孔先比大小再對光；體溫用體溫計；膚色看蒼白、潮紅、發紺和手溫；血氧低於 94% 就換裝置。</p>
+  </article>
+  <div class="grid two" style="margin-top:12px">
+    <article class="card unit" data-tags="med skill">
+      <h3>非創傷身體檢查</h3>
+      <ol class="script">
+        <li><span><span class="say">氣管有沒有偏。左手比三，從脖子頂端滑到底。</span></span></li>
+        <li><span><span class="say">頸靜脈有沒有怒張。</span></span></li>
+        <li><span><span class="say">先生，我需要掀開衣服檢查胸部，請問同意嗎？我看紅疹和紫斑。請吸氣、吐氣。聽診順序：右上、左上、左下、右下。</span></span></li>
+        <li><span><span class="say">腹部也先問同意。以肚臍畫四個象限，從痛的對側開始，痛的地方最後壓。請問最近有解血便或黑便嗎？</span></span></li>
+        <li><span><span class="say">上肢看紅疹、紫斑、針孔、水腫。翻開袖子，握住手腕壓一下。下肢同樣，握住腳踝。</span></span></li>
+        <li><span><span class="say">再做手和腳的感覺、動作。沒有反應就改疼痛刺激。</span></span></li>
+      </ol>
+    </article>
+    <article class="card unit" data-tags="trauma skill">
+      <h3>創傷身體檢查</h3>
+      <ol class="script">
+        <li><span><span class="say">頭和臉有沒有出血、變形。雙手摸過後腦，手指沿眉骨、顴骨、下顎骨。</span></span></li>
+        <li><span><span class="say">有沒有耳漏、鼻漏、熊貓眼、耳後瘀青。</span></span></li>
+        <li><span><span class="say">胸部先問同意。看瘀血和傷口。聽診仍是右上、左上、左下、右下。再摸兩側鎖骨，以及上胸、下胸有沒有變形和疼痛。</span></span></li>
+        <li><span><span class="say">腹部先問同意。四個象限從痛的對側開始，痛處最後。</span></span></li>
+        <li><span><span class="say">上肢分成四段，看瘀血、傷口、壓痛、畸形，並看手套有沒有沾到血。下肢同樣。最後看背部和臀部。</span></span></li>
+      </ol>
+    </article>
+    <article class="card unit" data-tags="skill scene med">
+      <h3>病史</h3>
+      <p class="say">主訴：哪裡不舒服、怎麼不舒服、多久了。之前：事發前在做什麼。吃：上一餐什麼時候吃。若已有食物或藥物過敏，再問有沒有吃到相關的東西。過：過去病史。藥：在吃什麼藥。敏：對什麼過敏。感：還有哪裡不舒服，或要補充什麼。</p>
+      <p class="say">OPQRST：突然還是慢慢發生，以前有沒有類似。什麼會緩解，什麼會加重。悶、刺還是撕裂。位置在哪，有沒有跑到別處。1 到 10 分現在幾分。從什麼時候開始，多久了。</p>
+    </article>
+    <article class="card unit" data-tags="skill scene">
+      <h3>無線電與到院交接</h3>
+      <p class="say">病人：男性或女性，大約幾歲。要：為什麼求救。史：過去病史和過敏。已：做了什麼。前：現在的生命徵象。到：大約幾分鐘後到院。</p>
+      <p class="note">危急只報符合危急的部分。穩定的生命徵象不用逐項唸完。交給 119 或院內人員也用這六項。紀錄可以用紙本或單位的電子表，重點是事後能對得起來。</p>
+    </article>
+  </div>
+</section>
+
+<section id="illness">
+  <h2>急症整理</h2>
+  <div class="grid two">
+    <article class="card unit" data-tags="number med scene" data-search="AEIOU TIPS 意識不清">
+      <h3>意識不清 AEIOU-TIPS</h3>
+      <div class="table-wrap" style="box-shadow:none">
+        <table>
+          <tr><td>A Alcohol</td><td>酒精</td><td>T Trauma</td><td>嚴重創傷</td></tr>
+          <tr><td>E Encephalopathy</td><td>腦病變</td><td>I Infection / ICH</td><td>感染、腦出血</td></tr>
+          <tr><td>I Insulin / Hypoglycemia、DKA / NKHS</td><td>胰島素、低血糖、糖尿病急症</td><td>P Psychosis</td><td>精神病</td></tr>
+          <tr><td>O Oxygen / Overdose</td><td>缺氧、藥物過量</td><td>S Seizure / Sepsis</td><td>抽搐、敗血症</td></tr>
+          <tr><td>U Uremia</td><td>尿毒症</td><td></td><td></td></tr>
+        </table>
+      </div>
+      <p class="note">這是原因清單，不是另一套流程。人仍然走非創傷；若原因是創傷，改走創傷。低血糖和缺氧在清單前段，所以意識不清一定測血糖、一定看呼吸道。</p>
+    </article>
+    <article class="card unit" data-tags="number ohca skill" data-search="心電圖 VT VF PEA Asystole 十二導程">
+      <h3>心律，筆試看、操作聽機器</h3>
+      <p class="note">P 是心房收縮，QRS 是心室收縮，T 是心室放鬆。鈉、鉀、鈣通道出問題，就可能心律不整。一小格 0.04 秒，一大格 0.2 秒。心率大約等於 300 除以兩個 R 波之間的大格數。</p>
+      <p class="say">可電擊的是心室頻脈 VT，以及心室纖維顫動 VF。不可電擊的是無收縮 Asystole，以及沒有脈搏的其他有波形心律 PEA。除了 VT、VF、Asystole 以外，摸不到脈搏的有組織波形都叫 PEA。</p>
+      <p class="note">有脈搏的 VT 和沒有脈搏的 VT 圖可以很像。有脈搏時依生命徵象處理，不要啟動 OHCA。初級救護員在無意識、無呼吸、無脈搏時用 AED，那時的 VT 多半是無脈搏型。貼完十二導程，先判斷是不是致死心律。是，就走心肺復甦。不是，就穩定生命徵象後送。</p>
+      <p class="note">胸前導極：V1 第四肋間胸骨右緣。V2 第四肋間胸骨左緣。V4 先放在左胸第五肋間鎖骨中線。V3 再放在 V2 和 V4 的中點。V5 左胸第五肋間腋前線。V6 左胸第五肋間腋中線。肢體導極：左手 LA、右手 RA、左腳 LL、右腳 RL。</p>
+    </article>
+  </div>
+</section>
+
+<section id="numbers">
+  <h2>筆試櫃</h2>
+  <p class="lead">平時測驗考的是這一櫃。操作時不要在腦中背這一櫃，以免下一句口令接不上。</p>
+  <div class="grid two">
+    <article class="card unit" data-tags="number">
+      <h3>構造層次與神經</h3>
+      <p class="note">細胞是最小生命單位，有反應、生長、繁殖、新陳代謝。細胞組成組織，組織組成器官，器官組成系統。例子：肌細胞、肌肉組織、膀胱、泌尿系統。</p>
+      <p class="note">大腦管思考、運動、感覺、語言。小腦管肢體協調。腦幹管呼吸和心跳。脊髓被脊椎保護，把訊息送進大腦。感覺神經傳入，運動神經傳出。中樞是腦和脊髓。周邊是中樞以外的神經。</p>
+    </article>
+    <article class="card unit" data-tags="number">
+      <h3>骨骼、肌肉、血液</h3>
+      <p class="note">成人約 206 塊骨。骨骼系統含硬骨、軟骨、韌帶和其他結締組織。功能是支持、運動、保護臟器、儲存礦物質、製造血液。骨與骨靠關節和韌帶。肌肉靠肌腱附在骨上。</p>
+      <p class="note">肌肉三種。骨骼肌受意識控制，又稱隨意肌。心肌負責收縮。平滑肌負責腸胃蠕動這類不受意識控制的動作。心肌和平滑肌合稱不隨意肌。</p>
+      <p class="note">血液有血漿和血球。血量約體重的十三分之一，65 公斤約 5 公升。血漿約 55%，血球約 45%。血漿含水、蛋白質、養分、抗體、荷爾蒙。紅血球帶氧，白血球管免疫，血小板凝血。血液還負責運輸和抵禦病原。</p>
+    </article>
+    <article class="card unit" data-tags="number">
+      <h3>呼吸與循環</h3>
+      <p class="note">呼吸道：鼻、咽喉、氣管、支氣管、肺。上呼吸道是鼻和咽喉。下呼吸道是氣管、支氣管、肺。換氣靠胸壁肌肉和橫膈。正常一次吸氣約 500 毫升。吸氣時肋骨上提、橫膈下降、胸腔壓力下降。吐氣相反。氧在肺泡進血，二氧化碳從肺泡離開。</p>
+      <p class="note">動脈是離開心臟的血管，靜脈是回到心臟的血管。不是用有沒有氧來命名。體循環：左心室把充氧血打進主動脈和全身微血管，缺氧血經上、下腔靜脈回右心房。肺循環：右心室把缺氧血打進肺動脈，在肺部充氧後，經肺靜脈回左心房。所以肺動脈裡是缺氧血，肺靜脈裡是充氧血。</p>
+    </article>
+    <article class="card unit" data-tags="number">
+      <h3>皮膚、消化、泌尿、內分泌、生殖</h3>
+      <p class="note">皮膚含皮膚、毛髮、指甲，是最大器官，有保護、感覺、排泄。表皮阻擋紫外線、減少水分散失。真皮有毛囊、血管和感覺受體。</p>
+      <p class="note">消化道約十公尺。上下消化道的分界在十二指腸。上消化道出血，血液被消化液作用，形成黑便或瀝青樣便。下消化道出血沒有被完全作用，形成血便。淋巴系統有胸腺、脾臟、淋巴結、淋巴球，負責免疫。胰臟分泌胰島素調控血糖，這是和糖尿病直接相關的內分泌。</p>
+      <p class="note">泌尿系統是腎臟、輸尿管、膀胱、尿道。功能包含製造和排出尿液，調節鈉、鉀、鈣、氯，調整血量和血壓，回收葡萄糖，排出尿酸這類廢物。女性外生殖器是陰阜、大陰唇、小陰唇、陰蒂。內生殖器是卵巢、輸卵管、子宮、陰道。卵巢分泌雌性激素並讓卵子成熟，子宮孕育胎兒。男性包含陰莖、尿道、前列腺、精囊、輸精管、副睪、睪丸。睪丸製造精子和雄性激素，副睪儲存精子。生殖系統大多到青春期才成熟。</p>
+    </article>
+    <article class="card unit" data-tags="number skill">
+      <h3>GCS 整張表</h3>
+      <div class="table-wrap" style="box-shadow:none">
+        <table>
+          <tr><th>分數</th><th>睜眼 E，最多 4</th><th>說話 V，最多 5</th><th>動作 M，最多 6</th></tr>
+          <tr><td>1</td><td>沒有反應</td><td>沒有反應</td><td>沒有反應</td></tr>
+          <tr><td>2</td><td>疼痛才睜眼</td><td>只能發出聲音</td><td>疼痛時肢體伸直。去大腦僵直</td></tr>
+          <tr><td>3</td><td>聲音就睜眼</td><td>聽不懂的字句</td><td>疼痛時異常收縮。去皮質僵直</td></tr>
+          <tr><td>4</td><td>自己睜眼</td><td>答得出來，但答非所問</td><td>疼痛時四肢回縮</td></tr>
+          <tr><td>5</td><td>沒有這一格</td><td>說話清楚有條理</td><td>疼痛時能指出位置</td></tr>
+          <tr><td>6</td><td>沒有這一格</td><td>沒有這一格</td><td>能照指令動作</td></tr>
+        </table>
+      </div>
+      <p class="note">初評用叫、拍、捏，心裡對到 A、V、P、U。到了 D 和二度，改講完整的 GCS 句子。E4、V5、M5 是 14 分，還沒有低於 14。13 分以下才踩到這條危急線。</p>
+    </article>
+    <article class="card unit" data-tags="number">
+      <h3>其他容易混的定義</h3>
+      <p class="note">血氧讀值會被強光、一氧化碳中毒、指甲油、晃動、失溫影響。一氧化碳中毒時機器可以看起來不低，仍然要高濃度氧。瞳孔檢查可以看出神經急症或藥物作用。呼吸評估要同時看胸腹起伏是否對稱、是否費力、有沒有用到輔助肌，以及當下是不是已經在吸氧。</p>
+      <p class="note">骨折出血、氧氣濃度、危急門檻、GCS，是這一櫃裡操作時也用得到的四塊。其餘解剖句子留到筆試前用遮罩抽背。</p>
+    </article>
+  </div>
+</section>
+
+<section id="plan">
+  <h2>用這頁練，每天 40 分鐘</h2>
+  <div class="grid three">
+    <article class="card unit" data-tags="guide">
+      <h3>10 分鐘口令</h3>
+      <p class="note">勾「遮住口令」。從非創傷、創傷、OHCA 裡選一條，點開句子自己講。講錯的那一句連續再點十次。</p>
+    </article>
+    <article class="card unit" data-tags="guide">
+      <h3>10 分鐘數字</h3>
+      <p class="note">搜尋「危急」「GCS」「氧氣」「骨折」。把三道門檻表蓋住，只留項目名稱，說出正常、要處理、直接危急。</p>
+    </article>
+    <article class="card unit" data-tags="guide">
+      <h3>15 加 5 分鐘情境</h3>
+      <p class="note">按「抽一題情境」。先講四句，再按「這一題對答案」。最後 5 分鐘只重練剛剛斷掉的三句。</p>
+    </article>
+  </div>
+</section>
+<p id="empty" hidden>沒有符合的內容。換一個關鍵字，或把篩選改回全部。</p>
+</main>
+</div>
+<footer>
+  這是依教材照片整理的學習頁，用來把流程、門檻和情境接在一起。它不取代課堂評分表，也不補寫照片裡沒有的技術。
+</footer>
+<script>
+(function () {
+  const q = document.querySelector('#q');
+  const chips = [...document.querySelectorAll('.chip')];
+  const units = [...document.querySelectorAll('.unit')];
+  const sections = [...document.querySelectorAll('main section')];
+  const status = document.querySelector('#status');
+  const empty = document.querySelector('#empty');
+  const notes = document.querySelector('#show-notes');
+  const mask = document.querySelector('#mask');
+  let current = null;
+
+  function activeChip() {
+    return chips.find((chip) => chip.getAttribute('aria-pressed') === 'true') || chips[0];
+  }
+
+  function apply() {
+    const query = q.value.trim().toLowerCase();
+    const chip = activeChip().dataset.chip;
+    let shown = 0;
+    units.forEach((unit) => {
+      const tags = (unit.dataset.tags || '').split(/\s+/);
+      const tagOk = chip === 'all' || tags.includes(chip);
+      const text = (unit.dataset.search || unit.textContent).toLowerCase();
+      const ok = tagOk && (!query || text.includes(query));
+      unit.hidden = !ok;
+      if (ok) shown += 1;
+    });
+    sections.forEach((section) => {
+      const local = [...section.querySelectorAll('.unit')];
+      section.hidden = local.length > 0 && local.every((unit) => unit.hidden);
+    });
+    empty.hidden = shown !== 0;
+  }
+
+  chips.forEach((chip) => {
+    chip.addEventListener('click', () => {
+      chips.forEach((item) => item.setAttribute('aria-pressed', item === chip ? 'true' : 'false'));
+      apply();
+    });
+  });
+  q.addEventListener('input', apply);
+
+  notes.addEventListener('change', () => {
+    document.body.classList.toggle('hide-notes', !notes.checked);
+  });
+  mask.addEventListener('change', () => {
+    document.body.classList.toggle('mask', mask.checked);
+    if (!mask.checked) {
+      document.querySelectorAll('.say.shown').forEach((line) => line.classList.remove('shown'));
+    }
+  });
+  document.addEventListener('click', (event) => {
+    const line = event.target.closest('.say');
+    if (!line || !document.body.classList.contains('mask')) return;
+    line.classList.toggle('shown');
+  });
+
+  document.querySelector('#drill').addEventListener('click', () => {
+    const cards = [...document.querySelectorAll('.scene')].filter((card) => !card.hidden);
+    if (!cards.length) {
+      status.textContent = '現在的篩選底下沒有情境卡。先把篩選改回全部或情境。';
+      return;
+    }
+    mask.checked = true;
+    document.body.classList.add('mask');
+    document.querySelectorAll('.say.shown').forEach((line) => line.classList.remove('shown'));
+    cards.forEach((card) => card.classList.remove('flash'));
+    current = cards[Math.floor(Math.random() * cards.length)];
+    current.classList.add('flash');
+    const title = current.querySelector('h3').textContent;
+    status.textContent = '這一題是「' + title + '」。先講四句和口令，再按對答案。';
+    if (typeof current.scrollIntoView === 'function') {
+      current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  });
+
+  document.querySelector('#reveal').addEventListener('click', () => {
+    if (!current) {
+      status.textContent = '先抽一題。';
+      return;
+    }
+    current.querySelectorAll('.say').forEach((line) => line.classList.add('shown'));
+    status.textContent = '「' + current.querySelector('h3').textContent + '」的口令已打開。';
+  });
+
+  function syncHeader() {
+    const bar = document.querySelector('header.top');
+    if (!bar) return;
+    const bottom = bar.getBoundingClientRect().bottom;
+    document.documentElement.style.setProperty('--header-offset', Math.ceil(bottom + 8) + 'px');
+  }
+  syncHeader();
+  window.addEventListener('resize', syncHeader);
+
+  const params = new URLSearchParams(location.search);
+  const at = params.get('at');
+  if (at && typeof document.getElementById(at)?.scrollIntoView === 'function') {
+    document.getElementById(at).scrollIntoView();
+  }
+})();
+</script>
+</body>
+</html>
