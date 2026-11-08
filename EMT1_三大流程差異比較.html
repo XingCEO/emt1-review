@@ -606,6 +606,124 @@
     .bridge-items { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.82rem; color: #cbd5e1; }
     .b-item b { color: #fde047; }
 
+  
+    /* 🚀 極限速通寶典樣式 */
+    .speedrun-hero {
+      background: linear-gradient(135deg, #0c4a6e 0%, #0f172a 100%);
+      border: 2px solid #38bdf8;
+      border-radius: 14px;
+      padding: 22px 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.25);
+    }
+    .speedrun-hero-badge {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 800;
+      padding: 4px 12px;
+      border-radius: 9999px;
+      background: rgba(56, 189, 248, 0.25);
+      color: #38bdf8;
+      border: 1px solid #38bdf8;
+      margin-bottom: 8px;
+    }
+    .speedrun-hero h2 { font-size: 1.45rem; font-weight: 900; color: #fff; margin-bottom: 6px; }
+    .speedrun-hero-sub { font-size: 0.92rem; color: #cbd5e1; line-height: 1.5; }
+
+    .speedrun-timeline-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 14px;
+    }
+    .sr-step-row {
+      display: grid;
+      grid-template-columns: 140px 1fr;
+      gap: 16px;
+      padding: 12px 14px;
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 8px;
+      border: 1px solid rgba(255, 255, 255, 0.05);
+    }
+    .sr-step-row.finish-row {
+      background: rgba(16, 185, 129, 0.12);
+      border: 2px solid #10b981;
+    }
+    .sr-time {
+      font-size: 0.82rem;
+      font-weight: 800;
+      color: #94a3b8;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .sr-sec { font-size: 1rem; color: #38bdf8; font-weight: 900; }
+    .finish-row .sr-sec { color: #34d399; }
+    .sr-content { display: flex; flex-direction: column; gap: 6px; }
+    .sr-badge-title { display: flex; align-items: center; gap: 8px; font-size: 1rem; color: #fff; }
+    .sr-speech { font-size: 0.9rem; color: #cbd5e1; line-height: 1.5; }
+    .sr-speech.highlight-finish { color: #fde047; font-weight: 800; font-size: 0.98rem; }
+    .finish-callout { font-size: 0.88rem; font-weight: 800; color: #34d399; margin-top: 4px; }
+    .sr-act { font-size: 0.84rem; color: #fca5a5; background: rgba(244, 63, 94, 0.1); padding: 6px 10px; border-radius: 6px; margin-top: 4px; }
+
+    .boss-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .boss-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      overflow: hidden;
+    }
+    .boss-header {
+      padding: 10px 16px;
+      background: rgba(15, 23, 42, 0.85);
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .boss-tag {
+      font-size: 0.72rem;
+      font-weight: 900;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: #0284c7;
+      color: #fff;
+    }
+    .boss-header h4 { font-size: 0.98rem; font-weight: 800; color: #fff; }
+    .boss-body { padding: 14px 16px; }
+    .boss-rule { font-size: 0.88rem; color: #38bdf8; margin-bottom: 10px; background: rgba(56, 189, 248, 0.1); padding: 8px 10px; border-radius: 6px; }
+    .boss-list { font-size: 0.84rem; color: #cbd5e1; line-height: 1.6; padding-left: 18px; }
+
+    .firefighter-tip-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 18px 20px;
+      margin-bottom: 24px;
+    }
+    .ff-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .ff-icon { font-size: 1.4rem; }
+    .ff-header h4 { font-size: 1.05rem; font-weight: 900; color: #fff; }
+    .ff-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 14px; }
+    .ff-box { padding: 14px; border-radius: 8px; font-size: 0.85rem; line-height: 1.6; }
+    .ff-box.bad { background: rgba(239, 68, 68, 0.1); border: 1px solid rgba(239, 68, 68, 0.3); color: #fca5a5; }
+    .ff-box.good { background: rgba(16, 185, 129, 0.1); border: 1px solid rgba(16, 185, 129, 0.3); color: #6ee7b7; }
+    .ff-tag { font-size: 0.82rem; font-weight: 900; display: block; margin-bottom: 6px; }
+    .ff-box ul { padding-left: 18px; }
+
+    @media (max-width: 768px) {
+      .sr-step-row { grid-template-columns: 1fr; gap: 8px; }
+    }
+
   </style>
 </head>
 <body>
@@ -626,11 +744,14 @@
         <a href="EMT1_口試演練.html" class="nav-link">🎯 口試演練刷題</a>
       </div>
       <div class="nav-tools">
-        <button id="btnQuick" class="view-btn active" onclick="switchTab('quick')">
-          <span>⚡</span> 3秒秒殺速記（新手救星）
+        <button id="btnSpeedrun" class="view-btn active" onclick="switchTab('speedrun')">
+          <span>🚀</span> 極限速通寶典（學長秘笈）
+        </button>
+        <button id="btnQuick" class="view-btn" onclick="switchTab('quick')">
+          <span>⚡</span> 3秒秒殺速記
         </button>
         <button id="btnMain" class="view-btn" onclick="switchTab('main')">
-          <span>📜</span> 全程標準操作口令 (11步驟)
+          <span>📜</span> 全程三欄劇本 (11步驟)
         </button>
         <button id="btnBranch" class="view-btn" onclick="switchTab('branch')">
           <span>🔀</span> 課本情境應變口令
@@ -669,7 +790,239 @@
     <!-- 主面板：三欄流程口令全對照 -->
     
     <!-- ⚡ 3秒秒殺速記看板（新手救星・考前必背） -->
-    <section id="viewQuick" class="view-panel active">
+    
+    <!-- 🚀 EMT-1 考前極限速通寶典（現役學長通關秘笈） -->
+    <section id="viewSpeedrun" class="view-panel active">
+      
+      <!-- 速通頂部戰鬥橫幅 -->
+      <div class="speedrun-hero">
+        <div class="speedrun-hero-badge">🚀 考前 24 小時極速通關特別企劃</div>
+        <h2>別背 150 個碎片！用「5 步萬用骨架」2 分鐘打爆考場！</h2>
+        <p class="speedrun-hero-sub">現役專責隊學長坐在考官席上，最痛恨背書呆子，最看重「俐落節奏、動作摸到位、果斷打包後送」！掌握這套速通秘笈，考官找不到任何扣分點！</p>
+      </div>
+
+      <!-- 模組一：2 分鐘考場實戰極速時間軸 -->
+      <div class="quick-section-title">
+        <span class="title-icon">⏱️</span>
+        <h3>2 分鐘考場實戰時間軸（30 個動作一氣呵成順口溜）</h3>
+        <span class="title-sub">從進門到考官喊停，主手嘴巴不要停、動作順著摸，只要 1 分 50 秒！</span>
+      </div>
+
+      <div class="speedrun-timeline-card">
+        <div class="sr-step-row">
+          <div class="sr-time">00:00 - 00:15<span class="sr-sec">15 秒</span></div>
+          <div class="sr-content">
+            <div class="sr-badge-title"><span class="step-pill">01</span><b>現場常規與起手式</b></div>
+            <div class="sr-speech">🗣️ 「現場環境安全！做好個人防護裝備（手套、口罩）！保持安全距離！傷患人數一名！請副手撥打 119 求援，主手開急救包、副手開三合一！」</div>
+            <div class="sr-act">🩸 <b>創傷唯一動作</b>：主手走向傷患腳側蹲下平視：「先生不要亂動！」副手由頭部實施頭部減移喊「好」，脫安全帽。</div>
+          </div>
+        </div>
+
+        <div class="sr-step-row">
+          <div class="sr-time">00:15 - 00:25<span class="sr-sec">10 秒</span></div>
+          <div class="sr-content">
+            <div class="sr-badge-title"><span class="step-pill">02</span><b>兩種意識確認（看眼皮睜開還是閉著）</b></div>
+            <div class="sr-speech">
+              👁️ <b>閉眼叫不醒 (AVPU)</b>：「先生先生！（叫）➔ 拍雙肩先生先生！（拍）➔ 痛刺激（非創捏斜方肌 / 創傷壓指甲床）先生先生！（痛）➔ 報告考官：意識為 U！」<br>
+              👁️ <b>睜眼看著你 (GCS滿分神句)</b>：「先生請你看著我 (E4)、說出你的名字 (V5)、舉起你的右手 (M6)！➔ 報告考官：意識清醒，GCS 滿分 15 分！請問你哪裡不舒服、多久了？」
+            </div>
+          </div>
+        </div>
+
+        <div class="sr-step-row">
+          <div class="sr-time">00:25 - 01:10<span class="sr-sec">45 秒</span></div>
+          <div class="sr-content">
+            <div class="sr-badge-title"><span class="step-pill">03</span><b>徒手快速初評 (X-A-B-C-D-E)</b></div>
+            <div class="sr-speech">
+              • <b>X (止血)</b>：目視四肢大出血，四肢噴血立即上止血帶旋緊寫時間（止血優先於頸椎）！<br>
+              • <b>A (呼吸道)</b>：非創壓額抬頦 / 創傷推下顎不仰頭；打鼾非創放OPA/NPA，創傷先看無熊貓眼耳漏才插 NPA！<br>
+              • <b>B (呼吸給氧)</b>：平視胸部評估快慢深淺，夾血氧機，重症/缺氧一律抓 <b>NRM 15 L/min（先按住氣囊充飽 2/3）</b>！<br>
+              • <b>C (循環骨盆)</b>：摸雙手橈動脈對稱、壓指甲 CRT≤2秒；<b>創傷骨盆向內向下壓一次（非創絕對不壓）</b>！<br>
+              • <b>D/E (瞳孔保暖)</b>：筆燈照雙眼瞳孔等大對光縮瞳；剪衣檢視全身，蓋毛毯保暖防低體溫！
+            </div>
+          </div>
+        </div>
+
+        <div class="sr-step-row">
+          <div class="sr-time">01:10 - 01:40<span class="sr-sec">30 秒</span></div>
+          <div class="sr-content">
+            <div class="sr-badge-title"><span class="step-pill">04</span><b>輔助檢查 ＋ 問病史（先機器、後開口）</b></div>
+            <div class="sr-speech">
+              • <b>主手量四大數值</b>：「主手拿出機器：測量血壓、看血氧、量體溫、血糖機測血糖！」（聽考官報數據）<br>
+              • <b>副手問病史順口溜</b>：「主訴之前吃過藥敏感！」（主訴、之前、吃幾點吃了什麼、過去病史、慢性藥、過敏、感覺補充；胸痛加問 OPQRST）。
+            </div>
+          </div>
+        </div>
+
+        <div class="sr-step-row finish-row">
+          <div class="sr-time">01:40 - 01:50<span class="sr-sec">10 秒</span></div>
+          <div class="sr-content">
+            <div class="sr-badge-title"><span class="step-pill" style="background:#10b981; color:#fff;">05</span><b>判定危急 ➔ 大聲報告考官（考場滿分結案點！）</b></div>
+            <div class="sr-speech highlight-finish">
+              🗣️ <b>主手站起來大聲報告</b>：「報告考官！病患出現（收縮壓低於90休克 / 骨盆骨折 / 嚴重胸痛 / GCS低於14分），判定為危急個案！請求高級救護技術員 (ALS) 支援，立即後送！」
+            </div>
+            <div class="finish-callout">👉 <b>考官點頭喊「好，停！」現場操作到此滿分過關！【完全免搬長背板！完全免搬上擔架床！】</b></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 模組二：三大魔王 10 秒秒殺卡 -->
+      <div class="quick-section-title" style="margin-top:24px;">
+        <span class="title-icon">🫁</span>
+        <h3>三大魔王 10 秒秒殺卡（面罩、意識、病史）</h3>
+        <span class="title-sub">別死背幾十頁課文，這三張卡片各用一句話直接封頂！</span>
+      </div>
+
+      <div class="boss-grid">
+        <!-- 魔王 1 -->
+        <div class="boss-card">
+          <div class="boss-header">
+            <span class="boss-tag">魔王 ①</span>
+            <h4>氧氣 4 檔變速箱 (4, 10, 15, 15)</h4>
+          </div>
+          <div class="boss-body">
+            <p class="boss-rule">口訣：<b>「閉嘴 4、張嘴 10、缺氧重症 15 (NRM充飽2/3)、沒呼吸 15 (BVM 5~6秒捏一下)！」</b></p>
+            <ul class="boss-list">
+              <li><b>鼻導管 4 L/min</b>：閉嘴呼吸、輕微喘 (SpO2 90~93%)。</li>
+              <li><b>簡單面罩 10 L/min</b>：張嘴呼吸、中度喘。</li>
+              <li><b>非再吸入型 (NRM) 15 L/min</b>：<b>考場王牌</b>！嚴重喘、胸痛、休克、重傷大失血一律抓它！★ 先按住瓣膜充飽氣囊 2/3 再戴！</li>
+              <li><b>甦醒球 (BVM) 15 L/min ＋ 儲氣袋</b>：沒呼吸 (OHCA) 或呼吸衰竭 (<10次/分)，每 5~6 秒捏一下。</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 魔王 2 -->
+        <div class="boss-card">
+          <div class="boss-header">
+            <span class="boss-tag">魔王 ②</span>
+            <h4>兩種意識確認（看眼皮張開還是閉著）</h4>
+          </div>
+          <div class="boss-body">
+            <p class="boss-rule">口訣：<b>「閉眼叫拍捏 (AVPU)；睜眼看我說名字舉右手 (GCS滿分)！」</b></p>
+            <ul class="boss-list">
+              <li><b>閉眼叫不醒</b>：叫先生 ➔ 拍肩先生 ➔ 痛刺激（非創捏斜方肌 / 創傷壓指甲床，嚴禁捏肩晃頸椎）➔ 報告意識 U。</li>
+              <li><b>睜眼看著你</b>：測 GCS 滿分三要素：<b>看著我(E4) ＋ 說名字(V5) ＋ 舉右手(M6)</b> ➔ 報告「GCS 滿分 15 分，排除中風偏癱」！</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 魔王 3 -->
+        <div class="boss-card">
+          <div class="boss-header">
+            <span class="boss-tag">魔王 ③</span>
+            <h4>過去病史順口溜 ＆ 吃的三大保命理由</h4>
+          </div>
+          <div class="boss-body">
+            <p class="boss-rule">口訣：<b>「主訴之前吃過藥敏感」</b>（＝英文 SAMPLE）</p>
+            <ul class="boss-list">
+              <li><b>主訴、之前、吃、過、藥、敏、感</b>（平日健康底子）。</li>
+              <li><b>為什麼非要問「吃」？三大救命理由</b>：
+                <ol style="margin-top:4px; padding-left:16px;">
+                  <li><b>全麻緊急開刀防嘔吐嗆咳</b>：胃有食物插管易引發吸入性肺炎窒息猝死！</li>
+                  <li><b>低血糖休克比對</b>：打胰島素卻忘了吃飯，血糖暴跌昏迷！</li>
+                  <li><b>食物過敏源追查</b>：查明海鮮、花生引發過敏性休克！</li>
+                </ol>
+              </li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+      <!-- 模組三：全考場 7 大情境「一秒外掛」對照表 -->
+      <div class="quick-section-title" style="margin-top:24px;">
+        <span class="title-icon">🧩</span>
+        <h3>全考場 7 大情境「一秒外掛」對照表</h3>
+        <span class="title-sub">不用背 7 篇劇本！骨架完全一樣，只要在第 3 或第 4 步插入這一個動作！</span>
+      </div>
+
+      <div class="table-wrap" style="margin-bottom:24px;">
+        <table style="width:100%; border-collapse:collapse; font-size:0.9rem;">
+          <thead>
+            <tr style="background:#0f172a; color:#38bdf8;">
+              <th style="padding:10px; border-bottom:2px solid #38bdf8; text-align:left;">考官第一句引子</th>
+              <th style="padding:10px; border-bottom:2px solid #38bdf8; text-align:left;">鎖定情境</th>
+              <th style="padding:10px; border-bottom:2px solid #38bdf8; text-align:left;">你的骨架裡「只要多做這一個小動作（外掛）」</th>
+              <th style="padding:10px; border-bottom:2px solid #38bdf8; text-align:left;">結案大聲報告的危急理由</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+              <td style="padding:10px; color:#fde047; font-weight:bold;">「抓著胸口冒冷汗大叫痛」</td>
+              <td style="padding:10px;"><span style="color:#38bdf8; font-weight:bold;">缺血性胸痛</span></td>
+              <td style="padding:10px;">採<b>半坐臥</b>、給氧、排四大禁忌指導自行含服自備 <b>NTG</b>、備 AED。</td>
+              <td style="padding:10px; color:#fca5a5;">「嚴重缺血性胸痛！」</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+              <td style="padding:10px; color:#fde047; font-weight:bold;">「路倒昏迷，身旁有降血糖藥」</td>
+              <td style="padding:10px;"><span style="color:#38bdf8; font-weight:bold;">低血糖昏迷</span></td>
+              <td style="padding:10px;">量血糖<60 ➔ <b>抹糖四步</b>：戴手套 ➔ 沾鹽水 ➔ 沾糖粉 ➔ 抹牙齦舌下。</td>
+              <td style="padding:10px; color:#fca5a5;">「血糖低於 60 意識昏迷！」</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+              <td style="padding:10px; color:#fde047; font-weight:bold;">「呼吸急促發出呼嚕哮鳴聲」</td>
+              <td style="padding:10px;"><span style="color:#38bdf8; font-weight:bold;">急性氣喘發作</span></td>
+              <td style="padding:10px;">採<b>坐姿前傾</b>、NRM 15L 給氧、指導吸自備 <b>MDI 擴張劑</b>。</td>
+              <td style="padding:10px; color:#fca5a5;">「呼吸窘迫血氧低於 94%！」</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+              <td style="padding:10px; color:#fde047; font-weight:bold;">「單側嘴角歪斜、講話大舌頭」</td>
+              <td style="padding:10px;"><span style="color:#38bdf8; font-weight:bold;">急性腦中風</span></td>
+              <td style="padding:10px;">測 <b>辛辛那提 G-FAST</b>（凝視、微笑嘴角歪、舉手垂落、說話含糊），記最後正常時間。</td>
+              <td style="padding:10px; color:#fca5a5;">「辛辛那提異常疑似急性中風！」</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+              <td style="padding:10px; color:#fde047; font-weight:bold;">「吃海鮮全身大片紅疹吸不到氣」</td>
+              <td style="padding:10px;"><span style="color:#38bdf8; font-weight:bold;">過敏性休克</span></td>
+              <td style="padding:10px;">採半坐臥、<b>NRM 15L 給氧</b>、追查吃的海鮮、防喉頭水腫窒息。</td>
+              <td style="padding:10px; color:#fca5a5;">「過敏性休克呼吸衰竭！」</td>
+            </tr>
+            <tr style="border-bottom:1px solid rgba(255,255,255,0.08);">
+              <td style="padding:10px; color:#fde047; font-weight:bold;">「機車擦撞倒地、大腿嚴重變形」</td>
+              <td style="padding:10px;"><span style="color:#fb7185; font-weight:bold;">車禍骨折創傷</span></td>
+              <td style="padding:10px;">腳側站位平視防動頭、痛刺激壓指甲、推下顎、<b>骨盆向內向下壓一次</b>、夾板固定長骨。</td>
+              <td style="padding:10px; color:#fca5a5;">「大腿長骨骨折/骨盆骨折/機轉危急！」</td>
+            </tr>
+            <tr>
+              <td style="padding:10px; color:#fde047; font-weight:bold;">「工廠作業員手捲進機台大量噴血」</td>
+              <td style="padding:10px;"><span style="color:#fb7185; font-weight:bold;">斷肢大失血</span></td>
+              <td style="padding:10px;"><b>止血優先於頸椎</b>！近心端 5~7cm <b>打止血帶旋緊寫時間</b>；斷肢三層隔袋冰水冷卻。</td>
+              <td style="padding:10px; color:#fca5a5;">「手腕以上完全截肢休克危急！」</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- 模組四：現役學長坐在考官席上的真實心法 -->
+      <div class="firefighter-tip-card">
+        <div class="ff-header">
+          <span class="ff-icon">👨‍🚒</span>
+          <h4>現役專責隊學長評分真實心法（考場高分潛規則）</h4>
+        </div>
+        <div class="ff-grid">
+          <div class="ff-box bad">
+            <span class="ff-tag">❌ 學長當場扣分點</span>
+            <ul>
+              <li><b>動作拖泥帶水</b>：病患大失血還在慢吞吞背課文，不知輕重緩急。</li>
+              <li><b>雙手發抖不敢摸</b>：只動嘴不動手，不敢推下顎、按壓像摸豆腐。</li>
+              <li><b>踩中致命死穴</b>：創傷捏肩膀動頸椎、非創傷壓骨盆、電擊沒清場。</li>
+              <li><b>發呆沉默超過 10 秒</b>：卡住不講話等考官提示，直接掉分。</li>
+            </ul>
+          </div>
+          <div class="ff-box good">
+            <span class="ff-tag">✅ 學長直接給滿分點</span>
+            <ul>
+              <li><b>氣勢強大、動詞俐落</b>：「現場安全！防護做好！人數一名！」學長第一秒就給 80 分。</li>
+              <li><b>動作刀刀見血</b>：止血帶打得快、推下顎頭不動、骨盆壓一次就收手。</li>
+              <li><b>給氧精準</b>：能說出「NRM 15L 充飽氣囊 2/3」。</li>
+              <li><b>果斷打包後送</b>：大聲報告「判定危急，請求支援立即後送！」學長最愛不在現場瞎攪和的隊友！</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="viewQuick" class="view-panel">
       
       <!-- 考場全景架構卡 -->
       <div class="quick-hero-card">
@@ -1709,7 +2062,10 @@
       document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
       document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
 
-      if (tab === 'quick') {
+      if (tab === 'speedrun') {
+        document.getElementById('btnSpeedrun').classList.add('active');
+        document.getElementById('viewSpeedrun').classList.add('active');
+      } else if (tab === 'quick') {
         document.getElementById('btnQuick').classList.add('active');
         document.getElementById('viewQuick').classList.add('active');
       } else if (tab === 'main') {
