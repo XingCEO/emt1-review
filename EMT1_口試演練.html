@@ -3,130 +3,247 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>EMT-1 口試演練</title>
+<title>EMT-1 考前口試情境演練（旺英標準）</title>
 <style>
   :root {
-    --bg: #0b1020;
+    --bg: #0b1120;
     --card: rgba(18, 28, 48, .92);
-    --line: rgba(148, 176, 214, .22);
-    --text: #f6f8fc;
-    --muted: #c9d4e6;
-    --faint: #93a3bb;
-    --med: #3ec6d6;
-    --trauma: #ff5d73;
-    --ohca: #f5c451;
-    --ok: #8ee0b8;
-    --bad: #ffb4b4;
+    --card-hover: rgba(26, 40, 68, .96);
+    --line: rgba(148, 176, 214, .2);
+    --line-light: rgba(148, 176, 214, .35);
+    --text: #f8fafc;
+    --muted: #cbd5e1;
+    --faint: #94a3b8;
+    --med: #38bdf8;
+    --trauma: #f43f5e;
+    --ohca: #fbbf24;
+    --ok: #34d399;
+    --bad: #f87171;
   }
   * { box-sizing: border-box; }
   html, body { margin: 0; min-height: 100%; }
   body {
     background:
-      radial-gradient(900px 420px at 8% -10%, rgba(62,198,214,.16), transparent 55%),
-      radial-gradient(760px 380px at 100% 0%, rgba(245,196,81,.12), transparent 48%),
-      radial-gradient(520px 320px at 70% 110%, rgba(255,93,115,.08), transparent 50%),
+      radial-gradient(900px 420px at 8% -10%, rgba(56,189,248,.16), transparent 55%),
+      radial-gradient(760px 380px at 100% 0%, rgba(251,191,36,.14), transparent 48%),
+      radial-gradient(520px 320px at 70% 110%, rgba(244,63,94,.1), transparent 50%),
       var(--bg);
     color: var(--text);
-    font-family: "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", "Segoe UI", sans-serif;
+    font-family: -apple-system, BlinkMacSystemFont, "Microsoft JhengHei", "PingFang TC", "Noto Sans TC", sans-serif;
     line-height: 1.65;
   }
-  body::before { content: ""; display: block; height: 3px; background: linear-gradient(90deg, var(--med), var(--ohca) 58%, var(--trauma)); }
-  a { color: #b7e4ff; }
+  body::before {
+    content: ""; display: block; height: 3px;
+    background: linear-gradient(90deg, var(--med), var(--ohca) 55%, var(--trauma));
+  }
+  a { color: #7dd3fc; }
   button, header a {
     font: inherit; cursor: pointer; color: var(--text); text-decoration: none;
-    background: rgba(255,255,255,.04); border: 1px solid var(--line); border-radius: 999px;
-    padding: 8px 14px; transition: background .16s ease, border-color .16s ease, transform .16s ease;
+    background: rgba(255,255,255,.05); border: 1px solid var(--line); border-radius: 999px;
+    padding: 8px 16px; transition: all .16s ease;
   }
-  button:hover, header a:hover { background: rgba(255,255,255,.08); border-color: rgba(183,228,255,.45); }
-  button.primary { background: var(--med); border-color: var(--med); color: #062027; font-weight: 800; }
-  button.primary:hover { background: #67d6e2; }
-  button.next { background: var(--ohca); border-color: var(--ohca); color: #2b2208; font-weight: 800; }
-  button.next:hover { background: #ffd36e; }
-  button:disabled { opacity: .45; cursor: not-allowed; }
-  :focus-visible { outline: 2px solid #9ad7ff; outline-offset: 3px; }
-  header { max-width: 980px; margin: 0 auto; padding: 22px 22px 0; display: flex; justify-content: space-between; gap: 16px; align-items: flex-end; flex-wrap: wrap; }
-  header > div:first-child { min-width: 0; flex: 1 1 280px; }
-  h1 { font-size: 1.7rem; line-height: 1.2; margin: 0; letter-spacing: .02em; }
-  header p { margin: 6px 0 0; color: var(--faint); font-size: .92rem; }
-  p, li, .exam, .starts span { word-break: keep-all; }
-  .row > button, .row > a { flex: 0 0 auto; }
-  main { max-width: 980px; margin: 0 auto; padding: 18px 22px 64px; }
-  .home-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 16px; align-items: start; }
-  .home-grid > *, .starts > *, .card, header > div { min-width: 0; }
+  button:hover, header a:hover {
+    background: rgba(255,255,255,.1); border-color: rgba(186,230,253,.5);
+    transform: translateY(-1px);
+  }
+  button.primary { background: var(--med); border-color: var(--med); color: #082f49; font-weight: 800; }
+  button.primary:hover { background: #7dd3fc; }
+  button.next { background: var(--ohca); border-color: var(--ohca); color: #451a03; font-weight: 800; }
+  button.next:hover { background: #fde047; }
+  button:disabled { opacity: .45; cursor: not-allowed; transform: none; }
+  :focus-visible { outline: 2px solid #38bdf8; outline-offset: 3px; }
+
+  header {
+    max-width: 1080px; margin: 0 auto; padding: 22px 20px 0;
+    display: flex; justify-content: space-between; gap: 16px; align-items: flex-end; flex-wrap: wrap;
+  }
+  header > div:first-child { min-width: 0; flex: 1 1 320px; }
+  h1 { font-size: 1.75rem; line-height: 1.2; margin: 0; font-weight: 900; letter-spacing: .02em; }
+  .subtitle { margin: 6px 0 0; color: var(--faint); font-size: .92rem; }
+  .tag-rule {
+    display: inline-block; padding: 3px 10px; border-radius: 999px;
+    font-size: .8rem; font-weight: 700; background: rgba(251,191,36,.15);
+    color: var(--ohca); border: 1px solid rgba(251,191,36,.3); margin-top: 6px;
+  }
+
+  main { max-width: 1080px; margin: 0 auto; padding: 18px 20px 64px; }
   .card {
-    background: var(--card); border: 1px solid var(--line); border-radius: 22px;
-    padding: 22px; max-width: 100%;
-    box-shadow: 0 24px 60px rgba(0,0,0,.28);
+    background: var(--card); border: 1px solid var(--line); border-radius: 20px;
+    padding: 22px; max-width: 100%; box-shadow: 0 20px 50px rgba(0,0,0,.35);
   }
-  .starts { display: grid; gap: 10px; margin-top: 14px; }
-  .starts button {
-    text-align: left; border-radius: 16px; padding: 14px 16px;
-    border-left: 3px solid var(--line);
+  .card h2 { margin-top: 0; font-size: 1.25rem; }
+
+  /* Mode selection grid */
+  .mode-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 12px; margin-top: 14px;
   }
-  .starts button[data-go="tonight"], .starts button[data-go="ohca"] { border-left-color: var(--ohca); }
-  .starts button[data-go="scenes"] { border-left-color: var(--trauma); }
-  .starts button[data-go="oxygen"] { border-left-color: var(--med); }
-  .starts button[data-go="weak"] { border-left-color: var(--ok); }
-  .starts b { display: block; font-size: 1.06rem; }
-  .starts span { color: var(--muted); font-size: .9rem; }
-  .miss-list { margin: 10px 0 0; padding-left: 18px; color: var(--muted); }
-  .run-head { display: flex; justify-content: space-between; gap: 12px; align-items: center; }
-  .run-head strong { font-size: 1.02rem; }
+  .mode-btn {
+    text-align: left; border-radius: 16px; padding: 16px 18px;
+    border: 1px solid var(--line); background: rgba(255,255,255,.03);
+    border-left: 4px solid var(--line); transition: all .16s ease;
+  }
+  .mode-btn:hover {
+    background: var(--card-hover); border-color: var(--line-light);
+    transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,.25);
+  }
+  .mode-btn.random { border-left-color: #ec4899; }
+  .mode-btn.ohca { border-left-color: var(--ohca); }
+  .mode-btn.trauma { border-left-color: var(--trauma); }
+  .mode-btn.med { border-left-color: var(--med); }
+  .mode-btn.skills { border-left-color: var(--ok); }
+  .mode-btn.weak { border-left-color: #a855f7; }
+  .mode-btn b { display: flex; align-items: center; justify-content: space-between; font-size: 1.1rem; color: #fff; }
+  .mode-btn span { display: block; color: var(--muted); font-size: .88rem; margin-top: 4px; }
+  .badge-mini {
+    font-size: .72rem; padding: 2px 7px; border-radius: 999px;
+    font-weight: 700; letter-spacing: .05em;
+  }
+  .bg-pink { background: rgba(236,72,153,.2); color: #f472b6; border: 1px solid rgba(236,72,153,.3); }
+  .bg-ohca { background: rgba(251,191,36,.2); color: var(--ohca); border: 1px solid rgba(251,191,36,.3); }
+  .bg-trauma { background: rgba(244,63,94,.2); color: #fb7185; border: 1px solid rgba(244,63,94,.3); }
+  .bg-med { background: rgba(56,189,248,.2); color: #7dd3fc; border: 1px solid rgba(56,189,248,.3); }
+  .bg-skill { background: rgba(52,211,153,.2); color: #6ee7b7; border: 1px solid rgba(52,211,153,.3); }
+
+  /* 11 Scenarios Grid */
+  .section-title {
+    margin: 28px 0 12px; display: flex; align-items: center; justify-content: space-between;
+    font-size: 1.15rem; font-weight: 800; color: var(--text); letter-spacing: .03em;
+  }
+  .section-title span { font-size: .86rem; font-weight: normal; color: var(--faint); }
+  .scenes-grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+    gap: 10px;
+  }
+  .scene-card {
+    border-radius: 14px; padding: 12px 14px; text-align: left;
+    background: rgba(15, 23, 42, .6); border: 1px solid var(--line);
+    transition: all .14s ease; display: flex; flex-direction: column; justify-content: space-between;
+  }
+  .scene-card:hover {
+    background: rgba(30, 41, 59, .85); border-color: rgba(148,176,214,.4);
+    transform: translateY(-2px);
+  }
+  .scene-card.trauma-border { border-left: 3px solid var(--trauma); }
+  .scene-card.med-border { border-left: 3px solid var(--med); }
+  .scene-top { display: flex; justify-content: space-between; align-items: center; }
+  .scene-num { font-size: .75rem; color: var(--faint); font-weight: 700; font-variant-numeric: tabular-nums; }
+  .scene-name { font-size: 1rem; font-weight: 800; margin: 4px 0 2px; color: #fff; }
+  .scene-hint { font-size: .8rem; color: var(--muted); line-height: 1.4; }
+
+  /* Ask View */
+  .run-head { display: flex; justify-content: space-between; gap: 12px; align-items: center; flex-wrap: wrap; }
+  .run-head strong { font-size: 1.1rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
   .step {
     font-variant-numeric: tabular-nums; color: var(--muted); font-size: .85rem;
-    border: 1px solid var(--line); border-radius: 999px; padding: 3px 10px; background: rgba(0,0,0,.18);
+    border: 1px solid var(--line); border-radius: 999px; padding: 3px 12px; background: rgba(0,0,0,.25);
   }
-  .bar { height: 4px; background: rgba(255,255,255,.06); border-radius: 99px; overflow: hidden; margin: 12px 0 0; }
-  .bar > i { display: block; height: 100%; background: linear-gradient(90deg, var(--med), var(--ohca)); width: 0; }
-  .prompt { margin-top: 16px; padding: 18px 18px 16px; border-radius: 16px; background: rgba(6, 12, 24, .45); border: 1px solid rgba(245,196,81,.28); }
-  .exam { font-size: 1.62rem; font-weight: 800; line-height: 1.45; margin: 4px 0 0; }
-  .who { color: var(--ohca); font-size: .75rem; font-weight: 800; letter-spacing: .14em; margin: 0; }
-  label { display: block; margin: 16px 0 8px; color: var(--faint); font-size: .92rem; }
+  .bar { height: 5px; background: rgba(255,255,255,.08); border-radius: 99px; overflow: hidden; margin: 12px 0 0; }
+  .bar > i { display: block; height: 100%; background: linear-gradient(90deg, var(--med), var(--ohca)); width: 0; transition: width .25s ease; }
+  .prompt {
+    margin-top: 16px; padding: 18px 20px; border-radius: 16px;
+    background: rgba(6, 12, 24, .65); border: 1px solid rgba(251,191,36,.25);
+  }
+  .who { color: var(--ohca); font-size: .8rem; font-weight: 800; letter-spacing: .12em; margin: 0; text-transform: uppercase; }
+  .exam { font-size: 1.55rem; font-weight: 800; line-height: 1.45; margin: 6px 0 0; color: #fff; }
+  label { display: block; margin: 16px 0 8px; color: var(--faint); font-size: .92rem; font-weight: 600; }
   textarea {
-    width: 100%; min-height: 76px; resize: vertical; border-radius: 16px;
+    width: 100%; min-height: 80px; resize: vertical; border-radius: 14px;
     border: 1px solid var(--line); background: rgba(6,12,24,.55); color: var(--text);
-    font: inherit; font-size: 1.2rem; line-height: 1.5; padding: 14px 16px;
+    font: inherit; font-size: 1.15rem; line-height: 1.5; padding: 14px 16px;
   }
-  textarea:focus { outline: none; border-color: var(--med); box-shadow: 0 0 0 4px rgba(62,198,214,.16); }
-  textarea::placeholder { color: #7f8da3; }
-  .row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 12px; }
-  .feedback { margin-top: 14px; border-radius: 16px; padding: 14px 16px; }
-  .feedback.good { background: rgba(142,224,184,.12); color: var(--ok); border: 1px solid rgba(142,224,184,.28); }
-  .feedback.bad { background: rgba(255,93,115,.1); color: var(--bad); border: 1px solid rgba(255,93,115,.28); }
-  .model { margin-top: 8px; padding: 8px 12px; border-left: 3px solid var(--ohca); color: var(--text); }
-  .log { margin-top: 14px; display: flex; flex-wrap: wrap; gap: 8px; }
-  .log div { font-size: .88rem; color: var(--muted); background: rgba(255,255,255,.04); border: 1px solid var(--line); border-radius: 999px; padding: 4px 10px; }
-  .log b { color: var(--text); font-weight: 800; }
+  textarea:focus { outline: none; border-color: var(--med); box-shadow: 0 0 0 4px rgba(56,189,248,.18); }
+  textarea::placeholder { color: #64748b; }
+  .row { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
+  .feedback { margin-top: 16px; border-radius: 14px; padding: 16px 18px; }
+  .feedback.good { background: rgba(52,211,153,.12); color: var(--ok); border: 1px solid rgba(52,211,153,.3); }
+  .feedback.bad { background: rgba(244,63,94,.1); color: #fca5a5; border: 1px solid rgba(244,63,94,.3); }
+  .model { margin-top: 10px; padding: 10px 14px; border-left: 3px solid var(--ohca); background: rgba(0,0,0,.25); border-radius: 0 8px 8px 0; color: var(--text); }
+  .log { margin-top: 16px; display: flex; flex-wrap: wrap; gap: 8px; }
+  .log div { font-size: .88rem; color: var(--muted); background: rgba(255,255,255,.05); border: 1px solid var(--line); border-radius: 999px; padding: 4px 12px; }
+  .log b { font-weight: 800; }
   .mark-ok { color: var(--ok); }
   .mark-mid { color: var(--ohca); }
-  .mark-bad { color: var(--trauma); }
-  .met { font-variant-numeric: tabular-nums; color: var(--ohca); align-self: center; }
+  .mark-bad { color: var(--bad); }
+  .met { font-variant-numeric: tabular-nums; color: var(--ohca); font-weight: 700; align-self: center; margin-left: 6px; }
+
+  /* 選擇題模式 (四選一極速狂刷) */
+  .mc-grid {
+    display: grid; grid-template-columns: 1fr; gap: 10px; margin: 16px 0;
+  }
+  .mc-option {
+    display: flex; align-items: flex-start; gap: 12px; text-align: left;
+    padding: 14px 16px; border-radius: 14px; border: 1.5px solid var(--line);
+    background: rgba(255,255,255,.03); color: var(--text); font-size: 1.05rem;
+    line-height: 1.45; cursor: pointer; transition: all .14s ease; width: 100%;
+  }
+  .mc-option:hover:not(:disabled) {
+    background: rgba(56, 189, 248, 0.08); border-color: #38bdf8;
+    transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,.25);
+  }
+  .mc-option .mc-badge {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 28px; height: 28px; border-radius: 8px; font-weight: 900;
+    font-size: .92rem; background: rgba(255,255,255,.08); color: var(--muted);
+    flex-shrink: 0;
+  }
+  .mc-option.correct {
+    background: rgba(52, 211, 153, 0.18) !important;
+    border-color: #34d399 !important; color: #a7f3d0 !important;
+  }
+  .mc-option.correct .mc-badge {
+    background: #34d399 !important; color: #064e3b !important;
+  }
+  .mc-option.wrong {
+    background: rgba(244, 63, 94, 0.18) !important;
+    border-color: #f43f5e !important; color: #fecdd3 !important;
+  }
+  .mc-option.wrong .mc-badge {
+    background: #f43f5e !important; color: #ffe4e6 !important;
+  }
+  .toggle-bar {
+    display: inline-flex; background: rgba(0,0,0,.35); padding: 4px; border-radius: 12px;
+    border: 1px solid var(--line); gap: 4px;
+  }
+  .toggle-btn {
+    padding: 6px 14px; border-radius: 8px; font-size: .88rem; font-weight: 700;
+    border: none; background: transparent; color: var(--muted); cursor: pointer; transition: all .15s;
+  }
+  .toggle-btn.active {
+    background: #38bdf8; color: #082f49; box-shadow: 0 2px 8px rgba(56,189,248,.3);
+  }
+
   @media (max-width: 800px) {
-    html, body { overflow-x: hidden; }
-    header { display: block; padding-top: 16px; }
-    header .row { margin-top: 10px; }
-    .home-grid { grid-template-columns: 1fr; }
-    .exam { font-size: 1.32rem; }
-    main { padding-left: 14px; padding-right: 14px; }
-    .card { padding: 16px; border-radius: 18px; }
+    header { padding-top: 16px; }
+    .exam { font-size: 1.3rem; }
+    main { padding: 14px 14px 60px; }
+    .card { padding: 16px; border-radius: 16px; }
+    .scenes-grid { grid-template-columns: 1fr; }
+    .mc-option { font-size: .96rem; padding: 12px 14px; }
   }
 </style>
 </head>
 <body>
 <header>
   <div>
-    <h1>口試演練</h1>
-    <p>沒有選項。考官一次只問一件事，意思到了就過。</p>
+    <h1>EMT-1 考前口試情境演練</h1>
+    <div class="subtitle">只練老師親自圈選的 11 個情境＋OHCA 大魔王。考官一句、你答一句。</div>
+    <div class="tag-rule">🏆 旺英技術考核標準：OHCA 佔 25 分（≥19 及格）｜ 情境測驗佔 25 分（≥19 及格）</div>
+    <div class="tag-rule" style="background:rgba(56,189,248,.15); color:var(--med); border-color:rgba(56,189,248,.3); margin-left:6px;">💨 老師指定給氧口令：鼻導管 固定4L ｜ Mask 固定10L ｜ NRM 固定15L ｜ BVM 固定15L</div>
   </div>
   <div class="row" style="margin:0">
-    <a href="EMT1_完整通關手冊.html">回手冊</a>
-    <button type="button" id="metro">110 節拍器</button>
-    <span class="met" id="metro-label" hidden>響著</span>
+    <a href="EMT1_情境實戰完整劇本.html" style="background:rgba(56,189,248,.12); color:#7dd3fc; border:1px solid rgba(56,189,248,.35);">🎬 實戰情境劇本</a>
+    <a href="EMT1_三大流程差異比較.html">⚖️ 三大流程差異</a>
+    <a href="EMT1_完整通關手冊.html">📖 完整通關手冊</a>
+    <a href="EMT1_口試演練.html" style="background:rgba(52,211,153,.2); color:var(--ok); border:1px solid rgba(52,211,153,.4);">🎯 口試演練刷題</a>
+    <button type="button" id="metro">⏱️ 110 節拍器</button>
+    <span class="met" id="metro-label" hidden>● 滴答中</span>
   </div>
 </header>
 <main id="app"></main>
+
 <script>
-const STORE = "emt-oral-v1";
+const STORE = "emt-oral-v2";
 
 const N = (label, any, extra) => ({ label, any, ...(extra || {}) });
 
@@ -136,161 +253,296 @@ function q(id, examiner, label, words, hint, model, ban) {
   return turn;
 }
 
+/* ========================================================
+   1. OHCA 流程測驗（獨立必考大站，滿分 25 分，須達 19 分）
+======================================================== */
 const OHCA = {
   id: "ohca",
-  title: "OHCA 整條",
-  blurb: "考官一句一句問。你答那一件就好。",
+  title: "OHCA 流程測驗（必考 25 分）",
+  tag: "ohca",
+  blurb: "大廳 50 歲男性倒地。從進場、叫拍捏、呼吸脈搏、按壓吹氣到兩次 AED 分析完整過關。",
   turns: [
-    q("ohca-safe", "大廳有人昏倒。你進場，第一句。", "現場安不安全", ["不安全", "安全", "沒危險", "沒有危險", "有危險"], "先看現場。", "現場安全。"),
-    q("ohca-ppe", "好，現場安全。你自己呢？", "個人防護", ["手套", "口罩", "防護"], "手上，還有口鼻。", "我戴手套和口罩。"),
-    q("ohca-count", "你看到幾位？", "人數", ["一位", "一人", "一個", "1位"], "這題只有他一個。", "一位。"),
-    q("ohca-119", "119 誰打？", "誰打 119", ["119", "副手", "旁邊", "別人", "請人", "叫人", "路人"], "請旁邊的人打。", "請副手打。"),
-    q("ohca-call", "人在你面前。意識先怎麼確認？", "先叫", ["先生", "小姐", "叫", "喊", "喂"], "先用喊的。", "先生、先生。"),
-    q("ohca-tap", "叫了，沒回應。手接著做什麼？", "拍肩", ["拍", "搖"], "拍肩膀。", "拍肩。"),
-    q("ohca-pain", "拍了還是沒反應。再給一個比較痛的。", "疼痛刺激", ["斜方", "捏", "掐", "痛"], "捏斜方肌。", "捏斜方肌。"),
-    q("ohca-air", "捏了也沒反應。沒有外傷。呼吸道怎麼打開？", "壓額抬頦", ["壓額", "抬頦", "抬下巴", "後仰", "仰頭"], "沒有外傷，頭可以後仰。", "壓額抬頦。", ["沒有外傷不用下顎上舉", ["下顎", "推擠"]]),
-    q("ohca-bvm", "打開了，沒有正常呼吸。你請副手準備什麼？", "甦醒球", ["甦醒球", "bvm", "袋瓣", "壓球", "球"], "球先拿出來。", "準備甦醒球。"),
-    q("ohca-pulse", "呼吸看完了。循環摸哪裡？", "頸動脈", ["頸動", "脖子"], "成人摸頸動脈。", "摸頸動脈。"),
-    q("ohca-aed", "沒有脈搏。副手去拿什麼？", "AED", ["aed", "去顫", "電擊器"], "沒有脈搏就要機器。", "拿 AED。"),
-    q("ohca-cpr", "機器還在路上。你的手現在做什麼？", "先按壓", ["按壓", "心肺", "cpr", "壓胸"], "不要等機器。", "我先按壓。"),
-    q("ohca-power", "你改當副手。AED 到了，第一個動作？", "先開機", ["開機", "電源", "開機鍵", "啟動"], "先讓機器醒。", "先開機。"),
-    q("ohca-pad", "開機了。接著？", "貼片", ["貼", "電極"], "電極片貼上。", "貼片。"),
-    q("ohca-clear", "機器要分析。這時候人要怎樣？", "人離開或不要碰", ["離開", "退開", "退後", "後退", "走開", "讓開", "站開", "拿開", "清場", "不要碰", "別碰", "勿碰", "不可碰", "不能碰", "不要觸", "別觸", "勿觸", "不可觸", "不能觸", "不要接", "別接", "勿接", "不要摸", "別摸", "勿摸", "不要去碰", "不要去觸", "別去碰", "別去觸"], "人離開，或不要觸碰，講到就過。", "大家都離開。"),
-    q("ohca-rate", "你回到主手。按壓速度報多少？", "100 到 120", ["110", "100", "120", "一百一十", "一百二十", "一百"], "鎖在 110 就好。", "每分鐘 110。", ["90 以下或 130 以上不算這個範圍", ["130", "140", "150", "90", "80", "70", "一百三", "一百四", "一百五", "一百六", "一百七", "一百八", "一百九", "九十"]]),
-    q("ohca-recoil", "每一下壓完，胸口要怎樣？", "讓胸口回來", ["回彈", "彈回", "回來", "起來", "放回來", "放鬆", "鬆開", "鬆手"], "手的重量要離開。", "讓它完全回來。"),
-    q("ohca-ratio", "吹氣怎麼配？", "30:2", ["30", "三十", "兩口", "2口", "兩氣", "兩次", "2次"], "30:2，或 30 下吹兩口，講到就過。", "30:2。"),
-    q("ohca-shock-clear", "AED 說建議電擊。按下去之前先講什麼？", "人離開或不要碰", ["離開", "退開", "退後", "後退", "走開", "讓開", "站開", "拿開", "清場", "不要碰", "別碰", "勿碰", "不可碰", "不能碰", "不要觸", "別觸", "勿觸", "不可觸", "不能觸", "不要接", "別接", "勿接", "不要摸", "別摸", "勿摸", "不要去碰", "不要去觸", "別去碰", "別去觸"], "人離開，或不要觸碰，講到就過。", "人都離開。"),
-    q("ohca-shock", "人都離開了。你按哪一個？", "電擊", ["電擊", "放電"], "按電擊。", "電擊。"),
-    q("ohca-resume", "電完了。你的手？", "馬上再壓", ["再壓", "繼續", "按壓", "壓胸"], "手馬上回去，先不要摸脈。", "立刻再壓。"),
-    q("ohca-first-no", "換一次。這是第一次分析，不建議電擊。要不要先摸脈？", "先不要摸", ["不摸", "不要摸", "別摸", "不用摸", "不檢查", "不用檢查", "不要檢查", "別檢查"], "第一次不建議電擊，先不要摸。", "不摸。", ["這時候還不能去摸脈", ["摸頸", "摸脈", "檢查脈"]]),
-    q("ohca-first-cpr", "好，不摸。那手做什麼？", "繼續按壓", ["繼續", "再壓", "按壓", "壓胸"], "馬上回到按壓。", "繼續按壓。"),
+    q("ohca-safe", "50 歲男性昏倒在大廳。你進場，第一句喊什麼？", "現場安全", ["不安全", "安全", "沒危險", "沒有危險", "有危險"], "先看環境安全。", "現場環境安全。"),
+    q("ohca-ppe", "現場安全。你自己做好什麼防護？", "個人防護", ["手套", "口罩", "防護", "裝備"], "防護裝備：手套、口罩。", "戴手套、戴口罩做好自我防護。"),
+    q("ohca-num", "現場有幾位傷患，接著做什麼？", "人數與求援", ["人數", "一位", "求援", "119", "支援", "副手", "開急救包"], "詢問傷患人數，請副手呼叫 119 求援並開急救包。", "請問有幾位傷患？請副手打 119 求援、開急救包。"),
+    q("ohca-voice", "走到患者身旁，意識評估第一步？", "叫先生", ["先生", "叫", "呼喚", "哈囉", "小姐"], "先叫先生先生。", "先生先生你還好嗎？"),
+    q("ohca-tap", "叫了沒反應，意識評估第二步？", "拍肩膀", ["拍肩", "拍雙肩", "雙肩", "肩膀"], "輕拍兩側肩膀。", "輕拍患者雙肩：先生先生！"),
+    q("ohca-pain", "拍了還是沒反應，意識評估第三步？", "疼痛刺激", ["斜方", "捏", "掐", "痛"], "捏斜方肌給予疼痛刺激。", "捏斜方肌給予疼痛刺激。"),
+    q("ohca-air", "完全沒反應，患者無外傷機轉。呼吸道如何打開？", "壓額抬頦", ["壓額", "抬頦", "抬下巴", "後仰", "仰頭"], "無外傷頸椎疑慮，採壓額抬頦法。", "採壓額抬頦法暢通呼吸道。", ["創傷才用下顎推擠", ["下顎", "推擠"]]),
+    q("ohca-check", "打開呼吸道後，檢查呼吸與脈搏怎麼做？", "同時看呼吸摸頸動脈", ["看胸", "呼吸", "摸頸動", "頸動脈", "10秒", "十秒"], "看胸部有無起伏，同時摸頸動脈，不超過 10 秒。", "眼睛看胸部起伏，同時手摸頸動脈，評估不超過 10 秒。"),
+    q("ohca-state", "考官說：無正常呼吸，摸不到頸動脈！你下一句下什麼指令？", "副手備甦醒球與AED開始CPR", ["cpr", "按壓", "壓胸", "aed", "bvm", "甦醒球"], "報告考官：無正常呼吸、無脈搏！請副手準備甦醒球、拿 AED，我開始按壓 CPR！", "無呼吸無脈搏！請副手準備甦醒球與 AED，我立即開始按壓 CPR！"),
+    q("ohca-rate", "考官問：你的胸外按壓頻率與深度標準是多少？", "100到120深度5到6", ["100", "120", "5", "6", "公分", "cm"], "按壓頻率每分鐘 100-120 下，深度 5-6 公分，且胸壁完全回彈。", "頻率每分鐘 100-120 下，深度 5-6 公分，胸壁完全回彈。"),
+    q("ohca-ratio", "按壓與吹氣（甦醒球）的比例是多少？", "30比2", ["30", "三十", "兩口", "2口", "兩氣", "兩次", "2次", "30比2"], "高品質按壓 30 下，配 2 口氣（以 E-C 夾緊吹氣，每口約 1 秒看胸部起伏）。", "30 比 2，吹氣時看胸部起伏。"),
+    q("ohca-aed-in", "副手攜帶 AED 抵達，副手的第一個動作是什麼？", "開啟電源", ["開機", "電源", "按開關", "打開電源", "綠色"], "AED 到了：開、貼、電、壓！第一步永遠是先開機。", "打開 AED 電源開關。"),
+    q("ohca-pads", "AED 開機後，副手接著做什麼？", "貼上電極貼片", ["貼片", "電極片", "黏貼片"], "貼片貼在右胸鎖骨下、左乳頭外下側，並將導線插頭插好。", "依圖示貼上電極貼片並連接插頭。"),
+    q("ohca-analyze", "AED 語音提示：「正在分析心律，請勿接觸病患。」這時主副手喊什麼？", "清場不要碰病患", ["清場", "離開", "不要碰", "大家離開", "我離開你離開大家離開"], "主副手雙手離開舉起，大聲喊：「我離開、你離開、大家離開！」", "雙手舉起喊：我離開、你離開、大家離開！不要碰觸病患！"),
+    q("ohca-shock", "AED 語音提示：「建議電擊，正在充電。」充電完畢後按電擊前要喊什麼？", "確認所有人離開按下電擊", ["離開", "電擊", "放電", "閃開", "按電擊"], "再次確認所有人離開，大聲喊：「大家離開！」確認沒人碰觸後按下電擊鈕。", "確認所有人離開喊大家離開，按下電擊鈕！"),
+    q("ohca-post-shock", "電擊放電完成！你的雙手下一個動作是什麼？", "立刻繼續CPR按壓", ["立刻按壓", "馬上按壓", "繼續按壓", "cpr", "壓胸", "繼續壓"], "電擊完成後完全不用摸脈搏，雙手立刻放上胸骨繼續按壓 CPR！", "電擊完成後不摸脈搏，立刻繼續按壓 CPR！"),
+    q("ohca-no-shock-1", "情境切換：第一次分析心律，AED 語音提示「不建議電擊」，你要摸脈搏嗎？", "不摸脈搏立刻繼續CPR", ["不摸", "不用摸", "不要摸", "立刻壓", "繼續壓", "按壓", "cpr"], "第一次不建議電擊：完全不用摸脈搏，立刻繼續壓胸 CPR！", "不用摸脈搏，立刻繼續按壓 CPR！", ["第一次不摸脈", ["摸頸", "摸脈"]]),
     {
-      id: "ohca-second",
+      id: "ohca-second-analysis",
       variants: [
-        q("ohca-second-none", "兩分鐘後又分析一次，還是不建議電擊。你摸了，沒有脈搏。下一句。", "回到按壓", ["再壓", "繼續", "按壓", "心肺", "cpr"], "沒有脈搏就再壓。", "繼續壓。"),
-        q("ohca-second-breath", "第二次分析，不建議電擊。有脈搏，沒有呼吸。你改做什麼？", "改吹氣", ["吹", "人工", "甦醒球", "bvm", "球"], "有脈就不要再空壓。", "改吹氣。"),
-        q("ohca-second-both", "第二次分析，不建議電擊。有脈搏，也有呼吸。你改做什麼？", "離開按壓", ["初步", "評估", "abc", "停止", "不要壓"], "回到初步評估。", "停止按壓，做初步評估。")
+        q("ohca-sec-none", "兩分鐘後 AED 進行第二次心律分析，語音說「不建議電擊」。這時你摸頸動脈，發現沒有脈搏！下一句？", "繼續按壓CPR", ["繼續壓", "按壓", "cpr", "壓胸", "沒有脈搏"], "第二次不建議電擊才要摸頸動脈！無脈搏就立刻繼續按壓 CPR！", "無脈搏，立即繼續胸外按壓 CPR！"),
+        q("ohca-sec-pulse", "兩分鐘後 AED 進行第二次心律分析，語音說「不建議電擊」。你摸頸動脈發現有脈搏，但眼睛看胸部沒有呼吸！改做什麼？", "給予人工呼吸甦醒球吹氣", ["吹氣", "人工呼吸", "甦醒球", "bvm", "6秒"], "有脈搏但無呼吸：停止壓胸，以甦醒球每 6 秒吹一口氣！", "停止按壓，以甦醒球每 6 秒給一口人工呼吸！"),
+        q("ohca-sec-rosc", "兩分鐘後 AED 進行第二次心律分析，語音說「不建議電擊」。你摸頸動脈有脈搏，患者胸口也恢復自主呼吸起伏！改做什麼？", "停止按壓進行初步評估與後送", ["初步評估", "評估", "abc", "量血壓", "後送", "維持"], "ROSC 自主循環恢復：停止按壓，重新進行初評 ABC、維持生命徵象、準備快速後送！", "停止按壓，進行初評 ABC，維持生命徵象並快速後送！")
       ]
-    },
-    q("ohca-vent", "如果是成人，有脈搏、沒有呼吸，多久吹一口？", "大約 6 秒", ["6秒", "六秒", "每6"], "成人約 6 秒一口。小孩才是 2 到 3 秒。", "大概每 6 秒一口。")
+    }
   ]
 };
 
+/* ========================================================
+   2. 老師指定 11 大情境（抽考 1 題，佔 25 分，須達 19 分）
+======================================================== */
+
+// --- 創傷 6 題 ---
+const TRAUMA_SCENES = [
+  scene("helmet", "安全帽脫除（含創傷完整初評後送）", "創傷", "機車車禍倒地，騎士戴著全罩安全帽。腳側吸引注意、副手頭部減移、脫帽、頸圈、下顎推擠OPA，接續 60 頁初評 BCDE，最後 61 頁判定危急立即後送！", [
+    q("helmet-line", "路口機車車禍倒地，騎士戴著全罩安全帽。這走創傷還是非創傷？", "創傷", ["創傷", "外傷"], "車禍撞擊有外力，走創傷流程。", "走創傷流程。"),
+    q("helmet-where", "主手接近傷患時應站哪一側，第一件事做什麼？", "站腳側吸引注意", ["腳側", "腳", "吸引注意", "視線"], "主手站傷患腳側，先吸引患者注意，避免患者突然轉頭造成頸椎二次傷害。", "站腳側，以聲音吸引傷患注意。"),
+    q("helmet-say", "主手對傷患說的第一句口令是什麼？", "懷疑頸椎受傷請不要亂動", ["頸椎", "不要動", "別動", "受傷"], "先生您好，我們懷疑您頸椎受傷，請您先不要亂動！", "先生您好，我們懷疑您頸椎受傷，請您不要亂動！"),
+    q("helmet-hold", "頭部減移誰來做？主手何時才能放手脫帽？", "副手做頭部減移喊好才動", ["副手", "頭部減移", "減移", "固定", "接穩", "好了", "喊好"], "副手雙手接替頭部減移，副手喊好接穩後，主手才能放手動作。", "副手做頭部減移，副手喊好接穩後主手才動作。"),
+    q("helmet-off", "副手固定好頭頸部後，主手下一個動作是什麼？", "解開扣帶脫除安全帽", ["脫安全帽", "脫帽", "解開", "解帽扣"], "解開頤下扣帶，雙手向外撐開安全帽左右側，緩慢脫除安全帽。", "解開扣帶，雙手向外撐開脫除安全帽。"),
+    {
+      id: "helmet-collar",
+      examiner: "上頸圈之前，必須先檢查頸部的哪三項徵象？",
+      need: [N("氣管有無偏移", ["氣管", "偏移", "偏"]), N("頸靜脈有無怒張", ["頸靜脈", "怒張", "腫"]), N("有無痠痛麻", ["痠", "痛", "麻"])],
+      hint: "檢查氣管有無偏移、頸靜脈有無怒張、觸摸後頸有無壓痛與四肢痠痛麻。三項都要確認。",
+      model: "檢查氣管有無偏移、頸靜脈有無怒張、後頸壓痛及四肢痠痛麻。"
+    },
+    q("helmet-size", "硬式頸圈的尺寸如何測量？", "下巴切線到肩線", ["下巴", "肩線", "肩", "幾指", "手指"], "以手指測量傷患下巴水平切線至斜方肌肩線的垂直距離（幾指幅）。", "測量下巴水平切線至肩線的指幅距離。"),
+    q("helmet-jaw", "安全帽脫除後，患者昏迷有鼾音，呼吸道用哪種手法打開？", "下顎推擠法", ["下顎", "推擠", "托下巴", "推下巴", "下顎上舉", "上舉", "下頜", "下頷", "jaw thrust", "嚴禁仰頭", "不仰頭", "不後仰"], "創傷傷患嚴禁壓額抬頦仰頭！必須使用「下顎推擠法」！", "採用下顎推擠法打開呼吸道（嚴禁仰頭）。", ["創傷嚴禁壓額仰頭", ["壓額", "抬頦", "後仰"]]),
+    q("helmet-air", "患者對疼痛完全沒有反應且呼吸有鼾音，置入哪種呼吸道？", "口咽呼吸道OPA", ["口咽", "opa"], "對痛完全無反應之深昏迷者，使用口咽呼吸道 (OPA)；若有反應則用鼻咽。", "置入口咽呼吸道 (OPA)。"),
+    q("helmet-b", "放完 OPA 暢通呼吸道後接回第 60 頁初評 B（呼吸），呼吸淺快、夾血氧 SpO2 測得 88%，給予什麼設備？流量多少？", "非再呼吸面罩15L", ["nrm", "非再呼吸", "15", "十五", "15l", "充飽"], "血氧低於 90% 為重度缺氧，給予非再呼吸型面罩 (NRM) 固定 15 L/min，並先充飽儲氣袋！", "給予非再呼吸型面罩 (NRM) 固定 15 L/min（先充飽儲氣袋）。"),
+    {
+      id: "helmet-c",
+      examiner: "給氧後接回第 60 頁初評 C（循環），檢查哪兩處動脈與末梢？創傷比內科多壓哪一個部位？",
+      need: [N("摸兩側橈動脈", ["橈動脈", "橈動", "動脈"]), N("雙手向內向下壓骨盆", ["骨盆", "壓骨盆"])],
+      hint: "雙手摸兩側橈動脈評估脈搏對稱性、CRT 與手溫；創傷流程必須雙手放在骨盆向內向下壓一次確認穩定！",
+      model: "摸兩側橈動脈與 CRT 手溫，並雙手向內向下壓骨盆一次確認穩定度。"
+    },
+    q("helmet-d", "接回第 60 頁初評 D（神經學），病患對痛刺激有反應、雙側瞳孔 3mm 有對光反應，GCS 小於多少分？", "小於14分", ["小於14", "不到14", "<14", "14分以下", "6分", "7分", "昏迷", "14"], "急性意識改變、對呼喚無反應，GCS 指數明顯小於 14 分！", "GCS 評估小於 14 分。"),
+    q("helmet-e", "接回第 60 頁初評 E（暴露），目視病患全身衣物若有大片血跡或變形，主手口令與動作是什麼？", "剪開衣物檢視全身有無致命傷", ["剪開", "剪衣服", "暴露", "致命傷", "檢查全身", "其他傷口"], "告知病患後以剪刀剪開衣物，快速檢視全身軀幹有無其他致命傷與變形。", "剪開衣物快速檢視全身有無其他致命傷。"),
+    q("helmet-crit", "走完第 60 頁初評，翻到第 61 頁。昏迷且血氧低於 90%，主手最後對考官大聲報告什麼？（考場終點口令）", "報告考官符合危急個案請求立即後送", ["危急", "後送", "送醫", "長背板", "立即送", "上車"], "走完初評後立即判斷危急度：報告考官，傷患昏迷 GCS<14、血氧<90%，符合危急個案！請求支援並立即上長背板後送！", "報告考官：判定危急個案！請求支援並準備立即後送！")
+  ]),
+
+  scene("bleed", "大出血", "創傷", "工地跌落或被利器割傷，小腿動脈噴血。大出血止血優先於頸椎，直接加壓＋立刻止血帶，止血完回意識。", [
+    q("bleed-line", "工人從高架跌落，小腿傷口有鮮血噴射湧出。走創傷還是非創傷？", "創傷", ["創傷", "外傷"], "外力高處墜落合併外傷大出血，走創傷流程。", "走創傷流程。"),
+    {
+      id: "bleed-action",
+      examiner: "看到動脈噴血大出血，流程圖要求主手第一時間做哪兩個動作？",
+      need: [N("直接加壓", ["加壓", "直接加壓", "壓住"]), N("立刻上止血帶", ["止血帶", "上止血帶"])],
+      hint: "致命大出血（X）優先於 ABC！立即直接加壓，並立刻上止血帶。",
+      model: "立即直接加壓，並立刻使用止血帶止血！"
+    },
+    q("bleed-neck", "如果傷患同時有車禍或高處墜落的頸椎受傷機轉，止血跟顧頸椎哪個優先？", "止血優先", ["止血", "血優先", "先止血"], "致命大出血可在幾十秒內休克死亡，大出血合併頸椎時「止血優先」！", "大出血合併頸椎時，止血優先！"),
+    q("bleed-help", "副手此時沒有在固定頭部，主手可以請副手做什麼？", "請副手協助加壓止血或準備止血帶", ["協助", "幫忙", "止血帶", "加壓", "幫壓"], "請副手協助持續加壓止血，或準備止血帶。", "請副手協助加壓止血並準備止血帶。"),
+    q("bleed-back", "止血帶上好、噴血停止後，主手流程接回哪一個步驟？", "接回意識評估", ["意識", "先生先生", "叫拍捏"], "致命大出血（X）控制完成後，回到標準流程的「意識評估」（先生先生、叫拍捏）。", "回到意識評估（叫拍捏）。")
+  ]),
+
+  scene("amputation", "斷肢", "創傷", "工廠機械切斷前臂，斷肢在地上。斷端止血帶加壓止血，殘端清洗包紮，斷肢手腕踝以上直接判危急快送。", [
+    q("amp-line", "工人工廠操作電鋸，前臂遭切斷。走創傷還是非創傷？", "創傷", ["創傷", "外傷"], "機械外傷截肢，走創傷流程。", "走創傷流程。"),
+    q("amp-blood", "靠近傷患看到斷端仍在大量出血，第一步做什麼？", "直接加壓必要時上止血帶", ["止血", "加壓", "止血帶", "斷端加壓"], "先控制出血！直接加壓於斷端，出血嚴重立刻在近端上止血帶。", "先直接加壓止血，必要時立刻上止血帶。"),
+    q("amp-stump", "殘留的肢體傷口（殘端）該如何處理包紮？", "以無菌生理食鹽水清洗並無菌紗布包紮", ["清洗", "生理食鹽水", "紗布", "包紮", "覆蓋"], "殘端傷口以生理食鹽水沖洗乾淨，覆蓋無菌紗布並以彈性繃帶包紮。", "以生理食鹽水沖洗後，用無菌紗布及繃帶包紮。"),
+    q("amp-crit", "斷肢部位在手腕或腳踝以上，是否屬於危急個案？", "屬於危急個案立即準備快送", ["危急", "是", "快送", "送醫"], "手腕或腳踝以上之截肢，在危急表屬於「嚴重創傷」，直接判定危急個案，準備快送！", "屬於危急個案，立即準備後送！")
+  ]),
+
+  scene("fracture", "骨折與骨盆", "創傷", "車禍骨盆劇痛、大腿骨折變形。骨盆向內向下壓一次，固定前後摸 PSM，股骨1000/骨盆1500-3000cc失血判危急。", [
+    q("fx-pelvis", "車禍傷患清醒訴說骨盆劇痛，你的雙手如何檢查骨盆穩定度？", "雙手向內向下按壓一次", ["向內", "向下", "壓一次", "只壓一次", "骨盆"], "雙手置於兩側腸骨翼，輕輕向內、向下施壓一次。有骨擦音或劇痛立即停止，嚴禁反覆按壓！", "雙手置於腸骨翼，向內向下施壓一次。"),
+    q("fx-verb", "檢查四肢發現大腿長骨骨折變形，流程表上的標準動詞動作是什麼？", "進行骨折固定夾板固定", ["骨折固定", "固定", "夾板"], "進行患肢骨折固定（使用夾板及抽氣護木固定）。", "進行骨折固定。"),
+    {
+      id: "fx-blood",
+      examiner: "閉鎖性長骨骨折中，一處股骨骨折與骨盆骨折各估計失血多少毫升？",
+      need: [N("股骨約 1000 mL", ["1000", "一千", "1,000"]), N("骨盆約 1500-3000 mL", ["1500", "3000", "一千五", "三千", "1,500"])],
+      hint: "股骨單處約 1000 mL；骨盆腔骨折可失血 1500~3000 mL，極易引起出血性休克。",
+      model: "股骨約 1000 mL，骨盆約 1500 至 3000 mL。"
+    },
+    q("fx-crit", "兩處以上大腿長骨骨折、骨盆骨折或肢體脈搏摸不到，是否算危急個案？", "算危急個案立即後送", ["危急", "是", "快送"], "兩處以上大腿或上臂長骨骨折、骨盆腔骨折、末梢脈搏摸不到，皆列入危急個案！", "直接判定危急個案，快速後送！"),
+    {
+      id: "fx-psm",
+      examiner: "考官要求骨折固定前後評估 PSM，PSM 指的是哪三項？要摸哪三個部位？",
+      need: [N("脈搏感覺運動", ["脈搏", "感覺", "運動", "psm"]), N("近端傷處遠端", ["近端", "傷處", "遠端"])],
+      hint: "P (Pulse 脈搏)、S (Sensory 感覺)、M (Motor 運動)；檢查近端、傷處、遠端。",
+      model: "評估脈搏、感覺、運動（PSM），檢查近端、傷處、遠端。"
+    }
+  ]),
+
+  scene("burn", "燒燙傷", "創傷", "火場被救出臉燻黑聲音沙啞。先脫離電源，生理食鹽水沖蓋紗布，臉/會陰/吸入/體表>25%二三度灼傷判危急，NRM 固定 15L 充飽儲氣袋。", [
+    q("burn-line", "火災現場被消防員救出，臉部有煤灰、聲音沙啞。走創傷還是非創傷？", "創傷", ["創傷", "外傷"], "火場燒燙傷、煙霧嗆傷走創傷流程。", "走創傷流程。"),
+    q("burn-power", "如果是高壓電擊傷患倒在地上，電線還在身上，你第一步做什麼？", "確認已斷電脫離電源安全才接近", ["斷電", "切斷電源", "離開電源", "安全", "不要碰"], "嚴禁直接觸碰！先確認台電或現場人員已切斷電源並確認環境安全後再接近。", "先確認現場斷電並脫離電源，安全後再接近。"),
+    q("burn-ox", "火場嗆傷、聲音沙啞、呼吸發紺，給予什麼氧氣設備？流量開多少？", "非再呼吸面罩NRM開固定15升", ["非再呼吸", "nrm", "15", "15l", "十五", "充飽"], "煙霧嗆傷疑有一氧化碳中毒，給予非再呼吸型面罩 (NRM)，流量固定開 15 L/min，儲氣袋先充飽！", "給予非再呼吸型面罩 (NRM)，開固定 15 L/min 先充飽儲氣袋。"),
+    q("burn-wound", "四肢有二度水泡傷口，救護處置步驟是什麼？", "生理食鹽水沖洗並覆蓋無菌紗布", ["食鹽水", "生理食鹽水", "沖洗", "紗布", "無菌紗布", "蓋"], "以大量無菌生理食鹽水沖洗降溫，覆蓋無菌濕紗布（不挑破水泡、不撕黏著衣物）。", "以生理食鹽水沖洗降溫，覆蓋無菌紗布。"),
+    q("burn-crit", "體表面積大於 25% 的二三度燒傷，或顏面/會陰/吸入性灼傷，是否危急？", "直接判定危急個案", ["危急", "是", "快送"], "大於 25% 二三度燒傷、顏面、會陰、吸入性或重大電擊，全部屬於創傷危急個案！", "直接判定危急個案，快速後送！")
+  ]),
+
+  scene("chestwound", "氣胸與穿刺傷", "創傷", "胸口有開放性吸吮傷口，腹部插著一把刀。胸部開放傷口貼三留一，異物穿刺固定不拔，左手比三查氣管偏移，危急快送。", [
+    q("wound-line", "鬥毆被刺傷，胸口有破洞冒氣泡，腹部插著水果刀。走創傷還是非創傷？", "創傷", ["創傷", "外傷"], "穿刺刀傷，走創傷流程。", "走創傷流程。"),
+    q("wound-chest", "胸壁有開放性吸吮胸部傷口（氣胸），現場使用敷料如何封閉？", "使用胸封或貼三留一", ["貼三留一", "三邊", "留一邊", "單向", "胸封"], "使用單向排氣胸封，或無菌塑膠敷料「貼三邊、留一邊」，呼氣時排氣、吸氣時閉鎖！", "貼三邊留一邊（貼三留一）或使用單向排氣胸封。", ["嚴禁四邊完全貼死", ["四邊貼死", "四面都貼"]]),
+    q("wound-knife", "腹部插著的水果刀，救護技術員是否可以拔出來？如何處理？", "嚴禁拔除以無菌紗布捲固定異物", ["不拔", "嚴禁拔", "不要拔", "固定", "異物固定"], "嚴禁拔除穿刺異物！以無菌敷料與紗布捲在刀子兩側堆疊固定，避免移動。", "嚴禁拔出異物，以無菌敷料雙側固定！"),
+    q("wound-trachea", "張力性氣胸可能造成致命休克，副手上頸圈時主手如何檢查頸部氣管？", "左手比三由上往下滑動檢查氣管有無偏移", ["氣管", "比三", "偏移", "氣管偏移", "滑動"], "左手比「三」，食指中指無名指從頸部上方往下滑動，檢查氣管是否居中或偏向健側。", "左手比三檢查氣管有無偏移。"),
+    q("wound-no", "EMT-1 可以在現場對張力性氣胸做針極胸腔穿刺減壓嗎？", "不行EMT1不可穿刺減壓", ["不行", "不可", "不能", "不要", "超過範圍", "超階"], "不行！胸腔穿刺針減壓屬於高階救護技術（EMT-P 或醫師指示），EMT-1 嚴禁執行！", "不行，EMT-1 不可執行針極穿刺減壓。"),
+    q("wound-crit", "頭頸軀幹肘膝以上穿刺傷、大量皮下氣腫、內臟外露，危急嗎？", "直接判定危急個案立即後送", ["危急", "是", "快送"], "全屬嚴重創傷之危急個案，維持呼吸道與給氧，立即快速後送！", "直接判定危急個案，快速後送！")
+  ])
+];
+
+// --- 非創傷 5 題 ---
+const MEDICAL_SCENES = [
+  scene("allergy", "過敏反應", "非創傷", "吃海鮮後嘴唇臉頰腫脹喘鳴。先聽呼吸道雜音(水聲抽吸)，問過敏史，NRM 固定 15L 高濃度氧，EMT-1 不打針，判危急快送。", [
+    q("allergy-line", "吃完海鮮後呼吸急促、嘴唇發紫腫脹，無外傷。走哪一條？", "非創傷", ["非創", "內科"], "食物引發全身性過敏反應，無外力撞擊，走非創傷流程。", "走非創傷流程。"),
+    q("allergy-air", "接近患者聽到吸氣喘鳴聲（stridor），主手先評估哪裡？", "評估呼吸道有無狹窄或雜音", ["呼吸道", "氣道", "聽呼吸道", "狹窄", "水腫"], "評估呼吸道是否暢通，檢查有無血管性水腫或分泌物阻塞。", "先評估呼吸道是否暢通、有無水腫雜音。"),
+    q("allergy-suction", "張口檢查若發現口中有大量分泌物咕嚕水聲，下一句下什麼指令？", "請副手進行抽吸不超過15秒", ["抽吸", "抽", "15秒", "吸口水"], "有水聲立即進行抽吸，且單次抽吸時間嚴禁超過 15 秒！", "請副手抽吸，時間不超過 15 秒。"),
+    q("allergy-shot", "患者出現呼吸困難，EMT-1 能否在現場替病患注射腎上腺素（EpiPen）？", "不能EMT1不自行注射", ["不能", "不可", "不行", "不打", "不能打"], "EMT-1 不可自行注射藥物！應以 ABC 支持、給氧並請求進階救護支援及快送。", "不能，EMT-1 不可自行注射腎上腺素。"),
+    q("allergy-ask", "詢問 SAMPLE 病史時，最重要的關鍵核心是問什麼？", "詢問有無過敏史對什麼過敏", ["過敏", "敏", "對什麼", "吃過什麼", "海鮮"], "必須詢問患者過敏史（過去有無對藥物或食物嚴重過敏發作過）。", "請問病患是否有過敏史？以前對什麼過敏？"),
+    q("allergy-ox", "病患聲音日益沙啞、呼吸喘鳴加劇，給予何種氧氣治療？流量開多少？", "給予高濃度非再呼吸面罩NRM開固定15升", ["非再呼吸", "高濃度", "nrm", "15", "15l", "十五"], "嚴重過敏性休克威脅呼吸道，立即給予非再呼吸型面罩 (NRM) 開固定 15 L/min！", "給予非再呼吸型面罩 (NRM) 開固定 15 L/min。"),
+    q("allergy-crit", "嚴重過敏反應波及呼吸道及循環系統，是否判定為危急個案？", "判定危急個案立即請求支援快送", ["危急", "是", "快送", "支援"], "呼吸道水腫及循環代償異常皆屬危急，立即請求進階支援並快速後送！", "直接判定危急個案，請求支援並快速後送！")
+  ]),
+
+  scene("asthma", "氣喘與呼吸困難", "非創傷", "運動後氣喘發作。張口喘血氧92給一般面罩固定10L，依醫囑讓病患自噴擴張劑，給氧不改善為呼吸困難，呼吸<10次換甦醒球(15L)。", [
+    q("asthma-line", "氣喘病患運動後大喘、咳嗽，無跌倒受傷。走創傷還是非創傷？", "非創傷", ["非創", "內科"], "內科呼吸道急症，無外傷，走非創傷流程。", "走非創傷流程。"),
+    q("asthma-ox", "患者清醒但張口呼吸，血氧濃度 92%，給予何種氧氣設備？流量開多少？", "一般面罩流量開固定10升", ["一般面罩", "簡單面罩", "面罩", "mask", "10", "10l", "十"], "張口呼吸且血氧在 90-94% 間，給予一般面罩 (Mask)，流量開固定 10 L/min！", "給予一般面罩 (Mask)，流量開固定 10 L/min。"),
+    q("asthma-inhaler", "患者口袋有醫師開立的定量吸入氣管擴張劑，誰來操作噴藥？", "依醫囑由病患自己操作吸入", ["自己", "病患自己", "病人自己", "協助"], "在醫囑或仿單指示下，由「病患自己操作吸入」，EMT 僅協助拿取與核對。", "依醫囑由病患自己操作吸入。"),
+    q("asthma-diff", "在教材定義中，給予氧氣治療後症狀仍未獲得改善，稱為什麼？", "呼吸困難", ["呼吸困難", "困難"], "呼吸變快費力為「喘」；給予氧氣後仍無改善則定義為「呼吸困難」，需緊急快送！", "稱為呼吸困難。"),
+    q("asthma-slow", "患者漸漸意識不清，呼吸次數驟降至每分鐘 6 次，此時改用什麼處置？氧氣開多少？", "更換甦醒球BVM接氧15升每6秒給一口氣", ["甦醒球", "bvm", "6秒", "15", "15l", "袋瓣", "人工呼吸", "吹氣"], "呼吸次數每分鐘小於 10 次已無法維持換氣，立即改換甦醒球 (BVM) 連接氧氣開固定 15 L/min，每 6 秒人工輔助吹氣一口！", "改換甦醒球 (BVM) 接氧固定 15 L/min，每 6 秒輔助吹氣一口！"),
+    {
+      id: "asthma-core",
+      examiner: "氣喘情境中，EMT-1 到院前的三大核心任務是什麼？",
+      need: [N("維持呼吸道", ["呼吸道", "暢通"]), N("適度給氧", ["給氧", "氧氣"]), N("快速後送", ["快送", "後送", "送醫"])],
+      hint: "維持呼吸道暢通、適度給氧、快速後送適當醫院。三項都要說到。",
+      model: "維持呼吸道、適度給氧、快速後送！"
+    }
+  ]),
+
+  scene("stroke", "中風 (G-FAST)", "非創傷", "嘴角歪單側無力。特殊狀況直接危急。測眼(Gaze眼球水平跟隨)、笑臉(Face)、平舉(Arm)、說話(Speech)、時間(Time最後正常時間，<3hr送專責醫院)，加測血糖與看呼吸道。", [
+    q("stroke-line", "在家中突發嘴角歪斜、單側手無力，無外傷。走哪一條？是否危急？", "非創傷且屬於特殊狀況直接危急", ["非創", "危急", "特殊狀況"], "急性腦中風列於「特殊狀況表」，走非創傷流程，直接判定為危急個案！", "走非創傷流程，特殊狀況直接判定危急個案！"),
+    q("stroke-gaze", "旺英筆記特別標註 G-FAST 中的 G（測眼 Gaze），具體操作手法是什麼？", "頭部保持不動眼球水平跟隨筆或手指移動", ["頭不動", "眼球", "跟隨", "水平", "筆", "手指"], "病患頭部保持不動，以筆或手指在眼水平前方左右移動，觀察眼球是否能對稱水平跟隨移動。", "頭保持不動，看眼球能否水平跟隨手指移動。"),
+    q("stroke-face", "G-FAST 中的 F（Face 面部）如何評估？", "請病患露齒微笑看兩側臉部嘴角是否對稱", ["笑", "露齒", "對稱", "嘴角", "微笑"], "請病患露齒微笑或做出表情，檢查兩側額紋、眼裂與嘴角是否對稱平整。", "請病患微笑露齒，檢查兩邊臉部嘴角是否對稱。"),
+    q("stroke-arm", "G-FAST 中的 A（Arm 手臂）如何評估？", "請病患雙手向前平舉掌心向上閉眼十秒看有無垂落", ["雙手平舉", "平舉", "掌心向上", "垂落", "掉下來"], "請病患閉眼、雙手向前平舉 90 度（坐姿）或 45 度（臥姿），掌心向上，觀察有無單側無力往下垂落。", "雙手向前平舉掌心向上，觀察有無單側無力垂落。"),
+    q("stroke-speech", "G-FAST 中的 S（Speech 說話）如何評估？", "請病患說一句完整話觀察口齒是否清晰語意正確", ["說一句話", "說話", "口齒", "清晰", "句子"], "請病患重複一句話（如：今天天氣很好），評估說話是否含糊不清、構音困難或無法理解。", "請病患說一句話，觀察發音是否清楚正常。"),
+    q("stroke-time", "G-FAST 中的 T（Time 時間）必須向家屬確認什麼關鍵時間點？", "最後一次正常活動的時間", ["最後正常", "幾點幾分", "發作時間", "正常時間"], "詢問家屬或目擊者病患「最後一次表現完全正常的時間」（Last Known Well Time）。", "詢問最後一次正常的時間是什麼時候。"),
+    q("stroke-dest", "發作時間未滿 3 小時（或 4.5 小時），後送醫院應選擇何種等級醫院？", "送到能執行靜脈溶栓或動脈取栓之責任醫院", ["血栓溶解", "溶栓", "取栓", "中風責任", "責任醫院"], "黃金治療期內，必須火速後送至能提供 24 小時血栓溶解（rt-PA）或經動脈取栓之醫院！", "送往能做血栓溶解或動脈取栓的責任醫院。"),
+    {
+      id: "stroke-sugar-air",
+      examiner: "疑似腦中風意識模糊病患，評估二評時務必同步執行哪兩項處置？",
+      need: [N("測量血糖排除低血糖", ["血糖", "測糖"]), N("監測呼吸道維持通暢", ["呼吸道", "氣道", "抽吸"])],
+      hint: "低血糖常偽裝成中風（Stroke mimic），且意識改變隨時有舌根下墜與嘔吐吸入風險。兩項皆必做。",
+      model: "測量血糖以排除低血糖，並持續監測維持呼吸道通暢。"
+    }
+  ]),
+
+  scene("chest", "胸痛 (心肌梗塞)", "非創傷", "壓迫性胸悶冒冷汗。特殊狀況直接危急。問OPQRST，評估NTG四不含(SBP<90、壯陽藥、脈搏不合、過敏)，查效期劑型讓病患自含一錠隔5分，送心血管專科。", [
+    q("chest-line", "55 歲男性突發胸骨後方壓迫性胸痛冒冷汗，無外傷。走哪一條？是否危急？", "非創傷且疑似缺血性胸痛直接危急", ["非創", "危急", "缺血性胸痛", "胸痛"], "疑似心肌梗塞急性缺血性胸痛，列於特殊狀況，走非創傷流程，直接判定為危急個案！", "走非創傷流程，直接判定危急個案！"),
+    q("chest-bp", "副手量測生命徵象回報收縮壓為 84 mmHg，病患能否含服 NTG（舌下含錠）？", "不能收縮壓小於90禁止含服", ["不能", "不可", "不行", "90", "禁止"], "收縮壓低於 90 mmHg 嚴禁含服 NTG！否則會引發致命性低血壓與休克！", "絕對不能！收縮壓低於 90 mmHg 嚴禁使用 NTG！"),
+    q("chest-viagra", "病患主訴 24 小時內曾服用威而鋼等壯陽藥物，能否含服 NTG？", "不能使用壯陽藥後禁止含服", ["不能", "不可", "不行", "壯陽藥", "威而鋼", "禁止"], "24-48 小時內曾使用壯陽藥物（如威而鋼、犀利士）嚴禁使用硝化甘油，以免致命血壓驟降！", "不能！近期使用壯陽藥者禁止含服 NTG！"),
+    q("chest-check", "排除禁忌症後，協助病患使用隨身 NTG 前需核對藥物的哪兩件事？", "核對藥物在效期內且為舌下含錠劑型", ["效期", "期限", "舌下含錠", "劑型", "3個月", "三個月"], "確認藥品在有效期限內（或開封 3 個月內），且確認劑型為「舌下含錠」（非吞服膠囊）。", "確認在效期內，且確認是舌下含錠。"),
+    q("chest-self", "給予 NTG 時由誰操作？一次含幾顆？間隔多久可再含？", "病患自己含一次一顆間隔五分鐘", ["自己", "病患自己", "一顆", "一錠", "5分鐘", "五分"], "在醫囑或仿單指示下，由「病患自己含服」，一次一錠置於舌下，每錠間隔 5 分鐘（收縮壓仍需高於 90）。", "由病患自己含服，一次一錠放舌下，間隔 5 分鐘。"),
+    q("chest-hospital", "胸痛病患應後送至具備何種能力的適當急救責任醫院？", "送到具備心血管專科心導管室醫院", ["心血管", "心導管", "專科", "責任醫院"], "後送至具備心血管專科、具 24 小時緊急心導管介入處置（PCI）能力之責任醫院！", "後送至具心血管專科及心導管手術之醫院。"),
+    q("chest-ecg", "若車上 12 導程心電圖傳輸或突發致死性心律且病患失去意識脈搏，改走哪一條？", "立即改走OHCA流程", ["ohca", "cpr", "按壓", "歐卡", "心肺復甦"], "病患一旦喪失意識且無呼吸脈搏，無論原先是什麼急症，立刻中斷原流程改走 OHCA！", "立即改走 OHCA 流程開始 CPR！")
+  ]),
+
+  scene("sugar", "低血糖", "非創傷", "糖尿病出冷汗。先看 ABC，測血糖 <60 或 high 判危急。清醒沾葡萄糖水喝，昏迷沾食鹽水沾糖粉抹牙齦舌下(嚴禁灌食)，危急快送。", [
+    q("sugar-line", "糖尿病患者手抖、冒冷汗、意識模糊，無外傷。走哪一條？", "非創傷", ["非創", "內科"], "內科代謝性急症，走非創傷流程。", "走非創傷流程。"),
+    q("sugar-first", "病患呼叫叫不醒，在給糖之前，主手必須先評估什麼？", "先評估ABC維持呼吸道再測血糖", ["abc", "呼吸道", "呼吸", "測血糖", "血糖"], "意識不清病患先維持呼吸道與生命徵象（ABC），隨後立刻檢測末梢血糖值！", "先維持呼吸道通暢（ABC），再測量血糖。"),
+    q("sugar-crit", "副手測得血糖值為 46 mg/dL（或顯示 High），是否判定為危急個案？", "低於60或顯示High直接判定危急個案", ["危急", "是", "60", "特殊狀況"], "血糖值小於 60 mg/dL 或顯示 High，屬於特殊狀況之危急個案，準備後送！", "直接判定危急個案，準備快送！"),
+    q("sugar-awake", "情境假設：病患意識清醒、手抖、血糖 52 mg/dL，糖分如何補充？", "沾葡萄糖水給病患自己喝", ["喝", "葡萄糖水", "糖水", "口服", "自己喝"], "病患意識清醒且能吞嚥，可給予口服葡萄糖水或含糖飲料由病患自己喝下。", "給予葡萄糖水，由病患自己口服飲用。"),
+    q("sugar-out", "情境切換：病患重度昏迷叫不醒、血糖 45 mg/dL，旺英筆記標準給糖手法為何？", "手套沾生理食鹽水沾糖粉抹牙齦和舌下", ["生理食鹽水", "食鹽水", "糖粉", "牙齦", "舌下", "手套"], "旺英筆記重點口訣：戴手套 ➡️ 沾生理食鹽水 ➡️ 沾糖粉 ➡️ 塗抹於牙齦與舌下。嚴禁灌食以防吸入性肺炎！", "戴手套沾生理食鹽水，沾糖粉抹在牙齦和舌下（嚴禁灌食）。", ["昏迷嚴禁灌水灌食", ["灌水", "灌", "喝下去", "餵他喝"]])
+  ])
+];
+
+/* 11 個情境組合（6 創傷 + 5 非創傷） */
+const SCENES = [...TRAUMA_SCENES, ...MEDICAL_SCENES];
+
+/* ========================================================
+   3. 考場口令與反射神經（必考秒殺題）
+======================================================== */
 const OXYGEN = {
   id: "oxygen",
-  title: "給氧，考官報數字",
-  blurb: "裝置、流量、袋子，分開問。",
+  title: "給氧設備與流量切換",
+  tag: "skills",
+  blurb: "考場給氧黃金固定口令：鼻導管 固定4L ｜ Mask 固定10L ｜ NRM 固定15L ｜ BVM 固定15L。",
   turns: [
-    q("ox-nasal", "人清醒，嘴巴閉著用鼻子呼吸。呼吸 24，血氧 93。給什麼？", "鼻導管", ["鼻導管", "鼻管", "鼻氧", "鼻套"], "閉嘴、還清醒、血氧在 90 到 94。", "鼻導管。"),
-    q("ox-nasal-flow", "鼻導管開多少？", "1 到 6 升", ["1", "2", "3", "4", "5", "6", "一到六", "一升", "二升", "三升", "四升", "五升", "六升", "兩升", "二", "三", "四", "五", "六", "兩"], "1 到 6 升都算。", "1 到 6 升。"),
-    q("ox-mask", "他改成張口呼吸。血氧 91，呼吸 26。給什麼？", "一般面罩", ["一般", "簡單", "普通", "面罩"], "張口用一般面罩。", "一般面罩。", ["這題不是非再呼吸面罩", ["非再呼吸", "nrm"]]),
-    q("ox-mask-flow", "一般面罩開多少？", "大於 6 升", ["6", "8", "10", "六", "八", "十"], "要大於 6，不然二氧化碳積在面罩裡。", "6 到 10 升。"),
-    q("ox-fire", "火場被救出來，臉上有煤灰，聲音沙。給什麼？", "非再呼吸面罩", ["非再呼吸", "nrm", "儲氣", "高濃度", "最高"], "火場、嗆傷，走最高濃度。", "非再呼吸面罩。"),
-    q("ox-fire-flow", "非再呼吸面罩開多少？", "10 到 15 升", ["10", "15", "十", "十五"], "10 到 15 升。", "10 到 15 升。"),
-    q("ox-fire-bag", "袋子呢？", "先充飽", ["充", "打飽", "灌飽", "裝滿"], "先把袋子充飽再給。", "先充飽。"),
-    q("ox-low", "沒有火場。血氧 88，呼吸每分鐘 34。給什麼？", "非再呼吸面罩", ["非再呼吸", "nrm", "儲氣", "高濃度", "最高"], "血氧低於 90，或呼吸大於 30。", "非再呼吸面罩。"),
-    q("ox-bvm", "有脈搏。呼吸只剩每分鐘 6 次。還開鼻導管嗎？", "改甦醒球", ["甦醒球", "bvm", "袋瓣", "壓球", "球", "吹", "人工"], "小於 10 次，改吹氣。", "換甦醒球。", ["這時候不是再調鼻導管", ["鼻導管"]])
+    q("ox-nasal", "病患意識清醒，閉嘴用鼻子呼吸，呼吸每分鐘 22 次，血氧 92%。給予何種氧氣設備？", "鼻導管", ["鼻導管", "鼻管", "鼻套"], "閉口呼吸、血氧在 90-94% 之間，使用鼻導管。", "給予鼻導管。"),
+    q("ox-nasal-flow", "考官問：鼻導管氧氣流量開多少？（老師規定固定口令）", "固定4升", ["4", "4l", "四升", "4升", "四", "1到6", "1-6"], "考場給氧固定口令：鼻導管固定開 4 L/min（教材理論範圍為 1-6 L/min）。", "固定開 4 L/min。"),
+    q("ox-mask", "病患改為張口呼吸，呼吸每分鐘 26 次，血氧 91%。給予何種氧氣設備？", "一般面罩", ["一般面罩", "簡單面罩", "面罩", "mask"], "張口呼吸且血氧在 90-94% 間，更換為一般面罩（Mask）。", "給予一般面罩（Mask）。", ["張口不要再給鼻導管", ["鼻導管"]]),
+    q("ox-mask-flow", "考官問：一般面罩（Mask）氧氣流量開多少？（老師規定固定口令）", "固定10升", ["10", "10l", "十升", "10升", "十", "6到10", "6-10"], "考場給氧固定口令：一般面罩固定開 10 L/min（教材理論範圍 6-10 L/min，實務直接固定開 10L 沖刷二氧化碳）！", "固定開 10 L/min。"),
+    q("ox-fire", "火場嗆傷或嚴重發紺，呼吸每分鐘 32 次，血氧 86%。給予何種設備？流量開多少？", "非再呼吸面罩NRM開固定15升", ["非再呼吸", "nrm", "15", "15l", "十五"], "血氧低於 90%、嚴重發紺或火場煙霧嗆傷，給予非再呼吸型面罩 (NRM)，流量固定開 15 L/min！", "給予非再呼吸型面罩 (NRM)，開固定 15 L/min。"),
+    q("ox-fire-bag", "給予非再呼吸型面罩（NRM）前，儲氣袋必須做什麼處置？", "先將儲氣袋充飽氧氣", ["充飽", "打飽", "充滿", "裝滿"], "戴上面罩前，手堵住瓣膜，讓氧氣先將儲氣袋完全充飽！", "先將儲氣袋完全充飽。"),
+    q("ox-bvm", "病患摸得到頸動脈，但呼吸次數降到每分鐘 7 次。改用什麼設備？氧氣開多少？", "改換甦醒球BVM接氧15升每6秒輔助吹氣一口", ["甦醒球", "bvm", "15", "15l", "6秒", "袋瓣", "人工呼吸", "吹氣"], "呼吸次數每分鐘小於 10 次無法自主維持生命，立即更換甦醒球 (BVM)，連接氧氣固定開 15 L/min，每 6 秒人工輔助一口！", "更換甦醒球 (BVM) 接氧固定 15 L/min，每 6 秒輔助一口氣！", ["這時候不可再調鼻導管或面罩", ["鼻導管", "面罩"]])
+  ]
+};
+
+const AIRWAY = {
+  id: "airway",
+  title: "呼吸道處理與抽吸技巧",
+  tag: "skills",
+  blurb: "水聲抽吸15秒、NPA/OPA測量與置入、顱底骨折禁忌症。",
+  turns: [
+    q("air-gurgle", "壓額抬頦暢通呼吸道後，聽到口腔內有咕嚕咕嚕水聲，下一步做什麼？", "給氧後進行抽吸", ["抽吸", "抽", "吸口水"], "先給氧氣面罩，隨後立即進行抽吸。", "先給氧，再進行抽吸。"),
+    q("air-time", "救護技術員單次抽吸的時間上限是幾秒？手法為何？", "不超過15秒邊退邊吸", ["15秒", "15", "十五", "邊退邊吸", "退"], "單次抽吸絕對不可超過 15 秒！手指按住排氣孔邊旋轉退出邊抽吸，避免缺氧與迷走神經刺激。", "單次不超過 15 秒，邊旋轉後退邊抽吸。"),
+    q("air-len", "口咽抽吸管（Yankauer）置入長度如何量取？", "量嘴角到耳垂", ["嘴角", "耳垂", "耳朵"], "以抽吸管尖端由患者嘴角量至同側耳垂的距離為最大置入深度。", "測量嘴角至耳垂之距離。"),
+    q("air-snore-npa", "抽吸完畢後水聲消失但有鼾音（打呼聲），病患捏斜方肌會皺眉，選擇哪種呼吸道？", "鼻咽呼吸道NPA", ["鼻咽", "npa"], "病患清醒或意識不清但對疼痛刺激仍有反應時，為避免嘔吐反射，選用鼻咽呼吸道 (NPA)。", "置入鼻咽呼吸道 (NPA)。", ["有反應者不可使用口咽", ["口咽", "opa"]]),
+    q("air-npa-skull", "正準備置入鼻咽呼吸道時，發現病患有熊貓眼、耳漏或鼻漏，能否置入鼻咽？", "嚴禁置入鼻咽呼吸道避免穿入顱底", ["不能", "不可", "嚴禁", "禁止", "不放"], "熊貓眼（浣熊眼）、耳後瘀斑（Battle sign）、耳鼻漏清澈腦脊髓液代表顱底骨折，嚴禁使用鼻咽！", "嚴禁使用鼻咽呼吸道（疑似顱底骨折）。"),
+    q("air-opa", "若病患完全喪失意識、捏肉對疼痛完全無反應且呼吸有鼾音，選擇哪種呼吸道？", "口咽呼吸道OPA", ["口咽", "opa"], "完全深昏迷、無咽反射與嘔吐反射之病患，使用口咽呼吸道 (OPA)；凹面朝上置入後旋轉 180 度推入至嘴唇。", "置入口咽呼吸道 (OPA)。")
   ]
 };
 
 const THRESHOLD = {
   id: "threshold",
-  title: "這條算不算危急",
-  blurb: "講危急，或還沒到。原因他下一問再要。",
+  title: "生命徵象危急門檻秒殺",
+  tag: "skills",
+  blurb: "考官報數字，你 1 秒秒殺「危急」或「未達危急」。",
   turns: [
-    q("th-gcs13", "GCS 13 分。意識這條過了危急沒有？", "已經危急", ["危急", "過了"], "小於 14 才算，13 已經低於。", "危急。"),
-    q("th-gcs14", "GCS 14 分。意識這條算危急嗎？", "還沒到", ["還沒", "不算", "不是", "未達", "沒有"], "14 正好在線上，還沒小於 14。", "還沒到。", ["14 分不要直接講成危急", ["危急"]]),
-    q("th-rr30", "呼吸每分鐘 30。這條呢？", "危急", ["危急", "過了"], "30 以上就算。", "危急。"),
-    q("th-sbp92", "收縮壓 92。血壓這條算危急嗎？", "還沒到", ["還沒", "不算", "不是", "未達", "沒有"], "要小於 90，或大於 220。", "還沒到。", ["92 還沒小於 90", ["危急"]]),
-    q("th-spo89", "血氧 89。這條呢？", "危急", ["危急", "過了"], "低於 90 就算。", "危急。"),
-    q("th-crt", "指甲回血 3 秒。危急表卡在幾秒？", "大於 2 秒", ["2", "兩"], "大於 2 秒就是。大於 4 秒才想到嚴重休克。", "大於 2 秒。")
+    q("th-gcs13", "病患 GCS 昏迷指數評估為 13 分。是否達到危急個案門檻？", "已達危急個案", ["危急", "是", "達標", "過了"], "急性意識不清：GCS 小於 14 分即屬危急，13 分直接列危急！", "直接判定危急個案！"),
+    q("th-gcs14", "病患 GCS 昏迷指數為 14 分（例如眼睛可張、回答微混淆但定向可）。算危急嗎？", "未達危急門檻", ["未達", "還沒", "不算", "不是", "非危急"], "標準門檻是「GCS 小於 14」，14 分正好在分界線上，尚未達危急門檻！", "未達危急門檻（需小於 14 分）。", ["14分不能直接喊危急", ["危急"]]),
+    q("th-rr30", "測量呼吸次數為每分鐘 30 次。算危急嗎？", "已達危急個案", ["危急", "是", "算"], "呼吸每分鐘 30 次以上（≥30）或小於 10 次（<10），直接列入危急個案！", "直接判定危急個案！"),
+    q("th-sbp92", "收縮壓測得 92 mmHg。血壓這條算危急個案嗎？", "未達危急門檻", ["未達", "還沒", "不算", "不是"], "危急門檻為「收縮壓大於 220 或小於 90 mmHg」，92 mmHg 尚未小於 90，未達危急！", "未達危急門檻（需小於 90 mmHg）。", ["92還沒低於90", ["危急"]]),
+    q("th-spo89", "血氧飽和度 SpO2 測得 89%。這條算危急個案嗎？", "已達危急個案", ["危急", "是", "算"], "血氧低於 90%（SpO2 < 90%），直接判定為危急個案！", "直接判定危急個案！"),
+    q("th-crt", "指甲微血管充填時間（CRT）測得 3 秒。危急標準是幾秒？", "大於2秒即為危急", ["2秒", "兩秒", "2", "兩"], "CRT 大於 2 秒即達危急表門檻；大於 4 秒則強烈懷疑重度休克！", "大於 2 秒即達危急門檻。")
   ]
 };
 
-function scene(id, title, blurb, turns) { return { id, title, blurb, kind: "scene", turns }; }
 
-const SCENES = [
-  scene("helmet", "安全帽", "機車，人還戴著帽子。", [
-    q("helmet-line", "路口機車倒著，騎士還戴安全帽，叫他沒反應。走哪一條？", "創傷", ["創傷", "外傷"], "有外力就是創傷。", "創傷。"),
-    q("helmet-hold", "帽子還在。你的手先做什麼？", "先固定頭", ["頸", "不要動", "別動", "固定"], "頭先有人扶住。", "先固定頭。"),
-    q("helmet-off", "副手說頭接穩了。接著才能做什麼？", "脫安全帽", ["脫", "拿掉", "移除"], "頭固定好才脫帽。", "脫安全帽。"),
-    q("helmet-jaw", "帽子脫了。捏他沒反應，呼吸有鼾音。頭怎麼開？", "下顎上舉", ["下顎", "推擠", "托顎", "抬顎"], "創傷不要壓額。", "下顎上舉。", ["創傷不要壓額抬頦", ["壓額", "抬頦"]]),
-    q("helmet-air", "完全沒有疼痛反應，又有鼾音。用哪一種呼吸道？", "口咽", ["口咽", "opa"], "沒有反應用口咽。", "口咽。")
-  ]),
-  scene("bleed", "大出血", "一靠近就看到噴血。", [
-    q("bleed-1", "工人從架子掉下來，小腿正噴血。你先做哪一件？", "先止血", ["止血", "加壓", "壓住", "止血帶"], "看到噴血，先壓住。", "先加壓。"),
-    q("bleed-2", "血止住了。回到流程的哪一格？", "回到意識", ["意識", "叫", "先生"], "接回叫人。", "叫他。")
-  ]),
-  scene("fracture", "骨折和骨盆", "大腿變形，而且骨盆會痛。", [
-    q("fx-1", "人清醒，說骨盆很痛。你的手怎麼做？", "壓骨盆", ["骨盆", "向內", "往內", "內壓", "往下"], "向內並向下，壓一次就好。講到骨盆或那個方向都過。", "向內向下壓。"),
-    q("fx-bleed", "左大腿變形，像股骨。危急嗎？", "危急", ["危急", "一千", "1000", "大量"], "股骨一處大約 1000 毫升。", "危急。"),
-    q("fx-pulse", "固定前後要摸什麼？", "遠端脈搏", ["遠端", "末梢", "腳背", "足背"], "夾板前後都摸遠端。", "摸遠端脈搏。")
-  ]),
-  scene("burn", "火場燒燙傷", "人走出來，臉上有黑。", [
-    q("burn-line", "公寓火警，人自己走出來，聲音沙啞。走哪一條？", "創傷", ["創傷", "外傷"], "火場算創傷。", "創傷。"),
-    q("burn-ox", "氧氣給什麼？", "非再呼吸面罩", ["非再呼吸", "nrm", "儲氣", "高濃度", "最高"], "嗆傷直接最高濃度。", "非再呼吸面罩。"),
-    q("burn-wound", "手臂水泡超過體表四分之一。傷口怎麼處理？", "沖完蓋上", ["食鹽", "紗布", "沖"], "用食鹽水沖，蓋紗布。", "沖一沖，蓋紗布。"),
-    q("burn-crit", "這樣算危急嗎？", "危急", ["危急"], "超過 25%，或臉和呼吸道，都是危急。", "危急。")
-  ]),
-  scene("chestwound", "氣胸和穿刺", "胸口有洞，肚子上還有一把刀。", [
-    q("wound-1", "胸口有開放傷口，吸氣會有聲音。你怎麼貼？", "貼三留一", ["三邊", "貼三", "留一", "三面"], "三邊貼住，或留一邊讓氣出去，講到就過。", "貼三留一。", ["不要四邊都封死", ["四邊"]]),
-    q("wound-2", "肚子還插著一把刀。你動它嗎？", "固定不拔", ["不拔", "不要拔", "固定"], "穿刺傷固定，不拔。", "不拔。")
-  ]),
-  scene("allergy", "過敏", "吃飯後半臉腫。", [
-    q("allergy-line", "吃完蝦，嘴唇腫，沒有跌倒。走哪一條？", "非創傷", ["非創", "內科", "生病"], "沒有外力。", "非創傷。"),
-    q("allergy-air", "吸氣有聲音。你先聽什麼？", "呼吸道", ["呼吸道", "喘鳴", "雜音", "呼吸聲"], "先聽呼吸道。", "聽呼吸道。"),
-    q("allergy-ox", "聲音愈來愈緊。氧氣給什麼？", "高濃度氧", ["非再呼吸", "高濃度", "nrm", "儲氣", "最高"], "給高濃度。教材沒有叫你打針。", "高濃度氧。"),
-    q("allergy-crit", "這算危急嗎？", "危急", ["危急", "快送"], "呼吸道在變窄就是危急。", "危急。")
-  ]),
-  scene("asthma", "氣喘", "他自己有噴劑，但呼吸已經很慢。", [
-    q("asthma-ox", "氣喘，還能自己講話，嘴巴張著，血氧 92。給什麼氧？", "一般面罩", ["一般", "簡單"], "還有呼吸、張口，用一般面罩。", "一般面罩。"),
-    q("asthma-inhaler", "他口袋有噴劑。誰來噴？", "他自己噴", ["自己", "病人", "患者"], "讓他自己用。", "他自己噴。"),
-    q("asthma-slow", "現在呼吸掉到每分鐘 7 次，脈搏還在。還開面罩嗎？", "改甦醒球", ["甦醒球", "bvm", "袋瓣", "吹", "人工"], "小於 10 次，改吹氣。", "換甦醒球。")
-  ]),
-  scene("shock", "休克", "先蒼白，後來血壓掉了。", [
-    q("shock-stage", "車禍，皮膚蒼白濕冷，脈搏 128，血壓 116。這是代償還是失代償？", "還在代償", ["代償", "血壓還", "還沒掉", "還沒下降"], "116 血壓還沒掉。", "還在代償。", ["血壓還沒掉不是失代償", ["失代償", "非代償"]]),
-    q("shock-do", "你先做哪一件？", "止血給氧或保暖", ["給氧", "氧氣", "止血", "保暖", "毯子"], "止血、給氧、保暖，做一件就對。", "先給氧。"),
-    q("shock-late", "五分鐘後血壓 76。現在呢？", "失代償", ["失代償", "非代償", "掉", "危急"], "血壓掉了就是失代償，也是危急。", "失代償。")
-  ]),
-  scene("stroke", "中風", "講話變慢，一邊手舉不起來。", [
-    q("stroke-line", "在家裡，沒有跌倒。嘴角歪，一隻手舉不高。走哪一條？", "非創傷", ["非創", "內科"], "沒有外力。", "非創傷。"),
-    q("stroke-scale", "你做哪一套檢查？", "GFAST", ["gfast", "臉", "手臂", "舉手", "說話", "語言", "眼睛", "眼球"], "臉、手、說話，或直接講 GFAST。", "做 GFAST。"),
-    q("stroke-time", "時間你問哪一句？", "最後一次正常", ["最後", "什麼時候", "幾點", "正常"], "問最後一次正常是什麼時候。", "最後一次正常是什麼時候？"),
-    q("stroke-go", "家人說一小時前還好好的。送到哪一種醫院？", "三小時內的中風醫院", ["3", "三小時", "三個小時", "血栓", "中風"], "三小時內送能處理中風的醫院。", "送中風醫院。"),
-    q("stroke-sugar", "意識不太清。還要加測什麼？", "血糖", ["血糖", "糖"], "意識變了要測糖。", "測血糖。")
-  ]),
-  scene("chest", "胸痛", "他口袋裡有舌下含錠，血壓很低。", [
-    q("pain-line", "壓迫性胸痛，沒有外傷。走哪一條？", "非創傷", ["非創", "內科"], "沒有外力。", "非創傷。"),
-    q("pain-no", "收縮壓 84。他有舌下含錠。能不能含？", "不能含", ["不能", "不要含", "不可", "先別", "不行"], "低於 90 不能含。", "不能含。"),
-    q("pain-who", "如果量到 128，也沒有禁忌。誰來含？", "他自己含", ["自己", "舌下"], "讓他自己含。", "他自己含。"),
-    q("pain-gap", "隔多久可以再含一次？", "每 5 分鐘", ["5", "五分"], "大約每 5 分鐘。", "每 5 分鐘。")
-  ]),
-  scene("sugar", "低血糖", "人是昏的。", [
-    q("sugar-out", "叫不醒，沒有外傷，血糖 46。糖怎麼給？", "不要灌，抹上去", ["不喝", "不能喝", "不要喝", "不要灌", "抹", "牙齦", "舌下", "粉"], "不清醒就抹在牙齦或舌下。", "抹在牙齦。"),
-    q("sugar-awake", "若他是清醒的，手在抖，血糖 52。怎麼給？", "喝糖水", ["喝", "糖水", "口服"], "清醒就給他喝。", "喝糖水。")
-  ]),
-  scene("drown", "溺水", "池邊，先別假定是創傷。", [
-    q("drown-1", "泳池邊拖上來，沒有碰撞。沒有正常呼吸，也沒有脈搏。走哪一條？", "OHCA", ["ohca", "心肺", "cpr", "按壓", "歐卡"], "沒呼吸沒脈搏就做心肺復甦。", "走 OHCA。", ["沒有外力不要先走創傷", ["創傷"]]),
-    q("drown-crit", "另一個：有呼吸，只是咳嗽。還算危急嗎？", "仍然危急", ["危急"], "溺水有呼吸也是危急。", "危急。"),
-    q("drown-line", "這個咳嗽的，走創傷還是非創傷？", "非創傷", ["非創", "內科", "不是創傷"], "沒有碰撞。", "非創傷。")
-  ]),
-  scene("seizure", "抽搐", "正在抽，然後停了。", [
-    q("seizure-do", "人正在全身抽。你先做什麼？", "保護", ["保護", "移開", "墊", "旁邊"], "先把周圍危險的東西移開。", "移開周圍的東西。"),
-    q("seizure-dont", "嘴裡要不要塞東西？", "不要塞", ["不要塞", "不塞", "不要撬", "不硬", "不塞嘴"], "不要塞嘴，也不要硬壓四肢。", "不要塞。"),
-    q("seizure-back", "抽完了，人還是昏的。你回到哪一段？", "重評意識呼吸", ["重評", "意識", "呼吸", "abc"], "回到意識和呼吸。", "重評意識和呼吸。"),
-    q("seizure-sugar", "還要加測一個數字。", "血糖", ["血糖", "糖"], "抽完想到血糖。", "測血糖。")
-  ]),
-  scene("airway", "呼吸道岔路", "同一個昏迷的人，考官換聲音。", [
-    q("air-gurgle", "壓額抬頦之後，嘴巴裡有咕嚕水聲。下一句做什麼？", "抽吸", ["抽吸", "抽"], "有水聲就抽。", "抽吸。"),
-    q("air-time", "最久抽幾秒？", "15 秒", ["15", "十五"], "不要超過 15 秒。", "15 秒。"),
-    q("air-snore", "水聲沒了，剩下鼾音。捏他會皺眉。用哪一種呼吸道？", "鼻咽", ["鼻咽", "npa"], "還有反應用鼻咽。", "鼻咽。", ["還有反應不用口咽", ["口咽", "opa"]]),
-    q("air-skull", "你正要放鼻咽，看到熊貓眼，耳朵有清水。還放嗎？", "不要放", ["不放", "不能放", "禁止", "不要放", "不能用"], "疑似顱底骨折，鼻咽不要放。", "不要放。")
-  ])
-];
+/* ========================================================
+   課本 58~65 頁核心考點與口訣特訓（必拿滿分）
+======================================================== */
+const TEXTBOOK_DRILL = {
+  id: "textbook",
+  title: "課本 58~65 頁核心考點與口訣特訓（必拿滿分）",
+  tag: "skills",
+  blurb: "痛刺激差異、主訴三句、輔助檢查、主訴之前吃過藥敏感、考場結案點、病人要史已前到。",
+  turns: [
+        q("tb-gcs-where", "在 EMT-1 救護流程中，GCS 昏迷指數主要在哪些時機進行評估？", "初評神經學D與二評八大徵象之首", ["神經學", "初評", "二評", "八大徵象", "D"], "GCS 在 EMT-1 流程有三大出沒時機：① 初評的神經學 (D) 評估 GCS + 瞳孔；② 二度評估八大生命徵象的第一項（意識 GCS）；③ 危急判定門檻（GCS < 14 直接危急送醫）！", "徒手初評神經學 (D) 與二度評估八大徵象第一項。"),
+    q("tb-gcs-score-rule", "接觸清醒傷病患時，主手為何要說「先生你看著我、說出名字、舉起你的右手」？", "測驗GCS滿分15分睜眼E4語言V5動作M6", ["gcs", "15分", "滿分", "睜眼", "語言", "動作", "中風", "偏癱", "e4", "v5", "m6"], "一句話秒殺測驗 GCS 三大要素：看著我 = E4 睜眼反應、說名字 = V5 語言定向感、舉右手 = M6 聽口令動作，確認 GCS 滿分 15 分並排除中風單側偏癱！", "同時驗證 GCS 滿分 15 分（E4V5M6）並排除中風單側偏癱！"),
+    q("tb-gcs-critical-threshold", "在危急個案判定標準中，GCS 昏迷指數低於多少分必須立即判定為危急個案後送？", "低於14分或13分以下", ["14", "13", "十四", "十三", "低於14", "小於14"], "課本第 61 頁危急生命徵象標準：GCS < 14 分（即 13 分以下）直接判定為危急個案，立即請求 ALS 支援火速後送！", "GCS 低於 14 分（13 分以下）立即判定為危急個案！"),
+    q("tb-pain-trauma", "創傷懷疑頸椎受傷患者，叫拍沒反應時，第三步疼痛刺激必須用什麼手法？嚴禁做什麼？", "壓指甲床或捏虎口嚴禁捏肩", ["指甲", "甲床", "虎口", "捏肩", "斜方肌"], "創傷懷疑頸椎受傷者，疼痛刺激必須壓手指指甲床或捏虎口，絕對嚴禁捏肩（斜方肌）以免牽動頸椎致癱！", "壓指甲床或捏虎口，絕對嚴禁捏肩！", ["嚴禁捏肩", ["捏肩"]]),
+    q("tb-pain-med", "非創傷（內科）或 OHCA 患者，叫拍沒反應時，第三步疼痛刺激手法是什麼？", "捏斜方肌", ["斜方", "捏肩", "肩膀"], "非創傷與 OHCA 無頸椎受傷機轉，疼痛刺激採捏雙側斜方肌（捏肩）。", "捏雙側斜方肌給予疼痛刺激。"),
+    q("tb-chief", "接觸清醒傷病患時，主手開口問主訴的標準三句是什麼？", "哪裡不舒服怎麼不舒服多久了", ["哪裡不舒服", "怎麼不舒服", "多久", "不舒服多久"], "課本第 64 頁主訴標準問法：請問你哪裡不舒服？怎麼不舒服？不舒服多久了？", "先生先生你哪裡不舒服？怎麼不舒服？不舒服多久了？"),
+    q("tb-adjunct-when", "在課本第 58/60 頁流程中，徒手初步評估完成後，下一格是什麼區塊？", "輔助檢查", ["輔助檢查", "輔助", "儀器", "機器"], "徒手初步評估（ABC/XABCDE）結束後，緊接著進入「輔助檢查」方框，拿出機器量測生命徵象。", "進入輔助檢查區塊。"),
+    q("tb-adjunct-what", "在「輔助檢查」區塊，主手拿出儀器量測哪四大數據？", "血壓血氧體溫血糖", ["血壓", "血氧", "體溫", "血糖"], "主手拿出機器測量：血壓計量血壓、看血氧機、耳溫槍量體溫、血糖機測血糖。", "測量血壓、血氧、體溫、血糖四大數據。"),
+    q("tb-sample", "副手在輔助檢查或初評空檔詢問病史，課本第 64 頁的七字簡記口訣是什麼？", "主訴之前吃過藥敏感", ["主訴", "之前", "吃", "過", "藥", "敏", "感"], "過去病史七字口訣：主訴之前吃過藥敏感（主訴、之前、吃、過、藥、敏、感）。", "主訴之前吃過藥敏感。"),
+    q("tb-chest-history", "若病患為缺血性胸痛，副手詢問現病史常用的六字英文口訣是什麼？", "opqrst", ["opqrst", "onset", "provocation", "quality", "radiation", "severity", "time"], "胸痛現病史簡記法：OPQRST（發作、增減、性質、轉移、嚴重度1-10分、時間）。", "現病史簡記法為 OPQRST。"),
+    q("tb-pelvis-rule", "非創傷（內科）初步評估循環 C 時，可以壓骨盆嗎？", "絕對不可以壓骨盆", ["不行", "不可", "不可以", "不能", "絕對不", "沒有", "不壓"], "非創傷無外力撞擊機轉，初步評估絕對不壓骨盆！只有創傷車禍墜落才向內向下壓一次！", "絕對不可以壓骨盆！", ["非創傷不壓骨盆", ["可以壓", "要壓"]]),
+    q("tb-exam-end", "在現場術科考場實戰中，報告完危急判定與後送請求後，現場考試還需要搬長背板擔架嗎？", "免搬長背板擔架現場滿分結案", ["免", "不用", "結案", "滿分", "長背板", "擔架"], "術科情境考場在此滿分結案！實務考試「免上長背板、免搬擔架床」！", "報告完危急判定後即現場滿分結案，免上長背板與擔架床。"),
+    q("tb-radio", "在救護車後送途中向責任醫院急診室做無線電交接通報，課本第 65 頁的七字口訣是什麼？", "病人要史已前到", ["病人要史已前到", "病", "要", "史", "已", "前", "到"], "無線電通報標準七字口訣：病人要史已前到（病人、要、史、已、前、到）。", "病人要史已前到。"),
+    q("tb-re-assess", "二度評估在什麼時機執行？危急個案多久評估一次？非危急多久一次？", "車上危急每5分鐘非危急每15分鐘", ["車上", "後送", "5分鐘", "五分鐘", "15分鐘", "十五分鐘"], "二度評估於救護車後送途中執行：危急個案每 5 分鐘一次、非危急個案每 15 分鐘一次。", "後送途中執行，危急個案每 5 分鐘評估一次，非危急每 15 分鐘一次。"),
+    q("tb-auscultation", "二度評估胸部聽診四個點，課本規定的標準聽診順序是什麼？", "右上左上左下右下", ["右上", "左上", "左下", "右下"], "胸部聽診四點標準順序：右上 ➔ 左上 ➔ 左下 ➔ 右下！", "聽診順序為右上、左上、左下、右下。"),
+    q("tb-abdomen", "二度評估腹部觸診四個象限點，檢查的基本原則是什麼？", "從痛的對側先壓痛的最後壓", ["對側", "最後壓", "痛的最後", "不痛先壓"], "以肚臍為中心畫四個象限，從痛的對側開始壓，痛的地方絕對最後壓！", "從痛的對側開始壓，痛的部位最後壓。"),
+    q("tb-sugar-steps", "糖尿病低血糖昏迷倒地，旺英衛教基金會官方唯一合格的抹糖四步驟是什麼？", "戴手套沾鹽水沾糖粉抹牙齦舌下", ["戴手套", "沾鹽水", "沾生理食鹽水", "沾糖粉", "抹牙齦", "舌下"], "低血糖昏迷嚴禁灌水！官方四步驟：戴手套 ➔ 沾生理食鹽水 ➔ 沾糖粉 ➔ 抹牙齦兩側黏膜與舌下！", "戴手套、沾生理食鹽水、沾糖粉、塗抹牙齦兩側黏膜與舌下。"),
+    q("tb-hist-diff", "「現病史」與「過去病史」在詢問重點上有何本質差異？", "現病史問當次發作細節過去病史問身體背景", ["當次", "這次", "當下", "背景", "發作", "平時", "過去"], "現病史 (OPQRST) 專注深挖「當下這次發作」的疼痛性質與特徵；過去病史 (主訴之前吃過藥敏感) 詢問「病患平常健康底子與發病前客觀事實」。", "現病史問當次發作細節，過去病史問平常健康背景。"),
+    q("tb-sample-trans", "課本第 64 頁的過去病史口訣「主訴之前吃過藥敏感」，對應英文教科書的哪一個經典口訣？", "SAMPLE", ["sample", "S-A-M-P-L-E"], "「主訴之前吃過藥敏感」就是英文 SAMPLE 的官方台式中文化（S主訴、E之前、L吃、P過、M藥、A敏、感補充）！", "對應英文的 SAMPLE 口訣。"),
+    q("tb-eat-trauma", "創傷（骨折/大出血/斷肢）病患，副手為什麼必須問「吃（上一餐何時吃的）」？", "評估緊急全身麻醉手術防吸入性窒息", ["麻醉", "手術", "開刀", "吸入", "窒息", "嘔吐", "空腹", "嗆到"], "重大創傷到院後可能立即全麻手術！若胃內有食物，全麻插管時易嘔吐逆流引發吸入性肺炎窒息猝死，需確認空腹時間！", "供急診評估緊急全身麻醉手術風險，防止嘔吐物逆流引發吸入性肺炎窒息！"),
+    q("tb-eat-sugar", "糖尿病患者昏迷倒地，副手詢問病史為何必須確認「吃（上一餐時間）」？", "比對打胰島素未進食引發低血糖暴跌", ["胰島素", "未進食", "沒吃", "低血糖", "暴跌"], "糖尿病患者打完胰島素或吃降血糖藥若「未進食」，體內血糖會急速暴跌昏迷，問出沒吃早餐能瞬間確診低血糖！", "比對是否有打胰島素卻未進食，導致血糖急速暴跌昏迷。"),
+        q("tb-pe-diff", "二度評估身體檢查中，非創傷（內科）著重檢查哪八大內科病徵？創傷（外傷）著重檢查什麼？", "非創傷查內科病徵創傷查全身摸骨頭看沾血", ["內科", "病徵", "骨頭", "摸骨", "紅疹", "紫斑", "水腫", "沾血", "黑便"], "非創傷重點在查臉對稱、瞳孔、頸靜脈、胸聽診、腹壓痛、紅疹紫斑針孔、手腕腳踝凹陷水腫、黑便血便；創傷重點在全身摸骨骼（後腦眉顴頜、鎖胸肋、腹部、骨盆、四肢長骨四等分、滾木翻身摸脊椎）且每次摸完手套必翻看有無沾血！", "非創傷查內科病徵（紅疹/紫斑/針孔/水腫/黑便等八項），創傷查全身摸骨頭與手套翻看有無沾血。"),
+    q("tb-trauma-npa", "創傷病患有鼾音，能否使用鼻咽呼吸道 (NPA)？有何絕對禁忌？", "先排除顱底骨折才可用有熊貓眼耳漏鼻漏嚴禁使用", ["顱底", "骨折", "熊貓眼", "耳漏", "鼻漏", "嚴禁", "禁忌", "不能", "插腦"], "課本第 60 頁規定：創傷患者若有鼾音且對痛有反應，必須「先檢查有無顱底骨折」，確認無熊貓眼、耳後瘀青、耳漏鼻漏才可用 NPA！若疑似顱底骨折則絕對嚴禁使用 NPA 防穿入顱腔！", "先檢查排除顱底骨折才可用；若有熊貓眼、耳後瘀青、耳漏鼻漏則絕對嚴禁使用 NPA！")
+  ]
+};
 
-const RUNS = [OHCA, OXYGEN, THRESHOLD, ...SCENES];
+const RUNS = [OHCA, TEXTBOOK_DRILL, ...TRAUMA_SCENES, ...MEDICAL_SCENES, OXYGEN, AIRWAY, THRESHOLD];
 
-const NEG_PREFIXES = ["不可以", "不能用", "還沒到", "還沒有", "不能", "不要", "不是", "尚未", "不用", "不必", "不算", "不可", "不該", "沒有", "禁止", "而非", "並非", "還沒", "別", "勿", "不", "非"];
+function scene(id, name, type, blurb, turns) {
+  return { id, title: name, type, blurb, turns };
+}
+
+/* 評分與文字正規化 */
+const NEG_PREFIXES = ["不可以", "不能用", "還沒到", "還沒有", "不能", "不要", "不是", "尚未", "不用", "不必", "不算", "不可", "不該", "沒有", "禁止", "而非", "並非", "還沒", "別", "勿", "不", "非", "嚴禁", "免用", "免"];
 const CN_NUM = "零一二三四五六七八九十百千兩";
 function cnNum(ch) { return !!ch && CN_NUM.includes(ch); }
 
@@ -307,7 +559,21 @@ function norm(s) {
 function negatedBefore(text, index) {
   let at = index;
   while (at > 0 && "再用給去把".includes(text[at - 1])) at -= 1;
-  return NEG_PREFIXES.some((prefix) => at >= prefix.length && text.slice(at - prefix.length, at) === prefix);
+  if (NEG_PREFIXES.some((prefix) => at >= prefix.length && text.slice(at - prefix.length, at) === prefix)) {
+    return true;
+  }
+  // 複合詞跳讀（例如：嚴禁壓額抬頦、不可抬頦後仰，否定詞直接作用於整個動詞組）
+  const skip = "再用給去把進做採使用壓額抬頦仰頭後仰";
+  at = index;
+  let steps = 0;
+  while (at > 0 && steps < 6 && skip.includes(text[at - 1])) {
+    at -= 1;
+    steps += 1;
+    if (NEG_PREFIXES.some((prefix) => at >= prefix.length && text.slice(at - prefix.length, at) === prefix)) {
+      return true;
+    }
+  }
+  return false;
 }
 
 function hit(text, term) {
@@ -327,10 +593,6 @@ function hit(text, term) {
     }
     if ((cnNum(needle[0]) && cnNum(before)) || (cnNum(needle[needle.length - 1]) && cnNum(after))) {
       from = at + 1;
-      continue;
-    }
-    if (needle === "代償" && (before === "失" || before === "非")) {
-      from = at + needle.length;
       continue;
     }
     if (negatedBefore(text, at)) {
@@ -369,13 +631,122 @@ function saveStore(data) { localStorage.setItem(STORE, JSON.stringify(data)); }
 const state = {
   turns: [],
   title: "",
+  type: "",
   index: 0,
   attempt: 1,
   results: [],
   screen: "home",
   feedback: null,
-  chainLeft: []
+  chainLeft: [],
+  notice: "",
+  playMode: localStorage.getItem("emt_play_mode") || "mc"
 };
+
+const EXTRA_DISTRACTORS = [
+  "先檢查排除顱底骨折才可用；若有熊貓眼、耳後瘀青、耳漏鼻漏則絕對嚴禁使用 NPA！",
+  "現病史問當次發作細節，過去病史問平常健康背景。",
+  "對應英文的 SAMPLE 口訣。",
+  "供急診評估緊急全身麻醉手術風險，防止嘔吐物逆流引發吸入性肺炎窒息！",
+  "比對是否有打胰島素卻未進食，導致血糖急速暴跌昏迷。",
+  "壓指甲床或捏虎口，絕對嚴禁捏肩！",
+  "捏雙側斜方肌給予疼痛刺激。",
+  "先生先生你哪裡不舒服？怎麼不舒服？不舒服多久了？",
+  "進入輔助檢查：主手操作儀器量血壓血氧體溫血糖，副手詢問病史。",
+  "主訴之前吃過藥敏感。",
+  "現病史簡記法為 OPQRST。",
+  "絕對不可以壓骨盆！",
+  "報告完危急判定後即宣告滿分結案，免上長背板與擔架床。",
+  "無線電通報標準七字口訣：病人要史已前到。",
+  "後送途中執行，危急個案每 5 分鐘評估一次，非危急每 15 分鐘一次。",
+  "聽診順序為右上、左上、左下、右下。",
+  "從痛的對側開始壓，痛的部位最後壓。",
+  "戴手套、沾生理食鹽水、沾糖粉、塗抹牙齦兩側黏膜與舌下。",
+  "採壓額抬頦法暢通呼吸道。",
+  "採用下顎推擠法打開呼吸道（嚴禁仰頭）。",
+  "置入口咽呼吸道 (OPA)。",
+  "置入鼻咽呼吸道 (NPA)。",
+  "給予鼻導管 (NC) 固定 4 L/min。",
+  "給予一般面罩 (Mask) 固定 10 L/min。",
+  "給予非再呼吸型面罩 (NRM) 固定 15 L/min（先充飽儲氣袋）。",
+  "給予甦醒球 (BVM) 接氧固定 15 L/min 每 6 秒一口。",
+  "立即直接加壓，並立刻使用止血帶止血！",
+  "雙手置於腸骨翼，向內向下施壓一次確認骨盆穩定度。",
+  "測量下巴水平切線至肩線的指幅距離。",
+  "檢查氣管有無偏移、頸靜脈有無怒張、後頸壓痛及四肢痠痛麻。",
+  "報告考官：判定危急個案！請求支援並準備立即長背板後送！",
+  "判定未達危急門檻，現場給予二度評估八大生命徵象。",
+  "告知病患後剪開衣物，快速檢視全身致命傷。",
+  "維持原姿勢以夾板跨上下關節固定，固定前後測 PSM。",
+  "以生理食鹽水濕敷無菌紗布覆蓋，斷肢三層包裝隔袋冷卻。",
+  "詢問病患自備藥物（NTG / 氣管擴張劑）並通報進階救護，EMT-1 不直接給藥。",
+  "戴手套 ➔ 沾生理食鹽水 ➔ 沾糖粉 ➔ 塗抹牙齦與舌下（嚴禁灌食）。",
+  "評估 G-FAST：測眼、臉歪、手無力、語言不流暢，查最後正常時間。",
+  "單次口咽抽吸不超過 15 秒，邊旋轉後退邊抽吸。",
+  "立即開始高品質 CPR 30:2，副手準備 AED。",
+  "大聲清場喊：大家離開，我離開，全部離開！確認無人接觸後電擊！",
+  "電擊完成後，不摸脈搏，立即恢復胸外按壓 CPR！",
+  "摸頸動脈評估脈搏，評估時間不超過 10 秒。"
+];
+
+function setPlayMode(mode) {
+  state.playMode = mode;
+  localStorage.setItem("emt_play_mode", mode);
+  render();
+}
+
+function getTurnChoices(turn) {
+  if (turn.mcChoices) return turn.mcChoices;
+  const correct = turn.model;
+  const choices = [correct];
+  
+  if (turn.forbid && turn.forbid[0]) {
+    const banWords = turn.forbid[0].any || [];
+    const banChoice = EXTRA_DISTRACTORS.find(p => p !== correct && banWords.some(w => p.includes(w)));
+    if (banChoice && !choices.includes(banChoice)) choices.push(banChoice);
+  }
+  
+  const pool = [...EXTRA_DISTRACTORS].filter(p => p && p !== correct && !choices.includes(p));
+  pool.sort(() => Math.random() - 0.5);
+  for (const item of pool) {
+    if (choices.length >= 4) break;
+    if (!choices.includes(item)) choices.push(item);
+  }
+  turn.mcChoices = choices.sort(() => Math.random() - 0.5);
+  return turn.mcChoices;
+}
+
+function selectChoice(index) {
+  if (state.feedback && state.feedback.done) return;
+  const turn = current();
+  const choices = getTurnChoices(turn);
+  const selected = choices[index];
+  const isCorrect = (selected === turn.model);
+  
+  if (isCorrect) {
+    record(turn, "standard");
+    state.feedback = {
+      kind: "good",
+      text: "✅ 標準！答中考場核心處置，考官不扣分！",
+      model: turn.model,
+      selectedIdx: index,
+      correctIdx: index,
+      done: true
+    };
+    speak(turn.model);
+  } else {
+    record(turn, "wrong");
+    const correctIdx = choices.indexOf(turn.model);
+    state.feedback = {
+      kind: "bad",
+      text: "❌ 答錯（考場視為錯誤扣 2 分）。正確標準處置為：",
+      model: turn.model,
+      selectedIdx: index,
+      correctIdx: correctIdx,
+      done: true
+    };
+  }
+  render();
+}
 
 const app = document.querySelector("#app");
 let recognition = null;
@@ -388,20 +759,17 @@ function speak(text) {
     window.speechSynthesis.cancel();
     const utter = new SpeechSynthesisUtterance(text);
     utter.lang = "zh-TW";
-    utter.rate = 1;
+    utter.rate = 1.05;
     window.speechSynthesis.speak(utter);
-  } catch (err) {
-    return;
-  }
+  } catch (err) { }
 }
 
 function current() { return state.turns[state.index]; }
 
-function markOf(result) { return result; }
-
-function startTurns(turns, title, chainLeft) {
+function startTurns(turns, title, type, chainLeft) {
   state.turns = turns.map(resolveTurn);
   state.title = title;
+  state.type = type || "";
   state.index = 0;
   state.attempt = 1;
   state.results = [];
@@ -414,17 +782,14 @@ function startTurns(turns, title, chainLeft) {
 }
 
 function startRun(run, chainLeft) {
-  startTurns(run.turns, run.title, chainLeft);
+  startTurns(run.turns, run.title, run.type, chainLeft);
 }
 
-function startTonight() {
+/* 考場隨機盲抽 1 題情境（1/11） */
+function startRandomOne() {
   const pool = [...SCENES];
-  const picked = [];
-  for (let i = 0; i < 4 && pool.length; i += 1) {
-    const at = Math.floor(Math.random() * pool.length);
-    picked.push(pool.splice(at, 1)[0]);
-  }
-  startRun(OHCA, picked);
+  const pick = pool[Math.floor(Math.random() * pool.length)];
+  startRun(pick, []);
 }
 
 function startWeak() {
@@ -442,11 +807,11 @@ function startWeak() {
   });
   if (!turns.length) {
     state.screen = "home";
-    state.notice = "還沒有卡住的。先做一套，講錯的會留在這裡。";
+    state.notice = "目前沒有卡住的題目！先做一套情境，答錯的會自動記錄在這裡。";
     render();
     return;
   }
-  startTurns(turns, "上次卡住的", []);
+  startTurns(turns, "上次卡住的錯題", "弱點", []);
 }
 
 function record(turn, mark) {
@@ -463,44 +828,44 @@ function submit() {
   const answer = input ? input.value : "";
   const result = grade(answer, turn);
   if (result.empty) {
-    state.feedback = { kind: "bad", text: "先講一句再送出。空白不算一次失敗。" };
+    state.feedback = { kind: "bad", text: "請先回答一句再送出！空白不算扣分。" };
     render();
     return;
   }
   if (result.pass && state.attempt === 1 && !state.feedback?.hinted) {
     record(turn, "standard");
-    state.feedback = { kind: "good", text: "標準。第一遍就講到了。", done: true };
+    state.feedback = { kind: "good", text: "✅ 標準！第一遍就講到核心重點，考官不扣分！", done: true };
     render();
     return;
   }
   if (result.pass) {
     record(turn, "prompt");
-    state.feedback = { kind: "good", text: "這遍對了。因為看過缺漏，這句算不標準，和考場被提示一樣。", done: true };
+    state.feedback = { kind: "good", text: "⚠️ 本次答對（經提示後完成，考場視為不標準扣 1 分）。", done: true };
     render();
     return;
   }
   const lack = result.missing.map((item) => item.label).concat(result.forbidden.map((item) => item.label));
   if (state.attempt === 1) {
     state.attempt = 2;
-    state.feedback = { kind: "bad", text: "這句還沒對上。換個說法再講一次，意思到了就過。這一遍過了也只算不標準。", lack };
+    state.feedback = { kind: "bad", text: "❌ 核心要點尚未命中。換個說法再試一次，意思到了就給過！", lack };
     render();
     return;
   }
   record(turn, "wrong");
-  state.feedback = { kind: "bad", text: "看一種講法就好，不用照抄。下一問繼續。", model: turn.model, done: true };
+  state.feedback = { kind: "bad", text: "❌ 未能正確作答（考場視為錯誤扣 2 分）。請記住標準口令：", model: turn.model, done: true };
   render();
 }
 
 function showHint() {
   const turn = current();
-  state.feedback = { kind: "bad", text: turn.hint, hinted: true, lack: state.feedback?.lack };
+  state.feedback = { kind: "bad", text: "💡 提示：" + turn.hint, hinted: true, lack: state.feedback?.lack };
   render();
 }
 
 function showModel() {
   const turn = current();
   if (!state.results.some((item) => item.id === turn.id)) record(turn, "wrong");
-  state.feedback = { kind: "bad", text: "看過一種講法。這問算沒有自己答出。", model: turn.model, done: true };
+  state.feedback = { kind: "bad", text: "📖 考場標準講法示範：", model: turn.model, done: true };
   render();
 }
 
@@ -531,7 +896,7 @@ function listen() {
   const Rec = window.SpeechRecognition || window.webkitSpeechRecognition;
   const box = document.querySelector("#answer");
   if (!Rec) {
-    state.feedback = { kind: "bad", text: "這個瀏覽器沒有語音輸入。直接打字就好。用 http://127.0.0.1 開頁，麥克風比較願意工作。" };
+    state.feedback = { kind: "bad", text: "目前瀏覽器未支援語音輸入，請直接打字。以本機網址 (localhost/127.0.0.1) 開啟能啟用麥克風。" };
     render();
     return;
   }
@@ -546,12 +911,12 @@ function listen() {
     if (target) target.value = (target.value ? target.value + " " : "") + said;
   };
   recognition.onerror = () => {
-    state.feedback = { kind: "bad", text: "麥克風沒有收下這句。可以改打字。本機網址比直接點檔案容易拿到麥克風。" };
+    state.feedback = { kind: "bad", text: "麥克風收音失敗，請直接鍵盤輸入。" };
     render();
   };
   try { recognition.start(); }
   catch (err) {
-    state.feedback = { kind: "bad", text: "麥克風沒有啟動。直接打字即可。" };
+    state.feedback = { kind: "bad", text: "麥克風未能啟動，請直接鍵盤輸入。" };
     render();
     return;
   }
@@ -576,49 +941,170 @@ function shortLabel(id) {
   return text.length > 24 ? text.slice(0, 24) + "…" : text;
 }
 
+/* ========================================================
+   Render Views
+======================================================== */
 function renderHome() {
   const data = loadStore();
   const stuck = Object.entries(data.miss).filter(([id, count]) => count > 0 && findTurn(id));
+
   app.innerHTML = `
-    <div class="home-grid">
-      <section class="card">
-        <p class="who">怎麼練</p>
-        <p>考官一次只問一件事。</p>
-        <p>你答那一件就好。意思到了就過，不用背完整段。</p>
-        <p>打字或麥克風都可以，Ctrl+Enter 送出。麥克風請用本機網址開。</p>
-        <div class="starts">
-          <button type="button" data-go="tonight"><b>今晚一套</b><span>先走完 OHCA，再混抽 4 題情境。</span></button>
-          <button type="button" data-go="ohca"><b>只練 OHCA</b><span>進場、叫拍捏、呼吸、脈搏、AED、按壓、兩次分析。</span></button>
-          <button type="button" data-go="scenes"><b>混抽情境</b><span>一題一個岔路。考官中途改口。</span></button>
-          <button type="button" data-go="oxygen"><b>給氧和危急數字</b><span>他報血氧、呼吸、GCS，你講裝置或危不危急。</span></button>
-          <button type="button" data-go="weak"><b>先練上次卡住的</b><span>${stuck.length ? stuck.length + " 問還沒穩定。" : "做完一套才會有清單。"}</span></button>
+    <section class="card">
+      <div style="display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:8px;">
+        <h2 style="margin:0;">🎯 考前快速模擬模式</h2>
+        <span style="font-size:.85rem; color:var(--faint);">考官一句一句問，你只要答對核心動詞即過關</span>
+      </div>
+
+      <div style="margin: 14px 0 16px; padding: 12px 16px; background: rgba(56,189,248,.08); border: 1px solid rgba(56,189,248,.25); border-radius: 14px; display:flex; justify-content:space-between; align-items:center; flex-wrap:wrap; gap:10px;">
+        <div>
+          <b style="color:#7dd3fc; font-size:.95rem;">⚡ 作答訓練模式：</b>
+          <span style="font-size:.85rem; color:var(--muted);">狂刷肌肉記憶推薦「選擇題模式」，考前動嘴練習推薦「打字/口說模式」</span>
         </div>
-      </section>
-      <aside class="card">
-        <p class="who">計分跟考場一樣</p>
-        <p>第一遍意思到了 = 標準。</p>
-        <p>看過缺什麼才講對 = 不標準。</p>
-        <p>第二遍還不對，或直接看答案 = 這問沒過。</p>
-        <p>節拍器只鎖 110。深度和回彈這頁量不到，要自己壓。</p>
-        ${state.notice ? `<p>${state.notice}</p>` : ""}
-        ${stuck.length ? `<ul class="miss-list">${stuck.slice(0, 6).map(([id, count]) => `<li>卡了 ${count} 次：${shortLabel(id)}</li>`).join("")}</ul>` : ""}
-      </aside>
-    </div>`;
-  app.querySelectorAll("[data-go]").forEach((button) => {
-    button.addEventListener("click", () => {
+        <div class="toggle-bar">
+          <button type="button" class="toggle-btn ${state.playMode === 'mc' ? 'active' : ''}" id="home-toggle-mc">⚡ 四選一極速狂刷</button>
+          <button type="button" class="toggle-btn ${state.playMode === 'text' ? 'active' : ''}" id="home-toggle-text">✍️ 考場擬真口令</button>
+        </div>
+      </div>
+
+      <div class="mode-grid">
+        <button type="button" class="mode-btn random" data-mode="random-one">
+          <b>🎲 考場盲抽 1 題 <span class="badge-mini bg-pink">抽考模擬</span></b>
+          <span>考官從 11 題中隨機抽 1 題考你，測驗考場臨場反應！</span>
+        </button>
+
+        <button type="button" class="mode-btn ohca" data-mode="ohca">
+          <b>🟡 OHCA 獨立大魔王 <span class="badge-mini bg-ohca">必考 25分</span></b>
+          <span>進場、安全、叫拍捏、呼吸脈搏、CPR、兩次分析完封。</span>
+        </button>
+
+        <button type="button" class="mode-btn trauma" data-mode="trauma-all">
+          <b>🔴 創傷 6 題全刷 <span class="badge-mini bg-trauma">6 題連續</span></b>
+          <span>安全帽、大出血、斷肢、骨折骨盆、燒燙傷、氣胸穿刺。</span>
+        </button>
+
+        <button type="button" class="mode-btn med" data-mode="med-all">
+          <b>🔵 非創傷 5 題全刷 <span class="badge-mini bg-med">5 題連續</span></b>
+          <span>過敏反應、氣喘呼吸困難、中風測眼、胸痛、低血糖抹糖。</span>
+        </button>
+
+        <button type="button" class="mode-btn skills" data-mode="skills-all">
+          <b>⚡ 考場口令與反射 <span class="badge-mini bg-skill">技術速練</span></b>
+          <span>給氧面罩轉換、呼吸道水聲抽吸/OPA/NPA、生命徵象門檻。</span>
+        </button>
+
+        <button type="button" class="mode-btn weak" data-mode="weak">
+          <b>🎯 弱點加強（錯題本） <span class="badge-mini" style="background:rgba(168,85,247,.2);color:#c084fc;">卡住題</span></b>
+          <span>${stuck.length ? `目前累積 ${stuck.length} 題曾卡住，點此集中消滅！` : "目前無卡住題目，多練習會自動記錄。"}</span>
+        </button>
+      </div>
+
+      ${state.notice ? `<p style="color:var(--ohca); margin:12px 0 0;">${state.notice}</p>` : ""}
+    </section>
+
+    <!-- 11 大指定情境直接點擊單練專區 -->
+    <div class="section-title">
+      <div>📋 老師指定 11 大情境・點名專區</div>
+      <span>（點擊任何一題直接單練該題）</span>
+    </div>
+
+    <div class="scenes-grid">
+      <!-- 創傷 6 題 -->
+      <button type="button" class="scene-card trauma-border" data-scene="helmet">
+        <div class="scene-top"><span class="scene-num">#01</span><span class="badge-mini bg-trauma">創傷</span></div>
+        <div class="scene-name">安全帽脫除</div>
+        <div class="scene-hint">腳側吸引注意、副手頭部減移、脫帽、查氣管/頸靜脈/痠痛麻、下巴肩線上頸圈。</div>
+      </button>
+
+      <button type="button" class="scene-card trauma-border" data-scene="bleed">
+        <div class="scene-top"><span class="scene-num">#02</span><span class="badge-mini bg-trauma">創傷</span></div>
+        <div class="scene-name">大出血</div>
+        <div class="scene-hint">小腿動脈噴血！直接加壓＋立刻止血帶，大出血止血優先於頸椎，止血完回意識。</div>
+      </button>
+
+      <button type="button" class="scene-card trauma-border" data-scene="amputation">
+        <div class="scene-top"><span class="scene-num">#03</span><span class="badge-mini bg-trauma">創傷</span></div>
+        <div class="scene-name">斷肢</div>
+        <div class="scene-hint">前臂斷端止血帶加壓止血，殘端清洗包紮，手腕或腳踝以上截肢直接判危急快送。</div>
+      </button>
+
+      <button type="button" class="scene-card trauma-border" data-scene="fracture">
+        <div class="scene-top"><span class="scene-num">#04</span><span class="badge-mini bg-trauma">創傷</span></div>
+        <div class="scene-name">骨折與骨盆</div>
+        <div class="scene-hint">骨盆向內向下壓一次，長骨骨折前後摸 PSM，股骨1000/骨盆1500-3000cc失血判危急。</div>
+      </button>
+
+      <button type="button" class="scene-card trauma-border" data-scene="burn">
+        <div class="scene-top"><span class="scene-num">#05</span><span class="badge-mini bg-trauma">創傷</span></div>
+        <div class="scene-name">燒燙傷</div>
+        <div class="scene-hint">確認脫離電源，生理食鹽水沖蓋紗布，體表>25%或臉/會陰/吸入灼傷判危急，NRM 固定15L。</div>
+      </button>
+
+      <button type="button" class="scene-card trauma-border" data-scene="chestwound">
+        <div class="scene-top"><span class="scene-num">#06</span><span class="badge-mini bg-trauma">創傷</span></div>
+        <div class="scene-name">氣胸與穿刺傷</div>
+        <div class="scene-hint">吸吮胸傷貼三留一，插刀異物固定不拔，左手比三檢查氣管偏移，嚴禁穿刺減壓。</div>
+      </button>
+
+      <!-- 非創傷 5 題 -->
+      <button type="button" class="scene-card med-border" data-scene="allergy">
+        <div class="scene-top"><span class="scene-num">#07</span><span class="badge-mini bg-med">非創傷</span></div>
+        <div class="scene-name">過敏反應</div>
+        <div class="scene-hint">吃海鮮唇腫喘鳴，聽呼吸道水聲抽吸，問過敏史，NRM 固定15L高濃度氧，EMT-1不打針，快送。</div>
+      </button>
+
+      <button type="button" class="scene-card med-border" data-scene="asthma">
+        <div class="scene-top"><span class="scene-num">#08</span><span class="badge-mini bg-med">非創傷</span></div>
+        <div class="scene-name">氣喘與呼吸困難</div>
+        <div class="scene-hint">張口喘血氧92給一般面罩固定10L，依醫囑自噴擴張劑，給氧不改善為呼吸困難，呼吸<10次換BVM(15L)。</div>
+      </button>
+
+      <button type="button" class="scene-card med-border" data-scene="stroke">
+        <div class="scene-top"><span class="scene-num">#09</span><span class="badge-mini bg-med">非創傷</span></div>
+        <div class="scene-name">中風 (G-FAST)</div>
+        <div class="scene-hint">嘴角歪單側無力。Gaze測眼水平跟隨、微笑、平舉、說話、最後正常時間，加測血糖看呼吸道。</div>
+      </button>
+
+      <button type="button" class="scene-card med-border" data-scene="chest">
+        <div class="scene-top"><span class="scene-num">#10</span><span class="badge-mini bg-med">非創傷</span></div>
+        <div class="scene-name">胸痛 (心肌梗塞)</div>
+        <div class="scene-hint">胸悶冒冷汗直接危急。問OPQRST，NTG四不含(SBP<90、壯陽藥、脈搏、過敏)，查效期劑型自含一錠隔5分。</div>
+      </button>
+
+      <button type="button" class="scene-card med-border" data-scene="sugar">
+        <div class="scene-top"><span class="scene-num">#11</span><span class="badge-mini bg-med">非創傷</span></div>
+        <div class="scene-name">低血糖</div>
+        <div class="scene-hint">糖尿病冒冷汗。先看 ABC 測血糖<60判危急。清醒喝糖水，昏迷戴手套沾食鹽水沾糖粉抹牙齦舌下(禁灌食)。</div>
+      </button>
+    </div>
+  `;
+
+  // Mode event listeners
+  app.querySelectorAll("[data-mode]").forEach((btn) => {
+    btn.addEventListener("click", () => {
       state.notice = "";
-      const go = button.dataset.go;
-      if (go === "tonight") startTonight();
-      if (go === "ohca") startRun(OHCA, []);
-      if (go === "scenes") {
-        const pool = [...SCENES];
-        const run = pool[Math.floor(Math.random() * pool.length)];
-        startRun(run, []);
+      const mode = btn.dataset.mode;
+      if (mode === "random-one") startRandomOne();
+      if (mode === "ohca") startRun(OHCA, []);
+      if (mode === "trauma-all") {
+        const pool = [...TRAUMA_SCENES];
+        const first = pool.shift();
+        startRun(first, pool);
       }
-      if (go === "oxygen") startRun(OXYGEN, [THRESHOLD]);
-      if (go === "weak") startWeak();
+      if (mode === "med-all") {
+        const pool = [...MEDICAL_SCENES];
+        const first = pool.shift();
+        startRun(first, pool);
+      }
+      if (mode === "skills-all") {
+        startRun(OXYGEN, [AIRWAY, THRESHOLD]);
+      }
+      if (mode === "weak") startWeak();
     });
   });
+
+  // Home mode switch
+  document.querySelector("#home-toggle-mc")?.addEventListener("click", () => setPlayMode("mc"));
+  document.querySelector("#home-toggle-text")?.addEventListener("click", () => setPlayMode("text"));
 }
 
 function renderAsk() {
@@ -626,102 +1112,219 @@ function renderAsk() {
   const step = state.index + 1;
   const total = state.turns.length;
   const feedback = state.feedback;
+  const isMc = (state.playMode === "mc");
+  const choices = isMc ? getTurnChoices(turn) : [];
+
   app.innerHTML = `
     <section class="card">
       <div class="run-head">
-        <strong>${state.title}</strong>
-        <span class="step">${step} / ${total}</span>
+        <strong>
+          ${state.type === "創傷" ? `<span class="badge-mini bg-trauma">創傷</span>` : state.type === "非創傷" ? `<span class="badge-mini bg-med">非創傷</span>` : state.type === "ohca" ? `<span class="badge-mini bg-ohca">OHCA</span>` : ""}
+          ${state.title}
+        </strong>
+        <div style="display:flex; align-items:center; gap:8px;">
+          <div class="toggle-bar">
+            <button type="button" class="toggle-btn ${isMc ? 'active' : ''}" id="ask-toggle-mc">⚡ 選擇題模式</button>
+            <button type="button" class="toggle-btn ${!isMc ? 'active' : ''}" id="ask-toggle-text">✍️ 打字/口說</button>
+          </div>
+          <span class="step">${step} / ${total}</span>
+        </div>
       </div>
       <div class="bar" aria-hidden="true"><i style="width:${Math.round((step - 1) / total * 100)}%"></i></div>
+
       <div class="prompt">
-        <p class="who">考官</p>
+        <p class="who">考官情境指令</p>
         <p class="exam" id="examiner">${turn.examiner}</p>
       </div>
-      <label for="answer">你講</label>
-      <textarea id="answer" placeholder="一句就好。意思到了就過。Ctrl+Enter 送出。"></textarea>
-      <div class="row">
-        <button type="button" class="primary" id="send">送出</button>
-        <button type="button" id="mic">麥克風</button>
-        <button type="button" id="again">再聽一次</button>
-        <button type="button" id="hint">給我一個提示</button>
-        <button type="button" id="reveal">看一種講法</button>
-        <button type="button" id="quit">回首頁</button>
-        ${feedback && feedback.done ? `<button type="button" class="next" id="next">下一問</button>` : ""}
-      </div>
+
+      ${isMc ? `
+        <div class="mc-grid">
+          ${choices.map((choice, i) => {
+            let extraClass = "";
+            if (feedback && feedback.done) {
+              if (i === feedback.correctIdx) extraClass = "correct";
+              else if (i === feedback.selectedIdx) extraClass = "wrong";
+            }
+            return `
+              <button type="button" class="mc-option ${extraClass}" data-mc-idx="${i}" ${feedback && feedback.done ? "disabled" : ""}>
+                <span class="mc-badge">${["A", "B", "C", "D"][i]}</span>
+                <span class="mc-text">${choice}</span>
+              </button>
+            `;
+          }).join("")}
+        </div>
+
+        <div class="row">
+          <button type="button" id="again">🔊 考官再唸一次</button>
+          <button type="button" id="hint">💡 給我提示</button>
+          <button type="button" id="quit">↩️ 回首頁</button>
+          ${feedback && feedback.done ? `<button type="button" class="next" id="next">下一問 ➔ (鍵盤 Space / Enter)</button>` : ""}
+        </div>
+      ` : `
+        <label for="answer">你的口令與處置動作（回答一句關鍵重點即可，Ctrl+Enter 送出）</label>
+        <textarea id="answer" placeholder="回答一句核心動詞與關鍵詞即可，不用背整段廢話..."></textarea>
+
+        <div class="row">
+          <button type="button" class="primary" id="send">送出回答</button>
+          <button type="button" id="mic">🎤 語音作答</button>
+          <button type="button" id="again">🔊 再聽一次</button>
+          <button type="button" id="hint">💡 給我提示</button>
+          <button type="button" id="reveal">📖 看標準講法</button>
+          <button type="button" id="quit">↩️ 回首頁</button>
+          ${feedback && feedback.done ? `<button type="button" class="next" id="next">下一問 ➔</button>` : ""}
+        </div>
+      `}
+
       ${feedback ? `<div class="feedback ${feedback.kind}" role="status">${feedback.text}${feedback.model ? `<div class="model">${feedback.model}</div>` : ""}</div>` : `<div id="live" role="status"></div>`}
     </section>
-    <div class="log">${state.results.map((item) => `<div><b class="${item.mark === "standard" ? "mark-ok" : item.mark === "prompt" ? "mark-mid" : "mark-bad"}">${item.mark === "standard" ? "標準" : item.mark === "prompt" ? "不標準" : "沒過"}</b> ${item.label}</div>`).join("")}</div>`;
-  const box = document.querySelector("#answer");
-  box.focus();
-  box.addEventListener("keydown", (event) => {
-    if (event.key === "Enter" && (event.ctrlKey || event.metaKey)) submit();
-  });
-  document.querySelector("#send").addEventListener("click", submit);
-  document.querySelector("#mic").addEventListener("click", listen);
-  document.querySelector("#again").addEventListener("click", () => speak(turn.examiner));
-  document.querySelector("#hint").addEventListener("click", showHint);
-  document.querySelector("#reveal").addEventListener("click", showModel);
-  document.querySelector("#quit").addEventListener("click", () => { state.screen = "home"; state.notice = ""; render(); });
+
+    <div class="log">${state.results.map((item) => `<div><b class="${item.mark === "standard" ? "mark-ok" : item.mark === "prompt" ? "mark-mid" : "mark-bad"}">${item.mark === "standard" ? "標準 (0)" : item.mark === "prompt" ? "提示 (-1)" : "錯誤 (-2)"}</b> ${item.label}</div>`).join("")}</div>
+  `;
+
+  document.querySelector("#ask-toggle-mc")?.addEventListener("click", () => setPlayMode("mc"));
+  document.querySelector("#ask-toggle-text")?.addEventListener("click", () => setPlayMode("text"));
+  document.querySelector("#again")?.addEventListener("click", () => speak(turn.examiner));
+  document.querySelector("#hint")?.addEventListener("click", showHint);
+  document.querySelector("#quit")?.addEventListener("click", () => { state.screen = "home"; state.notice = ""; render(); });
+
   const nextButton = document.querySelector("#next");
   if (nextButton) nextButton.addEventListener("click", next);
+
+  if (isMc) {
+    app.querySelectorAll("[data-mc-idx]").forEach((btn) => {
+      btn.addEventListener("click", () => {
+        selectChoice(parseInt(btn.dataset.mcIdx, 10));
+      });
+    });
+  } else {
+    const box = document.querySelector("#answer");
+    if (box) {
+      box.focus();
+      box.addEventListener("keydown", (event) => {
+        if (event.key === "Enter" && (event.ctrlKey || event.metaKey)) submit();
+      });
+    }
+    document.querySelector("#send")?.addEventListener("click", submit);
+    document.querySelector("#mic")?.addEventListener("click", listen);
+    document.querySelector("#reveal")?.addEventListener("click", showModel);
+  }
 }
 
 function renderDone() {
   const standard = state.results.filter((item) => item.mark === "standard").length;
   const prompt = state.results.filter((item) => item.mark === "prompt").length;
   const wrong = state.results.filter((item) => item.mark === "wrong").length;
+  const totalQuestions = state.results.length;
+
+  // 旺英扣分標準：起始 25 分，不標準扣 1 分，錯誤扣 2 分
+  let score = 25 - (prompt * 1) - (wrong * 2);
+  if (score < 0) score = 0;
+  const isPass = score >= 19;
+
   app.innerHTML = `
     <section class="card">
-      <p class="who">這一套結束</p>
-      <p class="exam">${standard} 問標準，${prompt} 問不標準，${wrong} 問沒過。</p>
-      <p>標準才算這問已經會。不標準和沒過的，會出現在「上次卡住的」。</p>
-      <div class="log">${state.results.map((item) => `<div><b class="${item.mark === "standard" ? "mark-ok" : item.mark === "prompt" ? "mark-mid" : "mark-bad"}">${item.mark === "standard" ? "標準" : item.mark === "prompt" ? "不標準" : "沒過"}</b> ${item.label}</div>`).join("")}</div>
-      <div class="row">
-        <button type="button" class="primary" id="home">再來一套</button>
-        <button type="button" id="weak">只練剛卡住的</button>
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h2 style="margin:0;">🏁 測驗結算：${state.title}</h2>
+        <span class="badge-mini ${isPass ? 'bg-skill' : 'bg-trauma'}" style="font-size:.9rem; padding:4px 12px;">${isPass ? '🎉 成績合格' : '⚠️ 需再加強'}</span>
       </div>
-    </section>`;
-  document.querySelector("#home").addEventListener("click", () => { state.screen = "home"; render(); });
-  document.querySelector("#weak").addEventListener("click", startWeak);
+
+      <div style="display:flex; gap:20px; align-items:baseline; margin:16px 0;">
+        <div style="font-size:2.4rem; font-weight:900; color:${isPass ? 'var(--ok)' : 'var(--bad)'}; font-variant-numeric:tabular-nums;">
+          ${score} <span style="font-size:1.1rem; color:var(--muted); font-weight:normal;">/ 25 分</span>
+        </div>
+        <div style="color:var(--muted); font-size:.95rem;">
+          標準答對 <b>${standard}</b> 題 ｜ 提示扣分 <b>${prompt}</b> 題 ｜ 未答對 <b>${wrong}</b> 題
+        </div>
+      </div>
+
+      <p style="color:${isPass ? 'var(--ok)' : 'var(--bad)'}; font-weight:bold; margin-top:0;">
+        ${isPass ? '✅ 恭喜！分數達到 19 分合格標準（旺英基金會考核標準：滿分 25 分，至少達 19 分合格）。' : '❌ 總分低於 19 分標準。請檢視下方扣分項目，特別注意考官口令與標準關鍵詞！'}
+      </p>
+
+      <div class="log" style="margin:16px 0;">
+        ${state.results.map((item) => `<div><b class="${item.mark === "standard" ? "mark-ok" : item.mark === "prompt" ? "mark-mid" : "mark-bad"}">${item.mark === "standard" ? "標準 (0)" : item.mark === "prompt" ? "提示 (-1)" : "未過 (-2)"}</b> ${item.label}</div>`).join("")}
+      </div>
+
+      <div class="row" style="margin-top:20px;">
+        <button type="button" class="primary" id="again-run">🔄 再練一次本項目</button>
+        <button type="button" class="next" id="rand-next">🎲 隨機盲抽下一題</button>
+        <button type="button" id="back-home">↩️ 回到演練大廳</button>
+      </div>
+    </section>
+  `;
+
+  document.querySelector("#again-run").addEventListener("click", () => {
+    const target = RUNS.find((r) => r.title === state.title) || SCENES.find((s) => s.title === state.title);
+    if (target) startRun(target, []);
+    else renderHome();
+  });
+  document.querySelector("#rand-next").addEventListener("click", startRandomOne);
+  document.querySelector("#back-home").addEventListener("click", () => { state.screen = "home"; state.notice = ""; render(); });
 }
 
 function render() {
   if (state.screen === "home") renderHome();
-  else if (state.screen === "done") renderDone();
-  else renderAsk();
+  if (state.screen === "ask") renderAsk();
+  if (state.screen === "done") renderDone();
 }
 
-document.querySelector("#metro").addEventListener("click", async () => {
-  const label = document.querySelector("#metro-label");
+/* 110 BPM 節拍器（QCPR 按壓節奏訓練） */
+function toggleMetro() {
+  const lbl = document.querySelector("#metro-label");
+  const btn = document.querySelector("#metro");
   if (metroTimer) {
     clearInterval(metroTimer);
     metroTimer = null;
-    label.hidden = true;
+    if (lbl) lbl.hidden = true;
+    if (btn) btn.textContent = "⏱️ 110 節拍器";
     return;
   }
-  audioCtx = audioCtx || new AudioContext();
-  if (audioCtx.state === "suspended") await audioCtx.resume();
-  const click = () => {
-    const osc = audioCtx.createOscillator();
-    const gain = audioCtx.createGain();
-    osc.frequency.value = 880;
-    gain.gain.value = 0.05;
-    osc.connect(gain);
-    gain.connect(audioCtx.destination);
-    osc.start();
-    gain.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.05);
-    osc.stop(audioCtx.currentTime + 0.06);
-  };
-  click();
-  metroTimer = setInterval(click, 60000 / 110);
-  label.hidden = false;
+  const AudioContext = window.AudioContext || window.webkitAudioContext;
+  if (!AudioContext) return;
+  if (!audioCtx) audioCtx = new AudioContext();
+  const intervalMs = Math.round(60000 / 110);
+  if (lbl) lbl.hidden = false;
+  if (btn) btn.textContent = "⏹️ 停止節拍器";
+  metroTimer = setInterval(() => {
+    try {
+      if (audioCtx.state === "suspended") audioCtx.resume();
+      const osc = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      osc.type = "sine";
+      osc.frequency.value = 880;
+      gain.gain.setValueAtTime(0.12, audioCtx.currentTime);
+      gain.gain.exponentialRampToValueAtTime(0.0001, audioCtx.currentTime + 0.05);
+      osc.connect(gain);
+      gain.connect(audioCtx.destination);
+      osc.start();
+      osc.stop(audioCtx.currentTime + 0.05);
+    } catch (e) { }
+  }, intervalMs);
+}
+
+document.querySelector("#metro").addEventListener("click", toggleMetro);
+
+// 全域鍵盤快捷鍵 (選擇題模式極速狂刷)
+window.addEventListener("keydown", (e) => {
+  if (state.screen !== "ask") return;
+  if (state.playMode === "mc") {
+    const key = e.key.toLowerCase();
+    if (!state.feedback || !state.feedback.done) {
+      if (key === "1" || key === "a") selectChoice(0);
+      else if (key === "2" || key === "b") selectChoice(1);
+      else if (key === "3" || key === "c") selectChoice(2);
+      else if (key === "4" || key === "d") selectChoice(3);
+    } else {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        next();
+      }
+    }
+  }
 });
 
-window.OralDrill = { grade, norm, OHCA, OXYGEN, THRESHOLD, SCENES, startTonight, startRun, state };
-const openRun = new URLSearchParams(location.search).get("run");
-if (openRun === "ohca") startRun(OHCA, []);
-else if (openRun === "oxygen") startRun(OXYGEN, [THRESHOLD]);
-else render();
+// 初次載入
+render();
 </script>
 </body>
 </html>

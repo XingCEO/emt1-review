@@ -3,448 +3,609 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>EMT-1 救護技術員標準操作口令手冊｜官方教材詞彙對照表</title>
+  <title>EMT-1 救護技術員三大流程差異比較大表 (課本第 58~65 頁標準規範)</title>
   <style>
     :root {
-      --bg: #0b1120;
+      --bg-dark: #0f172a;
       --card-bg: #1e293b;
       --card-border: #334155;
       --text-main: #f8fafc;
-      --text-sub: #94a3b8;
-      
-      /* 三大流程官方識別色 */
-      --med-color: #06b6d4;      /* 非創傷：湖水青 */
-      --med-bg: rgba(6, 182, 212, 0.08);
-      --med-border: rgba(6, 182, 212, 0.35);
-
-      --trauma-color: #f43f5e;   /* 創傷：警報紅 */
-      --trauma-bg: rgba(244, 63, 94, 0.08);
-      --trauma-border: rgba(244, 63, 94, 0.35);
-
-      --ohca-color: #fbbf24;     /* 歐卡：琥珀金 */
-      --ohca-bg: rgba(251, 191, 36, 0.08);
-      --ohca-border: rgba(251, 191, 36, 0.35);
+      --text-muted: #94a3b8;
+      --accent-med: #10b981;
+      --accent-trauma: #f43f5e;
+      --accent-ohca: #f59e0b;
+      --accent-cyan: #06b6d4;
+      --accent-blue: #38bdf8;
+      --highlight-diff: #ef4444;
+      --highlight-diff-bg: rgba(239, 68, 68, 0.15);
+      --role-main: #38bdf8;
+      --role-partner: #a855f7;
     }
 
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-    }
+    * { box-sizing: border-box; margin: 0; padding: 0; font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif; }
+    body { background-color: var(--bg-dark); color: var(--text-main); line-height: 1.5; padding-bottom: 60px; }
 
-    body {
-      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Noto Sans TC", "PingFang TC", "Microsoft JhengHei", sans-serif;
-      background-color: var(--bg);
-      color: var(--text-main);
-      line-height: 1.6;
-      padding-bottom: 90px;
-    }
-
-    /* 頂部導航 */
     header {
-      background: rgba(15, 23, 42, 0.94);
-      backdrop-filter: blur(16px);
-      border-bottom: 1px solid var(--card-border);
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      padding: 14px 20px;
+      position: sticky; top: 0; z-index: 100;
+      background: rgba(15, 23, 42, 0.95); backdrop-filter: blur(8px);
+      border-bottom: 1px solid var(--card-border); padding: 12px 24px;
     }
-
     .header-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      flex-wrap: wrap;
-      gap: 12px;
+      max-width: 1400px; margin: 0 auto;
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;
     }
+    .logo-area h1 { font-size: 1.15rem; font-weight: 800; display: flex; align-items: center; gap: 8px; }
+    .tag-standard { font-size: 0.72rem; padding: 2px 8px; border-radius: 9999px; background: rgba(56,189,248,0.2); color: var(--role-main); border: 1px solid rgba(56,189,248,0.4); }
 
-    .logo-area h1 {
-      font-size: 1.35rem;
-      font-weight: 900;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .nav-links { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; }
+    .nav-link { font-size: .82rem; font-weight: 700; padding: 6px 12px; border-radius: 8px; border: 1px solid rgba(148,176,214,.3); background: rgba(255,255,255,.05); color: #cbd5e1; text-decoration: none; transition: all .2s; }
+    .nav-link:hover { border-color: var(--accent-blue); color: var(--accent-blue); }
+    .nav-link.active { border-color: var(--accent-blue); background: rgba(56,189,248,.2); color: var(--accent-blue); }
+
+    .nav-tools { display: flex; gap: 8px; align-items: center; flex-wrap: wrap; }
+    button { cursor: pointer; border: none; font-size: 0.85rem; font-weight: 600; padding: 6px 12px; border-radius: 6px; transition: all 0.2s; display: inline-flex; align-items: center; gap: 6px; }
+    .view-btn { background: #334155; color: var(--text-main); }
+    .view-btn.active { background: #0284c7; color: #fff; }
+    .btn-diff { background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid #ef4444; }
+    .btn-diff.active { background: #ef4444; color: #fff; }
+    .btn-print { background: #475569; color: #fff; }
+
+    .main-container { max-width: 1400px; margin: 20px auto; padding: 0 16px; }
+    .view-panel { display: none; }
+    .view-panel.active { display: block; }
+
+    /* Flow banner */
+    .flow-banner {
+      background: linear-gradient(90deg, rgba(30,41,59,.9), rgba(15,23,42,.9));
+      border: 1px solid rgba(56,189,248,.3); border-radius: 12px; padding: 14px 20px; margin-bottom: 24px;
+      display: flex; align-items: center; justify-content: space-between; flex-wrap: wrap; gap: 12px;
     }
+    .flow-steps-chain { display: flex; align-items: center; gap: 8px; flex-wrap: wrap; font-size: .85rem; font-weight: 700; }
+    .chain-node { padding: 4px 10px; border-radius: 6px; background: rgba(255,255,255,.08); border: 1px solid rgba(255,255,255,.15); }
+    .chain-node.trauma { border-color: var(--accent-trauma); color: #fda4af; }
+    .chain-arrow { color: #64748b; font-weight: 900; }
 
-    .tag-standard {
-      background: linear-gradient(135deg, #0284c7, #0d9488);
-      color: #fff;
-      font-size: 0.75rem;
-      font-weight: 800;
-      padding: 3px 8px;
-      border-radius: 6px;
-      letter-spacing: 0.5px;
-    }
-
-    .nav-tools {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      flex-wrap: wrap;
-    }
-
-    .view-btn {
-      background: #334155;
-      color: #cbd5e1;
-      border: 1px solid #475569;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      gap: 6px;
-      transition: all 0.2s;
-    }
-
-    .view-btn:hover {
-      background: #475569;
-      color: #fff;
-    }
-
-    .view-btn.active {
-      background: #2563eb;
-      border-color: #60a5fa;
-      color: #fff;
-      box-shadow: 0 0 15px rgba(37, 99, 235, 0.4);
-    }
-
-    .btn-diff {
-      background: rgba(239, 68, 68, 0.15);
-      border: 1px solid rgba(239, 68, 68, 0.4);
-      color: #fca5a5;
-      padding: 8px 14px;
-      border-radius: 8px;
-      font-size: 0.88rem;
-      font-weight: 700;
-      cursor: pointer;
-      transition: all 0.2s;
-    }
-
-    .btn-diff.active {
-      background: #ef4444;
-      color: #fff;
-      box-shadow: 0 0 15px rgba(239, 68, 68, 0.5);
-    }
-
-    .btn-print {
-      background: #1e293b;
-      color: #94a3b8;
-      border: 1px solid #475569;
-      padding: 8px 12px;
-      border-radius: 8px;
-      font-size: 0.85rem;
-      cursor: pointer;
-    }
-
-    /* 主容器 */
-    .container {
-      max-width: 1400px;
-      margin: 20px auto 0;
-      padding: 0 18px;
-    }
-
-    /* 頂部規範說明 Banner */
-    .banner-tip {
-      background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(15, 23, 42, 0.95) 100%);
-      border: 1px solid #475569;
-      border-radius: 14px;
-      padding: 16px 22px;
-      margin-bottom: 24px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      flex-wrap: wrap;
-      gap: 12px;
-    }
-
-    .banner-tip-text h2 {
-      font-size: 1.2rem;
-      font-weight: 800;
-      color: #fff;
-      margin-bottom: 4px;
-    }
-
-    .banner-tip-text p {
-      color: #94a3b8;
-      font-size: 0.9rem;
-    }
-
-    .rule-pill {
-      background: #0f172a;
-      border: 1px solid #334155;
-      padding: 6px 14px;
-      border-radius: 20px;
-      font-size: 0.82rem;
-      color: #cbd5e1;
-    }
-
-    .rule-pill b {
-      color: #38bdf8;
-    }
-
-    /* 檢視區塊隱藏與顯示 */
-    .view-panel {
-      display: none;
-    }
-
-    .view-panel.active {
-      display: block;
-    }
-
-    /* ==================================================== */
-    /* 核心視圖：標準口令對照卡 */
-    /* ==================================================== */
+    /* Script Row Cards */
     .script-row-card {
-      background: var(--card-bg);
-      border: 1px solid var(--card-border);
-      border-radius: 14px;
-      margin-bottom: 22px;
-      overflow: hidden;
-      box-shadow: 0 4px 14px rgba(0,0,0,0.25);
+      background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 12px; margin-bottom: 24px;
+      overflow: hidden; box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2); transition: border-color 0.2s;
     }
-
     .script-row-header {
-      background: #172033;
-      padding: 12px 20px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      border-bottom: 1px solid var(--card-border);
-      flex-wrap: wrap;
-      gap: 10px;
+      padding: 12px 20px; background: rgba(15, 23, 42, 0.75); border-bottom: 1px solid var(--card-border);
+      display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 8px;
     }
+    .script-step-label { display: flex; align-items: center; gap: 10px; }
+    .step-pill { background: #38bdf8; color: #0f172a; font-weight: 900; font-size: 0.8rem; padding: 2px 8px; border-radius: 9999px; }
+    .step-name { font-size: 1.05rem; font-weight: 700; }
+    .step-diff-badge { font-size: 0.75rem; padding: 2px 8px; border-radius: 4px; font-weight: 600; }
+    .step-diff-badge.diff { background: rgba(239, 68, 68, 0.2); color: #fca5a5; border: 1px solid rgba(239, 68, 68, 0.4); }
+    .step-diff-badge.same { background: rgba(16, 185, 129, 0.2); color: #6ee7b7; border: 1px solid rgba(16, 185, 129, 0.4); }
 
-    .script-step-label {
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .script-columns-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--card-border); }
+    .script-col { background: var(--card-bg); padding: 16px; display: flex; flex-direction: column; gap: 12px; }
+    .col-header-tag {
+      font-size: 0.85rem; font-weight: 800; padding: 4px 10px; border-radius: 6px; display: inline-flex; align-items: center; gap: 6px; width: fit-content;
     }
+    .script-col.med .col-header-tag { background: rgba(16, 185, 129, 0.15); color: var(--accent-med); border: 1px solid var(--accent-med); }
+    .script-col.trauma .col-header-tag { background: rgba(244, 63, 94, 0.15); color: var(--accent-trauma); border: 1px solid var(--accent-trauma); }
+    .script-col.ohca .col-header-tag { background: rgba(245, 158, 11, 0.15); color: var(--accent-ohca); border: 1px solid var(--accent-ohca); }
 
-    .step-pill {
-      background: #2563eb;
-      color: #fff;
-      font-size: 0.8rem;
-      font-weight: 900;
-      padding: 2px 8px;
-      border-radius: 20px;
+    .cmd-block {
+      background: rgba(15, 23, 42, 0.6); border: 1px solid rgba(255, 255, 255, 0.05); border-radius: 8px; padding: 12px;
+      display: flex; flex-direction: column; gap: 6px; flex-grow: 1;
     }
+    .cmd-role-tag { font-size: 0.72rem; font-weight: 800; text-transform: uppercase; letter-spacing: 0.5px; }
+    .role-main { color: var(--role-main); }
+    .role-partner { color: var(--role-partner); }
 
-    .step-name {
-      font-size: 1.1rem;
-      font-weight: 800;
-      color: #fff;
+    .cmd-content { font-size: 0.92rem; color: #e2e8f0; line-height: 1.6; }
+    .cmd-content b { color: #fff; background: rgba(255, 255, 255, 0.08); padding: 1px 4px; border-radius: 3px; }
+    .cmd-content .highlight { color: #fca5a5; font-weight: 700; text-decoration: underline; }
+    .cmd-content .gold { color: #fde047; font-weight: 700; }
+
+    .cmd-footer { display: flex; justify-content: space-between; align-items: center; margin-top: auto; padding-top: 8px; border-top: 1px dashed rgba(255, 255, 255, 0.1); font-size: 0.75rem; color: var(--text-muted); }
+    .btn-voice { background: transparent; border: 1px solid #475569; color: #94a3b8; font-size: 0.72rem; padding: 2px 6px; border-radius: 4px; }
+    .btn-voice:hover { border-color: #38bdf8; color: #38bdf8; }
+
+    /* Diff mode active */
+    .diff-mode-active .script-row-card.is-same { display: none; }
+    .diff-mode-active .script-row-card.is-diff { border: 2px solid var(--highlight-diff); }
+
+    /* Branch section */
+    .branch-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); gap: 16px; margin-top: 16px; }
+    .branch-card { background: var(--card-bg); border: 1px solid var(--card-border); border-radius: 10px; padding: 16px; }
+    .branch-condition { font-weight: 700; font-size: 0.95rem; color: #38bdf8; margin-bottom: 8px; }
+    .branch-command { font-size: 0.9rem; color: #e2e8f0; background: rgba(0,0,0,0.3); padding: 10px; border-radius: 6px; line-height: 1.5; }
+
+    @media (max-width: 900px) {
+      .script-columns-grid { grid-template-columns: 1fr; }
     }
-
-    .step-diff-badge {
+    @media print {
+      header, .nav-tools, .btn-voice, .nav-links { display: none !important; }
+      body { background: #fff; color: #000; padding: 0; }
+      .script-row-card { border: 1px solid #999; page-break-inside: avoid; margin-bottom: 15px; }
+      .script-col { background: #fff; color: #000; }
+      .cmd-block { background: #f8fafc; border: 1px solid #ccc; color: #000; }
+      .cmd-content { color: #000; }
+      .cmd-content b { color: #000; background: none; }
+      .cmd-content .highlight { color: #b91c1c; }
+    }
+  
+    /* ⚡ 3秒秒殺速記看板專用樣式 */
+    .quick-hero-card {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border: 2px solid #38bdf8;
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.15);
+    }
+    .quick-hero-header { margin-bottom: 16px; }
+    .quick-badge {
+      display: inline-block;
       font-size: 0.75rem;
       font-weight: 800;
-      padding: 2px 8px;
-      border-radius: 4px;
+      padding: 3px 10px;
+      background: rgba(56, 189, 248, 0.2);
+      color: #38bdf8;
+      border-radius: 9999px;
+      margin-bottom: 6px;
+      border: 1px solid rgba(56, 189, 248, 0.4);
     }
+    .quick-hero-header h2 { font-size: 1.35rem; font-weight: 900; color: #fff; margin-bottom: 4px; }
+    .quick-hero-desc { font-size: 0.9rem; color: #94a3b8; }
 
-    .step-diff-badge.diff {
-      background: rgba(239, 68, 68, 0.2);
-      border: 1px solid #ef4444;
-      color: #fca5a5;
-    }
-
-    .step-diff-badge.same {
-      background: rgba(16, 185, 129, 0.2);
-      border: 1px solid #10b981;
-      color: #a7f3d0;
-    }
-
-    /* 三欄對稱 Grid */
-    .script-columns-grid {
+    .exam-timeline-grid {
       display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      divide-x: 1px solid var(--card-border);
-    }
-
-    .script-col {
-      padding: 18px;
-      display: flex;
-      flex-direction: column;
-      position: relative;
-    }
-
-    .script-col.med {
-      background: var(--med-bg);
-      border-right: 1px solid var(--card-border);
-    }
-
-    .script-col.trauma {
-      background: var(--trauma-bg);
-      border-right: 1px solid var(--card-border);
-    }
-
-    .script-col.ohca {
-      background: var(--ohca-bg);
-    }
-
-    .col-header-tag {
-      font-size: 0.85rem;
-      font-weight: 800;
-      margin-bottom: 12px;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-
-    .med .col-header-tag { color: var(--med-color); }
-    .trauma .col-header-tag { color: var(--trauma-color); }
-    .ohca .col-header-tag { color: var(--ohca-color); }
-
-    /* 標準口令專屬區塊 */
-    .cmd-block {
-      background: #0f172a;
-      border: 1px solid #334155;
-      border-radius: 10px;
-      padding: 14px;
-      margin-bottom: 10px;
-      position: relative;
-    }
-
-    .cmd-role-tag {
-      display: inline-block;
-      font-size: 0.72rem;
-      font-weight: 900;
-      padding: 2px 6px;
-      border-radius: 4px;
-      margin-bottom: 8px;
-      text-transform: uppercase;
-    }
-
-    .role-main { background: #0284c7; color: #fff; }     /* 主手口令 */
-    .role-partner { background: #d97706; color: #fff; }  /* 主副手交接 */
-    .role-action { background: #475569; color: #e2e8f0; }/* 動作備註 */
-
-    .cmd-content {
-      font-size: 0.98rem;
-      font-weight: 700;
-      color: #fff;
-      line-height: 1.5;
-    }
-
-    .cmd-content b {
-      color: #fde047;
-      text-decoration: underline;
-    }
-
-    .trauma .cmd-content b {
-      color: #fca5a5;
-    }
-
-    .ohca .cmd-content b {
-      color: #fde047;
-    }
-
-    .cmd-footer {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      margin-top: 10px;
-      padding-top: 8px;
-      border-top: 1px solid rgba(255, 255, 255, 0.06);
-    }
-
-    .cmd-rule-note {
-      font-size: 0.8rem;
-      color: #94a3b8;
-    }
-
-    .btn-voice {
-      background: rgba(255, 255, 255, 0.08);
-      border: 1px solid rgba(255, 255, 255, 0.15);
-      color: #cbd5e1;
-      padding: 4px 10px;
-      border-radius: 6px;
-      font-size: 0.78rem;
-      font-weight: 700;
-      cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 5px;
-      transition: all 0.2s;
-    }
-
-    .btn-voice:hover {
-      background: #2563eb;
-      color: #fff;
-      border-color: #60a5fa;
-    }
-
-    /* 模式 2：課本應變狀況口令 (Branch Mode) */
-    .branch-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
       gap: 16px;
     }
+    .timeline-box {
+      background: rgba(15, 23, 42, 0.7);
+      border-radius: 10px;
+      padding: 16px;
+      border: 1px solid var(--card-border);
+    }
+    .timeline-box.scene-box { border-color: #10b981; }
+    .timeline-box.truck-box { border-color: #a855f7; }
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .timeline-tag { font-size: 0.88rem; font-weight: 800; color: #fff; }
+    .timeline-result {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(16, 185, 129, 0.2);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+    .timeline-box.truck-box .timeline-result {
+      background: rgba(168, 85, 247, 0.2);
+      color: #c084fc;
+      border-color: rgba(168, 85, 247, 0.4);
+    }
+    .timeline-steps { display: flex; flex-direction: column; gap: 8px; }
+    .t-step {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.5;
+    }
+    .t-num {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #38bdf8;
+    }
+    .t-step.finish {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 10px;
+      border-radius: 8px;
+      color: #e2e8f0;
+      margin-top: 4px;
+    }
+    .finish-highlight { color: #34d399; font-weight: 800; font-size: 0.85rem; display: block; margin-top: 4px; }
+    .info-note {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px dashed rgba(56, 189, 248, 0.3);
+      padding: 10px;
+      border-radius: 8px;
+      color: #94a3b8;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      margin-top: 4px;
+    }
 
-    .branch-card {
+    /* Section Titles */
+    .quick-section-title {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .title-icon { font-size: 1.2rem; }
+    .quick-section-title h3 { font-size: 1.15rem; font-weight: 800; color: #fff; }
+    .title-sub { font-size: 0.82rem; color: #94a3b8; }
+
+    /* Deadly 4 Cards */
+    .deadly-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .deadly-card {
       background: var(--card-bg);
       border: 1px solid var(--card-border);
       border-radius: 12px;
-      padding: 16px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);
     }
-
-    .branch-condition {
-      background: #0f172a;
-      border-left: 4px solid #f43f5e;
-      padding: 10px 14px;
-      border-radius: 6px;
-      font-size: 0.95rem;
-      font-weight: 800;
-      color: #fda4af;
-      margin-bottom: 12px;
+    .deadly-header {
+      padding: 10px 16px;
+      background: rgba(15, 23, 42, 0.8);
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
     }
-
-    .branch-command {
-      background: rgba(16, 185, 129, 0.1);
-      border: 1px dashed #10b981;
-      padding: 10px 14px;
-      border-radius: 6px;
-      font-size: 0.92rem;
-      color: #a7f3d0;
-      line-height: 1.5;
-    }
-
-    .branch-command b {
+    .deadly-badge {
+      background: #ef4444;
       color: #fff;
-      font-size: 1rem;
+      font-size: 0.72rem;
+      font-weight: 900;
+      padding: 2px 8px;
+      border-radius: 4px;
     }
-
-    /* 差異高亮開啟時的樣式 */
-    body.diff-mode-active .script-row-card.is-same {
-      opacity: 0.25;
-      filter: grayscale(0.85);
-      transition: all 0.3s;
+    .deadly-header h4 { font-size: 0.95rem; font-weight: 800; color: #fff; }
+    .deadly-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--card-border);
     }
+    .deadly-side {
+      background: var(--card-bg);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .side-tag { font-size: 0.78rem; font-weight: 800; }
+    .deadly-side.med .side-tag { color: var(--accent-med); }
+    .deadly-side.trauma .side-tag { color: var(--accent-trauma); }
+    .side-val { font-size: 0.95rem; font-weight: 800; color: #e2e8f0; }
+    .side-val.warn { color: #fca5a5; }
+    .side-desc { font-size: 0.8rem; color: #94a3b8; line-height: 1.45; }
 
-    body.diff-mode-active .script-row-card.is-diff {
+    /* History Master Card */
+    .history-master-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    .history-cols-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 20px;
+    }
+    .history-col {
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 10px;
+      padding: 16px;
+      border: 1px solid var(--card-border);
+    }
+    .h-col-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .h-col-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.2);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+    .pmh-box .h-col-badge {
+      background: rgba(245, 158, 11, 0.2);
+      color: #fde047;
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+    .h-col-header h4 { font-size: 0.98rem; font-weight: 800; color: #fff; }
+    .h-col-sub { font-size: 0.8rem; color: #94a3b8; margin-bottom: 12px; }
+    .opqrst-list, .sample-list { display: flex; flex-direction: column; gap: 8px; }
+    .op-item, .sp-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+      background: rgba(0,0,0,0.25);
+      padding: 8px 10px;
+      border-radius: 6px;
+    }
+    .op-letter {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      background: #0284c7;
+      color: #fff;
+      font-weight: 900;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+    }
+    .sp-tag {
+      flex-shrink: 0;
+      padding: 2px 8px;
+      background: rgba(245, 158, 11, 0.2);
+      color: #fde047;
+      font-weight: 800;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    .sp-item.highlight-eat {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid #ef4444;
+    }
+    .sp-item.highlight-eat .sp-tag {
+      background: #ef4444;
+      color: #fff;
+    }
+    .op-text, .sp-text { color: #e2e8f0; line-height: 1.45; }
+
+    /* Eat Lifesaver Card */
+    .eat-lifesaver-card {
+      margin-top: 20px;
+      background: rgba(239, 68, 68, 0.08);
       border: 2px solid #ef4444;
-      box-shadow: 0 0 25px rgba(239, 68, 68, 0.3);
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+    .eat-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .eat-icon { font-size: 1.3rem; }
+    .eat-header h4 { font-size: 1.05rem; font-weight: 900; color: #fca5a5; }
+    .eat-reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+    }
+    .eat-box {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .eat-num {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: rgba(239, 68, 68, 0.25);
+      color: #fca5a5;
+      margin-bottom: 4px;
+    }
+    .eat-box h5 { font-size: 0.95rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .eat-box p { font-size: 0.82rem; color: #cbd5e1; line-height: 1.5; }
+
+    /* Secondary Compare Cards */
+    .secondary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .sec-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .sec-card.med-sec { border-color: rgba(16, 185, 129, 0.4); }
+    .sec-card.trauma-sec { border-color: rgba(244, 63, 94, 0.4); }
+    .sec-card-header { margin-bottom: 12px; }
+    .sec-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 4px;
+    }
+    .sec-badge.med { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+    .sec-badge.trauma { background: rgba(244, 63, 94, 0.2); color: #fb7185; }
+    .sec-card-header h4 { font-size: 1rem; font-weight: 800; color: #fff; }
+    .sec-list { display: flex; flex-direction: column; gap: 8px; }
+    .sec-item {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.45;
+      background: rgba(0,0,0,0.2);
+      padding: 8px 10px;
+      border-radius: 6px;
+    }
+    .sec-n {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #fff;
     }
 
-    /* 響應式 */
-    @media (max-width: 950px) {
-      .script-columns-grid { grid-template-columns: 1fr; }
-      .script-col { border-right: none !important; border-bottom: 1px solid var(--card-border); }
+    /* Radio Card */
+    .radio-card {
+      background: var(--card-bg);
+      border: 2px solid #a855f7;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);
     }
+    .radio-mnemonics-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 6px;
+      background: rgba(168, 85, 247, 0.15);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 16px;
+      font-weight: 900;
+      color: #c084fc;
+    }
+    .r-word {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1.35rem;
+      color: #fff;
+    }
+    .r-word small { font-size: 0.72rem; color: #d8b4fe; font-weight: 600; margin-top: 2px; }
+    .radio-speech-box {
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 8px;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .speech-title { font-size: 0.88rem; font-weight: 800; color: #38bdf8; margin-bottom: 8px; }
+    .speech-content { font-size: 0.88rem; color: #e2e8f0; line-height: 1.6; }
+    .speech-action { margin-top: 12px; }
 
-    /* 列印樣式 */
-    @media print {
-      header, .nav-tools, .btn-voice { display: none !important; }
-      body { background: #fff !important; color: #000 !important; }
-      .script-row-card { break-inside: avoid; border: 1px solid #aaa !important; }
-      .cmd-block { background: #f8fafc !important; color: #000 !important; border: 1px solid #ccc !important; }
-      .cmd-content { color: #000 !important; }
+  
+    /* GCS 卡片樣式 */
+    .gcs-master-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
     }
+    .gcs-flow-title { font-size: 1rem; font-weight: 800; color: #38bdf8; margin-bottom: 12px; }
+    .gcs-flow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .g-timing-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .g-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.2);
+      color: #38bdf8;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+    .g-tag.danger {
+      background: rgba(239, 68, 68, 0.2);
+      color: #fca5a5;
+    }
+    .g-timing-card h5 { font-size: 0.95rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .g-timing-card p { font-size: 0.82rem; color: #cbd5e1; line-height: 1.5; }
+    .highlight-quote { display: block; margin-top: 6px; color: #7dd3fc; background: rgba(56,189,248,0.1); padding: 6px 8px; border-radius: 4px; }
+    .highlight-warn { display: block; margin-top: 6px; color: #fca5a5; background: rgba(239,68,68,0.12); padding: 6px 8px; border-radius: 4px; font-weight: bold; }
+
+    .gcs-table-box {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .gcs-table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .gcs-table-header h4 { font-size: 1rem; font-weight: 800; color: #fff; }
+    .gcs-formula { font-size: 0.8rem; font-weight: 800; color: #fde047; background: rgba(245, 158, 11, 0.15); padding: 3px 10px; border-radius: 9999px; }
+    .gcs-cols-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+    }
+    .gcs-col { background: rgba(0,0,0,0.25); border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); }
+    .gcs-col-head { padding: 8px 12px; font-weight: 800; font-size: 0.85rem; color: #fff; }
+    .e-head { background: #0284c7; }
+    .v-head { background: #0d9488; }
+    .m-head { background: #7c3aed; }
+    .gcs-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.82rem;
+    }
+    .gcs-row:last-child { border-bottom: none; }
+    .g-score {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      color: #fff;
+    }
+    .g-desc { color: #e2e8f0; }
+
+    .avpu-gcs-bridge {
+      background: rgba(56, 189, 248, 0.06);
+      border: 1px dashed rgba(56, 189, 248, 0.3);
+      border-radius: 8px;
+      padding: 12px 16px;
+    }
+    .bridge-tag { font-size: 0.8rem; font-weight: 800; color: #38bdf8; margin-bottom: 6px; }
+    .bridge-items { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.82rem; color: #cbd5e1; }
+    .b-item b { color: #fde047; }
+
   </style>
 </head>
 <body>
@@ -454,13 +615,22 @@
     <div class="header-inner">
       <div class="logo-area">
         <h1>
-          <span>🚑 EMT-1 救護技術員標準操作口令大表</span>
-          <span class="tag-standard">課本標準詞彙版</span>
+          <span>🚑 EMT-1 救護技術員三大流程差異比較</span>
+          <span class="tag-standard">課本第 58~65 頁標準版</span>
         </h1>
       </div>
+      <div class="nav-links">
+        <a href="EMT1_情境實戰完整劇本.html" class="nav-link">🎬 實戰情境劇本</a>
+        <a href="EMT1_三大流程差異比較.html" class="nav-link active">⚖️ 三大流程差異</a>
+        <a href="EMT1_完整通關手冊.html" class="nav-link">📖 完整通關手冊</a>
+        <a href="EMT1_口試演練.html" class="nav-link">🎯 口試演練刷題</a>
+      </div>
       <div class="nav-tools">
-        <button id="btnMain" class="view-btn active" onclick="switchTab('main')">
-          <span>📜</span> 全程標準操作口令
+        <button id="btnQuick" class="view-btn active" onclick="switchTab('quick')">
+          <span>⚡</span> 3秒秒殺速記（新手救星）
+        </button>
+        <button id="btnMain" class="view-btn" onclick="switchTab('main')">
+          <span>📜</span> 全程標準操作口令 (11步驟)
         </button>
         <button id="btnBranch" class="view-btn" onclick="switchTab('branch')">
           <span>🔀</span> 課本情境應變口令
@@ -475,45 +645,333 @@
     </div>
   </header>
 
-  <main class="container">
+  <div class="main-container">
 
-    <!-- 頂部規範說明 Banner -->
-    <div class="banner-tip">
-      <div class="banner-tip-text">
-        <h2>教材標準規範：純操作口令與副手協作</h2>
-        <p>本表採用中華民國消防署及 EMT-1 官方教材之專業標準詞彙，去除「報告教官／考官」贅字，直接呈現救護員現場實際發布之口令。</p>
+    <!-- 流程導引 Banner -->
+    <div class="flow-banner">
+      <div>
+        <div style="font-weight:800; font-size:1rem; color:#38bdf8; margin-bottom:4px;">🎯 課本官方五大階段架構 (第 58~65 頁)</div>
+        <div style="font-size:0.85rem; color:#94a3b8;">術科考場現場操作在「階段四：判定危急」大聲報告後即滿分結案（免搬長背板擔架）！</div>
       </div>
-      <div class="rule-pill">
-        標準詞彙：<b>頸椎減移</b>・<b>下顎推擠法</b>・<b>CRT</b>・<b>PSM</b>・<b>病人要史已前到</b>
+      <div class="flow-steps-chain">
+        <span class="chain-node">① 現場常規</span>
+        <span class="chain-arrow">➔</span>
+        <span class="chain-node">② 初步評估 (徒手快速)</span>
+        <span class="chain-arrow">➔</span>
+        <span class="chain-node" style="border-color:#38bdf8; color:#7dd3fc;">③ 輔助檢查＋問病史</span>
+        <span class="chain-arrow">➔</span>
+        <span class="chain-node" style="border-color:#f59e0b; color:#fde047;">④ 判定危急 (考場終點)</span>
+        <span class="chain-arrow">➔</span>
+        <span class="chain-node" style="color:#a855f7;">⑤ 車上二評與無線電</span>
       </div>
     </div>
 
-    <!-- ============================================================ -->
-    <!-- 視圖 1：全程標準操作口令 (Main Mode) -->
-    <!-- ============================================================ -->
-    <div id="viewMain" class="view-panel active">
+    <!-- 主面板：三欄流程口令全對照 -->
+    
+    <!-- ⚡ 3秒秒殺速記看板（新手救星・考前必背） -->
+    <section id="viewQuick" class="view-panel active">
+      
+      <!-- 考場全景架構卡 -->
+      <div class="quick-hero-card">
+        <div class="quick-hero-header">
+          <div class="quick-badge">🎯 考場真實全景規則</div>
+          <h2>現場 3 分鐘做什麼？考官到底在哪裡喊停？</h2>
+          <p class="quick-hero-desc">只要搞懂這兩大階段的分界線，你的緊張感立刻少 90%！</p>
+        </div>
+        <div class="exam-timeline-grid">
+          <div class="timeline-box scene-box">
+            <div class="timeline-header">
+              <span class="timeline-tag">🟢 現場考場操作（前 3 分鐘）</span>
+              <span class="timeline-result">考官在此喊停・滿分結案！</span>
+            </div>
+            <div class="timeline-steps">
+              <div class="t-step"><span class="t-num">1</span>現場安全與防護（人數、裝備、求援）</div>
+              <div class="t-step"><span class="t-num">2</span>意識 AVPU（非創傷捏肩 vs 創傷壓指甲）</div>
+              <div class="t-step"><span class="t-num">3</span>徒手初評（X止血 ➔ A呼吸道 ➔ B給氧 ➔ C橈動脈/創傷骨盆一次 ➔ D/E保暖）</div>
+              <div class="t-step"><span class="t-num">4</span>輔助檢查＋病史（機器量 7 徵象＋血糖 ➔ 問現病史 OPQRST ＋ 過去病史 SAMPLE）</div>
+              <div class="t-step finish"><span class="t-num">★</span><b>大聲報告危急後送：</b>「本案判定危急個案，立即請求支援並後送！」<br><span class="finish-highlight">👉 考官點頭喊停！現場技術考試滿分過關！【免搬長背板！免上擔架床！】</span></div>
+            </div>
+          </div>
+          <div class="timeline-box truck-box">
+            <div class="timeline-header">
+              <span class="timeline-tag">🟣 救護車上處置（後 5 分鐘）</span>
+              <span class="timeline-result">口試抽問 / 救護車上</span>
+            </div>
+            <div class="timeline-steps">
+              <div class="t-step"><span class="t-num">5</span>二度評估（每 5 分鐘重測生命徵象 ＋ 身體檢查：非創傷 8 大項 vs 創傷全身摸骨頭）</div>
+              <div class="t-step"><span class="t-num">6</span>無線電交接回報（口訣：「<b>病人要史已前到</b>」回報醫院急診室）</div>
+              <div class="t-step info-note">💡 考場備註：很多考生以為要現場搬長背板搬擔架累個半死，其實課本第 61 頁標準是在現場判定危急後送即完成情境！二評與無線電皆為車上操作或考官坐下來口試抽考！</div>
+            </div>
+          </div>
+        </div>
+      </div>
 
-      <!-- 階段 1: 現場評估與起手式 -->
+      <!-- 四大致命死穴秒殺對比盒 -->
+      <div class="quick-section-title">
+        <span class="title-icon">⚡</span>
+        <h3>四大致命死穴秒殺對比（創傷 vs 非創傷：千萬別做錯！）</h3>
+        <span class="title-sub">這四個動作只要做反，考官直接扣大分或致命重扣！</span>
+      </div>
+
+      <div class="deadly-grid">
+        <!-- 死穴 1 -->
+        <div class="deadly-card">
+          <div class="deadly-header">
+            <span class="deadly-badge">死穴 ①</span>
+            <h4>痛刺激手法（AVPU 的 P）</h4>
+          </div>
+          <div class="deadly-compare">
+            <div class="deadly-side med">
+              <div class="side-tag">🌿 非創傷（內科）</div>
+              <div class="side-val"><b>捏肩膀（斜方肌）</b></div>
+              <div class="side-desc">內科無頸椎受傷疑慮，捏雙側斜方肌快速確認疼痛反應。</div>
+            </div>
+            <div class="deadly-side trauma">
+              <div class="side-tag">🩸 創傷（外傷）</div>
+              <div class="side-val warn">壓指甲床（嚴禁捏肩膀！）</div>
+              <div class="side-desc"><b>原因：</b>捏肩膀會劇烈晃動病患頸椎，造成高位脊髓二次損傷致命！創傷只能壓指甲床或手背！</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 死穴 2 -->
+        <div class="deadly-card">
+          <div class="deadly-header">
+            <span class="deadly-badge">死穴 ②</span>
+            <h4>骨盆檢查（初評 C）</h4>
+          </div>
+          <div class="deadly-compare">
+            <div class="deadly-side med">
+              <div class="side-tag">🌿 非創傷（內科）</div>
+              <div class="side-val">完全不壓（免做）</div>
+              <div class="side-desc"><b>原因：</b>內科病人沒有高能量撞擊外力，按壓骨盆毫無意義且浪費黃金時間！</div>
+            </div>
+            <div class="deadly-side trauma">
+              <div class="side-tag">🩸 創傷（外傷）</div>
+              <div class="side-val warn">只壓一次（向內向下）</div>
+              <div class="side-desc"><b>原因：</b>骨盆骨折內出血可達 2000ml 致死！雙手置腸骨脊向內向下壓<b>僅限一次</b>，感覺鬆動或劇痛立即放手，<b>嚴禁反覆搖晃！</b></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 死穴 3 -->
+        <div class="deadly-card">
+          <div class="deadly-header">
+            <span class="deadly-badge">死穴 ③</span>
+            <h4>呼吸道打鼾處置 (NPA / OPA)</h4>
+          </div>
+          <div class="deadly-compare">
+            <div class="deadly-side med">
+              <div class="side-tag">🌿 非創傷（內科）</div>
+              <div class="side-val">有反射插 NPA，無反射插 OPA</div>
+              <div class="side-desc">舌根後倒呼吸打鼾：意識不清有嘔吐反射插鼻咽 (NPA)；深昏迷無嘔吐反射插口咽 (OPA)。</div>
+            </div>
+            <div class="deadly-side trauma">
+              <div class="side-tag">🩸 創傷（外傷）</div>
+              <div class="side-val warn">可以插 NPA！但有唯一禁忌！</div>
+              <div class="side-desc"><b>先肉眼看臉看耳：</b>若有「貓熊眼、耳後瘀青、鼻漏/耳漏腦脊髓液」代表<b>顱底骨折，絕對嚴禁插 NPA（防插進腦組織）！</b>無骨折徵象才可插 NPA；深昏迷無嘔吐才用 OPA！</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 死穴 4 -->
+        <div class="deadly-card">
+          <div class="deadly-header">
+            <span class="deadly-badge">死穴 ④</span>
+            <h4>二度評估身體檢查焦點</h4>
+          </div>
+          <div class="deadly-compare">
+            <div class="deadly-side med">
+              <div class="side-tag">🌿 非創傷（內科）</div>
+              <div class="side-val">查內科病徵（8大項）</div>
+              <div class="side-desc">臉部辛辛那提微笑、瞳孔對光、頸靜脈怒張、聽診呼吸音、腹部壓痛、皮膚<b>紅疹/紫斑/針孔</b>、手腕腳踝<b>凹陷水腫</b>、問<b>黑便/血便</b>。</div>
+            </div>
+            <div class="deadly-side trauma">
+              <div class="side-tag">🩸 創傷（外傷）</div>
+              <div class="side-val warn">全身摸骨頭看沾血（解剖摸骨）</div>
+              <div class="side-desc">後腦頭骨階梯、眉顴下頜骨、頸椎氣管、鎖骨胸骨肋骨、腹部、骨盆、四肢長骨四等份，<b>每次摸完手套必翻過來看有無沾血！</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 現病史 vs 過去病史 深度專題卡 -->
+      <div class="quick-section-title" style="margin-top:24px;">
+        <span class="title-icon">💊</span>
+        <h3>現病史 (OPQRST) vs 過去病史 (SAMPLE / 主訴之前吃過藥敏感) 到底差在哪？</h3>
+        <span class="title-sub">課本第 64 頁規範：先做機器數值，再問病史！兩者用途截然不同！</span>
+      </div>
+
+      <div class="history-master-card">
+        <div class="history-cols-grid">
+          <!-- 現病史 OPQRST -->
+          <div class="history-col hpi-box">
+            <div class="h-col-header">
+              <span class="h-col-badge">現病史 (HPI)</span>
+              <h4>【OPQRST】查「這一次發作」的不舒服細節！</h4>
+            </div>
+            <p class="h-col-sub">適用：缺血性胸痛（心肌梗塞）、腹痛、氣喘等急性疼痛發作！</p>
+            <div class="opqrst-list">
+              <div class="op-item"><span class="op-letter">O</span><div class="op-text"><b>Onset 發作時間</b>：什麼時候開始痛的？突然發作還是慢慢痛起來？發作前在做什麼？</div></div>
+              <div class="op-item"><span class="op-letter">P</span><div class="op-text"><b>Provocation 誘發加劇</b>：做什麼動作或姿勢會更痛？休息或深呼吸會緩解嗎？</div></div>
+              <div class="op-item"><span class="op-letter">Q</span><div class="op-text"><b>Quality 疼痛性質</b>：痛起來感覺像什麼？（胸口悶痛像大石壓住、針刺痛、還是撕裂痛？）</div></div>
+              <div class="op-item"><span class="op-letter">R</span><div class="op-text"><b>Radiation 輻射轉移</b>：痛的位置在哪裡？會不會傳導擴散到下巴、頸部、左肩膀或後背？</div></div>
+              <div class="op-item"><span class="op-letter">S</span><div class="op-text"><b>Severity 嚴重程度</b>：如果 0 分不痛、10 分是畢生最難忍受的劇痛，現在大概幾分？</div></div>
+              <div class="op-item"><span class="op-letter">T</span><div class="op-text"><b>Time 持續時間</b>：這個痛已經持續多久了？以前有沒有痛過？</div></div>
+            </div>
+          </div>
+
+          <!-- 過去病史 SAMPLE -->
+          <div class="history-col pmh-box">
+            <div class="h-col-header">
+              <span class="h-col-badge">過去病史 (SAMPLE)</span>
+              <h4>【主訴之前吃過藥敏感】查「這輩子」平日健康底子！</h4>
+            </div>
+            <p class="h-col-sub">適用：創傷、非創傷所有病患！「主訴之前吃過藥敏感」＝ 英文 SAMPLE 的台式口訣！</p>
+            <div class="sample-list">
+              <div class="sp-item"><span class="sp-tag">主訴 (S)</span><div class="sp-text">哪裡不舒服、怎麼不舒服、不舒服多久了？（創傷：哪裡受傷撞擊？）</div></div>
+              <div class="sp-item"><span class="sp-tag">之前 (E)</span><div class="sp-text">在發病或撞擊受傷「之前」正在做什麼？（排除開車前先中風心絞痛才自撞）</div></div>
+              <div class="sp-item highlight-eat"><span class="sp-tag">吃 (L)</span><div class="sp-text"><b>【救命食用】最後一次進食時間是幾點？吃了什麼東西？</b></div></div>
+              <div class="sp-item"><span class="sp-tag">過 (P)</span><div class="sp-text">過去病史：以前有過高血壓、心臟病、糖尿病、中風、癌症或開刀嗎？</div></div>
+              <div class="sp-item"><span class="sp-tag">藥 (M)</span><div class="sp-text">平日用藥：有吃降血壓、抗凝血劑（阿斯匹靈）、降血糖藥或自備 NTG 舌下錠嗎？</div></div>
+              <div class="sp-item"><span class="sp-tag">敏 (A)</span><div class="sp-text">過敏史：對什麼食物（海鮮、花生）或藥物（抗生素、止痛藥）過敏過嗎？</div></div>
+              <div class="sp-item"><span class="sp-tag">感 (S)</span><div class="sp-text">補充感覺：還有沒有其他頭暈、心悸、發麻或呼吸喘的感覺？</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 為什麼非要問「吃」的三大救命理由 -->
+        <div class="eat-lifesaver-card">
+          <div class="eat-header">
+            <span class="eat-icon">🚨</span>
+            <h4>為什麼救護技術員非要問「吃（最後進食時間/食用）」？三大保命醫學意義！</h4>
+          </div>
+          <div class="eat-reasons-grid">
+            <div class="eat-box box-anesthesia">
+              <div class="eat-num">理由 1</div>
+              <h5>全身麻醉緊急手術（防嘔吐窒息）</h5>
+              <p>嚴重創傷或內科急症送醫後，可能需要<b>緊急插管進行全身麻醉開刀</b>！麻醉後賁門肌肉鬆弛，若胃內有未消化的食物，極易逆流嘔吐嗆入氣管，造成致命的<b>「吸入性肺炎」或窒息猝死</b>！外科規定需空腹 6~8 小時，救護員第一時間查明進食時間，急診醫師才能立即決定手術麻醉方式！</p>
+            </div>
+            <div class="eat-box box-hypo">
+              <div class="eat-num">理由 2</div>
+              <h5>低血糖休克鑑別（打針未吃飯）</h5>
+              <p>糖尿病患者若<b>打了胰島素或吃了降血糖藥，卻因為忙碌或胃口差忘了進食</b>，體內血糖會暴跌至 40~50 mg/dL，導致意識模糊、抽搐甚至昏迷！問出「最後進食時間」能瞬間識破是否為低血糖休克，給予糖粉救命！</p>
+            </div>
+            <div class="eat-box box-allergy">
+              <div class="eat-num">理由 3</div>
+              <h5>急性過敏源追查（食物過敏性休克）</h5>
+              <p>突發全身發癢紅疹、喉頭水腫、氣喘甚至血壓驟降的病患，追查最後吃下的食物（海鮮、甲殼類、堅果花生、芒果），能第一時間確認是否為<b>食物引發之過敏性休克 (Anaphylaxis)</b>，後送途中嚴密防範呼吸道水腫窒息！</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 二度評估身體檢查：非創傷 8 大項 vs 創傷摸骨頭 -->
+      <div class="quick-section-title" style="margin-top:24px;">
+        <span class="title-icon">🩺</span>
+        <h3>二度評估身體檢查：非創傷 8 大項 vs 創傷摸骨頭看沾血</h3>
+        <span class="title-sub">課本第 61/64 頁：非創傷查內科病徵，創傷從頭摸到腳骨骼與出血！</span>
+      </div>
+
+      <div class="secondary-grid">
+        <!-- 非創傷八大項 -->
+        <div class="sec-card med-sec">
+          <div class="sec-card-header">
+            <span class="sec-badge med">🌿 非創傷（內科八大項）</span>
+            <h4>查內科器官病徵（查紅疹、紫斑、針孔、水腫、黑便）</h4>
+          </div>
+          <div class="sec-list">
+            <div class="sec-item"><span class="sec-n">1</span><b>臉部表情與對稱</b>：辛辛那提微笑測試（有無單側嘴角下垂、流口水，評估中風）。</div>
+            <div class="sec-item"><span class="sec-n">2</span><b>兩眼瞳孔對光反應</b>：手電筒照瞳孔，看大小是否等圓等大（正常2~4mm），有無對光縮瞳（排除腦出血、腦壓高或毒物）。</div>
+            <div class="sec-item"><span class="sec-n">3</span><b>頸部靜脈怒張</b>：觀察頸靜脈有無鼓起（怒張常見於右心衰竭、心包填塞）。左手比三滑動檢查氣管有無置中。</div>
+            <div class="sec-item"><span class="sec-n">4</span><b>胸部聽診與外觀</b>：掀開衣服徵求同意，看胸廓起伏，聽診四個聽診點（右上、左上、左下、右下）有無氣喘喘鳴音或肺水腫囉音。</div>
+            <div class="sec-item"><span class="sec-n">5</span><b>腹部四象限觸診</b>：肚臍分四象限，從不痛側壓到痛側，看有無壓痛、反彈痛或腹肌僵硬（腹膜炎）。</div>
+            <div class="sec-item"><span class="sec-n">6</span><b>皮膚外觀巡視</b>：仔細檢視軀幹與四肢有無<b>紅疹</b>（過敏）、<b>紫斑</b>（敗血症/凝血障礙）、<b>針孔</b>（毒品濫用）。</div>
+            <div class="sec-item"><span class="sec-n">7</span><b>四肢末梢凹陷性水腫</b>：拇指下壓雙側手腕與小腿腳踝脛骨前 5 秒放開，觀察有無<b>凹陷性水腫</b>（心臟衰竭、腎衰竭、肝硬化）。</div>
+            <div class="sec-item"><span class="sec-n">8</span><b>排泄與病史問診</b>：詢問病患或家屬最近有無解<b>黑便（柏油便）</b>、<b>瀝青便或鮮血便</b>（嚴重上/下消化道出血）？有無發燒畏寒？</div>
+          </div>
+        </div>
+
+        <!-- 創傷摸骨頭 -->
+        <div class="sec-card trauma-sec">
+          <div class="sec-card-header">
+            <span class="sec-badge trauma">🩸 創傷（全身摸骨頭看沾血）</span>
+            <h4>全身解剖摸骨檢查（每次摸完手套必翻看有無沾血）</h4>
+          </div>
+          <div class="sec-list">
+            <div class="sec-item"><span class="sec-n">1</span><b>後腦杓與頭骨</b>：雙手手指摸過後腦枕骨，檢查有無凹陷或階梯狀骨折，<b>手套翻過來看有無沾血</b>。</div>
+            <div class="sec-item"><span class="sec-n">2</span><b>顏面眉顴頜骨</b>：手指沿雙側眉骨、顴骨、下顎骨滑動按壓，看有無骨擦音；檢查眼耳口鼻有無腦脊髓液或血液流出。</div>
+            <div class="sec-item"><span class="sec-n">3</span><b>頸椎與氣管置中</b>：在頸圈保護下輕摸後頸椎棘突有無壓痛與階梯，目視氣管置中、有無頸靜脈怒張。</div>
+            <div class="sec-item"><span class="sec-n">4</span><b>鎖骨、胸骨與肋骨</b>：雙手對稱摸雙側鎖骨、胸骨、兩側肋骨胸壁（看有無骨折或連枷胸），聽診肺音，手套翻看有無鮮血。</div>
+            <div class="sec-item"><span class="sec-n">5</span><b>腹部四象限輕壓</b>：肚臍分四區輕壓，檢查有無壓痛、肌緊張或內出血膨脹。</div>
+            <div class="sec-item"><span class="sec-n">6</span><b>骨盆按壓（僅限一次）</b>：雙手置於兩側腸骨脊，向內向下施壓一次，感覺骨折或痛感立即停手，手套看有無血。</div>
+            <div class="sec-item"><span class="sec-n">7</span><b>四肢長骨四等分</b>：雙上臂、前臂、大腿、小腿分四等分環抱握壓，檢查長骨骨折，<b>每次握完手套必翻看有無鮮血！</b>末梢測量微血管充填時間 (CRT)。</div>
+            <div class="sec-item"><span class="sec-n">8</span><b>滾木翻身摸脊椎</b>：維持頸椎一直線翻身 90 度，單手手指沿胸椎、腰椎棘突由上往下摸，檢查有無階梯壓痛，<b>手套翻看有無血！</b></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 車上無線電交接回報 7 字金律 -->
+      <div class="quick-section-title" style="margin-top:24px;">
+        <span class="title-icon">📻</span>
+        <h3>救護車上無線電回報 7 字金律：「病人要史已前到」</h3>
+        <span class="title-sub">課本第 65 頁規範：到達急診室前向醫院通報標準台詞！</span>
+      </div>
+
+      <div class="radio-card">
+        <div class="radio-mnemonics-bar">
+          <span class="r-word">病<small>病人</small></span>➔
+          <span class="r-word">人<small>意識主訴</small></span>➔
+          <span class="r-word">要<small>主要徵象</small></span>➔
+          <span class="r-word">史<small>病史過敏</small></span>➔
+          <span class="r-word">已<small>已處置</small></span>➔
+          <span class="r-word">前<small>目前狀況</small></span>➔
+          <span class="r-word">到<small>到院時間</small></span>
+        </div>
+        <div class="radio-speech-box">
+          <div class="speech-title">🗣️ 標準無線電通報台詞範例（按 7 字口訣逐句照唸）：</div>
+          <div class="speech-content">
+            「<b>新北 91 呼叫亞東醫院急診室！</b><br>
+            • <b>病</b>：本車載送一名約 60 歲男性病患。<br>
+            • <b>人</b>：意識清醒 (Alert)，主訴胸前區劇烈壓迫悶痛延伸至左肩已 30 分鐘。<br>
+            • <b>要</b>：生命徵象：呼吸 20 次、脈搏 96 次、血壓 130/80 mmHg、血氧 98%、血糖 110 mg/dL。<br>
+            • <b>史</b>：過去病史有高血壓、心絞痛，無藥物過敏史。<br>
+            • <b>已</b>：現場已排除禁忌，協助病患含服自備 NTG 舌下錠一顆，並給予保暖與心理支持。<br>
+            • <b>前</b>：目前生命徵象穩定，胸痛略為緩解。<br>
+            • <b>到</b>：預估約 5 分鐘後到達貴院急診室，新北 91 通報完畢！」
+          </div>
+          <div class="speech-action">
+            <button class="btn-voice" onclick="speak('新北91呼叫亞東急診室，本車載送一名60歲男性，主訴胸痛，生命徵象呼吸20脈搏96血壓130，過去有高血壓，已協助含服NTG，目前穩定，預估5分鐘後到達')">🔊 聽標準回報發音</button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
+    <!-- 主面板：三欄流程口令全對照 -->
+    <main id="viewMain" class="view-panel">
+
+      <!-- 01 現場評估與起手式 -->
       <div class="script-row-card is-diff">
         <div class="script-row-header">
           <div class="script-step-label">
             <span class="step-pill">01</span>
-            <span class="step-name">現場評估與起手式</span>
+            <span class="step-name">現場評估與起手式 (課本第 58/60 頁)</span>
           </div>
-          <span class="step-diff-badge diff">🔥 創傷實施手持頸椎減移・歐卡攜帶AED</span>
+          <span class="step-diff-badge diff">⚡ 創傷必須站腳側眼神接觸＋頭部減移限制頸椎</span>
         </div>
         <div class="script-columns-grid">
           <!-- 非創傷 -->
           <div class="script-col med">
             <div class="col-header-tag">🌿 非創傷（內科）</div>
             <div class="cmd-block">
-              <span class="cmd-role-tag role-main">主手操作口令</span>
+              <span class="cmd-role-tag role-main">主手口令與動作</span>
               <div class="cmd-content">
-                「<b>現場環境安全，佩戴個人防護裝備，請求 119 支援，準備急救包。</b>」
+                「<b>現場環境安全，做好個人防護裝備（手套、口罩），保持安全距離，傷患人數一名。請副手撥打 119 求援，放下裝備，打開急救包與三合一。</b>」
               </div>
               <div class="cmd-footer">
-                <span class="cmd-rule-note">四件套常規接近患者</span>
-                <button class="btn-voice" onclick="speak('現場環境安全，佩戴個人防護裝備，請求119支援，準備急救包')">🔊 聽發音</button>
+                <span class="cmd-rule-note">內科無外力撞擊，主手開急救包、副手開三合一</span>
+                <button class="btn-voice" onclick="speak('現場環境安全，做好個人防護裝備，保持安全距離，傷患人數一名。請副手撥打119求援，放下裝備，打開急救包與三合一')">🔊 聽發音</button>
               </div>
             </div>
           </div>
@@ -521,109 +979,110 @@
           <div class="script-col trauma">
             <div class="col-header-tag">🩸 創傷（外傷）</div>
             <div class="cmd-block">
-              <span class="cmd-role-tag role-main">主手操作口令</span>
+              <span class="cmd-role-tag role-main">主手口令與動作</span>
               <div class="cmd-content">
-                「現場環境安全，佩戴個人防護裝備，請求 119 支援，準備急救包。<b>主手接觸傷患，立即實施手持頸椎減移。</b>」
+                「<b>現場環境安全，做好個人防護（手套、口罩、護目鏡），保持安全距離，傷患人數一名，機轉為車禍/高處墜落。請副手撥打 119 求援，放下裝備，打開三合一！</b><br>
+                <span class="highlight">【關鍵動作】主手走向傷患腳側，蹲下維持眼神平視：「先生您好，我們懷疑您頸椎受傷，請看著我，不要亂動！」副手由頭部實施頭部減移限制喊「好」！</span>」
               </div>
               <div class="cmd-footer">
-                <span class="cmd-rule-note">雙手固定頭頸，嚴禁離手</span>
-                <button class="btn-voice" onclick="speak('現場環境安全，佩戴個人防護裝備，請求119支援，準備急救包，主手立即實施手持頸椎減移')">🔊 聽發音</button>
-              </div>
-            </div>
-            <div class="cmd-block">
-              <span class="cmd-role-tag role-partner">主副手交接口令</span>
-              <div class="cmd-content">
-                主手：「<b>副手，請準備接手頭頸部固定。</b>」<br>
-                副手：「<b>我已接穩。</b>」<br>
-                主手：「<b>好，我放手。</b>」
+                <span class="cmd-rule-note">站腳側防轉頭；副手喊「好」後主手才可放手脫帽</span>
+                <button class="btn-voice" onclick="speak('現場環境安全，做好防護，請副手打119開三合一。先生您好，我們懷疑您頸椎受傷，請不要亂動。副手實施頭部減移')">🔊 聽發音</button>
               </div>
             </div>
           </div>
           <!-- 歐卡 -->
           <div class="script-col ohca">
-            <div class="col-header-tag">⚡ 歐卡 OHCA（心跳停止）</div>
+            <div class="col-header-tag">⚡ OHCA（心跳停止）</div>
             <div class="cmd-block">
-              <span class="cmd-role-tag role-main">主手操作口令</span>
+              <span class="cmd-role-tag role-main">主手口令與動作</span>
               <div class="cmd-content">
-                「<b>現場環境安全，佩戴個人防護裝備，請求 119 支援，準備急救包，副手攜帶 AED 與甦醒球。</b>」
+                「<b>現場環境安全，做好個人防護（手套、口罩），保持適當安全距離，傷患人數一名。請副手撥打 119 求援，攜帶急救包、甦醒球 (BVM) 及 AED 迅速趕往傷患身旁！</b>」
               </div>
               <div class="cmd-footer">
-                <span class="cmd-rule-note">第一時間指派 AED 與 BVM</span>
-                <button class="btn-voice" onclick="speak('現場環境安全，佩戴個人防護裝備，請求119支援，準備急救包，副手攜帶AED與甦醒球')">🔊 聽發音</button>
+                <span class="cmd-rule-note">OHCA 起手式指派裝備：BVM ＋ AED</span>
+                <button class="btn-voice" onclick="speak('現場環境安全，穿戴防護，請副手打119，攜帶甦醒球與AED趕來')">🔊 聽發音</button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 階段 2: 致命大出血 X -->
+      <!-- 02 致命大出血評估 (X) -->
       <div class="script-row-card is-diff">
         <div class="script-row-header">
           <div class="script-step-label">
             <span class="step-pill">02</span>
-            <span class="step-name">致命大出血評估 (X)</span>
+            <span class="step-name">致命大出血評估 (X) (課本第 60 頁)</span>
           </div>
-          <span class="step-diff-badge diff">🔥 創傷專屬處置步驟</span>
+          <span class="step-diff-badge diff">⚡ 創傷噴血「止血優先於頸椎」・立即打止血帶</span>
         </div>
         <div class="script-columns-grid">
-          <!-- 非創傷 -->
           <div class="script-col med">
             <div class="col-header-tag">🌿 非創傷（內科）</div>
-            <div style="color:#64748b; font-size:0.88rem; padding:12px;">
-              （無此外傷機制，直接進行意識評估）
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">不需實施 X</span>
+              <div class="cmd-content">
+                「非創傷無外力創傷出血，跳過 X 大出血評估，直接進入意識評估。」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">內科無 X 步驟</span>
+              </div>
             </div>
           </div>
-          <!-- 創傷 -->
           <div class="script-col trauma">
             <div class="col-header-tag">🩸 創傷（外傷）</div>
             <div class="cmd-block">
-              <span class="cmd-role-tag role-main">主手操作口令</span>
+              <span class="cmd-role-tag role-main">X 大出血優先止血</span>
               <div class="cmd-content">
-                「<b>快速掃描全身致命大出血。</b>」
-              </div>
-            </div>
-            <div class="cmd-block">
-              <span class="cmd-role-tag role-partner">大出血處置口令</span>
-              <div class="cmd-content">
-                「<b>患者肢體大量噴血，直接加壓無效，立即於傷口近心端 5 至 7 公分處施加止血帶，旋緊至出血停止，標記止血帶時間。</b>」
+                「<b>快速目視全身有無致命大出血！</b><br>
+                <span class="highlight">【考點鐵律】止血優先於頸椎！若發現動脈噴血，立即雙手紗布直接加壓止血；無法控制時，立即於傷口近心端 5~7 公分打上止血帶，旋緊絞棒至停止出血摸不到遠端脈搏，固定寫上時間！</span>」
               </div>
               <div class="cmd-footer">
-                <span class="cmd-rule-note">止血帶避開關節處，不任意鬆開</span>
-                <button class="btn-voice" onclick="speak('患者肢體大量噴血，直接加壓無效，立即於傷口近心端施加止血帶，旋緊至出血停止，標記止血帶時間')">🔊 聽發音</button>
+                <span class="cmd-rule-note">動脈大噴血必須第一秒止血，不可先搞頸圈</span>
+                <button class="btn-voice" onclick="speak('快速檢查大出血。止血優先於頸椎，直接加壓並打上止血帶，旋緊絞棒至出血停止，寫上時間')">🔊 聽發音</button>
               </div>
             </div>
           </div>
-          <!-- 歐卡 -->
           <div class="script-col ohca">
-            <div class="col-header-tag">⚡ 歐卡 OHCA（心跳停止）</div>
-            <div style="color:#64748b; font-size:0.88rem; padding:12px;">
-              （無此外傷機制，直接進行意識評估）
+            <div class="col-header-tag">⚡ OHCA（心跳停止）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">目視無噴血</span>
+              <div class="cmd-content">
+                「傷患倒地無大量湧血，直接進行意識評估三呼叫。」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">若有外出血壓迫止血，以恢復循環為第一優先</span>
+              </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 階段 3: 意識狀態評估 (AVPU) -->
-      <div class="script-row-card is-same">
+      <!-- 03 意識狀態評估 (AVPU 三呼叫) -->
+      <div class="script-row-card is-diff">
         <div class="script-row-header">
           <div class="script-step-label">
             <span class="step-pill">03</span>
-            <span class="step-name">意識狀態評估 (AVPU)</span>
+            <span class="step-name">意識狀態評估 (AVPU 三呼叫) (課本第 58/60/64 頁)</span>
           </div>
-          <span class="step-diff-badge same">🟢 三者大致通用（創傷不可晃動頸椎）</span>
+          <span class="step-diff-badge diff">🔥 致命考點：創傷痛刺激壓指甲床（嚴禁捏肩！）VS 非創傷捏斜方肌</span>
         </div>
         <div class="script-columns-grid">
           <!-- 非創傷 -->
           <div class="script-col med">
             <div class="col-header-tag">🌿 非創傷（內科）</div>
             <div class="cmd-block">
-              <span class="cmd-role-tag role-main">口令與刺激</span>
+              <span class="cmd-role-tag role-main">三呼叫 ＋ 清醒問主訴</span>
               <div class="cmd-content">
-                「<b>先生先生，聽得到嗎？</b>（雙手拍擊雙肩，施予斜方肌疼痛刺激）<b>患者意識清醒／對痛有反應／無反應。</b>」
+                「<b>先生、先生！（邊開急救包邊叫，第1次）</b><br>
+                若無反應 ➔ <b>先生！（叫加拍肩，第2次）</b><br>
+                若無反應 ➔ <b>（雙手捏雙側斜方肌痛刺激，第3次）！</b><br>
+                <span class="gold">【清醒病患問主訴（課本第64頁）】：<br>
+                「先生先生你還好嗎？我是救護人員，請問你哪裡不舒服？怎麼不舒服？不舒服多久了？」</span>」
               </div>
               <div class="cmd-footer">
-                <span class="cmd-rule-note">清(A) 聲(V) 痛(P) 否(U)</span>
-                <button class="btn-voice" onclick="speak('先生先生，聽得到嗎？患者意識清醒，對痛有反應，無反應')">🔊 聽發音</button>
+                <span class="cmd-rule-note">非創傷痛刺激：捏斜方肌</span>
+                <button class="btn-voice" onclick="speak('先生先生。沒有反應叫加拍肩。沒有反應捏斜方肌。清醒問：請問你哪裡不舒服？怎麼不舒服？不舒服多久了？')">🔊 聽發音</button>
               </div>
             </div>
           </div>
@@ -631,176 +1090,172 @@
           <div class="script-col trauma">
             <div class="col-header-tag">🩸 創傷（外傷）</div>
             <div class="cmd-block">
-              <span class="cmd-role-tag role-main">維持頸椎減移下口令</span>
+              <span class="cmd-role-tag role-main">三呼叫 ＋ 創傷痛刺激</span>
               <div class="cmd-content">
-                「<b>維持頸椎固定。先生先生，請保持不動，聽得到嗎？</b>（拍擊雙肩，施予痛刺激）<b>患者意識對聲音／痛有反應。</b>」
+                「<b>維持頭頸中立，先生、先生！（第1次-叫）</b><br>
+                若無反應 ➔ <b>先生！（叫加輕拍雙肩，第2次-拍）</b><br>
+                若無反應 ➔ <span class="highlight">【致命紅線】疼痛刺激必須「拿筆燈壓手指甲床」或「捏雙手虎口」！絕對嚴禁捏肩（斜方肌），以免劇烈晃動頸椎 C1~C7 造成二次癱瘓！</span><br>
+                <span class="gold">【清醒病患問主訴（課本第64頁）】：<br>
+                「先生先生你哪裡不舒服？怎麼不舒服？不舒服多久了？」</span>」
               </div>
               <div class="cmd-footer">
-                <span class="cmd-rule-note">嚴禁劇烈搖晃傷患身體</span>
-                <button class="btn-voice" onclick="speak('維持頸椎固定。先生先生，請保持不動，聽得到嗎？患者意識對痛有反應')">🔊 聽發音</button>
+                <span class="cmd-rule-note">課本第60頁手寫必考註記：壓指甲床或捏虎口！</span>
+                <button class="btn-voice" onclick="speak('維持頭頸中立。先生先生叫。拍肩叫。疼痛刺激壓指甲床，嚴禁捏肩！清醒問：哪裡不舒服？不舒服多久了？')">🔊 聽發音</button>
               </div>
             </div>
           </div>
           <!-- 歐卡 -->
           <div class="script-col ohca">
-            <div class="col-header-tag">⚡ 歐卡 OHCA（心跳停止）</div>
+            <div class="col-header-tag">⚡ OHCA（心跳停止）</div>
             <div class="cmd-block">
-              <span class="cmd-role-tag role-main">無反應確認口令</span>
+              <span class="cmd-role-tag role-main">三呼叫確認完全無反應</span>
               <div class="cmd-content">
-                「<b>先生先生，聽得到嗎？</b>（拍擊雙肩，施予斜方肌刺激）<b>確認患者完全無反應 (Unresponsive)。</b>」
+                「<b>先生先生你還好嗎？（大聲叫）➔ 輕拍雙肩：先生先生！➔ 捏雙側斜方肌給予疼痛刺激！傷患對痛刺激完全無反應！</b>」
               </div>
               <div class="cmd-footer">
-                <span class="cmd-rule-note">確認為 U，立即進入呼吸脈搏評估</span>
-                <button class="btn-voice" onclick="speak('先生先生，聽得到嗎？確認患者完全無反應')">🔊 聽發音</button>
+                <span class="cmd-rule-note">無反應立即進入呼吸與脈搏檢查</span>
+                <button class="btn-voice" onclick="speak('先生先生。拍雙肩先生先生。捏斜方肌痛刺激。傷患完全無反應！')">🔊 聽發音</button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 階段 4: 暢通呼吸道 (A) -->
+      <!-- 04 暢通呼吸道 (A) -->
       <div class="script-row-card is-diff">
         <div class="script-row-header">
           <div class="script-step-label">
             <span class="step-pill">04</span>
-            <span class="step-name">暢通呼吸道 (A)</span>
+            <span class="step-name">暢通呼吸道 (A) (課本第 58/60 頁)</span>
           </div>
-          <span class="step-diff-badge diff">🛑 關鍵手法差異：創傷嚴禁後仰</span>
+          <span class="step-diff-badge diff">⚡ 創傷嚴禁仰頭・必須採「下顎推擠法 (Jaw-thrust)」</span>
         </div>
         <div class="script-columns-grid">
-          <!-- 非創傷 -->
           <div class="script-col med">
             <div class="col-header-tag">🌿 非創傷（內科）</div>
             <div class="cmd-block">
-              <span class="cmd-role-tag role-main">壓額抬頦法口令</span>
+              <span class="cmd-role-tag role-main">壓額抬頦法</span>
               <div class="cmd-content">
-                「<b>採壓額抬頦法，暢通呼吸道。檢查口咽部有無可見異物、嘔吐物及異常呼吸雜音，呼吸道暢通。</b>」
+                「<b>傷患無外傷頸椎機轉，採壓額抬頦法暢通呼吸道！</b>若有雜音準備抽吸（≤15秒）；若有鼾音：清醒/不清量鼻尖到耳垂放鼻咽 (NPA)，昏迷量門牙到下顎角放口咽 (OPA)。」
               </div>
               <div class="cmd-footer">
-                <span class="cmd-rule-note">正常頭部後仰拉直氣道</span>
-                <button class="btn-voice" onclick="speak('採壓額抬頦法，暢通呼吸道。檢查口咽部有無可見異物，呼吸道暢通')">🔊 聽發音</button>
+                <span class="cmd-rule-note">內科採壓額抬頦</span>
+                <button class="btn-voice" onclick="speak('無頸椎機轉，採壓額抬頦法暢通呼吸道')">🔊 聽發音</button>
               </div>
             </div>
           </div>
-          <!-- 創傷 -->
           <div class="script-col trauma">
             <div class="col-header-tag">🩸 創傷（外傷）</div>
             <div class="cmd-block">
-              <span class="cmd-role-tag role-main">下顎推擠法口令</span>
+              <span class="cmd-role-tag role-main">下顎推擠法 (Jaw-thrust)</span>
               <div class="cmd-content">
-                「<b>雙手採下顎推擠法，嚴禁頭部後仰，暢通呼吸道。檢查口腔有無血塊、碎牙及異物，呼吸道暢通。</b>」
+                「<span class="highlight"><b>創傷傷患懷疑頸椎受傷，嚴禁仰頭！採下顎推擠法打開呼吸道！</b>雙手食指中指置於下顎骨角向前向上推擠。<br>
+                處置分流（課本第 60 頁標準）：<br>
+                • 有雜音 ➔ <b>抽吸（每次≤15秒）</b><br>
+                • 有鼾音且對痛有反應 ➔ <b style="color:#fde047;">先檢查有無顱底骨折（熊貓眼/耳後瘀青/耳漏鼻漏），排除後量鼻尖至耳垂置入鼻咽 (NPA)！若疑似顱底骨折嚴禁使用 NPA！</b><br>
+                • 意識深昏迷對痛無反應 ➔ <b>量門牙至下顎角置入口咽 (OPA)！</b></span>」
               </div>
               <div class="cmd-footer">
-                <span class="cmd-rule-note">雙手食中指托下顎角向前向上推</span>
-                <button class="btn-voice" onclick="speak('雙手採下顎推擠法，嚴禁頭部後仰，暢通呼吸道。檢查口腔有無異物，呼吸道暢通')">🔊 聽發音</button>
+                <span class="cmd-rule-note">創傷嚴禁仰頭；NPA 必須先排除顱底骨折防插腦</span>
+                <button class="btn-voice" onclick="speak('創傷嚴禁仰頭，採下顎推擠法。鼾音先排除顱底骨折才可放鼻咽NPA，昏迷放口咽OPA')">🔊 聽發音</button>
               </div>
             </div>
           </div>
-          <!-- 歐卡 -->
           <div class="script-col ohca">
-            <div class="col-header-tag">⚡ 歐卡 OHCA（心跳停止）</div>
+            <div class="col-header-tag">⚡ OHCA（心跳停止）</div>
             <div class="cmd-block">
-              <span class="cmd-role-tag role-main">壓額抬頦法口令</span>
+              <span class="cmd-role-tag role-main">壓額抬頦暢通氣道</span>
               <div class="cmd-content">
-                「<b>採壓額抬頦法，暢通呼吸道，檢查口中無可見異物。</b>」
+                「<b>採壓額抬頦法暢通氣道，目視口內無異物。副手組裝甦醒球 (BVM) 接氧氣 15 L/min！</b>」
               </div>
               <div class="cmd-footer">
-                <span class="cmd-rule-note">迅速暢通，不延誤循環評估</span>
-                <button class="btn-voice" onclick="speak('採壓額抬頦法，暢通呼吸道，檢查口中無可見異物')">🔊 聽發音</button>
+                <span class="cmd-rule-note">BVM 提早組裝接氧 15L</span>
+                <button class="btn-voice" onclick="speak('採壓額抬頦法暢通呼吸道，口內無異物')">🔊 聽發音</button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 階段 5: 評估呼吸 (B) 與 循環脈搏 (C) -->
+      <!-- 05 評估呼吸 (B) ＋ 給氧裝置流量 -->
       <div class="script-row-card is-diff">
         <div class="script-row-header">
           <div class="script-step-label">
             <span class="step-pill">05</span>
-            <span class="step-name">評估呼吸 (B) ＋ 循環脈搏 (C)</span>
+            <span class="step-name">評估呼吸 (B) ＋ 給氧裝置流量 (課本第 58/60 頁)</span>
           </div>
-          <span class="step-diff-badge diff">⚡ 歐卡雙工合一 ≤10 秒・創傷壓骨盆</span>
+          <span class="step-diff-badge diff">⚡ 嚴格流量硬指標：鼻導管 4L、面罩 10L、NRM 15L、BVM 15L</span>
         </div>
         <div class="script-columns-grid">
-          <!-- 非創傷 -->
           <div class="script-col med">
             <div class="col-header-tag">🌿 非創傷（內科）</div>
             <div class="cmd-block">
-              <span class="cmd-role-tag role-main">B 呼吸與血氧</span>
+              <span class="cmd-role-tag role-main">呼吸深淺快慢與分流給氧</span>
               <div class="cmd-content">
-                「<b>眼睛平視胸部，評估呼吸起伏深淺快慢，副手夾上血氧濃度計。</b>」
-              </div>
-            </div>
-            <div class="cmd-block">
-              <span class="cmd-role-tag role-main">C 循環評估</span>
-              <div class="cmd-content">
-                「<b>觸診雙側橈動脈，脈搏規律有力，微血管充填時間 (CRT) 小於 2 秒，手背觸摸膚溫溫暖乾爽。</b>」
+                「<b>平視胸部評估呼吸起伏深淺快慢（≤10秒），夾上血氧機！</b><br>
+                處置分流：<br>
+                • 淺快無張口 (SpO2 &lt;94%) ➔ <b>鼻導管 4 L/min</b><br>
+                • 淺快張口呼吸 ➔ <b>一般面罩 10 L/min</b><br>
+                • 嚴重過敏/發紺/氣喘 ➔ <b>NRM 15 L/min (充飽2/3)</b><br>
+                • 呼吸衰竭 (&lt;10次/分) ➔ <b>BVM 15 L/min (每6秒一口)</b>」
               </div>
               <div class="cmd-footer">
-                <span class="cmd-rule-note">先 B 後 C，循序評估</span>
-                <button class="btn-voice" onclick="speak('眼睛平視胸部，評估呼吸起伏深淺快慢，副手夾上血氧濃度計。觸診橈動脈，微血管充填時間小於2秒，膚溫溫暖乾爽')">🔊 聽發音</button>
+                <span class="cmd-rule-note">依病患臨床呼吸型態精確給氧</span>
+                <button class="btn-voice" onclick="speak('評估呼吸深淺快慢夾血氧機。無張口給鼻導管4L，張口給面罩10L，嚴重呼吸困難給非再呼吸型面罩15L')">🔊 聽發音</button>
               </div>
             </div>
           </div>
-          <!-- 創傷 -->
           <div class="script-col trauma">
             <div class="col-header-tag">🩸 創傷（外傷）</div>
             <div class="cmd-block">
-              <span class="cmd-role-tag role-main">B 呼吸與血氧</span>
+              <span class="cmd-role-tag role-main">重大外傷固定高濃度給氧</span>
               <div class="cmd-content">
-                「<b>平視胸部評估呼吸作功，副手夾上血氧濃度計。觸診橈動脈，微血管充填時間 (CRT) 小於 2 秒。</b>」
-              </div>
-            </div>
-            <div class="cmd-block">
-              <span class="cmd-role-tag role-main">C 骨盆穩定度檢查</span>
-              <div class="cmd-content">
-                「<b>雙手向內向下輕壓骨盆一次，骨盆穩定無骨擦音。</b>」
+                「<b>評估呼吸深淺快慢（≤10秒），夾上血氧機！重大外傷呼吸急促發紺，立即給予非再呼吸型面罩 (NRM) 氧氣流量固定 15 L/min，確認儲氣袋充飽 2/3！</b>」
               </div>
               <div class="cmd-footer">
-                <span class="cmd-rule-note">骨盆僅施壓一次，排除隱形大出血</span>
-                <button class="btn-voice" onclick="speak('平視胸部評估呼吸作功，副手夾血氧。觸診橈動脈，微血管充填時間小於2秒。雙手向內向下輕壓骨盆一次，骨盆穩定無骨擦音')">🔊 聽發音</button>
+                <span class="cmd-rule-note">重大外傷/氣胸/休克直接上 NRM 15L</span>
+                <button class="btn-voice" onclick="speak('評估呼吸夾血氧機。給予非再呼吸型面罩固定15L每分鐘，儲氣袋充飽三分之二')">🔊 聽發音</button>
               </div>
             </div>
           </div>
-          <!-- 歐卡 -->
           <div class="script-col ohca">
-            <div class="col-header-tag">⚡ 歐卡 OHCA（心跳停止）</div>
-            <div class="cmd-block" style="border: 2px solid #fbbf24;">
-              <span class="cmd-role-tag role-main">同步評估與宣判口令</span>
+            <div class="col-header-tag">⚡ OHCA（心跳停止）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">看胸起摸頸動脈 ≤10 秒</span>
               <div class="cmd-content">
-                「<b>平視胸部起伏，同時觸診頸動脈：1、2、3、4、5、6、7。無正常呼吸、無頸動脈脈搏，判定為 OHCA，立即開始胸外按壓！</b>」
+                「<b>平視胸部有無起伏，同時食指中指摸頸動脈搏：1001, 1002... 評估不超過 10 秒！無呼吸、無脈搏！請副手準備 BVM 與 AED，我立即開始高品質 CPR！</b>」
               </div>
               <div class="cmd-footer">
-                <span class="cmd-rule-note">限時 5 至 10 秒內完成，瀕死喘息視同無呼吸</span>
-                <button class="btn-voice" onclick="speak('平視胸部起伏，同時觸診頸動脈：一、二、三、四、五、六、七。無正常呼吸、無頸動脈脈搏，判定為歐卡，立即開始胸外按壓！')">🔊 聽發音</button>
+                <span class="cmd-rule-note">呼吸與脈搏同時檢查，不超過 10 秒</span>
+                <button class="btn-voice" onclick="speak('看胸部起伏同時摸頸動脈不超過十秒。無呼吸無脈搏，副手備BVM與AED，我開始CPR')">🔊 聽發音</button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 階段 6: 核心處置與急救操作 -->
+      <!-- 06 循環評估 (C) ＋ 骨盆檢查 -->
       <div class="script-row-card is-diff">
         <div class="script-row-header">
           <div class="script-step-label">
             <span class="step-pill">06</span>
-            <span class="step-name">核心處置與急救操作</span>
+            <span class="step-name">循環評估 (C) ＋ 骨盆檢查 (課本第 58/60 頁)</span>
           </div>
-          <span class="step-diff-badge diff">🔥 歐卡高品質CPR與AED・創傷PSM與固定保暖</span>
+          <span class="step-diff-badge diff">🔥 致命考點：創傷向內向下壓骨盆一次 VS 非創傷初評「絕對不壓骨盆」</span>
         </div>
         <div class="script-columns-grid">
           <!-- 非創傷 -->
           <div class="script-col med">
             <div class="col-header-tag">🌿 非創傷（內科）</div>
             <div class="cmd-block">
-              <span class="cmd-role-tag role-main">給氧標準口令</span>
+              <span class="cmd-role-tag role-main">C 循環（絕對不壓骨盆）</span>
               <div class="cmd-content">
-                「<b>患者呼吸急促窘迫，給予非再呼吸型面罩 (NRM)，氧氣流量設定 15 L/min，確認儲氣袋完全充飽後為患者佩戴。</b>」
+                「<b>雙手食指中指觸摸雙側橈動脈對稱摸得、輕壓手部甲床 3~5 秒測微血管充填時間 (CRT ≤2 秒)、手背碰病患手背測膚溫膚色！</b><br>
+                <span class="highlight">【考場紅線】非創傷無外力撞擊機轉，初評絕對不壓骨盆！壓骨盆直接扣分！</span>」
               </div>
               <div class="cmd-footer">
-                <span class="cmd-rule-note">若呼吸過慢小於 8 次：改甦醒球 BVM 每 6 秒一口</span>
-                <button class="btn-voice" onclick="speak('給予非再呼吸型面罩NRM，氧氣流量設定15升，確認儲氣袋完全充飽後為患者佩戴')">🔊 聽發音</button>
+                <span class="cmd-rule-note">內科初評 C 只有橈動脈、CRT、膚溫</span>
+                <button class="btn-voice" onclick="speak('觸摸雙側橈動脈，測微血管充填時間CRT，手背測膚溫。非創傷不壓骨盆')">🔊 聽發音</button>
               </div>
             </div>
           </div>
@@ -808,110 +1263,285 @@
           <div class="script-col trauma">
             <div class="col-header-tag">🩸 創傷（外傷）</div>
             <div class="cmd-block">
-              <span class="cmd-role-tag role-main">骨折固定 PSM 口令</span>
+              <span class="cmd-role-tag role-main">C 循環 ＋ 骨盆向內向下壓一次</span>
               <div class="cmd-content">
-                「<b>固定前評估患肢遠端脈搏、感覺、運動 (PSM)。副手準備夾板與護墊，跨上下關節固定。固定完成，重新評估遠端 PSM。</b>」
-              </div>
-            </div>
-            <div class="cmd-block">
-              <span class="cmd-role-tag role-main">暴露與保暖口令</span>
-              <div class="cmd-content">
-                「<b>暴露檢查胸腹部外傷。檢查完畢，立即覆蓋毛毯保暖，防止低體溫。</b>」
+                「<b>觸摸雙側橈動脈對稱摸得、測 CRT ≤2 秒、手背測溫膚色！</b><br>
+                <span class="highlight">【骨盆檢查鐵律】雙手置於骨盆兩側腸骨翼，向內並向下施壓一次！評估骨盆穩定度無骨擦音！（只能壓一次，若劇痛立即放手，嚴禁反覆壓按）</span>」
               </div>
               <div class="cmd-footer">
-                <span class="cmd-rule-note">防範創傷致命三聯徵（低體溫、酸中毒、凝血異常）</span>
-                <button class="btn-voice" onclick="speak('固定前評估患肢遠端脈搏感覺運動PSM，夾板跨關節固定，固定後重新評估遠端PSM。暴露檢查傷口，覆蓋毛毯保暖防低體溫')">🔊 聽發音</button>
+                <span class="cmd-rule-note">骨盆施壓限一次，排除隱形 1000~3000cc 內失血</span>
+                <button class="btn-voice" onclick="speak('摸雙側橈動脈，測CRT，手背測溫。雙手置骨盆向內向下施壓一次，骨盆穩定無骨擦音')">🔊 聽發音</button>
               </div>
             </div>
           </div>
           <!-- 歐卡 -->
           <div class="script-col ohca">
-            <div class="col-header-tag">⚡ 歐卡 OHCA（心跳停止）</div>
+            <div class="col-header-tag">⚡ OHCA（心跳停止）</div>
             <div class="cmd-block">
-              <span class="cmd-role-tag role-main">胸外按壓與通氣口令</span>
+              <span class="cmd-role-tag role-main">高品質按壓 30:2</span>
               <div class="cmd-content">
-                「<b>定位胸骨下半段，開始胸外按壓，頻率 100 至 120 次/分，深度 5 至 6 公分，完全回彈，避免中斷。30 次按壓配合 2 次甦醒球通氣。</b>」
-              </div>
-            </div>
-            <div class="cmd-block">
-              <span class="cmd-role-tag role-main">AED 操作六字訣口令</span>
-              <div class="cmd-content">
-                「<b>AED 開機。黏貼電擊貼片於右鎖骨下及左乳頭外下。連接導線。</b>」<br>
-                「<b>大家離開，勿碰觸患者，分析心律。</b>」<br>
-                「<b>建議電擊。大家離開，確認無人接觸，執行電擊。電擊完畢，立即恢復胸外按壓！</b>」
+                「<b>胸骨下半段雙手交疊垂直下壓！頻率 100~120 次/分、深度 5~6 公分、胸壁完全回彈！按壓 30 下後副手 E-C 給予 2 口氣（30:2）！</b>」
               </div>
               <div class="cmd-footer">
-                <span class="cmd-rule-note">若第一次不建議電擊：口令「不摸脈搏，立即恢復按壓」</span>
-                <button class="btn-voice" onclick="speak('大家離開，勿碰觸患者，分析心律。建議電擊，大家離開，執行電擊。電擊完畢，立即恢復胸外按壓！')">🔊 聽發音</button>
+                <span class="cmd-rule-note">吹氣見胸部起伏，每口 1 秒</span>
+                <button class="btn-voice" onclick="speak('高品質按壓三十比二，頻率一百到一百二，深度五到六公分，胸壁完全回彈')">🔊 聽發音</button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 階段 7: 危急個案判定與後送口令 -->
-      <div class="script-row-card is-same">
+      <!-- 07 神經學 (D) ＋ 暴露保暖 (E) ＋ 專科處置 -->
+      <div class="script-row-card is-diff">
         <div class="script-row-header">
           <div class="script-step-label">
             <span class="step-pill">07</span>
-            <span class="step-name">危急個案判定與後送口令</span>
+            <span class="step-name">神經學 (D) ＋ 暴露保暖 (E) ＋ 專科處置 (課本第 60 頁)</span>
           </div>
-          <span class="step-diff-badge same">🟢 宣告危急原因，啟動搬運與二度評估</span>
+          <span class="step-diff-badge diff">🔥 創傷專科處置 (夾板/貼三留一/固定異物) VS 非創傷 (G-FAST/NTG/抹糖)</span>
         </div>
         <div class="script-columns-grid">
-          <!-- 非創傷 -->
           <div class="script-col med">
             <div class="col-header-tag">🌿 非創傷（內科）</div>
             <div class="cmd-block">
-              <span class="cmd-role-tag role-main">危急後送口令</span>
+              <span class="cmd-role-tag role-main">內科專科核心處置</span>
               <div class="cmd-content">
-                「<b>患者嚴重呼吸窘迫、血氧過低，判定為危急個案，準備快速後送。副手測量八大生命徵象、監測血糖、詢問 SAMPLE 病史。</b>」
+                • <b>意識 GCS 評估</b>：清醒口令「先生你看著我 (E4)、說出名字 (V5)、舉起右手 (M6)！GCS 滿分 15 分！」昏迷者依 E4V5M6 評分。<br>• <b>中風</b>：G-FAST 測眼球水平凝視、微笑嘴角歪、舉手垂落、說話含糊，抓最後正常時間<br>
+                • <b>胸痛</b>：半坐臥、OPQRST 問診、排四大禁忌指導自備含服 NTG、備 AED<br>
+                • <b>氣喘</b>：坐姿前傾、指導自備 MDI、呼吸驟降改 BVM 15L<br>
+                • <b>低血糖</b>：戴手套 ➔ 沾食鹽水 ➔ 沾糖粉 ➔ 抹牙齦舌下 ➔ 側臥復甦姿勢<br>
+                • <b>過敏</b>：半坐臥、NRM 15L、詢問自備 EpiPen
               </div>
               <div class="cmd-footer">
-                <span class="cmd-rule-note">後送準備與二度評估並行</span>
-                <button class="btn-voice" onclick="speak('判定為危急個案，準備快速後送。副手測量八大生命徵象、監測血糖、詢問SAMPLE病史')">🔊 聽發音</button>
+                <span class="cmd-rule-note">內科無 E 剪衣暴露，重在體位與自備藥物</span>
               </div>
             </div>
           </div>
-          <!-- 創傷 -->
           <div class="script-col trauma">
             <div class="col-header-tag">🩸 創傷（外傷）</div>
             <div class="cmd-block">
-              <span class="cmd-role-tag role-main">創傷危急後送口令</span>
+              <span class="cmd-role-tag role-main">D 神經學 ＋ E 暴露專科處置</span>
               <div class="cmd-content">
-                「<b>高能量撞擊合併大量出血，判定為創傷危急個案，準備快速後送。副手測量頸圍佩戴頸圈、上長背板固定軀幹，測量生命徵象。</b>」
+                • <b>D 神經學</b>：GCS 評估、筆燈測兩側瞳孔大小對光反應、握虎口摸後跟測知覺活動<br>
+                • <b>E 暴露保暖</b>：告知剪衣檢視全身、比三往下滑看氣管無偏移、雙掌看頸靜脈無怒張、摸頸椎壓痛、覆蓋毛毯保暖<br>
+                • <b>專科處置</b>：骨折長夾板跨上下關節（固定前後必測 PSM）；吸吮胸傷貼三留一；刺刀原位固定；斷肢三層隔袋冰浴
               </div>
               <div class="cmd-footer">
-                <span class="cmd-rule-note">脊椎限制器材就位</span>
-                <button class="btn-voice" onclick="speak('判定為創傷危急個案，準備快速後送。副手測量頸圍佩戴頸圈、上長背板固定軀幹，測量生命徵象')">🔊 聽發音</button>
+                <span class="cmd-rule-note">創傷 E 必做保暖防三低死神（低體溫、酸中毒、凝血異常）</span>
               </div>
             </div>
           </div>
-          <!-- 歐卡 -->
           <div class="script-col ohca">
-            <div class="col-header-tag">⚡ 歐卡 OHCA（心跳停止）</div>
+            <div class="col-header-tag">⚡ OHCA（心跳停止）</div>
             <div class="cmd-block">
-              <span class="cmd-role-tag role-main">極度危急後送口令</span>
+              <span class="cmd-role-tag role-main">AED 開貼插電與分析清場</span>
               <div class="cmd-content">
-                「<b>判定為 OHCA 極度危急個案，急救處置不中斷，每 2 分鐘換手，準備快速後送至適當急救責任醫院。</b>」
+                「<b>AED 抵達！開機！貼上右鎖骨下、左乳外下電極片！插上插頭！心律分析清場：我離開、你離開、大家離開！建議電擊：大家離開，按下電擊鈕！放電完成不摸脈搏，立刻繼續 CPR！</b>」
               </div>
               <div class="cmd-footer">
-                <span class="cmd-rule-note">高品質按壓貫穿全程</span>
-                <button class="btn-voice" onclick="speak('判定為歐卡極度危急個案，急救處置不中斷，每2分鐘換手，準備快速後送至適當急救責任醫院')">🔊 聽發音</button>
+                <span class="cmd-rule-note">電擊後絕不摸脈，立刻按壓！</span>
+                <button class="btn-voice" onclick="speak('AED開機貼片。分析心律我離開你離開大家離開。大家離開按下電擊鈕。立刻繼續按壓CPR')">🔊 聽發音</button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-      <!-- 階段 8: 無線電回報與交接口訣 -->
+      <!-- 08 輔助檢查 ＋ 詢問病史 -->
       <div class="script-row-card is-same">
         <div class="script-row-header">
           <div class="script-step-label">
             <span class="step-pill">08</span>
-            <span class="step-name">無線電交接回報（口訣：病人要史已前到）</span>
+            <span class="step-name">【課本第 60/58 頁獨立區塊：輔助檢查 ＋ 詢問病史】</span>
           </div>
-          <span class="step-diff-badge same">🟢 官方標準通報六字口訣</span>
+          <span class="step-diff-badge same">🟢 徒手初評結束後、判定危急前！主手拿儀器量數據，副手問 SAMPLE</span>
+        </div>
+        <div class="script-columns-grid">
+          <!-- 非創傷 -->
+          <div class="script-col med">
+            <div class="col-header-tag">🌿 非創傷（內科）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">主手量四大數值，副手問病史</span>
+              <div class="cmd-content">
+                「<b>主手拿出儀器操作：測量血壓、血氧、體溫、（中風/昏迷必測）血糖機測血糖！</b><br>
+                <span class="gold">副手同步詢問病史（課本第 64 頁雙軌詢問）：<br>
+                ①【現病史 OPQRST（胸痛/腹痛必問當次細節）】：發作、增減、性質、轉移、嚴重度1-10分、持續時間。<br>
+                ②【過去病史 主訴之前吃過藥敏感（＝英文 SAMPLE）】：<br>
+                • 主訴：哪裡不舒服、怎麼不舒服、多久了？<br>
+                • 之前：發作前在做什麼？<br>
+                • 吃：上一餐吃了什麼？（★ 糖尿病打針未進食秒殺低血糖；過敏源追查）<br>
+                • 過：心臟病/高血壓病史？ • 藥：降血壓/抗凝血/自備NTG？<br>
+                • 敏：食物藥物過敏？ • 感：補充感覺？</span>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">中風/昏迷病患輔助檢查必測血糖！</span>
+                <button class="btn-voice" onclick="speak('主手拿出儀器量血壓血氧體溫血糖。副手詢問病史主訴之前吃過藥敏感')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+          <!-- 創傷 -->
+          <div class="script-col trauma">
+            <div class="col-header-tag">🩸 創傷（外傷）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">主手量四大數值，副手問病史</span>
+              <div class="cmd-content">
+                「<b>主手拿出儀器操作：測量血壓、血氧、體溫、血糖！若血氧數值依然低於 94%，考慮更換給氧裝置！</b><br>
+                <span class="gold">副手同步詢問【過去病史 主訴之前吃過藥敏感（＝英文 SAMPLE）】：<br>
+                • 主訴：哪裡痛、怎麼傷的、痛多久了？<br>
+                • 之前：受傷撞擊前在做什麼？（排除開車前先中風心絞痛）<br>
+                • <b style="color:#fca5a5;">吃：最後一餐進食時間？（★ 救命關鍵：全麻緊急手術需空腹6~8小時，防止胃內容物逆流嘔吐吸入性肺炎窒息猝死！）</b><br>
+                • 過：重大慢性病史？<br>
+                • 藥：有無服用抗凝血劑（阿斯匹靈等致大失血高危險）？<br>
+                • 敏：抗生素/止痛藥過敏史？ • 感：其他疼痛補充？</span>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">創傷吃（最後進食時間）關係急診麻醉手術</span>
+                <button class="btn-voice" onclick="speak('主手拿儀器量血壓血氧體溫血糖。副手詢問病史主訴之前吃過藥敏感')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+          <!-- 歐卡 -->
+          <div class="script-col ohca">
+            <div class="col-header-tag">⚡ OHCA（心跳停止）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">按壓吹氣不中斷，副手向家屬問病史</span>
+              <div class="cmd-content">
+                「主副手維持高品質 CPR 30:2 與 AED 兩分鐘分析不中斷！副手向目擊者或家屬查明倒地時間、有無目擊心悸胸痛、心臟病史與用藥史。」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">OHCA 雙手不離胸，病史由副手抓空檔快問</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 09 危急個案判定與後送口令 -->
+      <div class="script-row-card is-same">
+        <div class="script-row-header">
+          <div class="script-step-label">
+            <span class="step-pill">09</span>
+            <span class="step-name">【課本第 61/58 頁：危急判定 ➔ ★ 本考場在此結案滿分！】</span>
+          </div>
+          <span class="step-diff-badge same">🟢 考場實戰鐵律：報告完危急判定與請求支援後，現場操作即刻宣告滿分完成（免上長背板與擔架床）！</span>
+        </div>
+        <div class="script-columns-grid">
+          <!-- 非創傷 -->
+          <div class="script-col med">
+            <div class="col-header-tag">🌿 非創傷（內科）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">大聲向考官報告危急結案</span>
+              <div class="cmd-content">
+                「<span class="highlight"><b>報告考官！病患出現（中風 G-FAST 陽性 / 胸痛 AMI / 呼吸衰竭 / 血糖&lt;60 / 收縮壓&lt;90 休克）！符合課本第 58 頁危急指標！判定為危急個案！請求高級救護技術員 (ALS) 支援，立即後送！</b></span><br>
+                <span class="gold">（★ 考生請注意：現場考試到此結案！滿分通過！）</span>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">立正向考官大聲、堅定喊出</span>
+                <button class="btn-voice" onclick="speak('報告考官！判定為危急個案！請求ALS支援，立即後送！')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+          <!-- 創傷 -->
+          <div class="script-col trauma">
+            <div class="col-header-tag">🩸 創傷（外傷）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">大聲向考官報告危急結案</span>
+              <div class="cmd-content">
+                「<span class="highlight"><b>報告考官！病患出現（收縮壓&lt;90 大出血休克 / 骨盆骨折 / 開放性氣胸 / 斷肢 / GCS&lt;14）！符合課本第 61 頁重大創傷危急標準！判定為危急個案！請求高級救護技術員 (ALS) 支援，立即後送！</b></span><br>
+                <span class="gold">（★ 考生請注意：本考場在此滿分結案！實務考試「免上長背板、免搬擔架床」！）</span>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">免上長背板擔架，報告完即結案！</span>
+                <button class="btn-voice" onclick="speak('報告考官！病患收縮壓低於90，判定為危急個案！請求ALS支援，立即後送！')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+          <!-- 歐卡 -->
+          <div class="script-col ohca">
+            <div class="col-header-tag">⚡ OHCA（心跳停止）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">OHCA 判定與後送口令</span>
+              <div class="cmd-content">
+                「<span class="highlight"><b>報告考官！病患為 OHCA 院外心跳停止！符合最危急個案！請求高級救護技術員 (ALS) 支援，持續高品質 CPR 與 AED 監測，立即後送！</b></span>」
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">持續按壓直至考官宣告結束</span>
+                <button class="btn-voice" onclick="speak('報告考官！病患為OHCA，判定為危急個案！請求ALS支援，持續CPR與AED，立即後送！')">🔊 聽發音</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 10 車上二度評估 -->
+      <div class="script-row-card is-same">
+        <div class="script-row-header">
+          <div class="script-step-label">
+            <span class="step-pill">10</span>
+            <span class="step-name">【課本第 61/59 頁：車上二度評估（八大徵象 ＋ 身體檢查）】</span>
+          </div>
+          <span class="step-diff-badge same">🟢 執行時機：救護車後送途中（危急每 5 分鐘、非危急每 15 分鐘重評）／ 純口試抽考備用</span>
+        </div>
+        <div class="script-columns-grid">
+          <!-- 非創傷 -->
+          <div class="script-col med">
+            <div class="col-header-tag">🌿 非創傷（內科）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">車上每 5 分鐘二評</span>
+              <div class="cmd-content">
+                • <b>八大生命徵象</b>：①意識 GCS、②呼吸次數 10秒幾下、③脈搏讀數、④血壓計量血壓、⑤瞳孔大小對光反應、⑥測體溫、⑦膚色手溫、⑧夾血氧機<br>
+                • <b>身體檢查重點</b>：神經中風檢查、聽診雙肺呼吸音、腹部四象限壓痛（痛的最後壓）、下肢水腫 (Pitting edema)、檢查身上有無針孔或紫斑
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">內科重在神經系統、肺部呼吸音與腹痛排便史</span>
+              </div>
+            </div>
+          </div>
+          <!-- 創傷 -->
+          <div class="script-col trauma">
+            <div class="col-header-tag">🩸 創傷（外傷）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">車上每 5 分鐘二評</span>
+              <div class="cmd-content">
+                • <b>八大生命徵象</b>：每 5 分鐘依序評估八大數據<br>
+                • <b>全身身體檢查 (從頭到腳)</b>：<br>
+                ①頭面：摸後腦勺、眉顴頜骨、耳漏鼻漏熊貓眼耳後瘀青<br>
+                ②頸胸：比三氣管偏移、頸靜脈怒張、徵求同意掀衣視診、聽診四點（右上-左上-左下-右下）、觸診鎖骨肋骨<br>
+                ③腹部：肚臍四象限，從痛的對側先壓，痛的最後壓<br>
+                ④四肢：雙手分四等份捏壓長骨看手套沾血<br>
+                ⑤背臀：滾木翻身摸脊椎棘突壓痛與傷口
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">創傷身體檢查必須摸全身長骨四等份與滾木翻身</span>
+              </div>
+            </div>
+          </div>
+          <!-- 歐卡 -->
+          <div class="script-col ohca">
+            <div class="col-header-tag">⚡ OHCA（心跳停止）</div>
+            <div class="cmd-block">
+              <span class="cmd-role-tag role-main">車上維持 CPR + AED</span>
+              <div class="cmd-content">
+                • 車上雙手不中斷 CPR（30:2）<br>
+                • 每 2 分鐘分析一次心律<br>
+                • 若 ROSC 恢復自主循環，立即執行二度評估八大生命徵象與保暖
+              </div>
+              <div class="cmd-footer">
+                <span class="cmd-rule-note">OHCA 車上不停止按壓直到交接急診</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 11 無線電交接回報 -->
+      <div class="script-row-card is-same">
+        <div class="script-row-header">
+          <div class="script-step-label">
+            <span class="step-pill">11</span>
+            <span class="step-name">【課本第 65 頁：無線電交接回報（七字口訣：病人要史已前到）】</span>
+          </div>
+          <span class="step-diff-badge same">🟢 官方標準通報六字口訣：病、要、史、已、前、到</span>
         </div>
         <div class="script-columns-grid">
           <!-- 非創傷 -->
@@ -920,17 +1550,17 @@
             <div class="cmd-block">
               <span class="cmd-role-tag role-main">無線電通報口令</span>
               <div class="cmd-content">
-                「<b>救護車無線電通報，病人要史已前到：</b><br>
-                • <b>病</b>（患者）：65 歲男性<br>
-                • <b>人/要</b>（主訴）：胸口劇烈壓迫痛延伸至左臂<br>
-                • <b>史</b>（病史）：有心絞痛與高血壓病史<br>
-                • <b>已</b>（處置）：已給予非再呼吸型面罩氧氣 15 L/min<br>
-                • <b>前</b>（目前徵象）：血壓 90/60 mmHg、血氧 92%<br>
-                • <b>到</b>（預估到院）：預估 5 分鐘後抵達急診室。」
+                「<b>救護車 91 呼叫責任醫院急診室！</b><br>
+                • <b>病</b>：病人為 65 歲男性<br>
+                • <b>要</b>：主要求救原因：急性缺血性胸痛胸骨後悶痛轉移左肩<br>
+                • <b>史</b>：過去有心臟病史，無過敏史<br>
+                • <b>已</b>：現場採半坐臥、鼻導管 4L 給氧、已排除禁忌協助含服自備 NTG 一顆、AED 備用防猝死<br>
+                • <b>前</b>：目前生命徵象：血壓 130/78、心跳 82、SpO2 97%<br>
+                • <b>到</b>：預計 5 分鐘後到達貴院急診室，請心導管室待命！」
               </div>
               <div class="cmd-footer">
-                <span class="cmd-rule-note">結構化口頭交接</span>
-                <button class="btn-voice" onclick="speak('救護車無線電通報，病人要史已前到：65歲男性，主訴胸痛，有心絞痛病史，已給予面罩氧氣，血壓90比60，預估5分鐘後抵達急診室')">🔊 聽發音</button>
+                <span class="cmd-rule-note">內科通報著重用藥與急診特殊通道啟動</span>
+                <button class="btn-voice" onclick="speak('救護車91呼叫急診室。病人65歲男性，主要求救原因胸痛，狹心症病史，現場給氧協助含服NTG，目前血壓130，5分鐘後到院')">🔊 聽發音</button>
               </div>
             </div>
           </div>
@@ -940,46 +1570,46 @@
             <div class="cmd-block">
               <span class="cmd-role-tag role-main">無線電通報口令</span>
               <div class="cmd-content">
-                「<b>救護車無線電通報，病人要史已前到：</b><br>
-                • <b>病</b>（患者）：28 歲男性機車騎士<br>
-                • <b>人/要</b>（主訴）：車禍撞擊致右大腿大量出血<br>
-                • <b>史</b>（病史）：無特殊已知病史<br>
-                • <b>已</b>（處置）：已上手持減移、止血帶、頸圈長背板固定<br>
-                • <b>前</b>（目前徵象）：止血帶已控制出血，橈動脈快弱<br>
-                • <b>到</b>（預估到院）：預估 3 分鐘後抵達急診室。」
+                「<b>救護車 91 呼叫責任醫院急診室！</b><br>
+                • <b>病</b>：病人為 28 歲男性<br>
+                • <b>要</b>：主要求救原因：機車撞擊倒地意識模糊、右大腿開放性骨折失血<br>
+                • <b>史</b>：過去史無特殊慢性病、無過敏史<br>
+                • <b>已</b>：現場已給予頸圈固定、右腿長夾板固定、加壓止血帶控制、NRM 15L 給氧、毛毯保暖<br>
+                • <b>前</b>：目前生命徵象：GCS 12、血壓 88/56 低血壓休克、脈搏 115、SpO2 93%<br>
+                • <b>到</b>：預計 4 分鐘後到達貴院，請創傷急救小組備血待命！」
               </div>
               <div class="cmd-footer">
-                <span class="cmd-rule-note">註明機轉與止血帶時間</span>
-                <button class="btn-voice" onclick="speak('救護車無線電通報，28歲男性機車車禍，右大腿大出血，已上止血帶與頸圈長背板，預估3分鐘後抵達急診室')">🔊 聽發音</button>
+                <span class="cmd-rule-note">創傷通報著重大出血、低血壓休克與備血需求</span>
+                <button class="btn-voice" onclick="speak('救護車91呼叫急診室。病人28歲男性，車禍骨折大失血，給予頸圈夾板止血帶NRM給氧，血壓88休克，4分鐘後到院請備血')">🔊 聽發音</button>
               </div>
             </div>
           </div>
           <!-- 歐卡 -->
           <div class="script-col ohca">
-            <div class="col-header-tag">⚡ 歐卡通報示範</div>
+            <div class="col-header-tag">⚡ OHCA 通報示範</div>
             <div class="cmd-block">
               <span class="cmd-role-tag role-main">無線電通報口令</span>
               <div class="cmd-content">
-                「<b>救護車無線電通報：</b><br>
-                • <b>病</b>（患者）：50 歲男性目擊突然倒下<br>
-                • <b>人/要</b>（主訴）：OHCA 院外心跳停止個案<br>
-                • <b>已</b>（處置）：現場 CPR 執行 6 分鐘，AED 電擊 2 次，目前持續按壓通氣<br>
-                • <b>到</b>（預估到院）：預估 4 分鐘後抵達急救責任醫院。」
+                「<b>救護車 91 呼叫責任醫院急診室！</b><br>
+                • <b>病</b>：病人為 50 歲男性<br>
+                • <b>要</b>：現場倒地 OHCA 院外心跳停止<br>
+                • <b>史</b>：高血壓病史<br>
+                • <b>已</b>：現場持續高品質 CPR 30:2、BVM 接氧 15L、AED 電擊兩次<br>
+                • <b>前</b>：目前持續無呼吸無脈搏<br>
+                • <b>到</b>：預計 3 分鐘後到達貴院，請急救室與葉克膜團隊待命！」
               </div>
               <div class="cmd-footer">
-                <span class="cmd-rule-note">使急診室提早準備插管急救設備</span>
-                <button class="btn-voice" onclick="speak('救護車無線電通報，50歲男性歐卡個案，CPR執行6分鐘，AED電擊2次，目前持續按壓通氣，預估4分鐘後抵達急診室')">🔊 聽發音</button>
+                <span class="cmd-rule-note">OHCA 通報著重電擊次數與急救室待命</span>
+                <button class="btn-voice" onclick="speak('救護車91呼叫急診室。病人50歲男性OHCA，持續CPR，AED已電擊兩次，3分鐘後到達急救室')">🔊 聽發音</button>
               </div>
             </div>
           </div>
         </div>
       </div>
 
-    </div>
+    </main>
 
-    <!-- ============================================================ -->
-    <!-- 視圖 2：課本情境應變口令 (Branch Mode) -->
-    <!-- ============================================================ -->
+    <!-- 應變情境面板 -->
     <div id="viewBranch" class="view-panel">
       <div style="font-size:1.25rem; font-weight:800; margin-bottom:12px; display:flex; align-items:center; gap:8px;">
         <span>🔀</span> 課本情境變化之標準處置口令
@@ -1001,45 +1631,77 @@
           <div class="branch-condition">呼吸道評估：呼吸有鼾音，患者昏迷無嘔吐反射</div>
           <div class="branch-command">
             👉 標準操作口令：<br>
-            <b>「測量嘴角至耳垂距離，置入口咽呼吸道 (OPA)。」</b>
+            <b>「測量門牙至下顎角距離，凹面朝上置入口腔過軟顎旋轉 180 度置入口咽呼吸道 (OPA)。」</b>
           </div>
         </div>
 
         <div class="branch-card">
-          <div class="branch-condition">呼吸道評估：呼吸有鼾音，患者半清醒有嘔吐反射</div>
+          <div class="branch-condition">呼吸道評估：呼吸有鼾音，患者意識清醒或牙關緊閉</div>
           <div class="branch-command">
             👉 標準操作口令：<br>
-            <b>「排除顱底骨折禁忌，測量鼻尖至耳垂距離，潤滑後置入鼻咽呼吸道 (NPA)。」</b>
+            <b>「先檢查有無耳漏鼻漏顱底骨折，測量鼻尖至耳垂距離，潤滑後置入鼻咽呼吸道 (NPA)。」</b>
           </div>
         </div>
 
         <div class="branch-card">
-          <div class="branch-condition">胸部創傷：胸壁開放性傷口，伴隨吸吮聲</div>
+          <div class="branch-condition">呼吸評估：淺快張口呼吸，血氧濃度低於 94%</div>
           <div class="branch-command">
             👉 標準操作口令：<br>
-            <b>「使用排氣胸封覆蓋傷口，持續評估有無張力性氣胸惡化徵候。」</b>
+            <b>「副手，給予一般型氧氣面罩，氧氣流量固定 10 L/min。」</b>
           </div>
         </div>
 
         <div class="branch-card">
-          <div class="branch-condition">AED 心律分析：第一次語音提示「不建議電擊」</div>
+          <div class="branch-condition">呼吸評估：火場嗆傷 / 一氧化碳中毒 / 重大創傷休克</div>
           <div class="branch-command">
             👉 標準操作口令：<br>
-            <b>「不觸摸頸動脈，立即恢復胸外按壓。」</b>
+            <b>「副手，給予非再呼吸型面罩 (NRM)，氧氣流量固定 15 L/min，確認儲氣袋充飽 2/3。」</b>
           </div>
         </div>
 
         <div class="branch-card">
-          <div class="branch-condition">AED 心律分析：第二次之後提示「不建議電擊」</div>
+          <div class="branch-condition">氣喘病患突發呼吸驟降（小於 10 次/分）昏睡發紺</div>
           <div class="branch-command">
             👉 標準操作口令：<br>
-            <b>「觸診頸動脈確認脈搏。無脈搏繼續胸外按壓；有脈搏評估自主呼吸。」</b>
+            <b>「嚴重低通氣呼吸衰竭！立即更換甦醒球 (BVM) 接氧氣 15 L/min，E-C 扣緊面罩，每 6 秒擠壓一口氣輔助通氣！」</b>
+          </div>
+        </div>
+
+        <div class="branch-card">
+          <div class="branch-condition">創傷評估：骨折夾板固定前後</div>
+          <div class="branch-command">
+            👉 標準操作口令：<br>
+            <b>「夾板固定前先測患肢 PSM（脈搏、感覺、運動）；固定跨越上下兩關節；固定完成後立即再次測量遠端 PSM！」</b>
+          </div>
+        </div>
+
+        <div class="branch-card">
+          <div class="branch-condition">代謝急症：糖尿病昏迷倒地，血糖機測出 42 mg/dL (&lt;60)</div>
+          <div class="branch-command">
+            👉 標準操作口令：<br>
+            <b>「意識昏迷嚴禁灌水灌食！戴手套 ➔ 食指沾生理食鹽水 ➔ 沾取糖粉 ➔ 輕柔塗抹於病患牙齦兩側黏膜與舌下吸收！給糖後採側臥復甦姿勢！」</b>
+          </div>
+        </div>
+
+        <div class="branch-card">
+          <div class="branch-condition">胸痛急症：心前區劇烈壓迫悶痛，排除禁忌含服 NTG</div>
+          <div class="branch-command">
+            👉 標準操作口令：<br>
+            <b>「排除四大禁忌（收縮壓&ge;90、心跳 50~100、24~48小時未服壯陽藥、無青光眼），核對自備處方藥，指導病患自行含服舌下一顆！副手備妥 AED 隨時防猝死！」</b>
+          </div>
+        </div>
+
+        <div class="branch-card">
+          <div class="branch-condition">創傷氣胸：右胸開放吸吮傷口，後送中突發極度呼吸困難、氣管向左偏</div>
+          <div class="branch-command">
+            👉 標準操作口令：<br>
+            <b>「現場胸傷貼三留一！後送途中氣管偏移、頸靜脈怒張惡化成張力性氣胸，立即掀開貼三留一單向活瓣排出胸腔高壓氣體減壓！」</b>
           </div>
         </div>
       </div>
     </div>
 
-  </main>
+  </div>
 
   <script>
     // 頁籤切換
@@ -1047,10 +1709,13 @@
       document.querySelectorAll('.view-btn').forEach(btn => btn.classList.remove('active'));
       document.querySelectorAll('.view-panel').forEach(p => p.classList.remove('active'));
 
-      if (tab === 'main') {
+      if (tab === 'quick') {
+        document.getElementById('btnQuick').classList.add('active');
+        document.getElementById('viewQuick').classList.add('active');
+      } else if (tab === 'main') {
         document.getElementById('btnMain').classList.add('active');
         document.getElementById('viewMain').classList.add('active');
-      } else {
+      } else if (tab === 'branch') {
         document.getElementById('btnBranch').classList.add('active');
         document.getElementById('viewBranch').classList.add('active');
       }
@@ -1081,7 +1746,8 @@
         return;
       }
       window.speechSynthesis.cancel();
-      const utter = new SpeechSynthesisUtterance(sentence);
+      const clean = sentence.replace(/[「」『』🗣️]/g, "");
+      const utter = new SpeechSynthesisUtterance(clean);
       utter.lang = 'zh-TW';
       utter.rate = 1.05;
       utter.pitch = 1.0;

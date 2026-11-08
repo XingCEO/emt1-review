@@ -198,7 +198,484 @@
     a { color: black; }
     .unit { break-inside: avoid; }
   }
-</style>
+
+    /* ⚡ 3秒秒殺速記看板專用樣式 */
+    .quick-hero-card {
+      background: linear-gradient(135deg, #1e293b 0%, #0f172a 100%);
+      border: 2px solid #38bdf8;
+      border-radius: 14px;
+      padding: 20px 24px;
+      margin-bottom: 24px;
+      box-shadow: 0 10px 25px -5px rgba(56, 189, 248, 0.15);
+    }
+    .quick-hero-header { margin-bottom: 16px; }
+    .quick-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 3px 10px;
+      background: rgba(56, 189, 248, 0.2);
+      color: #38bdf8;
+      border-radius: 9999px;
+      margin-bottom: 6px;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+    .quick-hero-header h2 { font-size: 1.35rem; font-weight: 900; color: #fff; margin-bottom: 4px; }
+    .quick-hero-desc { font-size: 0.9rem; color: #94a3b8; }
+
+    .exam-timeline-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+      gap: 16px;
+    }
+    .timeline-box {
+      background: rgba(15, 23, 42, 0.7);
+      border-radius: 10px;
+      padding: 16px;
+      border: 1px solid var(--card-border);
+    }
+    .timeline-box.scene-box { border-color: #10b981; }
+    .timeline-box.truck-box { border-color: #a855f7; }
+    .timeline-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .timeline-tag { font-size: 0.88rem; font-weight: 800; color: #fff; }
+    .timeline-result {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(16, 185, 129, 0.2);
+      color: #34d399;
+      border: 1px solid rgba(16, 185, 129, 0.4);
+    }
+    .timeline-box.truck-box .timeline-result {
+      background: rgba(168, 85, 247, 0.2);
+      color: #c084fc;
+      border-color: rgba(168, 85, 247, 0.4);
+    }
+    .timeline-steps { display: flex; flex-direction: column; gap: 8px; }
+    .t-step {
+      font-size: 0.88rem;
+      color: #cbd5e1;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.5;
+    }
+    .t-num {
+      flex-shrink: 0;
+      width: 20px;
+      height: 20px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      font-weight: 800;
+      color: #38bdf8;
+    }
+    .t-step.finish {
+      background: rgba(16, 185, 129, 0.12);
+      border: 1px solid rgba(16, 185, 129, 0.4);
+      padding: 10px;
+      border-radius: 8px;
+      color: #e2e8f0;
+      margin-top: 4px;
+    }
+    .finish-highlight { color: #34d399; font-weight: 800; font-size: 0.85rem; display: block; margin-top: 4px; }
+    .info-note {
+      background: rgba(56, 189, 248, 0.08);
+      border: 1px dashed rgba(56, 189, 248, 0.3);
+      padding: 10px;
+      border-radius: 8px;
+      color: #94a3b8;
+      font-size: 0.82rem;
+      line-height: 1.5;
+      margin-top: 4px;
+    }
+
+    /* Section Titles */
+    .quick-section-title {
+      display: flex;
+      align-items: baseline;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 14px;
+    }
+    .title-icon { font-size: 1.2rem; }
+    .quick-section-title h3 { font-size: 1.15rem; font-weight: 800; color: #fff; }
+    .title-sub { font-size: 0.82rem; color: #94a3b8; }
+
+    /* Deadly 4 Cards */
+    .deadly-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .deadly-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);
+    }
+    .deadly-header {
+      padding: 10px 16px;
+      background: rgba(15, 23, 42, 0.8);
+      border-bottom: 1px solid var(--card-border);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .deadly-badge {
+      background: #ef4444;
+      color: #fff;
+      font-size: 0.72rem;
+      font-weight: 900;
+      padding: 2px 8px;
+      border-radius: 4px;
+    }
+    .deadly-header h4 { font-size: 0.95rem; font-weight: 800; color: #fff; }
+    .deadly-compare {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 1px;
+      background: var(--card-border);
+    }
+    .deadly-side {
+      background: var(--card-bg);
+      padding: 14px;
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+    .side-tag { font-size: 0.78rem; font-weight: 800; }
+    .deadly-side.med .side-tag { color: var(--accent-med); }
+    .deadly-side.trauma .side-tag { color: var(--accent-trauma); }
+    .side-val { font-size: 0.95rem; font-weight: 800; color: #e2e8f0; }
+    .side-val.warn { color: #fca5a5; }
+    .side-desc { font-size: 0.8rem; color: #94a3b8; line-height: 1.45; }
+
+    /* History Master Card */
+    .history-master-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    .history-cols-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 20px;
+    }
+    .history-col {
+      background: rgba(15, 23, 42, 0.6);
+      border-radius: 10px;
+      padding: 16px;
+      border: 1px solid var(--card-border);
+    }
+    .h-col-header { display: flex; align-items: center; gap: 8px; margin-bottom: 6px; }
+    .h-col-badge {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.2);
+      color: #38bdf8;
+      border: 1px solid rgba(56, 189, 248, 0.4);
+    }
+    .pmh-box .h-col-badge {
+      background: rgba(245, 158, 11, 0.2);
+      color: #fde047;
+      border-color: rgba(245, 158, 11, 0.4);
+    }
+    .h-col-header h4 { font-size: 0.98rem; font-weight: 800; color: #fff; }
+    .h-col-sub { font-size: 0.8rem; color: #94a3b8; margin-bottom: 12px; }
+    .opqrst-list, .sample-list { display: flex; flex-direction: column; gap: 8px; }
+    .op-item, .sp-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.88rem;
+      background: rgba(0,0,0,0.25);
+      padding: 8px 10px;
+      border-radius: 6px;
+    }
+    .op-letter {
+      flex-shrink: 0;
+      width: 24px;
+      height: 24px;
+      background: #0284c7;
+      color: #fff;
+      font-weight: 900;
+      border-radius: 4px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+    }
+    .sp-tag {
+      flex-shrink: 0;
+      padding: 2px 8px;
+      background: rgba(245, 158, 11, 0.2);
+      color: #fde047;
+      font-weight: 800;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      border: 1px solid rgba(245, 158, 11, 0.3);
+    }
+    .sp-item.highlight-eat {
+      background: rgba(239, 68, 68, 0.15);
+      border: 1px solid #ef4444;
+    }
+    .sp-item.highlight-eat .sp-tag {
+      background: #ef4444;
+      color: #fff;
+    }
+    .op-text, .sp-text { color: #e2e8f0; line-height: 1.45; }
+
+    /* Eat Lifesaver Card */
+    .eat-lifesaver-card {
+      margin-top: 20px;
+      background: rgba(239, 68, 68, 0.08);
+      border: 2px solid #ef4444;
+      border-radius: 12px;
+      padding: 16px 20px;
+    }
+    .eat-header { display: flex; align-items: center; gap: 10px; margin-bottom: 14px; }
+    .eat-icon { font-size: 1.3rem; }
+    .eat-header h4 { font-size: 1.05rem; font-weight: 900; color: #fca5a5; }
+    .eat-reasons-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+    }
+    .eat-box {
+      background: rgba(15, 23, 42, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .eat-num {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 1px 6px;
+      border-radius: 4px;
+      background: rgba(239, 68, 68, 0.25);
+      color: #fca5a5;
+      margin-bottom: 4px;
+    }
+    .eat-box h5 { font-size: 0.95rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .eat-box p { font-size: 0.82rem; color: #cbd5e1; line-height: 1.5; }
+
+    /* Secondary Compare Cards */
+    .secondary-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(420px, 1fr));
+      gap: 16px;
+      margin-bottom: 24px;
+    }
+    .sec-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 18px;
+    }
+    .sec-card.med-sec { border-color: rgba(16, 185, 129, 0.4); }
+    .sec-card.trauma-sec { border-color: rgba(244, 63, 94, 0.4); }
+    .sec-card-header { margin-bottom: 12px; }
+    .sec-badge {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+      margin-bottom: 4px;
+    }
+    .sec-badge.med { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+    .sec-badge.trauma { background: rgba(244, 63, 94, 0.2); color: #fb7185; }
+    .sec-card-header h4 { font-size: 1rem; font-weight: 800; color: #fff; }
+    .sec-list { display: flex; flex-direction: column; gap: 8px; }
+    .sec-item {
+      font-size: 0.85rem;
+      color: #cbd5e1;
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      line-height: 1.45;
+      background: rgba(0,0,0,0.2);
+      padding: 8px 10px;
+      border-radius: 6px;
+    }
+    .sec-n {
+      flex-shrink: 0;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(255, 255, 255, 0.1);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.72rem;
+      font-weight: 800;
+      color: #fff;
+    }
+
+    /* Radio Card */
+    .radio-card {
+      background: var(--card-bg);
+      border: 2px solid #a855f7;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 4px 6px -1px rgba(0,0,0,0.2);
+    }
+    .radio-mnemonics-bar {
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 6px;
+      background: rgba(168, 85, 247, 0.15);
+      border: 1px solid rgba(168, 85, 247, 0.3);
+      border-radius: 8px;
+      padding: 12px;
+      margin-bottom: 16px;
+      font-weight: 900;
+      color: #c084fc;
+    }
+    .r-word {
+      display: inline-flex;
+      flex-direction: column;
+      align-items: center;
+      font-size: 1.35rem;
+      color: #fff;
+    }
+    .r-word small { font-size: 0.72rem; color: #d8b4fe; font-weight: 600; margin-top: 2px; }
+    .radio-speech-box {
+      background: rgba(15, 23, 42, 0.8);
+      border-radius: 8px;
+      padding: 16px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+    }
+    .speech-title { font-size: 0.88rem; font-weight: 800; color: #38bdf8; margin-bottom: 8px; }
+    .speech-content { font-size: 0.88rem; color: #e2e8f0; line-height: 1.6; }
+    .speech-action { margin-top: 12px; }
+
+  #quick { margin-bottom: 36px; }
+  
+    /* GCS 卡片樣式 */
+    .gcs-master-card {
+      background: var(--card-bg);
+      border: 1px solid var(--card-border);
+      border-radius: 12px;
+      padding: 20px;
+      margin-bottom: 24px;
+    }
+    .gcs-flow-title { font-size: 1rem; font-weight: 800; color: #38bdf8; margin-bottom: 12px; }
+    .gcs-flow-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 14px;
+      margin-bottom: 20px;
+    }
+    .g-timing-card {
+      background: rgba(15, 23, 42, 0.6);
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      border-radius: 8px;
+      padding: 14px;
+    }
+    .g-tag {
+      font-size: 0.72rem;
+      font-weight: 800;
+      padding: 2px 8px;
+      border-radius: 4px;
+      background: rgba(56, 189, 248, 0.2);
+      color: #38bdf8;
+      display: inline-block;
+      margin-bottom: 6px;
+    }
+    .g-tag.danger {
+      background: rgba(239, 68, 68, 0.2);
+      color: #fca5a5;
+    }
+    .g-timing-card h5 { font-size: 0.95rem; font-weight: 800; color: #fff; margin-bottom: 6px; }
+    .g-timing-card p { font-size: 0.82rem; color: #cbd5e1; line-height: 1.5; }
+    .highlight-quote { display: block; margin-top: 6px; color: #7dd3fc; background: rgba(56,189,248,0.1); padding: 6px 8px; border-radius: 4px; }
+    .highlight-warn { display: block; margin-top: 6px; color: #fca5a5; background: rgba(239,68,68,0.12); padding: 6px 8px; border-radius: 4px; font-weight: bold; }
+
+    .gcs-table-box {
+      background: rgba(15, 23, 42, 0.75);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 10px;
+      padding: 16px;
+      margin-bottom: 16px;
+    }
+    .gcs-table-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+      padding-bottom: 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    }
+    .gcs-table-header h4 { font-size: 1rem; font-weight: 800; color: #fff; }
+    .gcs-formula { font-size: 0.8rem; font-weight: 800; color: #fde047; background: rgba(245, 158, 11, 0.15); padding: 3px 10px; border-radius: 9999px; }
+    .gcs-cols-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 14px;
+    }
+    .gcs-col { background: rgba(0,0,0,0.25); border-radius: 8px; overflow: hidden; border: 1px solid rgba(255,255,255,0.06); }
+    .gcs-col-head { padding: 8px 12px; font-weight: 800; font-size: 0.85rem; color: #fff; }
+    .e-head { background: #0284c7; }
+    .v-head { background: #0d9488; }
+    .m-head { background: #7c3aed; }
+    .gcs-row {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 7px 10px;
+      border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+      font-size: 0.82rem;
+    }
+    .gcs-row:last-child { border-bottom: none; }
+    .g-score {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-weight: 900;
+      color: #fff;
+    }
+    .g-desc { color: #e2e8f0; }
+
+    .avpu-gcs-bridge {
+      background: rgba(56, 189, 248, 0.06);
+      border: 1px dashed rgba(56, 189, 248, 0.3);
+      border-radius: 8px;
+      padding: 12px 16px;
+    }
+    .bridge-tag { font-size: 0.8rem; font-weight: 800; color: #38bdf8; margin-bottom: 6px; }
+    .bridge-items { display: flex; flex-wrap: wrap; gap: 12px; font-size: 0.82rem; color: #cbd5e1; }
+    .b-item b { color: #fde047; }
+
+  </style>
 </head>
 <body class="view-full">
 <a class="links" href="#map" style="position:absolute;left:-999px">跳到目錄</a>
@@ -210,9 +687,10 @@
         <p>三條脊椎、評分表口令、情境岔路、危急數字、技術步驟、筆試櫃。點句子可在遮罩下對答案。</p>
       </div>
       <div class="links">
-        <a href="EMT1_口試演練.html">口試演練</a>
-        <a href="EMT1_三大流程差異比較.html">三欄口令對照</a>
-        <a href="sites/emt-simulator/dist/index.html">救護演練室</a>
+        <a href="EMT1_情境實戰完整劇本.html">🎬 實戰情境劇本</a>
+        <a href="EMT1_三大流程差異比較.html">⚖️ 三大流程差異</a>
+        <a href="EMT1_完整通關手冊.html" style="color:#38bdf8; font-weight:bold; border-color:#38bdf8;">📖 完整通關手冊</a>
+        <a href="EMT1_口試演練.html">🎯 口試演練刷題</a>
       </div>
     </div>
     <div class="tools">
@@ -234,6 +712,7 @@
 </header>
 <div class="shell">
 <nav class="toc" aria-label="頁面目錄">
+  <a href="#quick" style="color:#38bdf8; font-weight:800; border-bottom:2px solid #38bdf8;">⚡ 3秒秒殺</a>
   <a href="#map">怎麼用</a>
   <a href="#wall">口訣牆</a>
   <a href="#spine">三條脊椎</a>
@@ -244,12 +723,295 @@
   <a href="#scenes">情境卡</a>
   <a href="#critical">危急表</a>
   <a href="#skills">技術步驟</a>
+  <a href="#gcs" style="color:#fde047; font-weight:bold;">🧠 GCS指南</a>
+  <a href="#history">現病史/吃</a>
   <a href="#secondary">二度與交接</a>
   <a href="#illness">急症</a>
   <a href="#numbers">筆試櫃</a>
   <a href="#plan">每天怎麼練</a>
 </nav>
 <main id="map">
+
+    <!-- ⚡ 3秒秒殺速記看板（新手救星・考前必背） -->
+    <section id="quick">
+      
+      <!-- 考場全景架構卡 -->
+      <div class="quick-hero-card">
+        <div class="quick-hero-header">
+          <div class="quick-badge">🎯 考場真實全景規則</div>
+          <h2>現場 3 分鐘做什麼？考官到底在哪裡喊停？</h2>
+          <p class="quick-hero-desc">只要搞懂這兩大階段的分界線，你的緊張感立刻少 90%！</p>
+        </div>
+        <div class="exam-timeline-grid">
+          <div class="timeline-box scene-box">
+            <div class="timeline-header">
+              <span class="timeline-tag">🟢 現場考場操作（前 3 分鐘）</span>
+              <span class="timeline-result">考官在此喊停・滿分結案！</span>
+            </div>
+            <div class="timeline-steps">
+              <div class="t-step"><span class="t-num">1</span>現場安全與防護（人數、裝備、求援）</div>
+              <div class="t-step"><span class="t-num">2</span>意識 AVPU（非創傷捏肩 vs 創傷壓指甲）</div>
+              <div class="t-step"><span class="t-num">3</span>徒手初評（X止血 ➔ A呼吸道 ➔ B給氧 ➔ C橈動脈/創傷骨盆一次 ➔ D/E保暖）</div>
+              <div class="t-step"><span class="t-num">4</span>輔助檢查＋病史（機器量 7 徵象＋血糖 ➔ 問現病史 OPQRST ＋ 過去病史 SAMPLE）</div>
+              <div class="t-step finish"><span class="t-num">★</span><b>大聲報告危急後送：</b>「本案判定危急個案，立即請求支援並後送！」<br><span class="finish-highlight">👉 考官點頭喊停！現場技術考試滿分過關！【免搬長背板！免上擔架床！】</span></div>
+            </div>
+          </div>
+          <div class="timeline-box truck-box">
+            <div class="timeline-header">
+              <span class="timeline-tag">🟣 救護車上處置（後 5 分鐘）</span>
+              <span class="timeline-result">口試抽問 / 救護車上</span>
+            </div>
+            <div class="timeline-steps">
+              <div class="t-step"><span class="t-num">5</span>二度評估（每 5 分鐘重測生命徵象 ＋ 身體檢查：非創傷 8 大項 vs 創傷全身摸骨頭）</div>
+              <div class="t-step"><span class="t-num">6</span>無線電交接回報（口訣：「<b>病人要史已前到</b>」回報醫院急診室）</div>
+              <div class="t-step info-note">💡 考場備註：很多考生以為要現場搬長背板搬擔架累個半死，其實課本第 61 頁標準是在現場判定危急後送即完成情境！二評與無線電皆為車上操作或考官坐下來口試抽考！</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 四大致命死穴秒殺對比盒 -->
+      <div class="quick-section-title">
+        <span class="title-icon">⚡</span>
+        <h3>四大致命死穴秒殺對比（創傷 vs 非創傷：千萬別做錯！）</h3>
+        <span class="title-sub">這四個動作只要做反，考官直接扣大分或致命重扣！</span>
+      </div>
+
+      <div class="deadly-grid">
+        <!-- 死穴 1 -->
+        <div class="deadly-card">
+          <div class="deadly-header">
+            <span class="deadly-badge">死穴 ①</span>
+            <h4>痛刺激手法（AVPU 的 P）</h4>
+          </div>
+          <div class="deadly-compare">
+            <div class="deadly-side med">
+              <div class="side-tag">🌿 非創傷（內科）</div>
+              <div class="side-val"><b>捏肩膀（斜方肌）</b></div>
+              <div class="side-desc">內科無頸椎受傷疑慮，捏雙側斜方肌快速確認疼痛反應。</div>
+            </div>
+            <div class="deadly-side trauma">
+              <div class="side-tag">🩸 創傷（外傷）</div>
+              <div class="side-val warn">壓指甲床（嚴禁捏肩膀！）</div>
+              <div class="side-desc"><b>原因：</b>捏肩膀會劇烈晃動病患頸椎，造成高位脊髓二次損傷致命！創傷只能壓指甲床或手背！</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 死穴 2 -->
+        <div class="deadly-card">
+          <div class="deadly-header">
+            <span class="deadly-badge">死穴 ②</span>
+            <h4>骨盆檢查（初評 C）</h4>
+          </div>
+          <div class="deadly-compare">
+            <div class="deadly-side med">
+              <div class="side-tag">🌿 非創傷（內科）</div>
+              <div class="side-val">完全不壓（免做）</div>
+              <div class="side-desc"><b>原因：</b>內科病人沒有高能量撞擊外力，按壓骨盆毫無意義且浪費黃金時間！</div>
+            </div>
+            <div class="deadly-side trauma">
+              <div class="side-tag">🩸 創傷（外傷）</div>
+              <div class="side-val warn">只壓一次（向內向下）</div>
+              <div class="side-desc"><b>原因：</b>骨盆骨折內出血可達 2000ml 致死！雙手置腸骨脊向內向下壓<b>僅限一次</b>，感覺鬆動或劇痛立即放手，<b>嚴禁反覆搖晃！</b></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 死穴 3 -->
+        <div class="deadly-card">
+          <div class="deadly-header">
+            <span class="deadly-badge">死穴 ③</span>
+            <h4>呼吸道打鼾處置 (NPA / OPA)</h4>
+          </div>
+          <div class="deadly-compare">
+            <div class="deadly-side med">
+              <div class="side-tag">🌿 非創傷（內科）</div>
+              <div class="side-val">有反射插 NPA，無反射插 OPA</div>
+              <div class="side-desc">舌根後倒呼吸打鼾：意識不清有嘔吐反射插鼻咽 (NPA)；深昏迷無嘔吐反射插口咽 (OPA)。</div>
+            </div>
+            <div class="deadly-side trauma">
+              <div class="side-tag">🩸 創傷（外傷）</div>
+              <div class="side-val warn">可以插 NPA！但有唯一禁忌！</div>
+              <div class="side-desc"><b>先肉眼看臉看耳：</b>若有「貓熊眼、耳後瘀青、鼻漏/耳漏腦脊髓液」代表<b>顱底骨折，絕對嚴禁插 NPA（防插進腦組織）！</b>無骨折徵象才可插 NPA；深昏迷無嘔吐才用 OPA！</div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 死穴 4 -->
+        <div class="deadly-card">
+          <div class="deadly-header">
+            <span class="deadly-badge">死穴 ④</span>
+            <h4>二度評估身體檢查焦點</h4>
+          </div>
+          <div class="deadly-compare">
+            <div class="deadly-side med">
+              <div class="side-tag">🌿 非創傷（內科）</div>
+              <div class="side-val">查內科病徵（8大項）</div>
+              <div class="side-desc">臉部辛辛那提微笑、瞳孔對光、頸靜脈怒張、聽診呼吸音、腹部壓痛、皮膚<b>紅疹/紫斑/針孔</b>、手腕腳踝<b>凹陷水腫</b>、問<b>黑便/血便</b>。</div>
+            </div>
+            <div class="deadly-side trauma">
+              <div class="side-tag">🩸 創傷（外傷）</div>
+              <div class="side-val warn">全身摸骨頭看沾血（解剖摸骨）</div>
+              <div class="side-desc">後腦頭骨階梯、眉顴下頜骨、頸椎氣管、鎖骨胸骨肋骨、腹部、骨盆、四肢長骨四等份，<b>每次摸完手套必翻過來看有無沾血！</b></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 現病史 vs 過去病史 深度專題卡 -->
+      <div class="quick-section-title" style="margin-top:24px;">
+        <span class="title-icon">💊</span>
+        <h3>現病史 (OPQRST) vs 過去病史 (SAMPLE / 主訴之前吃過藥敏感) 到底差在哪？</h3>
+        <span class="title-sub">課本第 64 頁規範：先做機器數值，再問病史！兩者用途截然不同！</span>
+      </div>
+
+      <div class="history-master-card">
+        <div class="history-cols-grid">
+          <!-- 現病史 OPQRST -->
+          <div class="history-col hpi-box">
+            <div class="h-col-header">
+              <span class="h-col-badge">現病史 (HPI)</span>
+              <h4>【OPQRST】查「這一次發作」的不舒服細節！</h4>
+            </div>
+            <p class="h-col-sub">適用：缺血性胸痛（心肌梗塞）、腹痛、氣喘等急性疼痛發作！</p>
+            <div class="opqrst-list">
+              <div class="op-item"><span class="op-letter">O</span><div class="op-text"><b>Onset 發作時間</b>：什麼時候開始痛的？突然發作還是慢慢痛起來？發作前在做什麼？</div></div>
+              <div class="op-item"><span class="op-letter">P</span><div class="op-text"><b>Provocation 誘發加劇</b>：做什麼動作或姿勢會更痛？休息或深呼吸會緩解嗎？</div></div>
+              <div class="op-item"><span class="op-letter">Q</span><div class="op-text"><b>Quality 疼痛性質</b>：痛起來感覺像什麼？（胸口悶痛像大石壓住、針刺痛、還是撕裂痛？）</div></div>
+              <div class="op-item"><span class="op-letter">R</span><div class="op-text"><b>Radiation 輻射轉移</b>：痛的位置在哪裡？會不會傳導擴散到下巴、頸部、左肩膀或後背？</div></div>
+              <div class="op-item"><span class="op-letter">S</span><div class="op-text"><b>Severity 嚴重程度</b>：如果 0 分不痛、10 分是畢生最難忍受的劇痛，現在大概幾分？</div></div>
+              <div class="op-item"><span class="op-letter">T</span><div class="op-text"><b>Time 持續時間</b>：這個痛已經持續多久了？以前有沒有痛過？</div></div>
+            </div>
+          </div>
+
+          <!-- 過去病史 SAMPLE -->
+          <div class="history-col pmh-box">
+            <div class="h-col-header">
+              <span class="h-col-badge">過去病史 (SAMPLE)</span>
+              <h4>【主訴之前吃過藥敏感】查「這輩子」平日健康底子！</h4>
+            </div>
+            <p class="h-col-sub">適用：創傷、非創傷所有病患！「主訴之前吃過藥敏感」＝ 英文 SAMPLE 的台式口訣！</p>
+            <div class="sample-list">
+              <div class="sp-item"><span class="sp-tag">主訴 (S)</span><div class="sp-text">哪裡不舒服、怎麼不舒服、不舒服多久了？（創傷：哪裡受傷撞擊？）</div></div>
+              <div class="sp-item"><span class="sp-tag">之前 (E)</span><div class="sp-text">在發病或撞擊受傷「之前」正在做什麼？（排除開車前先中風心絞痛才自撞）</div></div>
+              <div class="sp-item highlight-eat"><span class="sp-tag">吃 (L)</span><div class="sp-text"><b>【救命食用】最後一次進食時間是幾點？吃了什麼東西？</b></div></div>
+              <div class="sp-item"><span class="sp-tag">過 (P)</span><div class="sp-text">過去病史：以前有過高血壓、心臟病、糖尿病、中風、癌症或開刀嗎？</div></div>
+              <div class="sp-item"><span class="sp-tag">藥 (M)</span><div class="sp-text">平日用藥：有吃降血壓、抗凝血劑（阿斯匹靈）、降血糖藥或自備 NTG 舌下錠嗎？</div></div>
+              <div class="sp-item"><span class="sp-tag">敏 (A)</span><div class="sp-text">過敏史：對什麼食物（海鮮、花生）或藥物（抗生素、止痛藥）過敏過嗎？</div></div>
+              <div class="sp-item"><span class="sp-tag">感 (S)</span><div class="sp-text">補充感覺：還有沒有其他頭暈、心悸、發麻或呼吸喘的感覺？</div></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 為什麼非要問「吃」的三大救命理由 -->
+        <div class="eat-lifesaver-card">
+          <div class="eat-header">
+            <span class="eat-icon">🚨</span>
+            <h4>為什麼救護技術員非要問「吃（最後進食時間/食用）」？三大保命醫學意義！</h4>
+          </div>
+          <div class="eat-reasons-grid">
+            <div class="eat-box box-anesthesia">
+              <div class="eat-num">理由 1</div>
+              <h5>全身麻醉緊急手術（防嘔吐窒息）</h5>
+              <p>嚴重創傷或內科急症送醫後，可能需要<b>緊急插管進行全身麻醉開刀</b>！麻醉後賁門肌肉鬆弛，若胃內有未消化的食物，極易逆流嘔吐嗆入氣管，造成致命的<b>「吸入性肺炎」或窒息猝死</b>！外科規定需空腹 6~8 小時，救護員第一時間查明進食時間，急診醫師才能立即決定手術麻醉方式！</p>
+            </div>
+            <div class="eat-box box-hypo">
+              <div class="eat-num">理由 2</div>
+              <h5>低血糖休克鑑別（打針未吃飯）</h5>
+              <p>糖尿病患者若<b>打了胰島素或吃了降血糖藥，卻因為忙碌或胃口差忘了進食</b>，體內血糖會暴跌至 40~50 mg/dL，導致意識模糊、抽搐甚至昏迷！問出「最後進食時間」能瞬間識破是否為低血糖休克，給予糖粉救命！</p>
+            </div>
+            <div class="eat-box box-allergy">
+              <div class="eat-num">理由 3</div>
+              <h5>急性過敏源追查（食物過敏性休克）</h5>
+              <p>突發全身發癢紅疹、喉頭水腫、氣喘甚至血壓驟降的病患，追查最後吃下的食物（海鮮、甲殼類、堅果花生、芒果），能第一時間確認是否為<b>食物引發之過敏性休克 (Anaphylaxis)</b>，後送途中嚴密防範呼吸道水腫窒息！</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 二度評估身體檢查：非創傷 8 大項 vs 創傷摸骨頭 -->
+      <div class="quick-section-title" style="margin-top:24px;">
+        <span class="title-icon">🩺</span>
+        <h3>二度評估身體檢查：非創傷 8 大項 vs 創傷摸骨頭看沾血</h3>
+        <span class="title-sub">課本第 61/64 頁：非創傷查內科病徵，創傷從頭摸到腳骨骼與出血！</span>
+      </div>
+
+      <div class="secondary-grid">
+        <!-- 非創傷八大項 -->
+        <div class="sec-card med-sec">
+          <div class="sec-card-header">
+            <span class="sec-badge med">🌿 非創傷（內科八大項）</span>
+            <h4>查內科器官病徵（查紅疹、紫斑、針孔、水腫、黑便）</h4>
+          </div>
+          <div class="sec-list">
+            <div class="sec-item"><span class="sec-n">1</span><b>臉部表情與對稱</b>：辛辛那提微笑測試（有無單側嘴角下垂、流口水，評估中風）。</div>
+            <div class="sec-item"><span class="sec-n">2</span><b>兩眼瞳孔對光反應</b>：手電筒照瞳孔，看大小是否等圓等大（正常2~4mm），有無對光縮瞳（排除腦出血、腦壓高或毒物）。</div>
+            <div class="sec-item"><span class="sec-n">3</span><b>頸部靜脈怒張</b>：觀察頸靜脈有無鼓起（怒張常見於右心衰竭、心包填塞）。左手比三滑動檢查氣管有無置中。</div>
+            <div class="sec-item"><span class="sec-n">4</span><b>胸部聽診與外觀</b>：掀開衣服徵求同意，看胸廓起伏，聽診四個聽診點（右上、左上、左下、右下）有無氣喘喘鳴音或肺水腫囉音。</div>
+            <div class="sec-item"><span class="sec-n">5</span><b>腹部四象限觸診</b>：肚臍分四象限，從不痛側壓到痛側，看有無壓痛、反彈痛或腹肌僵硬（腹膜炎）。</div>
+            <div class="sec-item"><span class="sec-n">6</span><b>皮膚外觀巡視</b>：仔細檢視軀幹與四肢有無<b>紅疹</b>（過敏）、<b>紫斑</b>（敗血症/凝血障礙）、<b>針孔</b>（毒品濫用）。</div>
+            <div class="sec-item"><span class="sec-n">7</span><b>四肢末梢凹陷性水腫</b>：拇指下壓雙側手腕與小腿腳踝脛骨前 5 秒放開，觀察有無<b>凹陷性水腫</b>（心臟衰竭、腎衰竭、肝硬化）。</div>
+            <div class="sec-item"><span class="sec-n">8</span><b>排泄與病史問診</b>：詢問病患或家屬最近有無解<b>黑便（柏油便）</b>、<b>瀝青便或鮮血便</b>（嚴重上/下消化道出血）？有無發燒畏寒？</div>
+          </div>
+        </div>
+
+        <!-- 創傷摸骨頭 -->
+        <div class="sec-card trauma-sec">
+          <div class="sec-card-header">
+            <span class="sec-badge trauma">🩸 創傷（全身摸骨頭看沾血）</span>
+            <h4>全身解剖摸骨檢查（每次摸完手套必翻看有無沾血）</h4>
+          </div>
+          <div class="sec-list">
+            <div class="sec-item"><span class="sec-n">1</span><b>後腦杓與頭骨</b>：雙手手指摸過後腦枕骨，檢查有無凹陷或階梯狀骨折，<b>手套翻過來看有無沾血</b>。</div>
+            <div class="sec-item"><span class="sec-n">2</span><b>顏面眉顴頜骨</b>：手指沿雙側眉骨、顴骨、下顎骨滑動按壓，看有無骨擦音；檢查眼耳口鼻有無腦脊髓液或血液流出。</div>
+            <div class="sec-item"><span class="sec-n">3</span><b>頸椎與氣管置中</b>：在頸圈保護下輕摸後頸椎棘突有無壓痛與階梯，目視氣管置中、有無頸靜脈怒張。</div>
+            <div class="sec-item"><span class="sec-n">4</span><b>鎖骨、胸骨與肋骨</b>：雙手對稱摸雙側鎖骨、胸骨、兩側肋骨胸壁（看有無骨折或連枷胸），聽診肺音，手套翻看有無鮮血。</div>
+            <div class="sec-item"><span class="sec-n">5</span><b>腹部四象限輕壓</b>：肚臍分四區輕壓，檢查有無壓痛、肌緊張或內出血膨脹。</div>
+            <div class="sec-item"><span class="sec-n">6</span><b>骨盆按壓（僅限一次）</b>：雙手置於兩側腸骨脊，向內向下施壓一次，感覺骨折或痛感立即停手，手套看有無血。</div>
+            <div class="sec-item"><span class="sec-n">7</span><b>四肢長骨四等分</b>：雙上臂、前臂、大腿、小腿分四等分環抱握壓，檢查長骨骨折，<b>每次握完手套必翻看有無鮮血！</b>末梢測量微血管充填時間 (CRT)。</div>
+            <div class="sec-item"><span class="sec-n">8</span><b>滾木翻身摸脊椎</b>：維持頸椎一直線翻身 90 度，單手手指沿胸椎、腰椎棘突由上往下摸，檢查有無階梯壓痛，<b>手套翻看有無血！</b></div>
+          </div>
+        </div>
+      </div>
+
+      <!-- 車上無線電交接回報 7 字金律 -->
+      <div class="quick-section-title" style="margin-top:24px;">
+        <span class="title-icon">📻</span>
+        <h3>救護車上無線電回報 7 字金律：「病人要史已前到」</h3>
+        <span class="title-sub">課本第 65 頁規範：到達急診室前向醫院通報標準台詞！</span>
+      </div>
+
+      <div class="radio-card">
+        <div class="radio-mnemonics-bar">
+          <span class="r-word">病<small>病人</small></span>➔
+          <span class="r-word">人<small>意識主訴</small></span>➔
+          <span class="r-word">要<small>主要徵象</small></span>➔
+          <span class="r-word">史<small>病史過敏</small></span>➔
+          <span class="r-word">已<small>已處置</small></span>➔
+          <span class="r-word">前<small>目前狀況</small></span>➔
+          <span class="r-word">到<small>到院時間</small></span>
+        </div>
+        <div class="radio-speech-box">
+          <div class="speech-title">🗣️ 標準無線電通報台詞範例（按 7 字口訣逐句照唸）：</div>
+          <div class="speech-content">
+            「<b>新北 91 呼叫亞東醫院急診室！</b><br>
+            • <b>病</b>：本車載送一名約 60 歲男性病患。<br>
+            • <b>人</b>：意識清醒 (Alert)，主訴胸前區劇烈壓迫悶痛延伸至左肩已 30 分鐘。<br>
+            • <b>要</b>：生命徵象：呼吸 20 次、脈搏 96 次、血壓 130/80 mmHg、血氧 98%、血糖 110 mg/dL。<br>
+            • <b>史</b>：過去病史有高血壓、心絞痛，無藥物過敏史。<br>
+            • <b>已</b>：現場已排除禁忌，協助病患含服自備 NTG 舌下錠一顆，並給予保暖與心理支持。<br>
+            • <b>前</b>：目前生命徵象穩定，胸痛略為緩解。<br>
+            • <b>到</b>：預估約 5 分鐘後到達貴院急診室，新北 91 通報完畢！」
+          </div>
+          <div class="speech-action">
+            <button class="btn-voice" onclick="speak('新北91呼叫亞東急診室，本車載送一名60歲男性，主訴胸痛，生命徵象呼吸20脈搏96血壓130，過去有高血壓，已協助含服NTG，目前穩定，預估5分鐘後到達')">🔊 聽標準回報發音</button>
+          </div>
+        </div>
+      </div>
+
+    </section>
+
 <section>
   <h2>這頁怎麼用</h2>
   <div class="grid two">
@@ -283,16 +1045,19 @@
   <div class="wall">
     <article class="pill unit" data-tags="skill ohca"><b>開氧氣</b><span>開、看、接、開、測、戴。低於 500 psi 就換。</span></article>
     <article class="pill unit" data-tags="skill"><b>給氧前</b><span>先確定呼吸道是通的。有雜音或鼾音，先處理阻塞。</span></article>
-    <article class="pill unit" data-tags="ohca skill"><b>AED</b><span>開、貼、需要才插、電、壓。電之前先清場。</span></article>
-    <article class="pill unit" data-tags="ohca"><b>不建議電擊</b><span>第一次不摸脈，立刻再壓。第二次以後才摸頸動脈。</span></article>
-    <article class="pill unit" data-tags="ohca"><b>有脈搏的人工呼吸</b><span>成人每 6 秒一口。OHCA 則是 30 下對 2 口。</span></article>
-    <article class="pill unit" data-tags="scene med trauma"><b>重評</b><span>危急每 5 分鐘。非危急每 15 分鐘。病況一變就整套重來。</span></article>
-    <article class="pill unit" data-tags="skill number"><b>交接</b><span>病人、要、史、已、前、到。危急只報不正常的項目。</span></article>
-    <article class="pill unit" data-tags="skill"><b>病史</b><span>主訴、之前、吃、過、藥、敏、感。</span></article>
-    <article class="pill unit" data-tags="skill scene"><b>這次怎麼痛</b><span>OPQRST：開始、加重緩解、性質、位置、幾分、多久。</span></article>
-    <article class="pill unit" data-tags="scene med"><b>中風</b><span>GFAST。時間從最後一次正常算起，黃金 3 小時。</span></article>
-    <article class="pill unit" data-tags="number"><b>鼻導管算法</b><span>空氣約 20%，每多 1 升大約多 4%。只拿來記鼻導管 24–44%。</span></article>
-    <article class="pill unit" data-tags="trauma skill"><b>頭交接</b><span>副手請準備接手。我已接穩。好，我放手。</span></article>
+    <article class="pill unit" data-tags="skill"><b>給氧流量</b><span>鼻導管 4L、面罩 10L、NRM 15L (充飽2/3)、BVM 15L。</span></article>
+    <article class="pill unit" data-tags="trauma med skill"><b>痛刺激差異</b><span>創傷/頸椎：壓指甲床或捏虎口（嚴禁捏肩！）。非創傷/OHCA：捏斜方肌。</span></article>
+    <article class="pill unit" data-tags="trauma skill"><b>骨盆檢查</b><span>創傷初評雙手置腸骨翼向內向下壓一次（排除大出血）。非創傷絕對不壓骨盆！</span></article>
+    <article class="pill unit" data-tags="skill"><b>主訴問法</b><span>清醒開口問：先生先生你哪裡不舒服？怎麼不舒服？不舒服多久了？</span></article>
+    <article class="pill unit" data-tags="skill"><b>過去病史</b><span>主訴之前吃過藥敏感（主訴、之前、吃、過、藥、敏、感）。</span></article>
+    <article class="pill unit" data-tags="skill med"><b>現病史胸痛</b><span>OPQRST：發作、增減、性質、轉移、程度1-10分、時間。</span></article>
+    <article class="pill unit" data-tags="skill"><b>輔助檢查</b><span>徒手初評之後、判定危急之前！主手量血壓血氧體溫血糖，副手問病史。</span></article>
+    <article class="pill unit" data-tags="scene trauma med"><b>考場結案點</b><span>大聲報告「判定危急個案！請求ALS支援立即後送！」本站考試在此滿分結案，免搬長背板擔架！</span></article>
+    <article class="pill unit" data-tags="scene med trauma"><b>重評時機</b><span>後送途中危急每 5 分鐘。非危急每 15 分鐘。病況一變就整套重來。</span></article>
+    <article class="pill unit" data-tags="skill number"><b>無線電交接</b><span>病人要史已前到（病人、要、史、已、前、到）。</span></article>
+    <article class="pill unit" data-tags="ohca skill"><b>AED</b><span>開、貼、需要才插、電、壓。電之前先清場（我離開你離開大家離開）。</span></article>
+    <article class="pill unit" data-tags="ohca"><b>不建議電擊</b><span>第一次不摸脈，立刻再壓。第二次以後才摸頸動脈 5~10 秒。</span></article>
+    <article class="pill unit" data-tags="med skill"><b>低血糖抹糖</b><span>昏迷嚴禁灌食！戴手套 ➔ 沾食鹽水 ➔ 沾糖粉 ➔ 抹牙齦舌下 ➔ 採側臥復甦姿勢。</span></article>
   </div>
 </section>
 
@@ -305,16 +1070,18 @@
         <tr><th>順序</th><th>非創傷</th><th>創傷</th><th>OHCA</th></tr>
       </thead>
       <tbody>
-        <tr><td>什麼時候走</td><td class="med">生病、喘、痛、暈、過敏、胸悶、中風</td><td class="trauma">車禍、跌倒、出血、骨頭、燒燙、安全帽、穿刺</td><td class="ohca">叫不醒，而且沒有正常呼吸、沒有脈搏</td></tr>
-        <tr><td>現場</td><td colspan="3">環境安全。手套、口罩，必要時護目鏡和隔離衣。防護未完成先保持距離。看人數和嚴重度。請副手打 119。</td></tr>
-        <tr><td>接近</td><td class="med">主手打開急救包。副手打開三合一氧氣組。</td><td class="trauma">有機轉就先固定頭。主手等副手喊好了才放下裝備。安全帽先脫。</td><td class="ohca">副手同時拿 AED 和甦醒球。</td></tr>
-        <tr><td>大出血 X</td><td class="med">沒有這格</td><td class="trauma">快速掃描。噴血先加壓，立刻上止血帶。和頸椎問題同時存在時，止血優先。</td><td class="ohca">沒有這格</td></tr>
-        <tr><td>意識</td><td colspan="2">先生、先生。無反應就再叫並拍肩。仍無反應就捏斜方肌。</td><td class="ohca">同樣三步。三步都沒有反應，就準備進急救。</td></tr>
-        <tr><td>A</td><td class="med">壓額抬頦</td><td class="trauma">下顎上舉。頭不要後仰。</td><td class="ohca">壓額抬頦</td></tr>
-        <tr><td>B</td><td colspan="2">看胸口不超過 10 秒，夾血氧，依張口和嚴重度給氧。</td><td class="ohca">沒有正常呼吸，請副手準備甦醒球。</td></tr>
-        <tr><td>C</td><td class="med">兩側橈動脈、指甲回血、膚色和手溫。</td><td class="trauma">同樣三項，再加骨盆向內向下壓一次。</td><td class="ohca">摸頸動脈最多 10 秒。沒有脈搏就開始壓胸。C、D、E 不做。</td></tr>
-        <tr><td>D、E</td><td class="med">初步不做。留到二度。</td><td class="trauma">D 看意識、瞳孔、四肢。E 找致命傷口、氣管、頸靜脈、頸椎壓痛。</td><td class="ohca">不做</td></tr>
-        <tr><td>結尾</td><td colspan="2">喊危急或非危急。量血壓、血氧、體溫。問病史。危急 5 分鐘、非危急 15 分鐘重評。</td><td class="ohca">高品質 CPR 加 AED，直到有脈搏或持續交接後送。</td></tr>
+        <tr><td>什麼時候走</td><td class="med">生病、喘、痛、暈、過敏、胸悶、中風、血糖低</td><td class="trauma">車禍、跌倒、出血、骨折、燒燙、安全帽、穿刺</td><td class="ohca">叫不醒，而且沒有正常呼吸、沒有脈搏</td></tr>
+        <tr><td>現場常規</td><td class="med">確認環境安全、手套口罩、人數一名、請副手打 119。主手開急救包，副手開三合一。</td><td class="trauma">確認安全、手套口罩護目鏡、車禍/墜落機轉、副手打 119。主手站腳側固定眼神防轉頭，副手頭部減移喊好，主手脫安全帽。</td><td class="ohca">環境安全、手套口罩、副手打 119 攜帶 BVM + AED 趕來。</td></tr>
+        <tr><td>大出血 X</td><td class="med">沒有這格（無外傷湧血）</td><td class="trauma"><b>止血優先於頸椎！</b> 快速目視，有噴血直接加壓並打止血帶，近心端 5-7cm 旋緊寫時間。</td><td class="ohca">沒有這格</td></tr>
+        <tr><td>意識評估 (AVPU)</td><td class="med">先生先生叫 ➔ 叫加拍肩 ➔ <b>痛刺激捏雙側斜方肌</b>。<br><span style="color:#fde047;">清醒問主訴：「先生先生你哪裡不舒服？怎麼不舒服？不舒服多久了？」</span></td><td class="trauma">維持頭頸中立，先生先生叫 ➔ 拍肩叫 ➔ <b style="color:#fca5a5;">【痛刺激壓指甲床或捏虎口！絕對嚴禁捏肩（斜方肌）以免牽動頸椎！】</b><br><span style="color:#fde047;">清醒問主訴：「先生先生你哪裡不舒服？怎麼不舒服？多久了？」</span></td><td class="ohca">叫先生 ➔ 拍雙肩 ➔ 捏斜方肌，對痛刺激完全無反應。</td></tr>
+        <tr><td>呼吸道 A</td><td class="med"><b>壓額抬頦法</b>。雜音抽吸 (≤15s)；鼾音清醒放 NPA、昏迷放 OPA。</td><td class="trauma"><b>嚴禁仰頭！採下顎推擠法 (Jaw-thrust)</b>。昏迷鼾音放 OPA。</td><td class="ohca">壓額抬頦法暢通氣道。</td></tr>
+        <tr><td>呼吸 B ＋ 給氧</td><td class="med">深淺快慢 (≤10s) 夾血氧。無張口給鼻導管 4L；張口給面罩 10L；嚴重喘/過敏給 NRM 15L；衰竭給 BVM 15L。</td><td class="trauma">深淺快慢夾血氧。重大外傷/氣胸/休克給予<b>非再呼吸型面罩 (NRM) 固定 15 L/min</b>，充飽 2/3。</td><td class="ohca">看胸起摸頸動脈 ≤10 秒無呼吸無脈搏！立即 BVM 接氧 15L 吹氣。</td></tr>
+        <tr><td>循環 C ＋ 骨盆</td><td class="med">觸摸雙側橈動脈、CRT ≤2 秒、手背測溫膚色。<br><b style="color:#fca5a5;">【絕對不壓骨盆！壓骨盆直接扣分】</b></td><td class="trauma">觸摸雙側橈動脈、CRT ≤2 秒、手背測溫膚色。<br><b style="color:#7dd3fc;">【雙手置骨盆腸骨翼向內向下壓一次！只能一次，排除 1000-3000cc 隱形大失血】</b></td><td class="ohca">摸無頸動脈搏！立即胸外按壓 30 下（100-120次/分、深度5-6cm、完全回彈）。按壓吹氣 30:2。</td></tr>
+        <tr><td>神經 D ＋ 暴露 E ＋ 專科處置</td><td class="med">神經專科評估（中風 G-FAST 抓時間；胸痛含服自備 NTG 排四大禁忌；氣喘指導 MDI；低血糖昏迷抹糖）。採舒適體位（半坐臥/坐姿前傾）。</td><td class="trauma"><b>D 神經</b>：GCS、兩側筆燈瞳孔、四肢運動感覺。<br><b>E 暴露</b>：比三看氣管偏移、雙掌看頸靜脈怒張、頸椎棘突壓痛、毛毯保暖。<br><b>專科</b>：骨折長夾板跨上下關節（前後測 PSM）、氣胸貼三留一、異物原位固定、斷肢三層隔袋冷卻。</td><td class="ohca">AED 抵達：開機、貼片、插頭、分析清場（我離開你離開大家離開）、電擊、放電後不摸脈搏立刻繼續 CPR！</td></tr>
+        <tr><td><b>輔助檢查 ＋ 問病史 (課本第 60/58 頁)</b></td><td class="med"><b>主手拿儀器量數據</b>：血壓、血氧、體溫、<b>（中風/昏迷必測）血糖機測血糖</b>！<br><b>副手問病史</b>：【主訴之前吃過藥敏感】＋胸痛【OPQRST】。</td><td class="trauma"><b>主手拿儀器量數據</b>：血壓、血氧、體溫、血糖！血氧&lt;94%換裝置。<br><b>副手問病史</b>：【主訴之前吃過藥敏感】（詢問最後進食時間評估手術麻醉、抗凝血劑藥物史）。</td><td class="ohca">按壓吹氣不中斷，副手向家屬問倒地時間與心臟病史。</td></tr>
+        <tr><td><b>危急判定 (考場結案點) (課本第 61/58 頁)</b></td><td class="med"><b>大聲向考官報告</b>：「判定為危急個案！請求 ALS 支援，立即後送！」<br><span style="color:#fde047;">★ 本站現場考試在此滿分結案！</span></td><td class="trauma"><b>大聲向考官報告</b>：「判定為危急個案！請求 ALS 支援，立即後送！」<br><span style="color:#fde047;">★ 考生注意：本考場在此滿分結案！實務考試「免上長背板、免搬擔架床」！</span></td><td class="ohca">報告考官：「病患為 OHCA，判定危急個案！請求 ALS 支援，持續 CPR 與 AED 監測，立即後送！」</td></tr>
+        <tr><td>車上二評 (課本第 61/59 頁)</td><td class="med">救護車後送中危急每 5 分鐘重評八大徵象；身體檢查重在神經、呼吸音、腹部壓痛、水腫針孔。</td><td class="trauma">救護車後送中危急每 5 分鐘重評八大徵象；全身身體檢查從頭面（後腦眉顴下顎耳漏鼻漏熊貓眼耳後瘀青）、頸胸（聽診四點）、腹部（四象限痛的最後壓）、四肢（四等份捏壓看手套沾血）、滾木翻身摸脊椎。</td><td class="ohca">車上持續按壓吹氣 30:2，每 2 分鐘分析一次心律。</td></tr>
+        <tr><td>無線電通報 (課本第 65 頁)</td><td colspan="3">七字口訣【病人要史已前到】：病（性別年齡）、要（主要求救原因）、史（病史過敏）、已（已做處置）、前（目前生命徵象）、到（幾分鐘後到院）。</td></tr>
       </tbody>
     </table>
   </div>
@@ -325,18 +1092,24 @@
   <p class="lead">照流程頁的格子講。藍色句子是要說出口的。</p>
   <article class="card unit" data-tags="med skill">
     <ol class="script">
-      <li><span><span class="who">主手</span>環境與防護<span class="say">現場環境安全。我戴上手套和口罩。</span><span class="note">必要時加護目鏡、隔離衣。防護還沒完成，先和病人保持距離。</span></span></li>
-      <li><span><span class="who">主手</span>人數<span class="say">傷患一位。請副手打 119。</span><span class="note">看見幾位就報幾位，並說出看起來嚴不嚴重。</span></span></li>
-      <li><span><span class="who">主手</span>裝備<span class="say">我放下裝備，打開急救包。</span><span class="note">副手放下裝備，打開三合一。</span></span></li>
-      <li><span><span class="who">主手</span>叫<span class="say">先生、先生。</span><span class="note">邊開急救包邊叫。有反應就進入 A，並改用對話評估。</span></span></li>
-      <li><span><span class="who">主手</span>拍<span class="say">先生、先生。</span><span class="note">同時拍雙肩。這是第二個沒有反應。</span></span></li>
-      <li><span><span class="who">主手</span>痛<span class="say">疼痛刺激。</span><span class="note">捏斜方肌。仍沒有反應，才做下一步。</span></span></li>
-      <li><span><span class="who">主手</span>A<span class="say">壓額抬頦。我看呼吸道通不通，有沒有異物、雜音、鼾音。</span><span class="note">意識不清或無法正常對話，就要做徒手暢通。岔路見下方技術節。</span></span></li>
-      <li><span><span class="who">主手</span>B<span class="say">評估呼吸深淺快慢，不超過 10 秒。副手夾血氧。</span><span class="note">副手在沒有頸椎限制、而且呼吸不正常或血氧低於 94% 時協助給氧。</span></span></li>
-      <li><span><span class="who">主手</span>給氧<span class="say">嘴巴閉著、呼吸淺快：鼻導管 1 到 6 升。張口呼吸：一般面罩 6 到 10 升。火場、吸入性嗆傷、一氧化碳：非再呼吸面罩 10 到 15 升，先把儲氣袋充飽。</span></span></li>
-      <li><span><span class="who">主手</span>C<span class="say">摸兩側橈動脈，看有沒有對稱、摸不摸得到。輕壓指甲 3 到 5 秒，看回血。看臉和末梢的顏色，用手背貼手背感覺冷不冷。</span></span></li>
-      <li><span><span class="who">主手</span>輔助<span class="say">請出血壓計、血氧機、體溫計。血氧若仍然低於 94%，更換給氧裝置。</span><span class="note">副手有空就開始問病史。</span></span></li>
-      <li><span><span class="who">主手</span>判定<span class="say">對照危急表。符合就說：危急個案，每 5 分鐘做一次二度評估。不符合就說：非危急，每 15 分鐘再評。</span></span></li>
+      <li><span><span class="who">主手</span>環境安全<span class="say">確認環境是否安全。現場環境安全。</span></span></li>
+      <li><span><span class="who">主手</span>感染控制<span class="say">我戴上手套和口罩。</span><span class="note">必要時戴護目鏡、穿隔離衣。</span></span></li>
+      <li><span><span class="who">主手</span>保持距離<span class="say">防護還沒完成，我先和病人保持距離。</span></span></li>
+      <li><span><span class="who">主手</span>人數<span class="say">請問有幾位傷患？</span><span class="note">人數不要自己報。你問，考官會說幾人。聽到幾人，就接幾人。</span></span></li>
+      <li><span><span class="who">主手</span>嚴重度與求援<span class="say">請副手打 119。</span><span class="note">嚴重度用看到的講，例如意識不清、呼吸費力、大量出血。</span></span></li>
+      <li><span><span class="who">雙方</span>接近<span class="say">我放下裝備，打開急救包。</span><span class="note">副手放下裝備，打開三合一。</span></span></li>
+      <li><span><span class="who">主手</span>叫（意識評估三呼叫之 1）<span class="say">先生、先生。</span><span class="note">邊開急救包邊叫（聲音反應 V）。若病患清醒，直接開口問主訴：「先生先生你還好嗎？我是救護人員，請問你哪裡不舒服？怎麼不舒服？不舒服多久了？」</span></span></li>
+      <li><span><span class="who">主手</span>拍<span class="say">沒有反應。先生、先生。</span><span class="note">同時拍雙肩。</span></span></li>
+      <li><span><span class="who">主手</span>痛<span class="say">沒有反應。疼痛刺激，捏斜方肌。</span></span></li>
+      <li><span><span class="who">主手</span>分流<span class="say">仍然沒有反應。我看有沒有適當呼吸，同時摸頸動脈。</span><span class="note">兩者都沒有，進入心臟停止流程。有呼吸或有脈搏，繼續做 A。</span></span></li>
+      <li><span><span class="who">主手</span>A<span class="say">意識不清或無法正常對話，我做壓額抬頦，看呼吸道通不通。</span><span class="note">有雜音就抽吸。有鼾音：清醒或意識不清用鼻咽；昏迷而且對痛沒有反應用口咽。可請副手協助。</span></span></li>
+      <li><span><span class="who">主手</span>B<span class="say">評估呼吸深、淺、快、慢，不超過 10 秒。副手夾血氧。</span><span class="note">副手在沒有頸椎限制，而且呼吸不在正常範圍或血氧低於 94% 時，協助給氧。</span></span></li>
+      <li><span><span class="who">主手</span>給氧<span class="say">淺快、嘴巴沒張：鼻導管。淺快、張口：一般面罩。火場救出、吸入性嗆傷、一氧化碳：非再呼吸面罩，先把儲氣袋充飽。</span></span></li>
+      <li><span><span class="who">主手</span>C<span class="say">兩側橈動脈用食指和中指摸，看對稱、淺不淺、摸不摸得到。輕壓指甲 3 到 5 秒，看回血有沒有大於 2 秒。看臉和末梢蒼白、潮紅、發紺。用手背貼手背，看末梢濕不濕、冷不冷。</span></span></li>
+      <li><span><span class="who">主手</span>【輔助檢查】<span class="say">徒手初評完成！拿出儀器操作四大檢查：測量血壓、血氧、體溫、（中風/昏迷必測）血糖機測血糖！若血氧數值依然低於 94%，更換給氧裝置！</span><span class="note">主手操作儀器量數值。</span></span></li>
+      <li><span><span class="who">副手</span>【詢問病史】<span class="say">同步詢問病史【主訴之前吃過藥敏感】：主訴哪裡不舒服、發作前在做什麼、上一餐時間、過去病史、服用藥物、過敏史、補充感覺！（胸痛加問現病史 OPQRST）</span><span class="note">副手問 SAMPLE 病史。</span></span></li>
+      <li><span><span class="who">主手</span>【判定危急 ➔ 考場結案】<span class="say">報告考官！病患出現（中風 G-FAST 陽性 / 胸痛 AMI / 呼吸衰竭 / 血糖&lt;60 / 收縮壓&lt;90 休克）！判定為危急個案！請求 ALS 支援，立即後送！</span><span class="note">★【考場實戰鐵律】本站考試在此宣告滿分結案！免上長背板與擔架床！</span></span></li>
+      <li><span><span class="who">雙方</span>【車上二度評估與無線電】<span class="say">救護車後送中危急個案每 5 分鐘重評八大生命徵象與身體檢查！無線電通報急診【病人要史已前到】！</span><span class="note">純口試/後送途中備用。</span></span></li>
     </ol>
   </article>
 </section>
@@ -346,20 +1119,26 @@
   <p class="lead">和內科同一條脊椎，多出來的是頭、血、骨盆、神經和暴露。頭一旦交出去，要聽到接穩才能放手。</p>
   <article class="card unit" data-tags="trauma skill">
     <ol class="script">
-      <li><span><span class="who">主手</span>現場<span class="say">現場環境安全。我戴上手套和口罩。傷患一位。請副手打 119。</span></span></li>
-      <li><span><span class="who">主手</span>機轉<span class="say">有受傷機轉。先生您好，我們懷疑您頸椎受傷，請您不要亂動。</span><span class="note">沒有頸椎機轉就不要講這句。主手站在腳側吸引注意。副手上前做頭部固定。</span></span></li>
-      <li><span><span class="who">雙方</span>交頭<span class="say">副手，請準備接手頭頸。我已接穩。好，我放手。</span><span class="note">教材寫主手要等副手喊好了，才放下裝備開始初步評估。</span></span></li>
-      <li><span><span class="who">主手</span>安全帽<span class="say">頭已經固定。先脫安全帽，脫完才繼續評估。</span><span class="note">詳細順序在技術節。沒有安全帽就跳過。</span></span></li>
-      <li><span><span class="who">主手</span>X<span class="say">快速掃描全身有沒有大量出血。</span><span class="note">一接近就看到噴血，止血移到意識評估前面。大出血又合併頸椎問題時，止血優先。副手若不用壓頭，可以協助止血。</span></span></li>
-      <li><span><span class="who">主手</span>出血<span class="say">這裡大量出血。我直接加壓。止不住就立刻上止血帶。</span></span></li>
-      <li><span><span class="who">主手</span>意識<span class="say">維持頭的位置。先生、先生。沒有反應就拍肩再叫。仍然沒有反應就捏斜方肌。</span><span class="note">不要搖晃身體。</span></span></li>
-      <li><span><span class="who">主手</span>A<span class="say">下顎上舉，頭不後仰。我檢查有沒有異物、雜音、鼾音。</span><span class="note">教材用詞是下顎上舉法。口令手冊也稱下顎推擠，動作都是托起下顎，禁止壓額抬頦。</span></span></li>
-      <li><span><span class="who">主手</span>B 與給氧<span class="say">看呼吸不超過 10 秒，夾血氧。給氧規則和內科相同。</span><span class="note">創傷需要氧氣、或意識不清，裝置頁寫可以用一般面罩。</span></span></li>
-      <li><span><span class="who">主手</span>C<span class="say">兩側橈動脈、指甲回血、膚色和手溫。雙手放在骨盆，向內並向下壓一次。</span></span></li>
-      <li><span><span class="who">主手</span>D<span class="say">先生你可以看著我，跟我說你叫什麼名字，手或腳可以動一下嗎？</span><span class="note">任何一項沒有反應，改做疼痛刺激。接著測瞳孔和四肢，句子在技術節。</span></span></li>
-      <li><span><span class="who">主手</span>E<span class="say">我檢查全身有沒有致命傷口。衣服有血或明顯變形，我會告訴你要剪開。接著看氣管、頸靜脈和頸椎壓痛。</span></span></li>
+      <li><span><span class="who">主手</span>環境安全<span class="say">確認環境是否安全。現場環境安全。</span></span></li>
+      <li><span><span class="who">主手</span>感染控制<span class="say">我戴上手套和口罩。</span><span class="note">必要時戴護目鏡、穿隔離衣。防護還沒完成，先和病人保持距離。</span></span></li>
+      <li><span><span class="who">主手</span>人數<span class="say">請問有幾位傷患？</span><span class="note">人數由考官說。接著看嚴重度，請副手打 119。</span></span></li>
+      <li><span><span class="who">主手</span>機轉<span class="say">有受傷機轉。先生您好，我們懷疑您頸椎受傷，請您不要亂動。</span><span class="note">沒有頸椎機轉就不要講這句。主手站在腳側吸引注意。大出血合併頸椎問題時，止血優先。</span></span></li>
+      <li><span><span class="who">副手</span>減移<span class="say">我放下裝備，打開三合一。頭部減移完成。好。</span><span class="note">副手不用固定頭時，可以協助止血。</span></span></li>
+      <li><span><span class="who">雙方</span>交頭<span class="say">副手，請準備接手頭頸。我已接穩。好，我放手。</span><span class="note">主手要等副手喊好了，才放下裝備開始初步評估。</span></span></li>
+      <li><span><span class="who">主手</span>安全帽<span class="say">確認現場安全後才接近。我站在腳側，先吸引注意。頭已經固定。先脫安全帽，脫完才繼續評估。</span><span class="note">沒有安全帽就跳過。脫帽前先吸引注意，主手等固定完成再動作。</span></span></li>
+      <li><span><span class="who">主手</span>X<span class="say">快速檢查全身有沒有大量出血。</span><span class="note">一接近就看到噴血，止血移到意識評估前面。</span></span></li>
+      <li><span><span class="who">主手</span>出血<span class="say">這裡大量出血。我直接加壓，立刻上止血帶。</span></span></li>
+      <li><span><span class="who">主手</span>意識評估三呼叫<span class="say">維持頭的位置。先生、先生（邊開包邊叫，第1次）。沒有反應就拍肩再叫：先生、先生（第2次）。仍然沒有反應，做疼痛刺激（拿筆燈壓手指甲床或捏虎口，第3次）。</span><span class="note">【致命紅線】創傷痛刺激嚴禁捏肩（斜方肌），以免牽動頸椎致癱！若病患清醒，開口問主訴：「先生先生你哪裡不舒服？怎麼不舒服？不舒服多久了？」無呼吸無脈搏改走 OHCA。</span></span></li>
+      <li><span><span class="who">主手</span>A<span class="say">下顎上舉，頭不後仰。我檢查有沒有異物、雜音、鼾音。</span><span class="note">雜音就抽吸。鼾音先排除顱底骨折，再用鼻咽。昏迷而且對痛沒有反應，用口咽。副手若不用做頸椎限制，而且呼吸道不暢，可以協助。</span></span></li>
+      <li><span><span class="who">主手</span>B 與給氧<span class="say">評估呼吸深、淺、快、慢，不超過 10 秒，夾血氧。給氧規則和內科相同。</span><span class="note">副手沒有在做頸椎限制，而且呼吸不正常或血氧低於 94%，可以協助給氧。創傷需要氧，或意識不清，可以用一般面罩。</span></span></li>
+      <li><span><span class="who">主手</span>C<span class="say">兩側橈動脈、指甲回血、膚色和手溫。雙手放在骨盆，向內並向下壓一次，看穩不穩、痛不痛。</span></span></li>
+      <li><span><span class="who">主手</span>D<span class="say">先生你可以看著我，跟我說你叫什麼名字，手或腳可以動一下嗎？</span><span class="note">任何一項沒有反應，改做疼痛刺激，捏斜方肌。接著：上方的手撐開眼皮，下方的手拿筆燈，先比兩側大小，再從側邊移到正前方看對光。手：你有感覺我在摸你的手嗎？你的手可以動一下嗎？沒反應就捏虎口。腳：你有感覺我在摸你的腳嗎？你的腳可以動一下嗎？沒反應就刺激腳後跟。一開始就無意識，直接做虎口和腳後跟。</span></span></li>
+      <li><span><span class="who">主手</span>E<span class="say">我檢查全身有沒有致命傷口。衣服有血或明顯變形，我會告訴你要剪開。氣管有沒有偏：左手比三，從脖子上方滑到下方。頸靜脈有沒有怒張：雙手掌放在脖子兩側。頸椎壓下去會不會痠、痛、麻。</span><span class="note">副手若沒有做頸椎限制，而且還有其他傷，可以協助處理。</span></span></li>
       <li><span><span class="who">主手</span>傷口<span class="say">胸口開放傷口貼三留一。骨折做骨折固定。穿刺傷固定異物，不拔。燒燙傷用生理食鹽水沖，蓋上紗布。其他外傷清洗、包紮。</span></span></li>
-      <li><span><span class="who">主手</span>結尾<span class="say">危急個案，每 5 分鐘重評。</span><span class="note">或非危急，每 15 分鐘。副手問病史。血氧仍低於 94% 就換裝置。</span></span></li>
+      <li><span><span class="who">主手</span>【輔助檢查】<span class="say">徒手初評完成！拿出儀器操作四大數據：測量血壓、血氧、體溫、血糖！若血氧數值依然低於 94%，考慮更換給氧裝置！</span><span class="note">主手操作儀器量數值。</span></span></li>
+      <li><span><span class="who">副手</span>【詢問病史】<span class="say">同步詢問病史【主訴之前吃過藥敏感】：主訴哪裡痛、受傷前在做什麼、最後一餐時間、過去重大病史、服用藥物（抗凝血劑）、過敏史、其他疼痛補充！</span><span class="note">副手問 SAMPLE 病史。</span></span></li>
+      <li><span><span class="who">主手</span>【判定危急 ➔ 考場結案】<span class="say">報告考官！病患出現（收縮壓低於90休克 / 骨盆骨折 / 開放性氣胸 / 斷肢 / GCS低於14）！判定為危急個案！請求 ALS 支援，立即後送！</span><span class="note">★【考場實戰鐵律】本站考試在此宣告滿分結案！免上長背板與擔架床！</span></span></li>
+      <li><span><span class="who">雙方</span>【車上二度評估與無線電】<span class="say">救護車後送中危急個案每 5 分鐘重評八大生命徵象與身體檢查！無線電通報急診【病人要史已前到】！</span><span class="note">純口試/後送途中備用。</span></span></li>
     </ol>
   </article>
 </section>
@@ -369,18 +1148,19 @@
   <p class="lead">格子對齊評分表。第 12 格只選一種結果講出來。</p>
   <article class="card unit" data-tags="ohca skill">
     <ol class="script">
-      <li><span><span class="who">主手</span>第 1 格<span class="say">現場環境安全。我做好防護。傷患一位，倒在大廳，意識不清。請副手打 119。</span></span></li>
-      <li><span><span class="who">主手</span>第 2 格<span class="say">先生、先生。沒有反應。先生、先生。沒有反應。疼痛測試。沒有反應。</span><span class="note">第二句同時拍肩。第三句捏斜方肌。三個「沒有反應」要分開講。</span></span></li>
+      <li><span><span class="who">主手</span>第 1 格<span class="say">確認環境是否安全。現場環境安全。我戴上手套和口罩。防護還沒完成，先保持距離。請問有幾位傷患？</span><span class="note">人數由考官說。接著講看到的傷情，例如倒在大廳、意識不清。然後請副手打 119。必要時加護目鏡、隔離衣。</span></span></li>
+      <li><span><span class="who">主手</span>第 2 格<span class="say">先生、先生。沒有反應。先生、先生。沒有反應。疼痛測試。沒有反應。夥伴，準備進行急救。</span><span class="note">邊開急救包邊叫。第二句同時拍肩。第三句捏斜方肌。三個「沒有反應」要分開講。無意識就要告訴夥伴準備急救。</span></span></li>
       <li><span><span class="who">主手</span>第 3 格<span class="say">壓額抬頦。沒有正常呼吸。副手準備甦醒球。</span></span></li>
       <li><span><span class="who">主手</span>第 4 格<span class="say">頸動脈沒有脈搏。副手準備 AED。我開始心肺復甦。</span><span class="note">摸脈搏最多 10 秒。沒有呼吸又沒有脈搏，不要去做 C、D、E。</span></span></li>
-      <li><span><span class="who">副手</span>第 5 格<span class="say">打開 AED。貼上貼片。這個機型需要的話我插上導線。分析時不要碰到病人。</span><span class="note">順序是開、貼、需要才插。評分表把「貼完才開機」和「電擊沒有清場」列為錯誤例子。</span></span></li>
+      <li><span><span class="who">副手</span>第 5 格<span class="say">打開 AED。貼上貼片。這個機型需要的話我插上導線。分析時不要碰到病人。主手的雙手懸浮在壓胸位置上方。</span><span class="note">順序是開、貼、需要才插。機器說不要碰的時候，手懸在原來的壓胸位置，不要放下去。評分表把「貼完才開機」和「電擊沒有清場」列為錯誤例子。</span></span></li>
       <li><span><span class="who">主手</span>第 6 到 9 格<span class="say">掌根放在胸部中央、胸骨下半。手肘打直，肩膀在手正上方。我用每分鐘 110 下的速度按壓，每次都讓胸口完全回來。</span><span class="note">這幾頁教材沒有印按壓解剖圖，位置依評分表要看的成人位置來講。機器上的深度和回彈都要到 90% 以上。成人深度大約 5 到 6 公分。兩項不到就觸發扣 10 分那一欄。</span></span></li>
       <li><span><span class="who">雙方</span>第 10 格<span class="say">30 下之後，甦醒球給兩口氣，我看胸口有沒有起伏。</span></span></li>
       <li><span><span class="who">副手</span>第 11 格<span class="say">量耳垂到嘴角。打開嘴巴。凹面朝上放入，轉 180 度，放到嘴唇。</span><span class="note">只有完全沒有疼痛反應才放口咽呼吸道。</span></span></li>
       <li><span><span class="who">副手</span>電擊<span class="say">建議電擊。大家都離開。沒有人碰到病人。電擊。立刻繼續按壓。</span></span></li>
       <li><span><span class="who">副手</span>第 12 格，第一次不建議<span class="say">第一次不建議電擊。我不摸脈搏，立刻繼續按壓。</span></span></li>
       <li><span><span class="who">副手</span>第 12 格，第二次以後<span class="say">第二次分析不建議電擊。我摸頸動脈。</span><span class="note">四種結果只講考官給的那一種：沒有脈搏就立刻再壓；有脈搏沒有呼吸就人工呼吸；有脈搏也有呼吸就改做初步評估。建議電擊則清場、電擊、立刻再壓。</span></span></li>
-      <li><span><span class="who">副手</span>病史<span class="say">請問剛剛發生什麼事？</span><span class="note">路人報案不用把病史問完，這一分也可以拿到。不要為了問病史停掉按壓。</span></span></li>
+      <li><span><span class="who">副手</span>電擊後<span class="say">口咽呼吸道放好，氧氣接上，我問病史。</span><span class="note">流程圖寫電擊之後由副手完成口咽、氧氣設置和病史。口咽只有完全沒有疼痛反應才放。路人報案不用把病史問完。不要為了問病史停掉按壓。</span></span></li>
+      <li><span><span class="who">副手</span>病史<span class="say">請問剛剛發生什麼事？</span></span></li>
     </ol>
     <div class="table-wrap" style="margin-top:12px;box-shadow:none">
       <table>
@@ -418,13 +1198,13 @@
 </section>
 
 <section id="scenes">
-  <h2>情境卡</h2>
-  <p class="lead">每一張都是一條脊椎加上一個插入動作。用上面的「抽一題」遮住口令練。</p>
+  <h2>老師指定 11 大情境卡</h2>
+  <p class="lead">依課堂筆記圈選：創傷 6 題（安全帽、大出血、斷肢、骨折、燒傷、氣胸穿刺）＋ 非創傷 5 題（過敏、氣喘、中風、胸痛、低血糖）。每一張都是一條脊椎加上一個核心處置動作。</p>
   <div class="grid two">
     <article class="card scene unit" data-tags="scene trauma skill" data-search="安全帽 頸圈 機車 騎士">
       <div class="kicker"><span class="badge b-trauma">創傷</span><span class="badge b-scene">情境</span></div>
       <h3>安全帽</h3>
-      <p class="say">這是創傷。我先確認環境安全，站到腳側。先生您好，我們懷疑您頸椎受傷，請您不要亂動。副手固定頭部。頭接穩之後才脫安全帽。脫完我才開始初步評估。</p>
+      <p class="say">這是創傷。確認環境安全後才接近。我站到腳側，先吸引注意。先生您好，我們懷疑您頸椎受傷，請您不要亂動。副手做頭部減移，喊好之後我才動。先脫安全帽，脫完才開始初步評估。上頸圈前先查氣管、頸靜脈、痠痛麻，再量下巴切線到肩線。</p>
       <p class="note">脫帽前先吸引注意。主手在腳，副手做頭部減移。主手等固定完成再動作。上頸圈之前先做三項：氣管有沒有偏、頸靜脈有沒有鼓、壓下去會不會痠痛麻。再量下巴切線到肩線，選頸圈大小。</p>
       <p class="back">做完回到：意識評估。</p>
       <p class="trap">還沒有人固定頭就去解帽扣，或帽子還在就開始看瞳孔。</p>
@@ -432,7 +1212,7 @@
     <article class="card scene unit" data-tags="scene trauma" data-search="大出血 止血帶 噴血">
       <div class="kicker"><span class="badge b-trauma">創傷</span></div>
       <h3>大出血</h3>
-      <p class="say">這是創傷。我看到大量出血，先直接加壓。止不住就立刻上止血帶。止血完成後，我回到意識評估。</p>
+      <p class="say">這是創傷。我看到大量出血，直接加壓，並且立刻上止血帶。若同時懷疑頸椎，止血仍優先。副手不用壓頭時可以協助。止血完成後，我回到意識評估。</p>
       <p class="note">流程上 X 在叫人之後、意識之前。若一靠近就看到噴血，止血移到最前面。合併頸椎疑慮時，止血仍優先。副手不用壓頭時可以幫忙壓。</p>
       <p class="back">做完回到：意識，接著 A。</p>
       <p class="trap">先做完一整套 ABC 才回頭處理噴血。</p>
@@ -485,18 +1265,10 @@
       <p class="back">做完回到：B，然後重評血氧。</p>
       <p class="trap">呼吸已經慢到每分鐘 10 次以下，還在調鼻導管。</p>
     </article>
-    <article class="card scene unit" data-tags="scene med trauma" data-search="休克 蒼白 血壓 代償">
-      <div class="kicker"><span class="badge b-scene">兩條都可能</span></div>
-      <h3>休克</h3>
-      <p class="say">有外傷出血就走創傷，沒有外傷就走非創傷。我看到蒼白、濕冷。血壓還在，是代償；血壓開始明顯下降，就是非代償。我控制出血、給氧、保暖、快送。</p>
-      <p class="note">休克是組織灌流不足。低血容的第一個外表是皮膚蒼白濕冷。代償時心跳和呼吸變快、血管收縮、指甲回血延長，人可能只是焦慮。非代償的分界是血壓往下掉，呼吸可以變淺或變慢，皮膚可以出現大理石紋或發紺，意識變混亂、嗜睡甚至昏迷。</p>
-      <p class="back">做完回到：C 之後喊危急。</p>
-      <p class="trap">只說快送，沒有講止血、氧氣和保暖。或血壓還沒掉就說已經失代償。</p>
-    </article>
     <article class="card scene unit" data-tags="scene med skill" data-search="中風 GFAST 臉歪 黃金三小時">
       <div class="kicker"><span class="badge b-med">非創傷</span></div>
       <h3>中風</h3>
-      <p class="say">這是非創傷，而且是特殊狀況，我判危急。我做 GFAST，並問最後一次正常是什麼時候。未滿 3 小時，送到能做血栓溶解或取栓的醫院。意識有改變，我同時處理呼吸道並測血糖。</p>
+      <p class="say">這是非創傷，而且是特殊狀況，我判危急。測眼：頭不要動，筆水平移動，看眼球跟不跟。再看臉對稱、雙手平舉掌心向上、請他說一句話，並問最後一次正常是什麼時候。未滿 3 小時，送到能做血栓溶解或取栓的醫院。意識有改變，我同時處理呼吸道並測血糖。</p>
       <p class="note">G 眼球跟著水平移動的筆走。F 看臉對稱。A 雙手向前平舉、掌心向上。S 說一句話看清不清楚。T 記下最後正常時間。一項異常，書上寫中風可能性約 72%；三項約 85%。到院前無法區分出血性或缺血性。症狀還可包括單側無力、感覺異常、頭暈嘔吐、瞳孔不等大。</p>
       <p class="back">做完回到：D 和二度，然後快送。</p>
       <p class="trap">只說臉歪就是中風，沒有問最後正常時間，也沒有測血糖。</p>
@@ -504,7 +1276,7 @@
     <article class="card scene unit" data-tags="scene med skill" data-search="胸痛 NTG 含錠 十二導程">
       <div class="kicker"><span class="badge b-med">非創傷</span></div>
       <h3>胸痛</h3>
-      <p class="say">這是非創傷，疑似缺血性胸痛，我判危急。我問 OPQRST，維持生命徵象。有舌下含錠時，先排除四個不能吃的情況，再讓他自己每 5 分鐘含一次。送到有心血管專科的醫院。</p>
+      <p class="say">這是非創傷，疑似缺血性胸痛，我判危急。我問 OPQRST，維持生命徵象。含錠前先看四個不能含：收縮壓低於 90、近期壯陽藥、脈搏仍要照仿單或醫囑、對這類藥過敏。藥本身要在效期內或開封後 3 個月內，確認是舌下含錠，一次一錠放舌下，每錠隔 5 分鐘，讓他自己含。送到有心血管專科的醫院。</p>
       <p class="note">不能自行含的四種：收縮壓低於 90、近期用過壯陽藥、脈搏速率仍要依仿單或醫囑、對這類藥過敏。筆記本補充檢查：在效期內，確認是錠劑，一次一錠放舌下。書上正文寫每 5 分鐘一次。十二導程若是致死心律，改走 OHCA。不是致死心律就穩定徵象後送。電不電由 AED 判斷。有脈搏的心室頻脈不要當成 OHCA。</p>
       <p class="back">做完回到：二度評估和交接。</p>
       <p class="trap">血壓沒量就請病人含錠，或看到一種波形就自己喊電擊。</p>
@@ -512,40 +1284,21 @@
     <article class="card scene unit" data-tags="scene med skill number" data-search="低血糖 血糖 糖水 牙齦">
       <div class="kicker"><span class="badge b-med">非創傷</span><span class="badge b-num">數字</span></div>
       <h3>低血糖</h3>
-      <p class="say">這是非創傷。意識不清我先做 ABC，然後測血糖。低於 60 或機器顯示 high，我判危急。人清醒，給糖水喝。人不清醒，把糖粉抹在牙齦和舌下，並留意會不會嗆到。</p>
-      <p class="note">人體血糖約 60–120。以救護角度看，正常空腹約 70–100。大腦靠氧和葡萄糖。高血糖要想到脫水。意識不清都要測血糖。</p>
+      <p class="say">這是非創傷。意識不清我先做 ABC，然後測血糖。低於 60 或機器顯示 high，我判危急。人清醒、手在抖，沾葡萄糖水給他喝。人不清醒，戴手套沾生理食鹽水，再沾糖粉，抹在牙齦和舌下，嚴禁灌食！</p>
+      <p class="note">人體血糖約 60–120。正常空腹約 70–100。大腦依賴氧與葡萄糖。意識不清一律測血糖。旺英筆記重點：戴手套 ➡️ 沾生理食鹽水 ➡️ 沾糖粉 ➡️ 塗抹牙齦與舌下。</p>
       <p class="back">做完回到：輔助檢查，然後重評意識。</p>
-      <p class="trap">不清醒的人灌糖水。或只抹糖，沒有先確認呼吸道。</p>
-    </article>
-    <article class="card scene unit" data-tags="scene ohca med" data-search="溺水 特殊狀況">
-      <div class="kicker"><span class="badge b-ohca">可能轉 OHCA</span></div>
-      <h3>溺水</h3>
-      <p class="say">溺水在特殊狀況表上，我判危急。有呼吸有脈搏，走非創傷，重點是呼吸道和氧氣。沒有正常呼吸也沒有脈搏，改走 OHCA。只有跳水、撞擊這類外力，才加上頸椎。</p>
-      <p class="note">筆記本上把溺水從創傷劃掉是對的。它不是一看到水就走創傷。</p>
-      <p class="back">做完回到：有脈搏就留在 B；沒有脈搏就進 CPR。</p>
-      <p class="trap">每個溺水都先按頭，卻沒有看呼吸和脈搏。</p>
-    </article>
-    <article class="card scene unit" data-tags="scene med" data-search="抽搐 癲癇">
-      <div class="kicker"><span class="badge b-med">特殊狀況</span></div>
-      <h3>抽搐</h3>
-      <p class="say">持續抽搐或剛結束，我判危急。抽搐當下我保護環境，不把東西塞進嘴裡，也不硬壓四肢。結束後立刻重評意識、呼吸和血糖。</p>
-      <p class="note">照片只把它列在特殊狀況，沒有單獨技術頁。能做的是判危急、保護、抽完重評 ABC，並想到 AEIOU-TIPS 裡的血糖和缺氧。</p>
-      <p class="back">做完回到：意識和 A。</p>
-      <p class="trap">抽完只問病史，沒有重新看呼吸。</p>
-    </article>
-    <article class="card scene unit" data-tags="scene med" data-search="中毒 毒蛇 急產 小兒">
-      <div class="kicker"><span class="badge b-scene">特殊狀況</span></div>
-      <h3>中毒、毒蛇、急產、小兒</h3>
-      <p class="say">這四種在特殊狀況表上，我直接判危急，走對的脊椎，維持呼吸道和呼吸，然後快送。</p>
-      <p class="note">中毒先確認現場自己安全，問吃了什麼、什麼時候吃，不要催吐。毒蛇咬傷這批照片沒有技術頁，不要加切開、吸吮或冰敷，傷肢少動、快送。急產照片沒有接生步驟，做的是隱私、保暖和快送。小兒只要被評估為危急者，整個人就是危急。甦醒球的兒童和嬰兒是每 2 到 3 秒一口，新生兒約每 1 秒一口。成人危急表的數字不要直接套到小孩身上。</p>
-      <p class="back">做完回到：危急判定和交接。</p>
-      <p class="trap">用成人數字評論小兒，或對毒蛇傷口做照片裡沒有的處置。</p>
+      <p class="trap">不清醒的人灌糖水（禁灌食防吸入肺炎）。或只抹糖，沒有先確認呼吸道。</p>
     </article>
   </div>
 </section>
 
 <section id="critical">
   <h2>危急表</h2>
+  <div style="background:rgba(251,191,36,.12); border-left:4px solid var(--ohca); padding:12px 16px; margin-bottom:14px; border-radius:8px;">
+    <strong>⚠️ 考場分流提醒：</strong>
+    此處的四大危急表（生命徵象、創傷程度、創傷機轉、特殊狀況包含急產/毒蛇/中毒/抽搐等）主要為<strong>「學科筆試考點」</strong>與<strong>「現場危急判定與後送責任」</strong>。
+    老師已在課堂筆記圈選確認：<strong>【術科情境測驗】僅考上方清單的 11 大情境＋OHCA 流程</strong>，不會考現場急產接生或毒蛇處置，請安心專注精準演練！
+  </div>
   <p class="lead">喊出危急之前，要能指出是哪一張表的哪一條。四張表是生命徵象、創傷程度、創傷機轉、特殊狀況。</p>
   <article class="unit card" data-tags="number scene med trauma">
     <h3>同一個項目，三道門檻</h3>
@@ -638,13 +1391,20 @@
     <article class="card unit" data-tags="skill number med trauma ohca" data-search="氧氣 鼻導管 面罩 NRM BVM 非再呼吸">
       <div class="kicker"><span class="badge b-skill">技術</span><span class="badge b-num">數字</span></div>
       <h3>氧氣裝置</h3>
+      <div style="background:rgba(56,189,248,.12); border-left:4px solid var(--med); padding:10px 14px; margin-bottom:12px; border-radius:6px; font-size:.92rem;">
+        <strong>⭐ 老師考場指定固定口令：</strong><br>
+        • <strong>鼻導管 (Nasal Cannula)</strong>：固定 <strong>4 L/min</strong>（閉嘴呼吸、SpO2 90–94%）<br>
+        • <strong>一般面罩 (Mask)</strong>：固定 <strong>10 L/min</strong>（張口呼吸、SpO2 90–94%）<br>
+        • <strong>非再呼吸面罩 (NRM)</strong>：固定 <strong>15 L/min</strong>（嚴重發紺、SpO2 &lt; 90%、火場嗆傷，先充飽儲氣袋）<br>
+        • <strong>甦醒球 (BVM)</strong>：接氧固定 <strong>15 L/min</strong>（呼吸 &lt; 10 次/分或無呼吸，成人每 6 秒壓一口氣；OHCA 配合按壓 30:2）
+      </div>
       <div class="table-wrap" style="box-shadow:none">
         <table>
-          <tr><th>裝置</th><th>流速</th><th>濃度</th><th>什麼時候用</th></tr>
-          <tr><td>鼻導管</td><td>1–6</td><td>24–44%</td><td>清醒、用鼻子。血氧 90–94%，或呼吸 20–30</td></tr>
-          <tr><td>一般面罩</td><td>6–10</td><td>44–60%</td><td>張口且血氧低於 94%，張口且呼吸大於 20，創傷需要氧，意識不清。正常要大於 6 升，否則二氧化碳積在面罩裡</td></tr>
-          <tr><td>非再呼吸面罩</td><td>10–15</td><td>表上 80–100%，內文寫接近 100%</td><td>血氧低於 90%，呼吸大於 30，一般面罩無效，發紺，火場，疑似一氧化碳，吸入性傷害。先充飽儲氣袋</td></tr>
-          <tr><td>甦醒球</td><td>10–15，口令常說 15</td><td>表上 90–100%，內文寫 15 升接近 100%</td><td>呼吸小於 10，沒有呼吸或 OHCA，非再呼吸面罩無效時可考慮</td></tr>
+          <tr><th>裝置</th><th>流速 (L/min)</th><th>濃度</th><th>什麼時候用</th></tr>
+          <tr><td>鼻導管</td><td>1–6（<b>考場固定 4 L</b>）</td><td>24–44%</td><td>清醒、用鼻子。血氧 90–94%，或呼吸 20–30</td></tr>
+          <tr><td>一般面罩 (Mask)</td><td>6–10（<b>考場固定 10 L</b>）</td><td>44–60%</td><td>張口且血氧低於 94%，張口且呼吸大於 20，創傷需要氧，意識不清。固定開 10L 確保沖刷二氧化碳</td></tr>
+          <tr><td>非再呼吸面罩 (NRM)</td><td>10–15（<b>考場固定 15 L</b>）</td><td>表上 80–100%，內文寫接近 100%</td><td>血氧低於 90%，呼吸大於 30，一般面罩無效，發紺，火場，疑似一氧化碳，吸入性傷害。先充飽儲氣袋</td></tr>
+          <tr><td>甦醒球 (BVM)</td><td><b>接氧固定 15 L</b></td><td>表上 90–100%，15 升接近 100%</td><td>呼吸小於 10，沒有呼吸或 OHCA，非再呼吸面罩無效時改用</td></tr>
         </table>
       </div>
       <p class="note">流程圖用嘴巴開不開來選鼻導管或一般面罩，並把火場、嗆傷、一氧化碳直接送到非再呼吸面罩。裝置頁再用血氧和呼吸次數覆核。確定是換氣過度時，一般面罩可以降到 1–2 升，這是裝置頁的例外。</p>
@@ -694,6 +1454,185 @@
       <p class="say">手：你有感覺我在摸你的手嗎？你的手可以動一下嗎？沒有反應，改捏虎口。腳：你有感覺我在摸你的腳嗎？你的腳可以動一下嗎？沒有反應，改刺激腳後跟。一開始就無意識，直接做虎口和腳後跟的疼痛刺激。</p>
     </article>
   </div>
+</section>
+
+
+<section id="gcs">
+
+      <!-- 🧠 GCS 昏迷指數全流程指南卡 -->
+      <div class="quick-section-title" style="margin-top:24px;">
+        <span class="title-icon">🧠</span>
+        <h3>GCS 昏迷指數在流程哪裡？怎麼考？怎麼算？</h3>
+        <span class="title-sub">課本第 58/60/64 頁：初評 D、二評生命徵象、危急判定全靠它！</span>
+      </div>
+
+      <div class="gcs-master-card">
+        <div class="gcs-flow-box">
+          <div class="gcs-flow-title">📍 GCS 在 EMT-1 救護流程中的「三大出沒時機」</div>
+          <div class="gcs-flow-grid">
+            <div class="g-timing-card">
+              <span class="g-tag">第 1 處（初評）</span>
+              <h5>徒手初評的神經學 (D)</h5>
+              <p>剛進場 5 秒用 <b>AVPU</b> 快速粗分。走到初評 <b>D (神經學)</b> 時，正式評估 <b>GCS ＋ 瞳孔</b>！<br>
+              <span class="highlight-quote">👉 <b>清醒神句秒殺</b>：「先生請看著我 (E4)、說出名字 (V5)、舉起右手 (M6)！」確認滿分 15 分，排除中風偏癱！</span></p>
+            </div>
+            <div class="g-timing-card">
+              <span class="g-tag">第 2 處（二評）</span>
+              <h5>二度評估八大徵象之首</h5>
+              <p>救護車上每 5 分鐘（或非危急 15 分鐘）重測生命徵象，八大項目的第一項就是：<br>
+              <span class="highlight-quote">👉 <b>「① 意識：評估 GCS 昏迷指數（E_V_M_）」</b>，必須精準報出各項分數與總分！</span></p>
+            </div>
+            <div class="g-timing-card">
+              <span class="g-tag danger">第 3 處（危急線）</span>
+              <h5>危急判定 ＆ 無線電回報</h5>
+              <p>課本第 61 頁危急門檻：<br>
+              <span class="highlight-warn">👉 <b>GCS ＜ 14 分（即 13 分以下）直接判定危急個案</b>，立即請求 ALS 支援火速後送！無線電回報「人」必報 GCS！</span></p>
+            </div>
+          </div>
+        </div>
+
+        <!-- GCS 評分速查表 (E4 V5 M6) -->
+        <div class="gcs-table-box">
+          <div class="gcs-table-header">
+            <h4>📊 GCS 評分標準（口訣：E4 V5 M6・最低 3 分沒有 0 分！）</h4>
+            <span class="gcs-formula">總分 = E (睜眼 1~4) + V (語言 1~5) + M (動作 1~6)</span>
+          </div>
+          <div class="gcs-cols-grid">
+            <!-- E -->
+            <div class="gcs-col">
+              <div class="gcs-col-head e-head">👁️ 睜眼反應 (Eye) 最多 4 分</div>
+              <div class="gcs-row"><span class="g-score">4</span><span class="g-desc"><b>自發睜眼</b>（眼睛自己眨、看人）</span></div>
+              <div class="gcs-row"><span class="g-score">3</span><span class="g-desc"><b>叫才睜眼</b>（聲音刺激睜眼）</span></div>
+              <div class="gcs-row"><span class="g-score">2</span><span class="g-desc"><b>痛才睜眼</b>（痛刺激才睜開）</span></div>
+              <div class="gcs-row"><span class="g-score">1</span><span class="g-desc"><b>完全不睜眼</b>（毫無反應）</span></div>
+            </div>
+            <!-- V -->
+            <div class="gcs-col">
+              <div class="gcs-col-head v-head">🗣️ 語言反應 (Verbal) 最多 5 分</div>
+              <div class="gcs-row"><span class="g-score">5</span><span class="g-desc"><b>說話有條理</b>（知道名字/在哪/幾點）</span></div>
+              <div class="gcs-row"><span class="g-score">4</span><span class="g-desc"><b>答非所問</b>（句子完整但混亂）</span></div>
+              <div class="gcs-row"><span class="g-score">3</span><span class="g-desc"><b>胡言亂語</b>（單字不連貫/罵髒話）</span></div>
+              <div class="gcs-row"><span class="g-score">2</span><span class="g-desc"><b>呻吟咕噥</b>（無法辨識的不明聲音）</span></div>
+              <div class="gcs-row"><span class="g-score">1</span><span class="g-desc"><b>毫無聲音</b>（不出聲）</span></div>
+            </div>
+            <!-- M -->
+            <div class="gcs-col">
+              <div class="gcs-col-head m-head">🖐️ 動作反應 (Motor) 最多 6 分</div>
+              <div class="gcs-row"><span class="g-score">6</span><span class="g-desc"><b>聽指令動作</b>（請舉右手/比讚）</span></div>
+              <div class="gcs-row"><span class="g-score">5</span><span class="g-desc"><b>痛能定位</b>（痛刺激手會去推開）</span></div>
+              <div class="gcs-row"><span class="g-score">4</span><span class="g-desc"><b>痛刺激回縮</b>（四肢縮回避痛）</span></div>
+              <div class="gcs-row"><span class="g-score">3</span><span class="g-desc"><b>異常屈曲</b>（去皮質僵直抱胸）</span></div>
+              <div class="gcs-row"><span class="g-score">2</span><span class="g-desc"><b>異常伸直</b>（去大腦僵直反折）</span></div>
+              <div class="gcs-row"><span class="g-score">1</span><span class="g-desc"><b>完全不動</b>（肢體軟癱）</span></div>
+            </div>
+          </div>
+        </div>
+
+        <!-- AVPU 與 GCS 對照關聯 -->
+        <div class="avpu-gcs-bridge">
+          <div class="bridge-tag">🔗 AVPU 與 GCS 考場換算關係</div>
+          <div class="bridge-items">
+            <span class="b-item"><b>A (Alert 清醒)</b> ➔ GCS = 15 分 (滿分 E4V5M6)</span>
+            <span class="b-item"><b>V (Voice 聲音反應)</b> ➔ GCS 約 12~14 分</span>
+            <span class="b-item"><b>P (Pain 疼痛反應)</b> ➔ GCS 約 8~11 分</span>
+            <span class="b-item"><b>U (Unresponsive 無反應)</b> ➔ GCS = 3 分 (最低分 E1V1M1，沒有 0 分！)</span>
+          </div>
+        </div>
+      </div>
+
+</section>
+
+<section id="history">
+  <h2>病史詢問深度專題：現病史 (OPQRST) vs 過去病史 (主訴之前吃過藥敏感)</h2>
+  <p class="lead">課本第 64 頁標準規範：很多同學常把「現病史」和「過去病史」搞混，甚至以為書上寫的跟英文 SAMPLE 不一樣。以下一次講清楚兩者本質、差異與「吃（食用/進食）」的救命意義！</p>
+
+  <div class="grid two">
+    <article class="card unit" data-tags="skill med">
+      <h3>① 現病史 (HPI)：常用的簡記法【OPQRST】</h3>
+      <p class="say"><b>問的是「這一次、當下發作的不舒服」的深度細節！</b></p>
+      <p class="note" style="margin-bottom:8px;">★ 適用時機：主要用於<b>「缺血性胸痛（心肌梗塞）」</b>、腹痛、氣喘發作等有明顯急性疼痛或不適的非創傷病患。</p>
+      <ul style="list-style:none; padding-left:0; line-height:1.8; font-size:0.92rem;">
+        <li><b>O (Onset 發作狀況)</b>：突然發生還是慢慢發生？以前有沒有過類似疼痛？</li>
+        <li><b>P (Provocation 增減因子)</b>：做什麼會更痛？休息或改變姿勢能緩解胸痛嗎？</li>
+        <li><b>Q (Quality 胸痛性質)</b>：是什麼樣的感覺？（如悶痛、壓迫感、針刺痛、撕裂痛）</li>
+        <li><b>R (Radiation 輻射轉移)</b>：疼痛的位置在哪？會不會擴散轉移到左肩、下巴、背部或手臂？</li>
+        <li><b>S (Severity 嚴重程度)</b>：請以 1 到 10 分評估，1 分最不痛 10 分最痛，現在大概幾分？</li>
+        <li><b>T (Time 疼痛時間)</b>：痛了多久？何時開始發作的？</li>
+      </ul>
+    </article>
+
+    <article class="card unit" data-tags="skill trauma med">
+      <h3>② 過去病史：常用的簡記法【主訴之前吃過藥敏感】</h3>
+      <p class="say"><b>問的是「病患整體的健康背景底子與發病前的客觀事實」！</b></p>
+      <p class="note" style="margin-bottom:8px;">★ 為什麼你的書跟別人的不一樣？<b>因為「主訴之前吃過藥敏感」就是英文 SAMPLE 的官方台式中文化！</b></p>
+      <ul style="list-style:none; padding-left:0; line-height:1.8; font-size:0.92rem;">
+        <li><b>主訴 (S - Symptoms)</b>：求救主要原因。「請問你哪裡不舒服、怎麼不舒服、不舒服多久了？」</li>
+        <li><b>之前 (E - Events)</b>：在這之前是在做什麼事？（發作或受傷前的活動經過）</li>
+        <li><b>吃 (L - Last oral intake)</b>：上一餐什麼時候吃的？吃了什麼？（★ 救命關鍵，見下方說明）</li>
+        <li><b>過 (P - Past history)</b>：有沒有什麼過去病史？（高血壓、心臟病、糖尿病、氣喘、中風）</li>
+        <li><b>藥 (M - Medications)</b>：平常有沒有在服用什麼藥物？（降血壓藥、抗凝血劑、降血糖藥、自備 NTG）</li>
+        <li><b>敏 (A - Allergies)</b>：有沒有對什麼食物或藥物過敏？</li>
+        <li><b>感 (補充感覺)</b>：還有哪裡感覺不舒服？或者還要補充什麼嗎？</li>
+      </ul>
+    </article>
+  </div>
+
+  <article class="card unit" data-tags="skill trauma med" style="margin-top:16px;">
+    <h3>③ 「吃」（食用 / 最後進食時間）在救護醫學上的三大關鍵意義</h3>
+    <p class="lead">為什麼課本把「吃」單獨列為核心項目？它絕不是單純閒聊肚子餓不餓，而是直接影響急診處置生死的關鍵情報：</p>
+    <div class="grid three" style="margin-top:10px;">
+      <div style="background:rgba(239,68,68,0.1); border:1px solid rgba(239,68,68,0.3); border-radius:8px; padding:12px;">
+        <h4 style="color:#fca5a5; margin-bottom:6px;">🚨 意義一：緊急手術與麻醉防窒息（最關鍵！）</h4>
+        <p style="font-size:0.88rem; color:#cbd5e1; line-height:1.6;">
+          創傷大出血、骨折、斷肢、內出血患者，送抵急診後常需<b>立即全身麻醉進行緊急手術</b>。<br>
+          若胃內充滿食物，全麻肌肉鬆弛與插管時極易引發<b>嘔吐物逆流吸入氣管，造成窒息猝死或致命性吸入性肺炎</b>！醫學常規要求術前需空腹 6~8 小時。EMT 問出進食時間，供麻醉醫師立即決定插管與手術策略！
+        </p>
+      </div>
+      <div style="background:rgba(56,189,248,0.1); border:1px solid rgba(56,189,248,0.3); border-radius:8px; padding:12px;">
+        <h4 style="color:#7dd3fc; margin-bottom:6px;">🩸 意義二：低血糖用藥與進食比對</h4>
+        <p style="font-size:0.88rem; color:#cbd5e1; line-height:1.6;">
+          糖尿病患者若<b>「打了胰島素或吃了降血糖藥，卻沒有吃正餐（未進食）」</b>，體內血糖會急速暴跌昏迷！<br>
+          問出「上一餐沒吃」，能瞬間確診低血糖病因，指導立即執行抹糖急救！
+        </p>
+      </div>
+      <div style="background:rgba(16,185,129,0.1); border:1px solid rgba(16,185,129,0.3); border-radius:8px; padding:12px;">
+        <h4 style="color:#6ee7b7; margin-bottom:6px;">🦐 意義三：過敏原與食物中毒追查</h4>
+        <p style="font-size:0.88rem; color:#cbd5e1; line-height:1.6;">
+          急性蕁麻疹、喉頭水腫、過敏性休克或急性腹瀉患者，上一餐吃了海鮮、堅果或特殊藥物，是<b>鎖定急性致敏原與中毒來源的唯一線索</b>！
+        </p>
+      </div>
+    </div>
+  </article>
+
+  <article class="card unit" data-tags="skill trauma med" style="margin-top:16px;">
+    <h3>④ 實戰適用時機：創傷 vs 非創傷 怎麼問？</h3>
+    <table style="width:100%; border-collapse:collapse; margin-top:8px; font-size:0.9rem;">
+      <thead>
+        <tr style="background:rgba(15,23,42,0.8); text-align:left;">
+          <th style="padding:10px; border-bottom:1px solid var(--border);">情境類別</th>
+          <th style="padding:10px; border-bottom:1px solid var(--border);">現病史 (OPQRST) 角色</th>
+          <th style="padding:10px; border-bottom:1px solid var(--border);">過去病史 (主訴之前吃過藥敏感) 角色</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.08); font-weight:bold; color:var(--med);">🫀 缺血性胸痛 / 內科腹痛</td>
+          <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.08);"><b style="color:#fde047;">★ 第一優先問！</b><br>深挖胸痛悶痛性質、輻射到左肩下巴、1~10分疼痛量表。</td>
+          <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.08);">緊接在後問：狹心症病史、降血壓藥、抗凝血劑、有無自備 NTG、最後進食時間。</td>
+        </tr>
+        <tr>
+          <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.08); font-weight:bold; color:var(--trauma);">🩸 創傷 (車禍/骨折/大出血/斷肢)</td>
+          <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.08);">通常跳過或簡略（外傷機轉明確，不需反覆問痛的性質）。</td>
+          <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.08);"><b style="color:#fde047;">★ 第一優先問！</b><br>重點問「吃」（麻醉空腹時間）、「藥」（有無吃抗凝血劑阿斯匹靈致大失血）、「敏」（止痛藥抗生素過敏）。</td>
+        </tr>
+        <tr>
+          <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.08); font-weight:bold; color:var(--ohca);">⚡ 昏迷 / 意識不清者</td>
+          <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.08);">傷患無法回答，跳過。</td>
+          <td style="padding:10px; border-bottom:1px solid rgba(255,255,255,0.08);"><b style="color:#fde047;">★ 轉向家屬/目擊者詢問！</b><br>查「之前在做什麼」、「吃過什麼/打過胰島素沒」、「平常有什麼重大病史與用藥」。</td>
+        </tr>
+      </tbody>
+    </table>
+  </article>
 </section>
 
 <section id="secondary">
